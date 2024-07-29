@@ -10,14 +10,13 @@ def initialize_driver():
     chromedriver_autoinstaller.install(True) # 강제로 최신 버전을 설치하지 않도록 설정
 
     options = webdriver.ChromeOptions()
-    options.add_argument('--ignore-certificate-errors')
+    options.add_argument('--ignore-certificate-errors') # SSL 인증서 무시 설정
     options.add_argument('--disable-web-security')  # CORS 정책 우회 설정
-    options.add_argument('--headless')
+    options.add_argument('--headless') # 브라우저를 표시하지 않고 실행
 
     # CORS 정책 우회 설정
     capabilities = DesiredCapabilities.CHROME.copy()
     capabilities['goog:loggingPrefs'] = {'browser': 'ALL'}
-
 
     driver = webdriver.Chrome(options=options)
     return driver
