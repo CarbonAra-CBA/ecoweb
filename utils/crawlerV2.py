@@ -63,4 +63,7 @@ def crawl_url(url):
     for resource_type, size in resource_types.items():
         print(f"{resource_type}: {size} bytes")
 
-    print(f"Total Network Size: {total_size} bytes")
+    # kb 단위로 변환
+    total_size_kb = total_size / 1024
+    print(f"Total Network Size: {total_size_kb} kb")
+    print(f"Total electrical energy: {total_size * 0.0000000001 * 1.8} kWh") # 논문에 따르면 1.8 kWh/GB
