@@ -19,7 +19,7 @@ class Driver:
         options.add_argument('--log-level=3')  # 3: ERROR
 
         # 드라이버 초기화
-        driver = webdriver.Chrome(options=options)
+        driver = webdriver.Chrome(options=options) # 초기화(드라이버 시작 browser session start!)
         driver.set_page_load_timeout(60)  # 페이지 로드 타임아웃 60초 설정 (60초가 지나면 에러 발생)
 
         return driver

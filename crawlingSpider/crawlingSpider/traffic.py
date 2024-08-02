@@ -3,19 +3,15 @@ from items import trafficItem
 from driver import Driver
 import json
 import time
-'''
-issue:
-1. driver session(생성되고 종료되기까지의 간격 사이에 sleep() 을 주지 않으면 session it not created 에러 발생)
 
-'''
 class trafficSpider(CrawlSpider):
-    name = 'traffic_spider'  # 스파이더 이름 설정
-    allowed_domains = ['naver.com']  # 허용할 도메인 설정
+    name = 'traffic_spider'                 # 스파이더 이름 설정
+    allowed_domains = ['naver.com']         # 허용할 도메인 설정
     start_urls = ['https://www.naver.com']  # 시작할 URL 설정
 
     @staticmethod
-    def crawling_items(url):
-        driver = Driver().init_driver()
+    def crawling_items(url, driver):
+        print("start crawl at ",url)
         driver.get(url)
         resource_types = {'Document': 0, 'Stylesheet': 0, 'Script': 0, 'Image': 0, 'Media': 0, 'Other': 0}
         total_size = 0
@@ -28,7 +24,6 @@ class trafficSpider(CrawlSpider):
                 resource_types, total_size = update_resource_types(resource_types, mime_type, resource_size, message['params']['response']['url'])
                 time.sleep(0.1)
 
-        driver.quit()
         traffic_resource = create_traffic_item(url, resource_types, total_size)
         return traffic_resource
 

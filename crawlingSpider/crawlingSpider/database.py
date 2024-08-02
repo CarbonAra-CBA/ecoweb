@@ -40,8 +40,8 @@ def save_to_database(traffic_data):
     # 로컬 MySQL 데이터베이스에 접속
     conn = pymysql.connect(
         host='localhost',  # 로컬 호스트
-        user='your_local_username',  # 로컬 MySQL 사용자명
-        password='your_local_password',  # 로컬 MySQL 비밀번호
+        user='root',  # 로컬 MySQL 사용자명
+        password='1234',  # 로컬 MySQL 비밀번호
         database='traffic_db'  # 사용하려는 데이터베이스 이름
     )
     cursor = conn.cursor()
