@@ -12,3 +12,30 @@
 
 # 팀원
 jelly1500 , eclipse1228
+
+# 폴더 구조 
+```python
+├───── README.md
+├───── crawlingSpider  ( 크롤링 프레임워크 scrapy )
+│       ├───── crawlingSpider
+│       │       ├───── spiders
+│       │       ├───── database.py
+│       │       ├───── driver.py
+│       │       ├───── items.py
+│       │       ├───── main.py
+│       │       ├───── middlewares.py
+│       │       ├───── pipelines.py
+│       │       ├───── search.py
+│       │       ├───── settings.py
+│       │       ├───── traffic.py
+│       ├───── scrapy.cfg
+│       ├───── scrapy.md
+├───── templates   
+├───── test        (테스트 코드)
+├───── utils       (유틸리티)
+├───── venv        (가상환경)
+├───── views       
+├───── __init__.py 
+├───── config.py   (환경설정)
+├───── virtualenv.md (가상환경 셋팅)
+```
