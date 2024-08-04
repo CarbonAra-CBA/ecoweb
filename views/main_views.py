@@ -12,4 +12,4 @@ def home():
     if request.method == 'GET':
         print("Home Page")
 
-        return render_template('home.html')
+        return render_template('index.html')
