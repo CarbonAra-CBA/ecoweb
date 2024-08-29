@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>트래픽 등급 결과</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <h1 class="text-center">트래픽 등급 결과</h1>
+                <div class="mt-4">
+                    <h3 id="grade" class="text-center">등급: {{ grade }}</h3>
+                    <div class="progress mt-4">
+                        <div id="gradeBar" class="progress-bar" role="progressbar"></div>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <a href="/" class="btn btn-secondary">다시 입력하기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Flask에서 전달된 등급 값에 따라 진행 막대의 너비와 색상 설정
+        const grade = "{{ grade }}";
+        const grades = ['A', 'B', 'C', 'D', 'E', 'F'];
+        const gradeBar = document.getElementById('gradeBar');
+        gradeBar.style.width = (grades.indexOf(grade) + 1) * 16.66 + '%';
+        gradeBar.textContent = grade;
+
+        switch (grade) {
+            case 'A': gradeBar.classList.add('bg-success'); break;
+            case 'B': gradeBar.classList.add('bg-info'); break;
+            case 'C': gradeBar.classList.add('bg-primary'); break;
+            case 'D': gradeBar.classList.add('bg-warning'); break;
+            case 'E': gradeBar.classList.add('bg-orange'); break;
+            case 'F': gradeBar.classList.add('bg-danger'); break;
+        }
+    </script>
+</body>
+</html>

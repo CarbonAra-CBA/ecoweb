@@ -1,6 +1,6 @@
 from scrapy.spiders import CrawlSpider
-from items import trafficItem
-from driver import Driver
+from crawlingSpider.crawlingSpider.items import trafficItem
+
 import json
 import time
 

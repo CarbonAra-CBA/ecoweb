@@ -47,8 +47,7 @@ class BFS_Spider:
                     traffic_data = self.spider.crawling_items(current_url, self.driver)
                     print(current_url + "'s traffic_data:", traffic_data,"depth:",current_depth)
                     # save_to_database(traffic_data)                                            # 트래픽 데이터를 데이터베이스에 저장 (일단 DB는 메서드가 모두 오류없이 작동할때 확인하겠음)
-                    # 현재 URL을 노드로 추가
-                    # self.graph.add_node(current_url)
+                    # self.graph.add_node(current_url) # 현재 URL을 노드로 추가
                     # 현재 링크의 내부에서 subdomain, subpath를 조사합니다.
                     links = self.extract_links(current_url)  # 현재 URL에서 링크 추출
                     for link in links:
