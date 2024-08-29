@@ -1,4 +1,6 @@
 # Website Crawling for CarbonFootPrint
+## Docs
+https://busy-christmas-93f.notion.site/ECO-WEB-a6660c106ea44a89a9c8f593ca1621f4?pvs=74
 ## 순서
 1. 탄소발자국 분석 :  
 2. 전력소비 분석 :(크롤링을 이용한 Page별 전력소비량 DB 구축) 
