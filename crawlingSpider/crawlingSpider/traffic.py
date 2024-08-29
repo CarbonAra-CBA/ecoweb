@@ -6,8 +6,8 @@ import time
 
 class trafficSpider(CrawlSpider):
     name = 'traffic_spider'                 # 스파이더 이름 설정
-    allowed_domains = ['naver.com']         # 허용할 도메인 설정
-    start_urls = ['https://www.naver.com']  # 시작할 URL 설정
+    # allowed_domains = ['naver.com']         # 허용할 도메인 설정
+    # start_urls = ['https://www.naver.com']  # 시작할 URL 설정
 
     @staticmethod
     def crawling_items(url, driver):
