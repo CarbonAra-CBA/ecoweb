@@ -1,6 +1,7 @@
-from search import BFS_Spider
 import networkx as nx
 import matplotlib as plt
+
+from search import BFS_Spider
 
 base_url = "https://naver.com"     # "naver.com"
 spider = BFS_Spider(base_url)                                # BFS_Spider 인스턴스 생성

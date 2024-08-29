@@ -1,4 +1,8 @@
 from collections import deque
+import sys
+import os
+# 현재 파일의 상위 디렉토리 경로를 sys.path에 추가
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 from urllib.parse import urlparse, urljoin
 from scrapy.http import HtmlResponse
 from scrapy.linkextractors import LinkExtractor
@@ -8,6 +12,7 @@ from database import save_to_database  # 데이터베이스 저장 함수
 from selenium.common.exceptions import TimeoutException, WebDriverException
 import time
 import networkx as nx
+
 '''
 고병수] 크롤링을 위한 BFS 알고리즘 구현
 - 큐로 구현한 BFS 입니다.
@@ -18,6 +23,8 @@ import networkx as nx
 고병수] 08/29
 depth 구현하기 위해서 dict 로 depth와 함께 queue에 저장하겠음. (그럼 set으로 중복
 '''
+
+
 class BFS_Spider:
     def __init__(self, base_url):
 

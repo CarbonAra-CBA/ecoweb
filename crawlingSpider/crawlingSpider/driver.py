@@ -2,7 +2,6 @@ import chromedriver_autoinstaller
 from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
 
-
 class Driver:
 
     def init_driver(self):
