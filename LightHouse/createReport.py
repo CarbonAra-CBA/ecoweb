@@ -18,11 +18,6 @@ def run_lighthouse(chromePath, url, outputPath):
         print("Error running Lighthouse:", result.stderr)
         return None
 
-    # JSON 보고서 파일 읽기
-    with open(outputPath, 'r', encoding='utf-8') as f:  # UTF-8 인코딩 사용
-        report_json = json.load(f)
-
-    return report_json
 
 
 def is_valid_path(path):
