@@ -6,7 +6,7 @@ import re
 def run_lighthouse(chromePath, url, outputPath):
     # Lighthouse CLI 명령어 실행 (절대 경로 사용)
     result = subprocess.run(
-        ['lighthouse', url, '--output=json', f'--output-path={outputPath}', '--chrome-path', chromePath],
+        ['lighthouse', url, '--output=html', '--locale=ko', f'--output-path={outputPath}', '--chrome-path', chromePath],
         capture_output=True,
         text=True,
         encoding='utf-8',  # UTF-8 인코딩 사용
@@ -26,8 +26,9 @@ def run_lighthouse(chromePath, url, outputPath):
 
 
 def is_valid_path(path):
-    # 경로가 존재하고, 파일인지 확인
-    return os.path.isfile(path)
+    # 경로가 유효한 디렉토리인지 확인
+    directory = os.path.dirname(path)
+    return os.path.isdir(directory)
 
 def is_valid_url(url):
     # URL 유효성 검사 (정규 표현식 사용)
@@ -60,21 +61,21 @@ while True:
 
 # 출력 경로 입력 받기
 while True:
-    outputPath = input("Enter the relative path for the report (e.g., ./report.json): ")
-    # 유효한 절대 경로가 아니면 다시 입력 받기
-    if is_valid_path(outputPath) and outputPath.endswith('report.json'):
+    outputPath = input("Enter the relative path for the report (e.g., ./report.html): ")
+    # 경로가 유효한지 확인 (디렉토리 기반 검사)
+    if is_valid_path(outputPath):
         break
     else:
-        print("Invalid output path. Please enter a valid output path(e.g., ./report.json)")
+        print("Invalid output path. Please enter a valid directory for the output file.")
 
 # Lighthouse 실행 및 보고서 저장
-report = run_lighthouse(chromePath, url, outputPath)
+run_lighthouse(chromePath, url, outputPath)
 
-# 결과 출력 (예: 보고서의 일부를 출력)
-if report:
-    print(json.dumps(report, indent=2))
-
-# 보고서를 JSON 객체로 저장
-report_json_object = report
+# # 결과 출력 (예: 보고서의 일부를 출력)
+# if report:
+#     print(json.dumps(report, indent=2))
+#
+# # 보고서를 JSON 객체로 저장
+# report_json_object = report
 
 # json 객체로 저장된 보고서를 데이터베이스에 전송(작성 필요)
