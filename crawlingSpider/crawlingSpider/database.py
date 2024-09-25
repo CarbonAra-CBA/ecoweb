@@ -16,12 +16,15 @@ def create_table_if_not_exists():
     FROM information_schema.tables
     WHERE table_name = 'traffic_data'
     """
+
     cursor.execute(table_check_query)
     if cursor.fetchone()[0] == 0:
         create_table_query = """
         CREATE TABLE traffic_data (
             id INT AUTO_INCREMENT PRIMARY KEY,
+            name VARCHAR(255) ,
             url VARCHAR(255) NOT NULL,
+            depth INT,
             total_size BIGINT,
             script BIGINT,
             image BIGINT,
@@ -46,10 +49,10 @@ def save_to_database(traffic_data):
     )
     cursor = conn.cursor()
     query = """
-    INSERT INTO traffic_data (url, total_size, script, image, media, css)
-    VALUES (%s, %s, %s, %s, %s, %s)
+    INSERT INTO traffic_data (name,url,depth, total_size, script, image, media, css)
+    VALUES (%s ,%s, %s, %s, %s, %s, %s)
     """
-    data = (traffic_data['url'], traffic_data['total_size'], traffic_data['script'], traffic_data['image'], traffic_data['media'], traffic_data['css'])
+    data = (traffic_data['name'],traffic_data['url'],traffic_data['depth'], traffic_data['total_size'], traffic_data['script'], traffic_data['image'], traffic_data['media'], traffic_data['css'])
     cursor.execute(query, data)
     conn.commit()
     cursor.close()

@@ -40,20 +40,18 @@ class BFS_Spider:
     def bfs_search(self):
         try:
             while self.queue:  # 큐가 전부 빈 상태가 될 때까지 진행합니다.
-
                 current_url, current_depth = self.queue.popleft()
-
                 if current_depth >= 4:      # 깊이 3까지 진행
                     break
                 if current_url in self.visited:
                     continue
-
                 self.visited[current_url] = current_depth # 현재 깊이 저장
-
                 try:
                     traffic_data = self.spider.crawling_items(current_url, self.driver)
+                    traffic_data['depth'] = current_depth
                     print(current_url + "'s traffic_data:", traffic_data,"depth:",current_depth)
                     # save_to_database(traffic_data)                                            # 트래픽 데이터를 데이터베이스에 저장 (일단 DB는 메서드가 모두 오류없이 작동할때 확인하겠음)
+
                     # self.graph.add_node(current_url) # 현재 URL을 노드로 추가
                     # 현재 링크의 내부에서 subdomain, subpath를 조사합니다.
                     links = self.extract_links(current_url)  # 현재 URL에서 링크 추출
