@@ -1,63 +1,40 @@
-import pymysql
+from pymongo import MongoClient
+import logging
 
-def create_table_if_not_exists():
-    # 로컬 MySQL 데이터베이스에 접속
-    conn = pymysql.connect(
-        host='localhost',  # 로컬 호스트
-        user='root',  # 로컬 MySQL 사용자명
-        password='1234',  # 로컬 MySQL 비밀번호
-        database='traffic_db'  # 사용하려는 데이터베이스 이름
-    )
-    cursor = conn.cursor()
+def connect_to_database():
+    global client, db, collection
+    # MongoDB 서버에 연결
+    logging.info("Connecting to MongoDB...")
+    client = MongoClient("mongodb://localhost:27017/")
 
-    # 테이블이 존재하는지 확인하고, 존재하지 않으면 테이블 생성
-    table_check_query = """
-    SELECT COUNT(*)
-    FROM information_schema.tables
-    WHERE table_name = 'traffic_data'
-    """
-    cursor.execute(table_check_query)
-    if cursor.fetchone()[0] == 0:
-        create_table_query = """
-        CREATE TABLE traffic_data (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            url VARCHAR(255) NOT NULL,
-            total_size BIGINT,
-            script BIGINT,
-            image BIGINT,
-            media BIGINT,
-            css BIGINT
-        )
-        """
-        cursor.execute(create_table_query)
-        conn.commit()
+    # 데이터베이스 선택 (예: 'mydatabase'라는 이름의 데이터베이스)
+    db = client["ecoweb"]
 
-    cursor.close()
-    conn.close()
+    # 컬렉션 선택 (예: 'mycollection'이라는 이름의 컬렉션)
+    collection = db["websites"]
+    logging.info("Connected to MongoDB")
 
-# 데이터베이스에 데이터를 저장하는 함수
-def save_to_database(traffic_data):
-    # 로컬 MySQL 데이터베이스에 접속
-    conn = pymysql.connect(
-        host='localhost',  # 로컬 호스트
-        user='root',  # 로컬 MySQL 사용자명
-        password='1234',  # 로컬 MySQL 비밀번호
-        database='traffic_db'  # 사용하려는 데이터베이스 이름
-    )
-    cursor = conn.cursor()
-    query = """
-    INSERT INTO traffic_data (url, total_size, script, image, media, css)
-    VALUES (%s, %s, %s, %s, %s, %s)
-    """
-    data = (traffic_data['url'], traffic_data['total_size'], traffic_data['script'], traffic_data['image'], traffic_data['media'], traffic_data['css'])
-    cursor.execute(query, data)
-    conn.commit()
-    cursor.close()
-    conn.close()
+# # 샘플 데이터 삽입
+# data = {"name": "John", "age": 30, "city": "New York"}
+# collection.insert_one(data)
 
-if __name__ == "__main__":
-    # 테이블을 생성하는 함수 호출
-    create_table_if_not_exists()
-    # 예시 데이터 저장
-    # traffic_data 객체를 예시로 사용하여 데이터베이스에 저장하는 함수 호출
-    # save_to_database(traffic_data)
+# # 데이터 조회
+# for document in collection.find():
+#     print(document)
+
+
+def disconnect_from_database():
+    # MongoDB 연결 종료
+    client.close()
+
+
+def save_to_database(website_name,current_url,traffic_data,code_data):
+    # 하나의 데이터에 트래픽 데이터와 코드 데이터를 합쳐서 저장
+    data = {
+        "website_name": website_name,
+        "current_url": current_url,
+        "traffic_data": traffic_data,
+        "code_data": code_data
+    }
+    collection.insert_one(data)
+    logging.info("Data saved to MongoDB")

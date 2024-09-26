@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 import json
 from crawler import preprocess_data
 import pickle
