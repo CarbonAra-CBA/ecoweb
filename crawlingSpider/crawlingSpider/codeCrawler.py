@@ -47,15 +47,16 @@ class CodeCrawler:
         urls_to_fetch = [self.base_url]  # Include the base URL to fetch HTML
         for script in soup.find_all('script', src=True):
             urls_to_fetch.append(urljoin(self.base_url, script['src']))
-
+        # with block이 종료되면 자동으로 컨텍스트 매니저가 스레드풀 정리함. 따라서 정리할 필요 X 
         with ThreadPoolExecutor(max_workers=10) as executor:
             futures = [executor.submit(self._fetch_file, url) for url in urls_to_fetch if self._is_valid_file(url)]
             for future in futures:
                 result = future.result()
                 if result:
                     self.collected_files.append(result)
-
         logging.info(f"Collected {len(self.collected_files)} files")
+
+        return self.collected_files
 
 def main():
     base_url = "https://www.gov.kr/portal/main/nologin"

@@ -15,5 +15,6 @@ class trafficItem(scrapy.Item):
     image = scrapy.Field()
     media = scrapy.Field()
     css = scrapy.Field()
+    depth = scrapy.Field()
 
 
