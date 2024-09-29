@@ -1,14 +1,24 @@
 from scrapy.spiders import CrawlSpider
-from crawlingSpider.crawlingSpider.items import trafficItem
+from items import trafficItem
 import json
 import time
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,  # 로그의 기본 수준을 설정 (INFO 이상 로그가 기록됨)
+    format='%(asctime)s - %(levelname)s - %(message)s',  # 로그 메시지의 포맷을 설정
+    handlers=[
+        logging.FileHandler("crawler.log", mode='w', encoding='utf-8'),  # 로그를 파일에 저장
+        logging.StreamHandler()  # 콘솔에도 동시에 로그를 출력
+    ]
+)
 
 class trafficSpider(CrawlSpider):
     name = 'traffic_spider'                 # 스파이더 이름 설정
 
     @staticmethod
     def crawling_items(url, driver):
-        print("start crawl at ",url)
+        logging.info(f"start traffic data crawling at {url}")
         driver.get(url)
         resource_types = {'Document': 0, 'Stylesheet': 0, 'Script': 0, 'Image': 0, 'Media': 0, 'Other': 0}
         total_size = 0
@@ -22,7 +32,7 @@ class trafficSpider(CrawlSpider):
                 time.sleep(0.1)
 
         traffic_resource = create_traffic_item(url, resource_types, total_size)
-        return traffic_resource
+        return dict(traffic_resource)
 
 def update_resource_types(resource_types, mime_type, resource_size, url):
     if 'text/html' in mime_type:
@@ -40,11 +50,12 @@ def update_resource_types(resource_types, mime_type, resource_size, url):
     return resource_types, resource_size
 
 def create_traffic_item(url, resource_types, total_size):
+    
     traffic_resource = trafficItem()
     traffic_resource['url'] = url
     traffic_resource['css'] = resource_types['Stylesheet']
     traffic_resource['image'] = resource_types['Image']
     traffic_resource['media'] = resource_types['Media']
     traffic_resource['script'] = resource_types['Script']
-    traffic_resource['total_size'] = total_size
+    traffic_resource['total_size'] = traffic_resource['css'] + traffic_resource['image'] + traffic_resource['media'] + traffic_resource['script']
     return traffic_resource
