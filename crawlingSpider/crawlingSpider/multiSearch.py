@@ -44,7 +44,7 @@ class BFS_Spider:
                 current_url, current_depth = self.queue.popleft()
                 if current_depth >= 4:                                                         # 깊이 3까지 진행
                     break
-                if current_url in self.visited:
+                if current_url in self.visited:                                                # 방문한 url이라면, 큐에 추가하지 않음
                     continue
                 self.visited[current_url] = current_depth                                      # 현재 깊이 저장
                 try:

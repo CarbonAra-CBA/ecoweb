@@ -2,13 +2,13 @@
 - 크롤링 프레임워크 scrapy 설치를 위해 가상환경을 만들어주어야 한다.(라이브러리 충돌가능성 매우높음)
 ```shell
 (C:\ecoweb 에서)
-virtualenv venv
+(만약 아직 가상환경 설치가 안 되었을때, 생성하는 명령어) virtualenv venv 
 
 cd venv 
 
 Scripts/activate # 윈도우에서 가상환경 활성화
 
-deactivate # (가상환경 비활성화)
+# deactivate (가상환경 비활성화)
 ```
 가상환경 활성화 이후 
 
