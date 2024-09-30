@@ -1,8 +1,10 @@
 from pymongo import MongoClient
 import logging
 
+import scrapy
+
 def connect_to_database():
-    global client, db, collection
+    global client, db, website_collection , traffic_collection
     # MongoDB 서버에 연결
     logging.info("Connecting to MongoDB...")
     client = MongoClient("mongodb://localhost:27017/")
@@ -11,7 +13,8 @@ def connect_to_database():
     db = client["ecoweb"]
 
     # 컬렉션 선택 (예: 'mycollection'이라는 이름의 컬렉션)
-    collection = db["websites"]
+    website_collection = db["websites"]
+    traffic_collection = db["traffic"]
     logging.info("Connected to MongoDB")
 
 # # 샘플 데이터 삽입
@@ -28,13 +31,13 @@ def disconnect_from_database():
     client.close()
 
 
-def save_to_database(website_name,current_url,traffic_data,code_data):
-    # 하나의 데이터에 트래픽 데이터와 코드 데이터를 합쳐서 저장
-    data = {
-        "website_name": website_name,
-        "current_url": current_url,
-        "traffic_data": traffic_data,
-        "code_data": code_data
-    }
-    collection.insert_one(data)
-    logging.info("Data saved to MongoDB")
+def save_to_database_website(website_data):
+    logging.info(f"Saving data to database: {website_data['file_name']}")
+    website_collection.insert_one(website_data)
+    
+
+
+
+def save_to_database_traffic(traffic_data):
+    logging.info(f"Saving data to database: {traffic_data['url']}")
+    traffic_collection.insert_one(traffic_data)  # MongoDB가 `_id`를 자동으로 생성
