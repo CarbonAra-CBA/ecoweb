@@ -7,10 +7,14 @@ from scrapy.http import HtmlResponse
 from scrapy.linkextractors import LinkExtractor
 from traffic import trafficSpider
 from driver import Driver
-from database import save_to_database_website, save_to_database_traffic  # 데이터베이스 저장 함수
+# from database import save_to_database_website, save_to_database_traffic  # 데이터베이스 저장 함수
 from selenium.common.exceptions import TimeoutException, WebDriverException
 import time
 from codeCrawler import CodeCrawler
+from urllib.parse import urlparse, urljoin, urlsplit, urlunsplit
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 logging.basicConfig(
     level=logging.INFO,  # 로그의 기본 수준을 설정 (INFO 이상 로그가 기록됨)
@@ -21,20 +25,18 @@ logging.basicConfig(
     ]
 )
 
-
 class BFS_Spider:
     def __init__(self, base_url, website_name):
         parsed_base_url = urlparse(base_url)    # base_url에서 도메인 부분만 추출
         self.base_url = parsed_base_url.netloc  # naver.com
         self.visited = {}
         self.queue = deque([(base_url, 0)])     # 튜플로 URL과 깊이를 저장
-        self.link_extractor = LinkExtractor()
         self.spider = trafficSpider()           # trafficSpider 인스턴스 생성
         self.code_crawler = CodeCrawler()
         self.website_name = website_name        # 사이트명
-        self.driver = Driver().init_driver()    # 드라이버를 초기화하고 유지
         self.retries = 3  # 재시도 횟수
         self.delay = 5    # 재시도 대기 시간 (초)
+        self.driver = Driver().init_driver()
 
     def bfs_search(self):
         try:
@@ -47,21 +49,23 @@ class BFS_Spider:
                     continue
                 self.visited[current_url] = current_depth  # 현재 깊이 저장
                 try:
-                    links = self.extract_links(current_url)  # 현재 URL에서 링크 추출
+                    links = self.extract_links(current_url)  # 현재 URL에서 링크 추출 (BFS WebDriver)
                     logging.info(f"Collected {len(links)} links from {current_url}")
                     for link in links:
-                        if link not in self.visited:
+                        if link not in all_links:
                             all_links.add(link)
                             self.queue.append((link, current_depth + 1))  # 다음 깊이로 큐에 추가
                 except WebDriverException as e:
                     logging.error(f"Error while processing {current_url}: {e}")
-                    continue
+                    continue    
             logging.info(f"All links collected: {len(all_links)}")  # 총 수집된 링크 수 출력
-            self.driver.quit() 
+            
+            # BFS webdriver 종료
+            self.driver.quit()
 
-            self.driver = Driver().init_driver()
             # 링크를 순차적으로 처리
             total_links = len(all_links)
+            print("total_links : ",total_links)
             completed_links = 0
             for link in all_links:
                 try:
@@ -71,11 +75,14 @@ class BFS_Spider:
                 except Exception as e:
                     logging.error(f"Error processing {link}: {e}")
         finally:
-            self.driver.quit()  # 크롤링이 끝난 후 드라이버를 종료합니다.
+            pass
 
     def process_link(self, link):
-        traffic_data = self.spider.crawling_items(link,self.driver)
-        code_data = self.code_crawler.collect_files(link)
+        logging.info(f"process_link : {link}")
+
+        traffic_data = self.spider.crawling_items(link)   
+        code_data = self.code_crawler.collect_files(link) 
+        
         for d in code_data:
             website_data = {
                 'website_name': self.website_name,
@@ -86,9 +93,9 @@ class BFS_Spider:
                 'code': d['code'],
             }
             
-            save_to_database_website(website_data)
+            # save_to_database_website(website_data)
         logging.info(f"Saving traffic data to database: {traffic_data['url']}")
-        save_to_database_traffic(traffic_data)
+        # save_to_database_traffic(traffic_data)
 
     def fetch_response(self, url, driver):
         for attempt in range(self.retries):
@@ -107,10 +114,58 @@ class BFS_Spider:
         return HtmlResponse(url=url, body='', encoding='utf-8')
 
     def extract_links(self, url):
-        response = self.fetch_response(url, self.driver)  # page_source를 가져옵니다.
-        links = self.link_extractor.extract_links(response)  # (a tags)링크를 추출합니다.
-        return [urljoin(url, link.url) for link in links if self.is_valid_link(link.url)]
+        self.driver.get(url)
+        logging.info(f"Extracting links from: {url}")
+
+        WebDriverWait(self.driver, 20).until(
+            EC.presence_of_element_located((By.TAG_NAME, "body"))
+        )
+        links = self.driver.find_elements(By.TAG_NAME, 'a')
+        logging.info(f"Found {len(links)} raw links")
+        valid_links = []
+        for link in links:
+            href = link.get_attribute('href')
+            logging.info(f"Checking link: {href}")
+            if href and self.is_valid_link(href):
+                if href not in self.visited:
+                    valid_links.append(href)
+                    self.visited[href] = self.visited.get(url, 0) + 1
+        logging.info(f"Found {len(valid_links)} valid links")
+        return valid_links
+    # 유효한 링크인지 확인
 
     def is_valid_link(self, link):
+        # 링크가 비어있는 경우
+        if not link: 
+            return False
+        # 링크가 기본 도메인과 일치하는지 확인
         parsed_link = urlparse(link)
-        return parsed_link.netloc.endswith(self.base_url)
+        # logging.info(f"Validating link: {link}")
+        # logging.info(f"Base URL: {self.base_url}")
+        # logging.info(f"Parsed link netloc: {parsed_link.netloc}")
+    
+        # print(parsed_link)
+        # 기본 도메인 체크
+        if not parsed_link.netloc.endswith(self.base_url):
+            logging.info(f"Link rejected: domain mismatch")
+            return False
+        
+        # 파일 확장자 체크
+        path = parsed_link.path.lower()
+        invalid_extensions = ['.hwp', '.pdf', '.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx', '.zip', '.rar']
+        if any(path.endswith(ext) for ext in invalid_extensions):
+            return False
+        
+        # '#' 체크
+        if '#' in link:
+            return False
+        print("parsed_link : ",parsed_link)
+        return True
+
+    # def normalize_url(self, url):
+    #     parsed = urlparse(url)
+    #     # 쿼리 파라미터 정렬
+    #     query = '&'.join(sorted(parsed.query.split('&')))
+    #     # 프래그먼트 제거 및 소문자로 변환
+    #     return urlunsplit((parsed.scheme.lower(), parsed.netloc.lower(), parsed.path.lower(), query, '')).rstrip('/')
+

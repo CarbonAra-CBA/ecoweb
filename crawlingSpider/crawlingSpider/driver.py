@@ -3,11 +3,14 @@ from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
 
 class Driver:
+    def __init__(self):
+        self.driver = self.init_driver()
 
     def init_driver(self):
         # 크롬 드라이버 자동 설치
-        chromedriver_autoinstaller.install()
-
+        # chromedriver_autoinstaller.install()
+        self.driver = webdriver.Chrome()
+        
         # 크롬 옵션 설정
         options = Options()
         options.set_capability('goog:loggingPrefs', {'performance': 'ALL'})
@@ -20,7 +23,10 @@ class Driver:
         # 드라이버 초기화
         driver = webdriver.Chrome(options=options) # 초기화(드라이버 시작 browser session start!)
         driver.set_page_load_timeout(60)  # 페이지 로드 타임아웃 60초 설정 (60초가 지나면 에러 발생)
-
+        self.driver = driver
         return driver
-
-
+    
+    # 드라이버 종료
+    def close_driver(self):
+        self.driver.quit()
+        self.driver = None

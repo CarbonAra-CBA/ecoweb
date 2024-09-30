@@ -3,27 +3,32 @@ from items import trafficItem
 import json
 import time
 import logging
+from driver import Driver
 
 logging.basicConfig(
     level=logging.INFO,  # 로그의 기본 수준을 설정 (INFO 이상 로그가 기록됨)
     format='%(asctime)s - %(levelname)s - %(message)s',  # 로그 메시지의 포맷을 설정
     handlers=[
-        logging.FileHandler("crawler.log", mode='w', encoding='utf-8'),  # 로그를 파일에 저장
+        logging.FileHandler("crawlerSecond.log", mode='w', encoding='utf-8'),  # 로그를 파일에 저장
         logging.StreamHandler()  # 콘솔에도 동시에 로그를 출력
     ]
 )
 
 class trafficSpider(CrawlSpider):
     name = 'traffic_spider'                 # 스파이더 이름 설정
+    
+
+    def __init__(self):
+        self.driver = Driver().init_driver()  # 드라이버 초기화
 
     @staticmethod
-    def crawling_items(url, driver):
+    def crawling_items(self, url):
         logging.info(f"start traffic data crawling at {url}")
-        driver.get(url)
+        self.driver.get_url(url)
         resource_types = {'Document': 0, 'Stylesheet': 0, 'Script': 0, 'Image': 0, 'Media': 0, 'Other': 0}
         total_size = 0
 
-        for log in driver.get_log('performance'):
+        for log in self.driver.get_log('performance'):
             message = json.loads(log["message"])["message"]
             if "Network.responseReceived" == message["method"]:
                 mime_type = message['params']['response']['mimeType']
@@ -32,7 +37,12 @@ class trafficSpider(CrawlSpider):
                 time.sleep(0.1)
 
         traffic_resource = create_traffic_item(url, resource_types, total_size)
+        
+        # 드라이버 종료
+        self.driver.close_driver()
+
         return dict(traffic_resource)
+
 
 def update_resource_types(resource_types, mime_type, resource_size, url):
     if 'text/html' in mime_type:
