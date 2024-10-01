@@ -1,32 +1,26 @@
-import chromedriver_autoinstaller
 from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
+import logging
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
+import chromedriver_autoinstaller
 
-class Driver:
-    def __init__(self):
-        self.driver = self.init_driver()
+def init_driver():
+    chromedriver_autoinstaller.install()
 
-    def init_driver(self):
-        # 크롬 드라이버 자동 설치
-        # chromedriver_autoinstaller.install()
-        self.driver = webdriver.Chrome()
-        
-        # 크롬 옵션 설정
-        options = Options()
-        options.set_capability('goog:loggingPrefs', {'performance': 'ALL'})
-        options.add_argument('--headless')  # 브라우저를 표시하지 않고 실행
-        options.add_argument('--disable-web-security')  # CORS 정책 우회 설정
-        options.add_argument('--ignore-certificate-errors')  # SSL 인증서 무시 설정
-        # 로그 수준 설정
-        options.add_argument('--log-level=3')  # 3: ERROR
-
-        # 드라이버 초기화
-        driver = webdriver.Chrome(options=options) # 초기화(드라이버 시작 browser session start!)
-        driver.set_page_load_timeout(60)  # 페이지 로드 타임아웃 60초 설정 (60초가 지나면 에러 발생)
-        self.driver = driver
-        return driver
+    # 크롬 옵션 설정
+    options = Options()
+    # options.add_argument('user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3')
+    options.add_argument("--no-sandbox")  # no-sandbox 옵션 추가
+    options.add_argument("--disable-dev-shm-usage")  # 추가
+    options.set_capability('goog:loggingPrefs', {'performance': 'ALL'})
+    options.add_argument('--headless')  # 브라우저를 표시하지 않고 실행
+    options.add_argument('--disable-web-security')  # CORS 정책 우회 설정
+    options.add_argument('--ignore-certificate-errors')  # SSL 인증서 무시 설정
+    options.add_argument('--log-level=3')  # 3: ERROR
     
-    # 드라이버 종료
-    def close_driver(self):
-        self.driver.quit()
-        self.driver = None
+    driver = webdriver.Chrome(options=options)
+    
+    return driver
+    

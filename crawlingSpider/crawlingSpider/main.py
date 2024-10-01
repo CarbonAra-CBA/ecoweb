@@ -54,7 +54,7 @@ def main():
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger(__name__)
     logger.info("Starting the application...")
-    crawl_website("https://www.yebigun1.mil.kr/dmobis/index_main.do")
+    crawl_website("http://nier.go.kr")
     # db.connect_to_database()
     # 멀티쓰레딩 쓰레드 12개로 크롤링
     # with ThreadPoolExecutor(max_workers=12) as executor:

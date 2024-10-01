@@ -6,7 +6,6 @@ from urllib.parse import urlparse, urljoin
 from scrapy.http import HtmlResponse
 from scrapy.linkextractors import LinkExtractor
 from traffic import trafficSpider
-from driver import Driver
 # from database import save_to_database_website, save_to_database_traffic  # 데이터베이스 저장 함수
 from selenium.common.exceptions import TimeoutException, WebDriverException
 import time
@@ -15,6 +14,7 @@ from urllib.parse import urlparse, urljoin, urlsplit, urlunsplit
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from driver import init_driver
 
 logging.basicConfig(
     level=logging.INFO,  # 로그의 기본 수준을 설정 (INFO 이상 로그가 기록됨)
@@ -36,10 +36,10 @@ class BFS_Spider:
         self.website_name = website_name        # 사이트명
         self.retries = 3  # 재시도 횟수
         self.delay = 5    # 재시도 대기 시간 (초)
-        self.driver = Driver().init_driver()
 
     def bfs_search(self):
         try:
+            driver = init_driver()
             all_links = set()
             while self.queue:  # 큐가 전부 빈 상태가 될 때까지 진행합니다.
                 current_url, current_depth = self.queue.popleft()
@@ -61,7 +61,7 @@ class BFS_Spider:
             logging.info(f"All links collected: {len(all_links)}")  # 총 수집된 링크 수 출력
             
             # BFS webdriver 종료
-            self.driver.quit()
+            driver.quit()
 
             # 링크를 순차적으로 처리
             total_links = len(all_links)
@@ -78,7 +78,7 @@ class BFS_Spider:
             pass
 
     def process_link(self, link):
-        logging.info(f"process_link : {link}")
+        logging.info(f"processlink : {link}")
 
         traffic_data = self.spider.crawling_items(link)   
         code_data = self.code_crawler.collect_files(link) 
@@ -103,6 +103,7 @@ class BFS_Spider:
                 driver.get(url)
                 html = driver.page_source
                 response = HtmlResponse(url=url, body=html, encoding='utf-8')
+                driver.quit()
                 return response
             except TimeoutException:
                 logging.error(f"Error connection : {url}")
@@ -113,14 +114,15 @@ class BFS_Spider:
                 break
         return HtmlResponse(url=url, body='', encoding='utf-8')
 
-    def extract_links(self, url):
-        self.driver.get(url)
+    def extract_links(self,url):
+        driver = init_driver()
+        driver.get(url)
         logging.info(f"Extracting links from: {url}")
 
-        WebDriverWait(self.driver, 20).until(
+        WebDriverWait(driver, 60).until(
             EC.presence_of_element_located((By.TAG_NAME, "body"))
         )
-        links = self.driver.find_elements(By.TAG_NAME, 'a')
+        links = driver.find_elements(By.TAG_NAME, 'a')
         logging.info(f"Found {len(links)} raw links")
         valid_links = []
         for link in links:
@@ -131,6 +133,7 @@ class BFS_Spider:
                     valid_links.append(href)
                     self.visited[href] = self.visited.get(url, 0) + 1
         logging.info(f"Found {len(valid_links)} valid links")
+        driver.quit()
         return valid_links
     # 유효한 링크인지 확인
 

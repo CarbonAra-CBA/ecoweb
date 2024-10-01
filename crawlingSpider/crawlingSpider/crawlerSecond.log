@@ -1,218 +1,505 @@
-2024-09-30 18:16:03,018 - INFO - Starting the application...
-2024-09-30 18:17:07,237 - INFO - Extracting links from: https://www.yebigun1.mil.kr/dmobis/index_main.do
-2024-09-30 18:17:07,267 - INFO - Found 108 raw links
-2024-09-30 18:17:07,275 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/index_main.do#contents
-2024-09-30 18:17:07,281 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/uat/uia/LoginUsr.do
-2024-09-30 18:17:07,285 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/certificateCenter01.jsp
-2024-09-30 18:17:07,291 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/sitemap/sitemap.jsp
-2024-09-30 18:17:07,295 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rrm/reserveforce/ReserveForceForm.do
-2024-09-30 18:17:07,299 - INFO - Checking link: https://www.yebigun1.mil.kr/index.do
-2024-09-30 18:17:07,305 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/edutrasubjpsn/IvdTraScheDetail.do
-2024-09-30 18:17:07,310 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/edutrasubjpsn/IvdTraScheDetail.do
-2024-09-30 18:17:07,315 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/mpt/mypubannoun/MyPubAnnounList.do
-2024-09-30 18:17:07,324 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rrm/reserveforce/ReserveForceForm.do
-2024-09-30 18:17:07,330 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rrm/reserveforce/ReserveForcePrzdcr.do
-2024-09-30 18:17:07,339 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/edutrasubjpsn/wholecountrytraining.jsp
-2024-09-30 18:17:07,346 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/edutrasubjpsn/trainingschselect.jsp
-2024-09-30 18:17:07,355 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rft/rgt/edutrasubjpsn/IvdTraScheInsertForm.do
-2024-09-30 18:17:07,367 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/edutrasubjpsn/wholecountrytraining.jsp
-2024-09-30 18:17:07,376 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/edutrasubjpsn/NationalUnitResevForcesTraApplForm.do
-2024-09-30 18:17:07,381 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/edutrasubjpsn/HolidayResevForcesTraApplForm.do
-2024-09-30 18:17:07,392 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/edutrasubjpsn/NationalUnitResevForcesTraRltList.do
-2024-09-30 18:17:07,399 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/typetradelay/delaytraining.jsp
-2024-09-30 18:17:07,408 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/typetradelay/delaytraining.jsp
-2024-09-30 18:17:07,414 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rft/rgt/ivdTraDelayApplInForm.do
-2024-09-30 18:17:07,423 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rft/rgt/ivdTraDelayApplRltList.do
-2024-09-30 18:17:07,429 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rrm/holdpsn/reservetraining.jsp
-2024-09-30 18:17:07,437 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rrm/holdpsn/reservetraining.jsp
-2024-09-30 18:17:07,447 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rrm/holdpsn/HoldPsnReqForm.do
-2024-09-30 18:17:07,459 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rrm/holdpsn/reservetraining2.jsp
-2024-09-30 18:17:07,468 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rrm/holdpsn/HoldPsnCancelReqForm.do
-2024-09-30 18:17:07,474 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rrm/holdpsn/HoldPsnReqRsltList.do
-2024-09-30 18:17:07,487 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/01_01_history.jsp
-2024-09-30 18:17:07,495 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/01_01_history.jsp
-2024-09-30 18:17:07,507 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/03_06_prtmsvc.jsp
-2024-09-30 18:17:07,513 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/04_01_legislation.jsp
-2024-09-30 18:17:07,520 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000001
-2024-09-30 18:17:07,529 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000001
-2024-09-30 18:17:07,534 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000002
-2024-09-30 18:17:07,541 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000003
-2024-09-30 18:17:07,547 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/library/02_question.jsp
-2024-09-30 18:17:07,558 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/uss/olp/qnn/EgovQustnrRespondInfoManageListUser.do
-2024-09-30 18:17:07,564 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/selectionGuide.jsp
-2024-09-30 18:17:07,574 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/popup/RfTraCenterGuidListPopup.do
-2024-09-30 18:17:07,581 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/popup/RfTraCenterGuidListPopup.do
-2024-09-30 18:17:07,588 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/mpt/mytroopfind/listAdminAddr.do
-2024-09-30 18:17:07,598 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/edutrasubjpsn/IvdTraScheDetail.do
-2024-09-30 18:17:07,606 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/mpt/mypubannoun/MyPubAnnounList.do
-2024-09-30 18:17:07,613 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/mpt/myquestans/MyQuestAnsList.do
-2024-09-30 18:17:07,622 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rrm/reserveforce/ReserveForceForm.do
-2024-09-30 18:17:07,631 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rrm/reserveforce/ReserveForcePrzdcr.do
-2024-09-30 18:17:07,637 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rft/rgt/edutrasubjpsn/IvdTraScheInsertForm.do
-2024-09-30 18:17:07,646 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/edutrasubjpsn/NationalUnitResevForcesTraApplForm.do
-2024-09-30 18:17:07,654 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/edutrasubjpsn/HolidayResevForcesTraApplForm.do
-2024-09-30 18:17:07,661 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rft/rgt/ivdTraDelayApplInForm.do
-2024-09-30 18:17:07,670 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rrm/holdpsn/reservetraining.jsp
-2024-09-30 18:17:07,676 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/edutrasubjpsn/NationalUnitResevForcesTraRltList.do
-2024-09-30 18:17:07,684 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/edutrasubjpsn/IvdTraScheDetail.do
-2024-09-30 18:17:07,692 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/edutrasubjpsn/IvdTraScheDetail.do
-2024-09-30 18:17:07,698 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/popup/RfTraCenterGuidListPopup.do
-2024-09-30 18:17:07,707 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/mpt/mytroopfind/listAdminAddr.do
-2024-09-30 18:17:07,712 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/uat/uia/LoginUsr.do
-2024-09-30 18:17:07,724 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rft/rgt/edutrasubjpsn/IvdTraScheInsertForm.do
-2024-09-30 18:17:07,731 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/edutrasubjpsn/NationalUnitResevForcesTraApplForm.do
-2024-09-30 18:17:07,743 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/edutrasubjpsn/HolidayResevForcesTraApplForm.do
-2024-09-30 18:17:07,749 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/index_main.do#
-2024-09-30 18:17:07,759 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rft/rgt/ivdTraDelayApplInForm.do
-2024-09-30 18:17:07,765 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rrm/holdpsn/HoldPsnReqForm.do
-2024-09-30 18:17:07,772 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/edutrasubjpsn/NationalUnitResevForcesTraRltList.do
-2024-09-30 18:17:07,783 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/popup/RfTraCenterGuidListPopup.do
-2024-09-30 18:17:07,789 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/mpt/mytroopfind/listAdminAddr.do
-2024-09-30 18:17:07,801 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/edutrasubjpsn/IvdTraScheDetail.do
-2024-09-30 18:17:07,807 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/04_05_legislation.jsp
-2024-09-30 18:17:07,816 - INFO - Checking link: https://mnd.go.kr/mbshome/mbs/mnd/subview.jsp?id=mnd_030200000000
-2024-09-30 18:17:07,816 - INFO - Link rejected: domain mismatch
-2024-09-30 18:17:07,823 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/index_main.do#none
-2024-09-30 18:17:07,829 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/index_main.do#none
-2024-09-30 18:17:07,838 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/index_main.do#none
-2024-09-30 18:17:07,843 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/cop/bbs/selectBoardArticle.do?bbsId=BBSMSTR_000000000002&nttId=2847
-2024-09-30 18:17:07,856 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/cop/bbs/selectBoardArticle.do?bbsId=BBSMSTR_000000000001&nttId=2468
-2024-09-30 18:17:07,862 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/cop/bbs/selectBoardArticle.do?bbsId=BBSMSTR_000000000002&nttId=2507
-2024-09-30 18:17:07,869 - INFO - Checking link: http://www.mma.go.kr/
-2024-09-30 18:17:07,869 - INFO - Link rejected: domain mismatch
-2024-09-30 18:17:07,878 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/index_main.do#NONE
-2024-09-30 18:17:07,884 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/index_main.do#NONE
-2024-09-30 18:17:07,893 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/index_main.do#NONE
-2024-09-30 18:17:07,901 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/index_main.do#NONE
-2024-09-30 18:17:07,910 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/index_main.do#NONE
-2024-09-30 18:17:07,917 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000001
-2024-09-30 18:17:07,924 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/library/02_question.jsp?faq_seq=1
-2024-09-30 18:17:07,934 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/library/02_question.jsp?faq_seq=2
-2024-09-30 18:17:07,941 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/library/02_question.jsp?faq_seq=3
-2024-09-30 18:17:07,950 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/library/02_question.jsp?faq_seq=4
-2024-09-30 18:17:07,958 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/library/02_question.jsp?faq_seq=5
-2024-09-30 18:17:07,967 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/library/02_question.jsp
-2024-09-30 18:17:07,975 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/index_main.do#NONE
-2024-09-30 18:17:07,984 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/PtsApplGuide.jsp
-2024-09-30 18:17:07,992 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/03_05_selection.jsp
-2024-09-30 18:17:08,001 - INFO - Checking link: http://www.q-net.or.kr/crf006.do?id=crf00641&gSite=Q&gId=
-2024-09-30 18:17:08,002 - INFO - Link rejected: domain mismatch
-2024-09-30 18:17:08,010 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/selectionGuide.jsp
-2024-09-30 18:17:08,018 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/popup/RfTraCenterGuidListPopup.do
-2024-09-30 18:17:08,029 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/03_08_treatment.jsp
-2024-09-30 18:17:08,036 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/03_04_promotion.jsp
-2024-09-30 18:17:08,045 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/mpt/mytroopfind/listAdminAddr.do
-2024-09-30 18:17:08,053 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/certificateGuide05.jsp
-2024-09-30 18:17:08,063 - INFO - Checking link: http://www.mnd.go.kr/
-2024-09-30 18:17:08,063 - INFO - Link rejected: domain mismatch
-2024-09-30 18:17:08,069 - INFO - Checking link: http://www.mma.go.kr/
-2024-09-30 18:17:08,070 - INFO - Link rejected: domain mismatch
-2024-09-30 18:17:08,077 - INFO - Checking link: https://itunes.apple.com/kr/app/yebigun/id501320155
-2024-09-30 18:17:08,078 - INFO - Link rejected: domain mismatch
-2024-09-30 18:17:08,084 - INFO - Checking link: https://play.google.com/store/apps/details?id=com.yebigun4.ex
-2024-09-30 18:17:08,085 - INFO - Link rejected: domain mismatch
-2024-09-30 18:17:08,091 - INFO - Checking link: http://www.narasarang.or.kr/
-2024-09-30 18:17:08,092 - INFO - Link rejected: domain mismatch
-2024-09-30 18:17:08,103 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/index_main.do#NONE
-2024-09-30 18:17:08,109 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/index_main.do#
-2024-09-30 18:17:08,121 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/index_main.do#
-2024-09-30 18:17:08,127 - INFO - Checking link: https://www.yebigun1.mil.kr/dmobis/index_main.do#
-2024-09-30 18:17:08,128 - INFO - Found 48 valid links
-2024-09-30 18:17:08,128 - INFO - Collected 48 links from https://www.yebigun1.mil.kr/dmobis/index_main.do
-2024-09-30 18:17:08,129 - INFO - All links collected: 48
-2024-09-30 18:17:10,258 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/03_06_prtmsvc.jsp
-2024-09-30 18:17:10,259 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/03_06_prtmsvc.jsp: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,260 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rrm/reserveforce/ReserveForceForm.do
-2024-09-30 18:17:10,260 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rrm/reserveforce/ReserveForceForm.do: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,260 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/uat/uia/LoginUsr.do
-2024-09-30 18:17:10,260 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/uat/uia/LoginUsr.do: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,261 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/selectionGuide.jsp
-2024-09-30 18:17:10,261 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/selectionGuide.jsp: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,262 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rgt/library/02_question.jsp
-2024-09-30 18:17:10,262 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rgt/library/02_question.jsp: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,262 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rgt/library/02_question.jsp?faq_seq=5
-2024-09-30 18:17:10,262 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rgt/library/02_question.jsp?faq_seq=5: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,263 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rrm/holdpsn/HoldPsnCancelReqForm.do
-2024-09-30 18:17:10,263 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rrm/holdpsn/HoldPsnCancelReqForm.do: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,263 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/03_04_promotion.jsp
-2024-09-30 18:17:10,264 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/03_04_promotion.jsp: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,264 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/PtsApplGuide.jsp
-2024-09-30 18:17:10,264 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/PtsApplGuide.jsp: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,265 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/03_05_selection.jsp
-2024-09-30 18:17:10,265 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/03_05_selection.jsp: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,265 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000001
-2024-09-30 18:17:10,265 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000001: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,265 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/certificateCenter01.jsp
-2024-09-30 18:17:10,266 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/certificateCenter01.jsp: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,266 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rrm/holdpsn/reservetraining2.jsp
-2024-09-30 18:17:10,266 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rrm/holdpsn/reservetraining2.jsp: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,266 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rgt/edutrasubjpsn/trainingschselect.jsp
-2024-09-30 18:17:10,266 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rgt/edutrasubjpsn/trainingschselect.jsp: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,267 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rgt/edutrasubjpsn/HolidayResevForcesTraApplForm.do
-2024-09-30 18:17:10,267 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rgt/edutrasubjpsn/HolidayResevForcesTraApplForm.do: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,267 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/cop/bbs/selectBoardArticle.do?bbsId=BBSMSTR_000000000002&nttId=2847
-2024-09-30 18:17:10,268 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/cop/bbs/selectBoardArticle.do?bbsId=BBSMSTR_000000000002&nttId=2847: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,268 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rgt/library/02_question.jsp?faq_seq=3
-2024-09-30 18:17:10,268 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rgt/library/02_question.jsp?faq_seq=3: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,268 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rrm/holdpsn/HoldPsnReqRsltList.do
-2024-09-30 18:17:10,268 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rrm/holdpsn/HoldPsnReqRsltList.do: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,268 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rft/rgt/ivdTraDelayApplInForm.do
-2024-09-30 18:17:10,268 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rft/rgt/ivdTraDelayApplInForm.do: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,269 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rgt/sitemap/sitemap.jsp
-2024-09-30 18:17:10,269 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rgt/sitemap/sitemap.jsp: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,269 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rgt/edutrasubjpsn/NationalUnitResevForcesTraRltList.do
-2024-09-30 18:17:10,269 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rgt/edutrasubjpsn/NationalUnitResevForcesTraRltList.do: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,269 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/04_05_legislation.jsp
-2024-09-30 18:17:10,269 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/04_05_legislation.jsp: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,270 - INFO - process_link : https://www.yebigun1.mil.kr/index.do
-2024-09-30 18:17:10,270 - ERROR - Error processing https://www.yebigun1.mil.kr/index.do: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,270 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rrm/holdpsn/HoldPsnReqForm.do
-2024-09-30 18:17:10,270 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rrm/holdpsn/HoldPsnReqForm.do: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,270 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/mpt/mytroopfind/listAdminAddr.do
-2024-09-30 18:17:10,270 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/mpt/mytroopfind/listAdminAddr.do: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,270 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/01_01_history.jsp
-2024-09-30 18:17:10,271 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/01_01_history.jsp: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,271 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/03_08_treatment.jsp
-2024-09-30 18:17:10,271 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/03_08_treatment.jsp: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,271 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rrm/reserveforce/ReserveForcePrzdcr.do
-2024-09-30 18:17:10,271 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rrm/reserveforce/ReserveForcePrzdcr.do: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,271 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rgt/edutrasubjpsn/NationalUnitResevForcesTraApplForm.do
-2024-09-30 18:17:10,272 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rgt/edutrasubjpsn/NationalUnitResevForcesTraApplForm.do: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,272 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000002
-2024-09-30 18:17:10,272 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000002: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,272 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/cop/bbs/selectBoardArticle.do?bbsId=BBSMSTR_000000000002&nttId=2507
-2024-09-30 18:17:10,272 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/cop/bbs/selectBoardArticle.do?bbsId=BBSMSTR_000000000002&nttId=2507: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,272 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/mpt/myquestans/MyQuestAnsList.do
-2024-09-30 18:17:10,272 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/mpt/myquestans/MyQuestAnsList.do: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,273 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/04_01_legislation.jsp
-2024-09-30 18:17:10,273 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/04_01_legislation.jsp: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,273 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rgt/typetradelay/delaytraining.jsp
-2024-09-30 18:17:10,273 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rgt/typetradelay/delaytraining.jsp: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,273 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/popup/RfTraCenterGuidListPopup.do
-2024-09-30 18:17:10,273 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/popup/RfTraCenterGuidListPopup.do: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,273 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rgt/library/02_question.jsp?faq_seq=2
-2024-09-30 18:17:10,275 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rgt/library/02_question.jsp?faq_seq=2: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,275 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/cop/bbs/selectBoardArticle.do?bbsId=BBSMSTR_000000000001&nttId=2468
-2024-09-30 18:17:10,275 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/cop/bbs/selectBoardArticle.do?bbsId=BBSMSTR_000000000001&nttId=2468: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,275 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rft/rgt/ivdTraDelayApplRltList.do
-2024-09-30 18:17:10,276 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rft/rgt/ivdTraDelayApplRltList.do: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,276 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rgt/library/02_question.jsp?faq_seq=1
-2024-09-30 18:17:10,276 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rgt/library/02_question.jsp?faq_seq=1: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,276 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/uss/olp/qnn/EgovQustnrRespondInfoManageListUser.do
-2024-09-30 18:17:10,276 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/uss/olp/qnn/EgovQustnrRespondInfoManageListUser.do: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,277 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000003
-2024-09-30 18:17:10,277 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000003: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,277 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/mpt/mypubannoun/MyPubAnnounList.do
-2024-09-30 18:17:10,277 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/mpt/mypubannoun/MyPubAnnounList.do: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,277 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rft/rgt/edutrasubjpsn/IvdTraScheInsertForm.do
-2024-09-30 18:17:10,278 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rft/rgt/edutrasubjpsn/IvdTraScheInsertForm.do: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,278 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rgt/edutrasubjpsn/wholecountrytraining.jsp
-2024-09-30 18:17:10,278 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rgt/edutrasubjpsn/wholecountrytraining.jsp: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,279 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rgt/library/02_question.jsp?faq_seq=4
-2024-09-30 18:17:10,279 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rgt/library/02_question.jsp?faq_seq=4: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,279 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/certificateGuide05.jsp
-2024-09-30 18:17:10,280 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rgt/info/certificateGuide05.jsp: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,280 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rgt/edutrasubjpsn/IvdTraScheDetail.do
-2024-09-30 18:17:10,280 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rgt/edutrasubjpsn/IvdTraScheDetail.do: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
-2024-09-30 18:17:10,280 - INFO - process_link : https://www.yebigun1.mil.kr/dmobis/rfh/rrm/holdpsn/reservetraining.jsp
-2024-09-30 18:17:10,281 - ERROR - Error processing https://www.yebigun1.mil.kr/dmobis/rfh/rrm/holdpsn/reservetraining.jsp: trafficSpider.crawling_items() missing 1 required positional argument: 'url'
+2024-10-01 17:11:50,226 - INFO - Starting the application...
+2024-10-01 17:11:50,765 - INFO - Chromedriver is already installed.
+2024-10-01 17:11:54,031 - INFO - Chromedriver is already installed.
+2024-10-01 17:11:57,289 - INFO - Extracting links from: http://nier.go.kr
+2024-10-01 17:12:00,181 - INFO - Found 248 raw links
+2024-10-01 17:12:00,228 - INFO - Checking link: https://nier.go.kr/NIER/index.do#contentBox
+2024-10-01 17:12:00,241 - INFO - Checking link: https://nier.go.kr/NIER/index.do#gnb
+2024-10-01 17:12:00,250 - INFO - Checking link: https://nier.go.kr/NIER/
+2024-10-01 17:12:00,264 - INFO - Checking link: https://nier.go.kr/NIER/index.do#none
+2024-10-01 17:12:00,276 - INFO - Checking link: https://nier.go.kr/NIER/index.do#none
+2024-10-01 17:12:00,291 - INFO - Checking link: https://nier.go.kr/NIER/index.do#none
+2024-10-01 17:12:00,300 - INFO - Checking link: https://nier.go.kr/NIER/index.do#none
+2024-10-01 17:12:00,317 - INFO - Checking link: https://nier.go.kr/NIER/index.do#none
+2024-10-01 17:12:00,329 - INFO - Checking link: https://nier.go.kr/NIER/kor/cm/nier-cm-1101.do?menuNo=19200&query=%EB%8C%80%EA%B8%B0
+2024-10-01 17:12:00,344 - INFO - Checking link: https://nier.go.kr/NIER/kor/cm/nier-cm-1101.do?menuNo=19200&query=%ED%99%94%ED%95%99
+2024-10-01 17:12:00,358 - INFO - Checking link: https://nier.go.kr/NIER/kor/cm/nier-cm-1101.do?menuNo=19200&query=%ED%99%98%EA%B2%BD
+2024-10-01 17:12:00,373 - INFO - Checking link: https://nier.go.kr/NIER/kor/cm/nier-cm-1101.do?menuNo=19200&query=%EC%B8%A1%EC%A0%95
+2024-10-01 17:12:00,383 - INFO - Checking link: https://nier.go.kr/NIER/kor/cm/nier-cm-1101.do?menuNo=19200&query=%EB%AC%BC%EC%A7%88
+2024-10-01 17:12:00,396 - INFO - Checking link: https://nier.go.kr/NIER/kor/cm/nier-cm-1101.do?menuNo=19200&query=%EB%AC%BC
+2024-10-01 17:12:00,415 - INFO - Checking link: https://nier.go.kr/NIER/kor/cm/nier-cm-1101.do?menuNo=19200&query=%EC%88%98%EC%A7%88
+2024-10-01 17:12:00,431 - INFO - Checking link: https://nier.go.kr/NIER/kor/cm/nier-cm-1101.do?menuNo=19200&query=%EC%9C%84%ED%95%B4%EC%84%B1%ED%8F%89%EA%B0%80
+2024-10-01 17:12:00,446 - INFO - Checking link: https://nier.go.kr/NIER/kor/cm/nier-cm-1101.do?menuNo=19200&query=%EC%88%98%EC%88%98%EB%A3%8C
+2024-10-01 17:12:00,453 - INFO - Checking link: https://nier.go.kr/NIER/kor/cm/nier-cm-1101.do?menuNo=19200&query=%ED%99%98%EA%B2%BD%EC%B8%A1%EC%A0%95%EB%B6%84%EC%84%9D%EC%84%BC%ED%84%B0
+2024-10-01 17:12:00,467 - INFO - Checking link: https://www.mois.go.kr/innogov/
+2024-10-01 17:12:00,467 - INFO - Link rejected: domain mismatch
+2024-10-01 17:12:00,480 - INFO - Checking link: https://ecolibrary.me.go.kr/nier/
+2024-10-01 17:12:00,480 - INFO - Link rejected: domain mismatch
+2024-10-01 17:12:00,496 - INFO - Checking link: https://nier.go.kr/NIER/eng/index.do
+2024-10-01 17:12:00,502 - INFO - Checking link: javascript:void(0);
+2024-10-01 17:12:00,503 - INFO - Link rejected: domain mismatch
+2024-10-01 17:12:00,515 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=16009
+2024-10-01 17:12:00,530 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=16001
+2024-10-01 17:12:00,544 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=16002
+2024-10-01 17:12:00,551 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=16003
+2024-10-01 17:12:00,565 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=16004
+2024-10-01 17:12:00,577 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=16005
+2024-10-01 17:12:00,586 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=16006
+2024-10-01 17:12:00,600 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=16007
+2024-10-01 17:12:00,615 - INFO - Checking link: https://www.facebook.com/niernier0
+2024-10-01 17:12:00,615 - INFO - Link rejected: domain mismatch
+2024-10-01 17:12:00,628 - INFO - Checking link: https://blog.naver.com/nier7078
+2024-10-01 17:12:00,629 - INFO - Link rejected: domain mismatch
+2024-10-01 17:12:00,639 - INFO - Checking link: https://youtube.com/niernier0
+2024-10-01 17:12:00,641 - INFO - Link rejected: domain mismatch
+2024-10-01 17:12:00,648 - INFO - Checking link: https://www.instagram.com/niernier0.official
+2024-10-01 17:12:00,648 - INFO - Link rejected: domain mismatch
+2024-10-01 17:12:00,659 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11000
+2024-10-01 17:12:00,668 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11001
+2024-10-01 17:12:00,680 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11011
+2024-10-01 17:12:00,692 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11012
+2024-10-01 17:12:00,700 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11013
+2024-10-01 17:12:00,709 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11014
+2024-10-01 17:12:00,717 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11003
+2024-10-01 17:12:00,728 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11002
+2024-10-01 17:12:00,740 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11004
+2024-10-01 17:12:00,751 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11005
+2024-10-01 17:12:00,765 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11006
+2024-10-01 17:12:00,778 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11008
+2024-10-01 17:12:00,786 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11009
+2024-10-01 17:12:00,824 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11010
+2024-10-01 17:12:00,871 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=12000
+2024-10-01 17:12:01,144 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=12001
+2024-10-01 17:12:01,189 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=12001
+2024-10-01 17:12:01,241 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=12002
+2024-10-01 17:12:01,271 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=12002
+2024-10-01 17:12:01,359 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=12003
+2024-10-01 17:12:01,394 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=12003
+2024-10-01 17:12:01,416 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=12004
+2024-10-01 17:12:01,433 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=12004
+2024-10-01 17:12:01,448 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=12005
+2024-10-01 17:12:01,474 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=12005
+2024-10-01 17:12:01,490 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=12007
+2024-10-01 17:12:01,506 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=12007
+2024-10-01 17:12:01,531 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=12006
+2024-10-01 17:12:01,555 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=12006
+2024-10-01 17:12:01,578 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=13000
+2024-10-01 17:12:01,602 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=13001
+2024-10-01 17:12:01,628 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=13002
+2024-10-01 17:12:01,652 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=13003
+2024-10-01 17:12:01,668 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=13004
+2024-10-01 17:12:01,700 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14009
+2024-10-01 17:12:01,714 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14020
+2024-10-01 17:12:01,754 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14021
+2024-10-01 17:12:01,771 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14002
+2024-10-01 17:12:01,795 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14007
+2024-10-01 17:12:01,829 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14022
+2024-10-01 17:12:01,884 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14000
+2024-10-01 17:12:01,906 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14001
+2024-10-01 17:12:01,935 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14004
+2024-10-01 17:12:01,966 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14005
+2024-10-01 17:12:01,998 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14008
+2024-10-01 17:12:02,021 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14003
+2024-10-01 17:12:02,047 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15000
+2024-10-01 17:12:02,075 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15001
+2024-10-01 17:12:02,102 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15002
+2024-10-01 17:12:02,131 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15003
+2024-10-01 17:12:02,150 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15004
+2024-10-01 17:12:02,164 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15005
+2024-10-01 17:12:02,182 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15006
+2024-10-01 17:12:02,198 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15008
+2024-10-01 17:12:02,215 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15009
+2024-10-01 17:12:02,230 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15010
+2024-10-01 17:12:02,244 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15011
+2024-10-01 17:12:02,263 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15012
+2024-10-01 17:12:02,278 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15013
+2024-10-01 17:12:02,298 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15014
+2024-10-01 17:12:02,315 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15015
+2024-10-01 17:12:02,333 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15016
+2024-10-01 17:12:02,350 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15017
+2024-10-01 17:12:02,372 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15018
+2024-10-01 17:12:02,385 - INFO - Checking link: https://nier.go.kr/NIER/eng/index.do
+2024-10-01 17:12:02,400 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11000
+2024-10-01 17:12:02,419 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11001
+2024-10-01 17:12:02,446 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11011
+2024-10-01 17:12:02,466 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11012
+2024-10-01 17:12:02,483 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11013
+2024-10-01 17:12:02,500 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11014
+2024-10-01 17:12:02,518 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11003
+2024-10-01 17:12:02,546 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11002
+2024-10-01 17:12:02,565 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11004
+2024-10-01 17:12:02,585 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11005
+2024-10-01 17:12:02,600 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11006
+2024-10-01 17:12:02,621 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11008
+2024-10-01 17:12:02,644 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11009
+2024-10-01 17:12:02,664 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11010
+2024-10-01 17:12:02,688 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=12000
+2024-10-01 17:12:02,700 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=12001
+2024-10-01 17:12:02,727 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=12002
+2024-10-01 17:12:02,746 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=12003
+2024-10-01 17:12:02,766 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=12004
+2024-10-01 17:12:02,783 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=12005
+2024-10-01 17:12:02,801 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=12007
+2024-10-01 17:12:02,818 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=12006
+2024-10-01 17:12:02,840 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=13000
+2024-10-01 17:12:02,860 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=13001
+2024-10-01 17:12:02,884 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=13002
+2024-10-01 17:12:02,918 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=13003
+2024-10-01 17:12:02,961 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=13004
+2024-10-01 17:12:03,034 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14009
+2024-10-01 17:12:03,068 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14020
+2024-10-01 17:12:03,087 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14021
+2024-10-01 17:12:03,110 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14002
+2024-10-01 17:12:03,118 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14007
+2024-10-01 17:12:03,132 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14022
+2024-10-01 17:12:03,160 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14000
+2024-10-01 17:12:03,178 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14001
+2024-10-01 17:12:03,199 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14004
+2024-10-01 17:12:03,218 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14005
+2024-10-01 17:12:03,236 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14008
+2024-10-01 17:12:03,251 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14003
+2024-10-01 17:12:03,272 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15000
+2024-10-01 17:12:03,294 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15001
+2024-10-01 17:12:03,328 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15002
+2024-10-01 17:12:03,345 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15003
+2024-10-01 17:12:03,361 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15004
+2024-10-01 17:12:03,380 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15005
+2024-10-01 17:12:03,399 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15006
+2024-10-01 17:12:03,419 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15008
+2024-10-01 17:12:03,467 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15009
+2024-10-01 17:12:03,503 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15010
+2024-10-01 17:12:03,528 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15011
+2024-10-01 17:12:03,552 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15012
+2024-10-01 17:12:03,578 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15013
+2024-10-01 17:12:03,632 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15014
+2024-10-01 17:12:03,662 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15015
+2024-10-01 17:12:03,688 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15016
+2024-10-01 17:12:03,708 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15017
+2024-10-01 17:12:03,727 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15018
+2024-10-01 17:12:03,747 - INFO - Checking link: https://nier.go.kr/NIER/cop/bbs/selectNoLoginBoardArticle.do?nttId=32624&bbsId=BBSMSTR_000000000012&menuNo=14001
+2024-10-01 17:12:03,772 - INFO - Checking link: https://nier.go.kr/NIER/index.do#none
+2024-10-01 17:12:03,793 - INFO - Checking link: https://nier.go.kr/NIER/index.do#none
+2024-10-01 17:12:03,815 - INFO - Checking link: https://nier.go.kr/NIER/index.do#
+2024-10-01 17:12:03,834 - INFO - Checking link: https://nier.go.kr/NIER/index.do#
+2024-10-01 17:12:03,858 - INFO - Checking link: https://nier.go.kr/NIER/index.do#
+2024-10-01 17:12:03,871 - INFO - Checking link: https://nier.go.kr/NIER/index.do#
+2024-10-01 17:12:03,884 - INFO - Checking link: https://nier.go.kr/NIER/index.do#
+2024-10-01 17:12:03,900 - INFO - Checking link: https://nier.go.kr/NIER/index.do#none
+2024-10-01 17:12:03,918 - INFO - Checking link: https://nier.go.kr/NIER/index.do#none
+2024-10-01 17:12:03,939 - INFO - Checking link: https://nier.go.kr/NIER/index.do#none
+2024-10-01 17:12:03,954 - INFO - Checking link: https://nier.go.kr/NIER/cop/bbs/selectNoLoginBoardList.do?bbsId=BBSMSTR_000000000530&menuNo=16009
+2024-10-01 17:12:03,980 - INFO - Checking link: https://nier.go.kr/NIER/kor/rf/nier-rf-0301.do?menuNo=16002
+2024-10-01 17:12:04,012 - INFO - Checking link: https://nier.go.kr/NIER/cop/com/selectNierUserList.do?moveSite=KOR&menuNo=15014
+2024-10-01 17:12:04,037 - INFO - Checking link: https://nier.go.kr/NIER/cop/bbs/selectNoLoginBoardList.do?bbsId=BBSMSTR_000000000026&menuNo=13003
+2024-10-01 17:12:04,052 - INFO - Checking link: https://nier.go.kr/NIER/kor/if/nier-if-14.do?menuNo=13004
+2024-10-01 17:12:04,070 - INFO - Checking link: https://nier.go.kr/NIER/kor/openapi/getApiMain.do?menuNo=12006
+2024-10-01 17:12:04,089 - INFO - Checking link: https://nier.go.kr/NIER/kor/in/nier-in-4101.do?menuNo=15016
+2024-10-01 17:12:04,113 - INFO - Checking link: https://nier.go.kr/NIER/kor/cm/nier-cm-1101.do?menuNo=19200&query=%EA%B3%A0%EC%8B%9C/%EC%98%88%EA%B7%9C/%EA%B3%B5%EA%B3%A0
+2024-10-01 17:12:04,137 - INFO - Checking link: https://nier.go.kr/NIER/kor/cm/nier-cm-1101.do?menuNo=19200&query=%ED%8F%90%EA%B8%B0%EB%AC%BC%EB%B6%84%EC%84%9D
+2024-10-01 17:12:04,161 - INFO - Checking link: https://nier.go.kr/NIER/kor/cm/nier-cm-1101.do?menuNo=19200&query=%ED%99%98%EA%B2%BD%EB%8D%B0%EC%9D%B4%ED%84%B0
+2024-10-01 17:12:04,179 - INFO - Checking link: https://nier.go.kr/NIER/kor/cm/nier-cm-1101.do?menuNo=19200&query=%ED%96%89%EC%A0%95%EC%98%88%EA%B3%A0
+2024-10-01 17:12:04,198 - INFO - Checking link: https://nier.go.kr/NIER/kor/cm/nier-cm-1101.do?menuNo=19200&query=%ED%99%98%EA%B2%BD%EC%97%B0%EA%B5%AC%EB%89%B4%EC%8A%A4
+2024-10-01 17:12:04,216 - INFO - Checking link: https://nier.go.kr/NIER/cop/bbs/selectNoLoginBoardList.do?bbsId=BBSMSTR_000000000330&menuNo=14002
+2024-10-01 17:12:04,245 - INFO - Checking link: https://nier.go.kr/NIER/index.do#none
+2024-10-01 17:12:04,264 - INFO - Checking link: https://nier.go.kr/NIER/index.do#none
+2024-10-01 17:12:04,285 - INFO - Checking link: https://nier.go.kr/NIER/index.do#none
+2024-10-01 17:12:04,306 - INFO - Checking link: https://nier.go.kr/NIER/index.do#
+2024-10-01 17:12:04,340 - INFO - Checking link: https://nier.go.kr/NIER/index.do#
+2024-10-01 17:12:04,361 - INFO - Checking link: https://nier.go.kr/NIER/index.do#
+2024-10-01 17:12:04,378 - INFO - Checking link: https://nier.go.kr/NIER/index.do#
+2024-10-01 17:12:04,396 - INFO - Checking link: https://nier.go.kr/NIER/index.do#
+2024-10-01 17:12:04,414 - INFO - Checking link: https://nier.go.kr/NIER/cop/bbs/selectNoLoginBoardList.do?bbsId=BBSMSTR_000000000520&menuNo=14007
+2024-10-01 17:12:04,434 - INFO - Checking link: https://nier.go.kr/NIER/index.do#none
+2024-10-01 17:12:04,454 - INFO - Checking link: https://nier.go.kr/NIER/index.do#none
+2024-10-01 17:12:04,468 - INFO - Checking link: https://wzine.kr/nier_webzineYES/202409/
+2024-10-01 17:12:04,469 - INFO - Link rejected: domain mismatch
+2024-10-01 17:12:04,485 - INFO - Checking link: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14023
+2024-10-01 17:12:04,512 - INFO - Checking link: https://nier.go.kr/NIER/index.do#none
+2024-10-01 17:12:04,532 - INFO - Checking link: https://nier.go.kr/NIER/index.do#none
+2024-10-01 17:12:04,549 - INFO - Checking link: https://nier.go.kr/NIER/index.do#none
+2024-10-01 17:12:04,568 - INFO - Checking link: https://www.nier.go.kr/NIER/cop/bbs/selectNoLoginBoardArticle.do?pageIndex=1&bbsId=BBSMSTR_000000000533&nttId=33184&subMenuNm=&menuNo=14022
+2024-10-01 17:12:04,587 - INFO - Checking link: https://www.mydatasafe.kr/
+2024-10-01 17:12:04,588 - INFO - Link rejected: domain mismatch
+2024-10-01 17:12:04,611 - INFO - Checking link: http://egis.me.go.kr/pos
+2024-10-01 17:12:04,612 - INFO - Link rejected: domain mismatch
+2024-10-01 17:12:04,632 - INFO - Checking link: http://me.go.kr/home/web/index.do?menuId=10446
+2024-10-01 17:12:04,632 - INFO - Link rejected: domain mismatch
+2024-10-01 17:12:04,650 - INFO - Checking link: https://nier.go.kr/NIER/index.do#none
+2024-10-01 17:12:04,683 - INFO - Checking link: https://nier.go.kr/NIER/index.do#none
+2024-10-01 17:12:04,715 - INFO - Checking link: https://nier.go.kr/NIER/index.do#none
+2024-10-01 17:12:04,734 - INFO - Checking link: https://nier.go.kr/NIER/index.do#none
+2024-10-01 17:12:04,753 - INFO - Checking link: https://nier.go.kr/NIER/index.do#none
+2024-10-01 17:12:04,767 - INFO - Checking link: https://nier.go.kr/NIER/index.do#none
+2024-10-01 17:12:04,783 - INFO - Checking link: https://nier.go.kr/NIER/index.do#none
+2024-10-01 17:12:04,803 - INFO - Checking link: https://nier.go.kr/NIER/index.do#none
+2024-10-01 17:12:04,826 - INFO - Checking link: https://nier.go.kr/NIER/index.do#
+2024-10-01 17:12:04,844 - INFO - Checking link: https://nier.go.kr/NIER/index.do#
+2024-10-01 17:12:04,860 - INFO - Checking link: https://nier.go.kr/NIER/index.do#
+2024-10-01 17:12:04,883 - INFO - Checking link: https://nier.go.kr/NIER/index.do#
+2024-10-01 17:12:04,902 - INFO - Checking link: https://nier.go.kr/NIER/index.do#
+2024-10-01 17:12:04,929 - INFO - Checking link: https://nier.go.kr/NIER/index.do#
+2024-10-01 17:12:04,948 - INFO - Checking link: https://nier.go.kr/NIER/cop/bbs/selectNoLoginBoardList.do?bbsId=BBSMSTR_000000000022&menuNo=14003
+2024-10-01 17:12:04,971 - INFO - Checking link: https://nier.go.kr/NIER/index.do#
+2024-10-01 17:12:05,021 - INFO - Checking link: https://nier.go.kr/NIER/index.do#
+2024-10-01 17:12:05,046 - INFO - Checking link: https://nier.go.kr/NIER/index.do#
+2024-10-01 17:12:05,077 - INFO - Checking link: https://nier.go.kr/NIER/index.do#
+2024-10-01 17:12:05,097 - INFO - Checking link: https://nier.go.kr/NIER/index.do#
+2024-10-01 17:12:05,111 - INFO - Checking link: https://nier.go.kr/NIER/index.do#
+2024-10-01 17:12:05,129 - INFO - Checking link: https://nier.go.kr/NIER/cop/bbs/selectNoLoginBoardList.do?bbsId=BBSMSTR_000000000024&menuNo=14005
+2024-10-01 17:12:05,146 - INFO - Checking link: https://nier.go.kr/NIER/index.do#
+2024-10-01 17:12:05,162 - INFO - Checking link: https://nier.go.kr/NIER/index.do#
+2024-10-01 17:12:05,177 - INFO - Checking link: https://nier.go.kr/NIER/index.do#
+2024-10-01 17:12:05,194 - INFO - Checking link: https://nier.go.kr/NIER/index.do#
+2024-10-01 17:12:05,212 - INFO - Checking link: https://nier.go.kr/NIER/index.do#
+2024-10-01 17:12:05,228 - INFO - Checking link: https://nier.go.kr/NIER/index.do#
+2024-10-01 17:12:05,249 - INFO - Checking link: https://nier.go.kr/NIER/cop/bbs/selectNoLoginBoardList.do?bbsId=BBSMSTR_000000000023&menuNo=14004
+2024-10-01 17:12:05,273 - INFO - Checking link: https://www.facebook.com/niernier0
+2024-10-01 17:12:05,274 - INFO - Link rejected: domain mismatch
+2024-10-01 17:12:05,283 - INFO - Checking link: https://twitter.com/niernier0
+2024-10-01 17:12:05,283 - INFO - Link rejected: domain mismatch
+2024-10-01 17:12:05,300 - INFO - Checking link: https://blog.naver.com/nier7078
+2024-10-01 17:12:05,300 - INFO - Link rejected: domain mismatch
+2024-10-01 17:12:05,316 - INFO - Checking link: https://post.naver.com/my.naver?memberNo=47776490
+2024-10-01 17:12:05,317 - INFO - Link rejected: domain mismatch
+2024-10-01 17:12:05,334 - INFO - Checking link: http://pf.kakao.com/_xczBJs
+2024-10-01 17:12:05,335 - INFO - Link rejected: domain mismatch
+2024-10-01 17:12:05,351 - INFO - Checking link: https://youtube.com/niernier0
+2024-10-01 17:12:05,352 - INFO - Link rejected: domain mismatch
+2024-10-01 17:12:05,367 - INFO - Checking link: javascript:goFamilysite(1);
+2024-10-01 17:12:05,367 - INFO - Link rejected: domain mismatch
+2024-10-01 17:12:05,386 - INFO - Checking link: javascript:goFamilysite(2);
+2024-10-01 17:12:05,387 - INFO - Link rejected: domain mismatch
+2024-10-01 17:12:05,401 - INFO - Checking link: javascript:goFamilysite(3);
+2024-10-01 17:12:05,401 - INFO - Link rejected: domain mismatch
+2024-10-01 17:12:05,422 - INFO - Checking link: javascript:goFamilysite(4);
+2024-10-01 17:12:05,423 - INFO - Link rejected: domain mismatch
+2024-10-01 17:12:05,438 - INFO - Checking link: https://nier.go.kr/NIER/kor/sm/nier-sm-0720.do?menuNo=17020
+2024-10-01 17:12:05,451 - INFO - Checking link: https://nier.go.kr/NIER/EgovcmmNierCFileDownload.do?nttId=28944
+2024-10-01 17:12:05,467 - INFO - Checking link: https://nier.go.kr/NIER/kor/sm/nier-sm-1101.do?menuNo=17006
+2024-10-01 17:12:05,492 - INFO - Checking link: https://nier.go.kr/NIER/kor/sm/nier-sm-0601.do?menuNo=17004
+2024-10-01 17:12:05,510 - INFO - Checking link: https://nier.go.kr/NIER/kor/in/nier-in-4101.do?menuNo=15016
+2024-10-01 17:12:05,528 - INFO - Checking link: https://nier.go.kr/NIER/sym/mnu/mcm/EgovMenuCreatNierSiteMapList.do?siteType=KOR&menuNo=17002
+2024-10-01 17:12:05,547 - INFO - Checking link: https://www.mois.go.kr/innogov/
+2024-10-01 17:12:05,547 - INFO - Link rejected: domain mismatch
+2024-10-01 17:12:05,563 - INFO - Checking link: http://www.kogl.or.kr/open/info/license_info/by.do
+2024-10-01 17:12:05,564 - INFO - Link rejected: domain mismatch
+2024-10-01 17:12:05,583 - INFO - Checking link: http://www.wa.or.kr/board/list.asp?BoardID=0006
+2024-10-01 17:12:05,583 - INFO - Link rejected: domain mismatch
+2024-10-01 17:12:05,584 - INFO - Found 102 valid links
+2024-10-01 17:12:11,887 - INFO - Collected 102 links from http://nier.go.kr
+2024-10-01 17:12:11,888 - INFO - All links collected: 102
+2024-10-01 17:12:14,098 - INFO - processlink : https://nier.go.kr/NIER/kor/cm/nier-cm-1101.do?menuNo=19200&query=%ED%99%98%EA%B2%BD
+2024-10-01 17:12:14,633 - INFO - Chromedriver is already installed.
+2024-10-01 17:12:28,946 - INFO - Chromedriver is already installed.
+2024-10-01 17:12:33,907 - INFO - file collect start: https://nier.go.kr/NIER/kor/cm/nier-cm-1101.do?menuNo=19200&query=%ED%99%98%EA%B2%BD
+2024-10-01 17:12:33,987 - ERROR - Error fetching file https://www.google-analytics.com/analytics.js: HTTPSConnectionPool(host='www.google-analytics.com', port=443): Max retries exceeded with url: /analytics.js (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002A49A439FD0>: Failed to resolve 'www.google-analytics.com' ([Errno 11001] getaddrinfo failed)"))
+2024-10-01 17:12:34,214 - ERROR - Error fetching file https://nier.go.kr/NIER/assets/kor/js/wvScript.js: 400 Client Error: Bad Request for url: https://nier.go.kr/NIER/assets/kor/js/wvScript.js
+2024-10-01 17:12:34,217 - ERROR - Error fetching file https://nier.go.kr/NIER/js/kor/dq_common.js: 400 Client Error: Bad Request for url: https://nier.go.kr/NIER/js/kor/dq_common.js
+2024-10-01 17:12:34,221 - ERROR - Error fetching file https://nier.go.kr/NIER/assets/kor/css/font.css: 400 Client Error: Bad Request for url: https://nier.go.kr/NIER/assets/kor/css/font.css
+2024-10-01 17:12:34,233 - ERROR - Error fetching file https://nier.go.kr/NIER/assets/kor/js/selectric.css: 400 Client Error: Bad Request for url: https://nier.go.kr/NIER/assets/kor/js/selectric.css
+2024-10-01 17:12:34,236 - ERROR - Error fetching file https://nier.go.kr/NIER/assets/kor/css/wvUser.css: 400 Client Error: Bad Request for url: https://nier.go.kr/NIER/assets/kor/css/wvUser.css
+2024-10-01 17:12:34,239 - ERROR - Error fetching file https://nier.go.kr/NIER/assets/kor/css/apexcharts.css: 400 Client Error: Bad Request for url: https://nier.go.kr/NIER/assets/kor/css/apexcharts.css
+2024-10-01 17:12:34,272 - ERROR - Error fetching file https://nier.go.kr/NIER/assets/kor/css/wvCommon.css: 400 Client Error: Bad Request for url: https://nier.go.kr/NIER/assets/kor/css/wvCommon.css
+2024-10-01 17:12:34,273 - INFO - 3 files collected
+2024-10-01 17:12:40,472 - INFO - Saving traffic data to database: https://nier.go.kr/NIER/kor/cm/nier-cm-1101.do?menuNo=19200&query=%ED%99%98%EA%B2%BD
+2024-10-01 17:12:40,473 - INFO - Progress: 1/102 ...
+2024-10-01 17:12:40,473 - INFO - processlink : https://nier.go.kr/NIER/kor/in/nier-in-4101.do?menuNo=15016
+2024-10-01 17:12:41,015 - INFO - Chromedriver is already installed.
+2024-10-01 17:12:55,325 - INFO - Chromedriver is already installed.
+2024-10-01 17:13:00,320 - INFO - file collect start: https://nier.go.kr/NIER/kor/in/nier-in-4101.do?menuNo=15016
+2024-10-01 17:13:00,455 - INFO - 8 files collected
+2024-10-01 17:13:06,615 - INFO - Saving traffic data to database: https://nier.go.kr/NIER/kor/in/nier-in-4101.do?menuNo=15016
+2024-10-01 17:13:06,616 - INFO - Progress: 2/102 ...
+2024-10-01 17:13:06,616 - INFO - processlink : https://nier.go.kr/NIER/cop/com/selectNierUserList.do?moveSite=KOR&menuNo=15014
+2024-10-01 17:13:07,122 - INFO - Chromedriver is already installed.
+2024-10-01 17:13:21,344 - INFO - Chromedriver is already installed.
+2024-10-01 17:13:26,430 - INFO - file collect start: https://nier.go.kr/NIER/cop/com/selectNierUserList.do?moveSite=KOR&menuNo=15014
+2024-10-01 17:13:26,569 - INFO - 11 files collected
+2024-10-01 17:13:32,750 - INFO - Saving traffic data to database: https://nier.go.kr/NIER/cop/com/selectNierUserList.do?moveSite=KOR&menuNo=15014
+2024-10-01 17:13:32,751 - INFO - Progress: 3/102 ...
+2024-10-01 17:13:32,751 - INFO - processlink : https://nier.go.kr/NIER/EgovMovePage.do?menuNo=16006
+2024-10-01 17:13:33,264 - INFO - Chromedriver is already installed.
+2024-10-01 17:13:47,565 - INFO - Chromedriver is already installed.
+2024-10-01 17:13:52,640 - INFO - file collect start: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=16006
+2024-10-01 17:13:52,780 - ERROR - Error fetching file https://www.epeople.go.kr/js/frame/jsFrameForOpener.js: 404 Client Error: Not Found for url: https://www.epeople.go.kr/js/frame/jsFrameForOpener.js
+2024-10-01 17:13:52,782 - INFO - 14 files collected
+2024-10-01 17:13:58,931 - INFO - Saving traffic data to database: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=16006
+2024-10-01 17:13:58,932 - INFO - Progress: 4/102 ...
+2024-10-01 17:13:58,932 - INFO - processlink : https://nier.go.kr/NIER/EgovMovePage.do?menuNo=13001
+2024-10-01 17:13:59,455 - INFO - Chromedriver is already installed.
+2024-10-01 17:14:13,734 - INFO - Chromedriver is already installed.
+2024-10-01 17:14:19,550 - INFO - file collect start: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=13001
+2024-10-01 17:14:19,673 - INFO - 17 files collected
+2024-10-01 17:14:25,840 - INFO - Saving traffic data to database: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=13001
+2024-10-01 17:14:25,840 - INFO - Progress: 5/102 ...
+2024-10-01 17:14:25,841 - INFO - processlink : https://nier.go.kr/NIER/
+2024-10-01 17:14:26,351 - INFO - Chromedriver is already installed.
+2024-10-01 17:14:40,577 - INFO - Chromedriver is already installed.
+2024-10-01 17:14:47,309 - INFO - file collect start: https://nier.go.kr/NIER/
+2024-10-01 17:14:47,593 - ERROR - Error fetching file https://nier.go.kr/NIER/assets/kor/css/wvCommon.css?v=20240328: 400 Client Error: Bad Request for url: https://nier.go.kr/NIER/assets/kor/css/wvCommon.css?v=20240328
+2024-10-01 17:14:47,593 - ERROR - Error fetching file https://nier.go.kr/NIER/assets/kor/js/wvScript.js?v=20240328: 400 Client Error: Bad Request for url: https://nier.go.kr/NIER/assets/kor/js/wvScript.js?v=20240328
+2024-10-01 17:14:47,609 - ERROR - Error fetching file https://nier.go.kr/NIER/assets/kor/css/wvUser.css?v=20240328: 400 Client Error: Bad Request for url: https://nier.go.kr/NIER/assets/kor/css/wvUser.css?v=20240328
+2024-10-01 17:14:47,610 - INFO - 20 files collected
+2024-10-01 17:14:53,769 - INFO - Saving traffic data to database: https://nier.go.kr/NIER/
+2024-10-01 17:14:53,770 - INFO - Progress: 6/102 ...
+2024-10-01 17:14:53,771 - INFO - processlink : https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14008
+2024-10-01 17:14:54,300 - INFO - Chromedriver is already installed.
+2024-10-01 17:15:08,580 - INFO - Chromedriver is already installed.
+2024-10-01 17:15:14,113 - INFO - file collect start: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14008
+2024-10-01 17:15:14,221 - INFO - 23 files collected
+2024-10-01 17:15:20,394 - INFO - Saving traffic data to database: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14008
+2024-10-01 17:15:20,394 - INFO - Progress: 7/102 ...
+2024-10-01 17:15:20,395 - INFO - processlink : https://nier.go.kr/NIER/EgovMovePage.do?menuNo=12003
+2024-10-01 17:15:20,937 - INFO - Chromedriver is already installed.
+2024-10-01 17:15:35,129 - INFO - Chromedriver is already installed.
+2024-10-01 17:15:40,183 - INFO - file collect start: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=12003
+2024-10-01 17:15:40,301 - INFO - 26 files collected
+2024-10-01 17:15:46,449 - INFO - Saving traffic data to database: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=12003
+2024-10-01 17:15:46,449 - INFO - Progress: 8/102 ...
+2024-10-01 17:15:46,450 - INFO - processlink : https://nier.go.kr/NIER/cop/bbs/selectNoLoginBoardList.do?bbsId=BBSMSTR_000000000530&menuNo=16009
+2024-10-01 17:15:46,988 - INFO - Chromedriver is already installed.
+2024-10-01 17:16:01,243 - INFO - Chromedriver is already installed.
+2024-10-01 17:16:07,542 - INFO - file collect start: https://nier.go.kr/NIER/cop/bbs/selectNoLoginBoardList.do?bbsId=BBSMSTR_000000000530&menuNo=16009
+2024-10-01 17:16:07,662 - INFO - 29 files collected
+2024-10-01 17:16:13,811 - INFO - Saving traffic data to database: https://nier.go.kr/NIER/cop/bbs/selectNoLoginBoardList.do?bbsId=BBSMSTR_000000000530&menuNo=16009
+2024-10-01 17:16:13,812 - INFO - Progress: 9/102 ...
+2024-10-01 17:16:13,813 - INFO - processlink : https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15001
+2024-10-01 17:16:14,353 - INFO - Chromedriver is already installed.
+2024-10-01 17:16:28,565 - INFO - Chromedriver is already installed.
+2024-10-01 17:16:33,653 - INFO - file collect start: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15001
+2024-10-01 17:16:33,771 - INFO - 32 files collected
+2024-10-01 17:16:39,928 - INFO - Saving traffic data to database: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15001
+2024-10-01 17:16:39,929 - INFO - Progress: 10/102 ...
+2024-10-01 17:16:39,929 - INFO - processlink : https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15002
+2024-10-01 17:16:40,458 - INFO - Chromedriver is already installed.
+2024-10-01 17:16:54,735 - INFO - Chromedriver is already installed.
+2024-10-01 17:16:59,957 - INFO - file collect start: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15002
+2024-10-01 17:17:00,065 - INFO - 35 files collected
+2024-10-01 17:17:06,251 - INFO - Saving traffic data to database: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15002
+2024-10-01 17:17:06,252 - INFO - Progress: 11/102 ...
+2024-10-01 17:17:06,254 - INFO - processlink : https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15008
+2024-10-01 17:17:06,801 - INFO - Chromedriver is already installed.
+2024-10-01 17:17:21,015 - INFO - Chromedriver is already installed.
+2024-10-01 17:17:26,012 - INFO - file collect start: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15008
+2024-10-01 17:17:26,116 - INFO - 38 files collected
+2024-10-01 17:17:32,268 - INFO - Saving traffic data to database: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15008
+2024-10-01 17:17:32,268 - INFO - Progress: 12/102 ...
+2024-10-01 17:17:32,269 - INFO - processlink : https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11004
+2024-10-01 17:17:32,817 - INFO - Chromedriver is already installed.
+2024-10-01 17:17:47,116 - INFO - Chromedriver is already installed.
+2024-10-01 17:17:53,204 - INFO - file collect start: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11004
+2024-10-01 17:17:53,313 - INFO - 41 files collected
+2024-10-01 17:17:59,466 - INFO - Saving traffic data to database: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11004
+2024-10-01 17:17:59,467 - INFO - Progress: 13/102 ...
+2024-10-01 17:17:59,467 - INFO - processlink : https://nier.go.kr/NIER/EgovMovePage.do?menuNo=16004
+2024-10-01 17:17:59,989 - INFO - Chromedriver is already installed.
+2024-10-01 17:18:14,174 - INFO - Chromedriver is already installed.
+2024-10-01 17:18:19,810 - INFO - file collect start: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=16004
+2024-10-01 17:18:19,945 - INFO - 44 files collected
+2024-10-01 17:18:26,109 - INFO - Saving traffic data to database: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=16004
+2024-10-01 17:18:26,110 - INFO - Progress: 14/102 ...
+2024-10-01 17:18:26,110 - INFO - processlink : https://nier.go.kr/NIER/EgovMovePage.do?menuNo=16007
+2024-10-01 17:18:26,666 - INFO - Chromedriver is already installed.
+2024-10-01 17:18:40,884 - INFO - Chromedriver is already installed.
+2024-10-01 17:18:46,467 - INFO - file collect start: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=16007
+2024-10-01 17:18:46,588 - ERROR - Error fetching file https://www.110.go.kr/plugin/font/font.css: 400 Client Error: Bad Request for url: https://www.110.go.kr/plugin/font/font.css
+2024-10-01 17:18:46,599 - ERROR - Error fetching file https://www.110.go.kr/js/egovframework/gcall/main/scriptN.js: 400 Client Error: Bad Request for url: https://www.110.go.kr/js/egovframework/gcall/main/scriptN.js
+2024-10-01 17:18:46,606 - ERROR - Error fetching file https://www.110.go.kr/plugin/themify/themify-icons.css: 400 Client Error: Bad Request for url: https://www.110.go.kr/plugin/themify/themify-icons.css
+2024-10-01 17:18:46,615 - ERROR - Error fetching file https://www.110.go.kr/css/egovframework/gcall/main_new/base.css: 400 Client Error: Bad Request for url: https://www.110.go.kr/css/egovframework/gcall/main_new/base.css
+2024-10-01 17:18:46,618 - ERROR - Error fetching file https://www.110.go.kr/plugin/fontawesome/css/all.css: 400 Client Error: Bad Request for url: https://www.110.go.kr/plugin/fontawesome/css/all.css
+2024-10-01 17:18:46,661 - ERROR - Error fetching file https://www.110.go.kr/css/egovframework/gcall/main_new/common.css: 400 Client Error: Bad Request for url: https://www.110.go.kr/css/egovframework/gcall/main_new/common.css
+2024-10-01 17:18:46,680 - ERROR - Error fetching file https://www.110.go.kr/css/egovframework/gcall/main_new/grid.css: 400 Client Error: Bad Request for url: https://www.110.go.kr/css/egovframework/gcall/main_new/grid.css
+2024-10-01 17:18:46,699 - ERROR - Error fetching file https://www.110.go.kr/css/egovframework/gcall/main_new/main.css: 400 Client Error: Bad Request for url: https://www.110.go.kr/css/egovframework/gcall/main_new/main.css
+2024-10-01 17:18:46,700 - INFO - 45 files collected
+2024-10-01 17:18:52,859 - INFO - Saving traffic data to database: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=16007
+2024-10-01 17:18:52,860 - INFO - Progress: 15/102 ...
+2024-10-01 17:18:52,860 - INFO - processlink : https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11008
+2024-10-01 17:18:53,382 - INFO - Chromedriver is already installed.
+2024-10-01 17:19:07,599 - INFO - Chromedriver is already installed.
+2024-10-01 17:19:13,058 - INFO - file collect start: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11008
+2024-10-01 17:19:13,182 - INFO - 48 files collected
+2024-10-01 17:19:19,374 - INFO - Saving traffic data to database: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11008
+2024-10-01 17:19:19,374 - INFO - Progress: 16/102 ...
+2024-10-01 17:19:19,374 - INFO - processlink : https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14005
+2024-10-01 17:19:19,909 - INFO - Chromedriver is already installed.
+2024-10-01 17:19:34,130 - INFO - Chromedriver is already installed.
+2024-10-01 17:19:40,342 - INFO - file collect start: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14005
+2024-10-01 17:19:40,462 - INFO - 51 files collected
+2024-10-01 17:19:46,627 - INFO - Saving traffic data to database: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=14005
+2024-10-01 17:19:46,627 - INFO - Progress: 17/102 ...
+2024-10-01 17:19:46,628 - INFO - processlink : https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15005
+2024-10-01 17:19:47,113 - INFO - Chromedriver is already installed.
+2024-10-01 17:20:01,386 - INFO - Chromedriver is already installed.
+2024-10-01 17:20:06,214 - INFO - file collect start: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15005
+2024-10-01 17:20:06,320 - INFO - 54 files collected
+2024-10-01 17:20:12,507 - INFO - Saving traffic data to database: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=15005
+2024-10-01 17:20:12,508 - INFO - Progress: 18/102 ...
+2024-10-01 17:20:12,508 - INFO - processlink : https://nier.go.kr/NIER/kor/cm/nier-cm-1101.do?menuNo=19200&query=%EC%88%98%EC%88%98%EB%A3%8C
+2024-10-01 17:20:13,035 - INFO - Chromedriver is already installed.
+2024-10-01 17:20:27,279 - INFO - Chromedriver is already installed.
+2024-10-01 17:20:32,146 - INFO - file collect start: https://nier.go.kr/NIER/kor/cm/nier-cm-1101.do?menuNo=19200&query=%EC%88%98%EC%88%98%EB%A3%8C
+2024-10-01 17:20:32,274 - INFO - 57 files collected
+2024-10-01 17:20:38,450 - INFO - Saving traffic data to database: https://nier.go.kr/NIER/kor/cm/nier-cm-1101.do?menuNo=19200&query=%EC%88%98%EC%88%98%EB%A3%8C
+2024-10-01 17:20:38,451 - INFO - Progress: 19/102 ...
+2024-10-01 17:20:38,451 - INFO - processlink : https://nier.go.kr/NIER/kor/cm/nier-cm-1101.do?menuNo=19200&query=%EC%88%98%EC%A7%88
+2024-10-01 17:20:38,963 - INFO - Chromedriver is already installed.
+2024-10-01 17:20:53,197 - INFO - Chromedriver is already installed.
+2024-10-01 17:20:57,977 - INFO - file collect start: https://nier.go.kr/NIER/kor/cm/nier-cm-1101.do?menuNo=19200&query=%EC%88%98%EC%A7%88
+2024-10-01 17:20:58,100 - INFO - 60 files collected
+2024-10-01 17:21:04,274 - INFO - Saving traffic data to database: https://nier.go.kr/NIER/kor/cm/nier-cm-1101.do?menuNo=19200&query=%EC%88%98%EC%A7%88
+2024-10-01 17:21:04,276 - INFO - Progress: 20/102 ...
+2024-10-01 17:21:04,277 - INFO - processlink : https://nier.go.kr/NIER/cop/bbs/selectNoLoginBoardList.do?bbsId=BBSMSTR_000000000330&menuNo=14002
+2024-10-01 17:21:04,826 - INFO - Chromedriver is already installed.
+2024-10-01 17:21:19,088 - INFO - Chromedriver is already installed.
+2024-10-01 17:21:24,918 - INFO - file collect start: https://nier.go.kr/NIER/cop/bbs/selectNoLoginBoardList.do?bbsId=BBSMSTR_000000000330&menuNo=14002
+2024-10-01 17:21:25,038 - INFO - 63 files collected
+2024-10-01 17:21:31,227 - INFO - Saving traffic data to database: https://nier.go.kr/NIER/cop/bbs/selectNoLoginBoardList.do?bbsId=BBSMSTR_000000000330&menuNo=14002
+2024-10-01 17:21:31,228 - INFO - Progress: 21/102 ...
+2024-10-01 17:21:31,229 - INFO - processlink : https://nier.go.kr/NIER/kor/cm/nier-cm-1101.do?menuNo=19200&query=%EB%AC%BC%EC%A7%88
+2024-10-01 17:21:31,757 - INFO - Chromedriver is already installed.
+2024-10-01 17:21:46,644 - INFO - Chromedriver is already installed.
+2024-10-01 17:21:53,886 - INFO - file collect start: https://nier.go.kr/NIER/kor/cm/nier-cm-1101.do?menuNo=19200&query=%EB%AC%BC%EC%A7%88
+2024-10-01 17:21:54,113 - INFO - 66 files collected
+2024-10-01 17:22:00,392 - INFO - Saving traffic data to database: https://nier.go.kr/NIER/kor/cm/nier-cm-1101.do?menuNo=19200&query=%EB%AC%BC%EC%A7%88
+2024-10-01 17:22:00,393 - INFO - Progress: 22/102 ...
+2024-10-01 17:22:00,393 - INFO - processlink : https://nier.go.kr/NIER/cop/bbs/selectNoLoginBoardList.do?bbsId=BBSMSTR_000000000520&menuNo=14007
+2024-10-01 17:22:01,333 - INFO - Chromedriver is already installed.
+2024-10-01 17:22:17,719 - INFO - Chromedriver is already installed.
+2024-10-01 17:22:28,104 - INFO - file collect start: https://nier.go.kr/NIER/cop/bbs/selectNoLoginBoardList.do?bbsId=BBSMSTR_000000000520&menuNo=14007
+2024-10-01 17:22:28,263 - INFO - 69 files collected
+2024-10-01 17:22:34,533 - INFO - Saving traffic data to database: https://nier.go.kr/NIER/cop/bbs/selectNoLoginBoardList.do?bbsId=BBSMSTR_000000000520&menuNo=14007
+2024-10-01 17:22:34,533 - INFO - Progress: 23/102 ...
+2024-10-01 17:22:34,534 - INFO - processlink : https://nier.go.kr/NIER/EgovMovePage.do?menuNo=16005
+2024-10-01 17:22:35,315 - INFO - Chromedriver is already installed.
+2024-10-01 17:22:50,787 - INFO - Chromedriver is already installed.
+2024-10-01 17:22:56,461 - INFO - file collect start: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=16005
+2024-10-01 17:22:56,640 - INFO - 72 files collected
+2024-10-01 17:23:02,917 - INFO - Saving traffic data to database: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=16005
+2024-10-01 17:23:02,918 - INFO - Progress: 24/102 ...
+2024-10-01 17:23:02,918 - INFO - processlink : https://nier.go.kr/NIER/EgovMovePage.do?menuNo=12005
+2024-10-01 17:23:03,759 - INFO - Chromedriver is already installed.
+2024-10-01 17:23:19,620 - INFO - Chromedriver is already installed.
+2024-10-01 17:23:26,000 - INFO - file collect start: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=12005
+2024-10-01 17:23:26,268 - INFO - 75 files collected
+2024-10-01 17:23:32,508 - INFO - Saving traffic data to database: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=12005
+2024-10-01 17:23:32,508 - INFO - Progress: 25/102 ...
+2024-10-01 17:23:32,509 - INFO - processlink : https://nier.go.kr/NIER/kor/sm/nier-sm-1101.do?menuNo=17006
+2024-10-01 17:23:33,389 - INFO - Chromedriver is already installed.
+2024-10-01 17:23:51,027 - INFO - Chromedriver is already installed.
+2024-10-01 17:23:57,324 - INFO - file collect start: https://nier.go.kr/NIER/kor/sm/nier-sm-1101.do?menuNo=17006
+2024-10-01 17:23:57,523 - INFO - 78 files collected
+2024-10-01 17:24:03,774 - INFO - Saving traffic data to database: https://nier.go.kr/NIER/kor/sm/nier-sm-1101.do?menuNo=17006
+2024-10-01 17:24:03,775 - INFO - Progress: 26/102 ...
+2024-10-01 17:24:03,775 - INFO - processlink : https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11003
+2024-10-01 17:24:04,544 - INFO - Chromedriver is already installed.
+2024-10-01 17:24:19,870 - INFO - Chromedriver is already installed.
+2024-10-01 17:24:28,045 - INFO - file collect start: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11003
+2024-10-01 17:24:28,263 - INFO - 81 files collected
+2024-10-01 17:24:34,548 - INFO - Saving traffic data to database: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11003
+2024-10-01 17:24:34,549 - INFO - Progress: 27/102 ...
+2024-10-01 17:24:34,549 - INFO - processlink : https://nier.go.kr/NIER/kor/cm/nier-cm-1101.do?menuNo=19200&query=%ED%8F%90%EA%B8%B0%EB%AC%BC%EB%B6%84%EC%84%9D
+2024-10-01 17:24:35,073 - INFO - Chromedriver is already installed.
+2024-10-01 17:24:49,792 - INFO - Chromedriver is already installed.
+2024-10-01 17:24:55,160 - INFO - file collect start: https://nier.go.kr/NIER/kor/cm/nier-cm-1101.do?menuNo=19200&query=%ED%8F%90%EA%B8%B0%EB%AC%BC%EB%B6%84%EC%84%9D
+2024-10-01 17:24:55,312 - INFO - 84 files collected
+2024-10-01 17:25:01,565 - INFO - Saving traffic data to database: https://nier.go.kr/NIER/kor/cm/nier-cm-1101.do?menuNo=19200&query=%ED%8F%90%EA%B8%B0%EB%AC%BC%EB%B6%84%EC%84%9D
+2024-10-01 17:25:01,565 - INFO - Progress: 28/102 ...
+2024-10-01 17:25:01,565 - INFO - processlink : https://nier.go.kr/NIER/EgovMovePage.do?menuNo=13003
+2024-10-01 17:25:02,073 - INFO - Chromedriver is already installed.
+2024-10-01 17:25:16,490 - INFO - Chromedriver is already installed.
+2024-10-01 17:25:23,579 - INFO - file collect start: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=13003
+2024-10-01 17:25:23,974 - INFO - 87 files collected
+2024-10-01 17:25:30,197 - INFO - Saving traffic data to database: https://nier.go.kr/NIER/EgovMovePage.do?menuNo=13003
+2024-10-01 17:25:30,197 - INFO - Progress: 29/102 ...
+2024-10-01 17:25:30,197 - INFO - processlink : https://nier.go.kr/NIER/EgovMovePage.do?menuNo=11013
+2024-10-01 17:25:30,676 - INFO - Chromedriver is already installed.

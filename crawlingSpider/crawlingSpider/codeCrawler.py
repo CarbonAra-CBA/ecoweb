@@ -5,10 +5,11 @@ from urllib.parse import urljoin, urlparse
 import logging
 from concurrent.futures import ThreadPoolExecutor
 from typing import List, Dict, Any
-from driver import Driver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+from selenium import webdriver
+from driver import init_driver
 
 logging.basicConfig(
     level=logging.INFO,  # 로그의 기본 수준을 설정 (INFO 이상 로그가 기록됨)
@@ -25,63 +26,65 @@ class CodeCrawler:
         self.collected_files: List[Dict[str, Any]] = []
         self.session = requests.Session()
         self.visited_files = set()
-        self.driver = Driver().init_driver()
 
     def collect_files(self, page_url: str):
-        self.driver.get(page_url)
-        WebDriverWait(self.driver.init_driver(), 10).until(
-            EC.presence_of_element_located((By.TAG_NAME, "body"))
-        )
-        
-        logging.info(f"file collect start: {page_url}")
-
-        # HTML 수집
-        html = self.driver.get_page_source()
-        self.collected_files.append({
-            'filename': 'index.html',
-            'code': html,
-            'type': 'html',
-            'url': page_url
-        })
-        self.visited_files.add(page_url)
-
-        # CSS와 JS 파일 수집
-        resources = self.driver.execute_script("""
-            var resources = [];
-            var scripts = document.getElementsByTagName('script');
-            var links = document.getElementsByTagName('link');
+        try:
+            driver = init_driver()
+            driver.get(page_url)
+            WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.TAG_NAME, "body"))
+            )
             
-            for(var i = 0; i < scripts.length; i++) {
-                if(scripts[i].src) resources.push(scripts[i].src);
-            }
+            logging.info(f"file collect start: {page_url}")
+
+            # HTML 수집
+            html = driver.page_source
+            self.collected_files.append({
+                'filename': 'index.html',
+                'code': html,
+                'type': 'html',
+                'url': page_url
+            })
+            self.visited_files.add(page_url)
+
+            # CSS와 JS 파일 수집
+            resources = driver.execute_script("""
+                var resources = [];
+                var scripts = document.getElementsByTagName('script');
+                var links = document.getElementsByTagName('link');
+                
+                for(var i = 0; i < scripts.length; i++) {
+                    if(scripts[i].src) resources.push(scripts[i].src);
+                }
+                
+                for(var i = 0; i < links.length; i++) {
+                    if(links[i].rel === 'stylesheet') resources.push(links[i].href);
+                }
+                
+                return resources;
+            """)
+
+            with ThreadPoolExecutor(max_workers=5) as executor:
+                files = []
+                for resource in resources:
+                    full_url = urljoin(page_url, resource)
+                    if self._is_valid_file(full_url) and full_url not in self.visited_files:
+                        files.append(executor.submit(self._fetch_file, full_url))
+                        self.visited_files.add(full_url)
+
+                for future in files:
+                    file = future.result()
+                    if file:
+                        self.collected_files.append(file)
+
+            logging.info(f"{len(self.collected_files)} files collected")
             
-            for(var i = 0; i < links.length; i++) {
-                if(links[i].rel === 'stylesheet') resources.push(links[i].href);
-            }
-            
-            return resources;
-        """)
-
-        with ThreadPoolExecutor(max_workers=5) as executor:
-            files = []
-            for resource in resources:
-                full_url = urljoin(page_url, resource)
-                if self._is_valid_file(full_url) and full_url not in self.visited_files:
-                    files.append(executor.submit(self._fetch_file, full_url))
-                    self.visited_files.add(full_url)
-
-            for future in files:
-                file = future.result()
-                if file:
-                    self.collected_files.append(file)
-
-        logging.info(f"{len(self.collected_files)} files collected")
-        
-        # 드라이버 종료
-        self.driver.close_driver()
-
-        return self.collected_files
-
+            return self.collected_files
+        except Exception as e:
+            logging.error(f"Error collecting files from {page_url}: {str(e)}")
+            return []
+        finally:
+            driver.quit()
 
     def _is_valid_file(self, url: str) -> bool:
         # 유효한 파일인지 확인하는 함수 (특정 패턴 제외)
@@ -121,6 +124,3 @@ class CodeCrawler:
         else:
             return 'unknown'
 
-    def __del__(self):
-        if hasattr(self, 'driver') and hasattr(self.driver, 'quit_driver'):
-            self.driver.quit_driver()
