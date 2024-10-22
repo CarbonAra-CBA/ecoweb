@@ -1,0 +1,98 @@
+2024-10-22 20:24:19,611 - INFO - Connecting to MongoDB...
+2024-10-22 20:24:19,617 - INFO - Connected to MongoDB
+2024-10-22 20:24:19,619 - INFO - processlink : http://www.me.go.kr
+2024-10-22 20:24:20,329 - INFO - Chromedriver is already installed.
+2024-10-22 20:24:25,295 - INFO - get start: http://www.me.go.kr
+2024-10-22 20:24:29,332 - INFO - get end: http://www.me.go.kr
+2024-10-22 20:24:29,555 - INFO - start traffic log
+2024-10-22 20:24:38,984 - INFO - Chromedriver is already installed.
+2024-10-22 20:25:04,727 - INFO - file collect start: http://www.me.go.kr
+2024-10-22 20:25:05,065 - INFO - 12 files collected
+2024-10-22 20:25:11,322 - INFO - Saving data to database: index.html
+2024-10-22 20:25:11,324 - INFO - Saving data to database: common.js
+2024-10-22 20:25:11,325 - INFO - Saving data to database: style.css
+2024-10-22 20:25:11,326 - INFO - Saving data to database: design.js
+2024-10-22 20:25:11,329 - INFO - Saving data to database: ark_home.css
+2024-10-22 20:25:11,330 - INFO - Saving data to database: slick-theme.css
+2024-10-22 20:25:11,331 - INFO - Saving data to database: slick.css
+2024-10-22 20:25:11,334 - INFO - Saving data to database: search_home.js
+2024-10-22 20:25:11,335 - INFO - Saving data to database: ark_home.js
+2024-10-22 20:25:11,336 - INFO - Saving data to database: UserScriptConf.js
+2024-10-22 20:25:11,337 - INFO - Saving data to database: new.css
+2024-10-22 20:25:11,339 - INFO - Saving data to database: slick.js
+2024-10-22 20:25:11,339 - INFO - Saving traffic data to database: http://www.me.go.kr
+2024-10-22 20:25:11,339 - INFO - Saving traffic data to database: http://www.me.go.kr
+2024-10-22 20:25:11,341 - INFO - processlink : http://ecolife.me.go.kr
+2024-10-22 20:25:12,000 - INFO - Chromedriver is already installed.
+2024-10-22 20:25:15,972 - INFO - get start: http://ecolife.me.go.kr
+2024-10-22 20:25:31,899 - INFO - get end: http://ecolife.me.go.kr
+2024-10-22 20:25:31,926 - INFO - start traffic log
+2024-10-22 20:25:38,787 - INFO - Chromedriver is already installed.
+2024-10-22 20:25:47,674 - INFO - file collect start: http://ecolife.me.go.kr
+2024-10-22 20:25:47,978 - ERROR - Error fetching file https://ecolife.me.go.kr/ecolife/resources/js/gnb.js: 400 Client Error: Bad Request for url: https://ecolife.me.go.kr/ecolife/resources/js/gnb.js
+2024-10-22 20:25:47,980 - ERROR - Error fetching file https://ecolife.me.go.kr/ecolife/resources/css/ext/nanumbarungothic.css: 400 Client Error: Bad Request for url: https://ecolife.me.go.kr/ecolife/resources/css/ext/nanumbarungothic.css
+2024-10-22 20:25:47,987 - ERROR - Error fetching file https://ecolife.me.go.kr/ecolife/resources/js/new.js?ver=2: 400 Client Error: Bad Request for url: https://ecolife.me.go.kr/ecolife/resources/js/new.js?ver=2
+2024-10-22 20:25:47,997 - ERROR - Error fetching file https://ecolife.me.go.kr/ecolife/resources/js/ext/video.js: 400 Client Error: Bad Request for url: https://ecolife.me.go.kr/ecolife/resources/js/ext/video.js
+2024-10-22 20:25:47,998 - ERROR - Error fetching file https://ecolife.me.go.kr/ecolife/resources/js/ext/sweetalert-dev.js: 400 Client Error: Bad Request for url: https://ecolife.me.go.kr/ecolife/resources/js/ext/sweetalert-dev.js
+2024-10-22 20:25:47,999 - ERROR - Error fetching file https://ecolife.me.go.kr/ecolife/resources/js/common.js: 400 Client Error: Bad Request for url: https://ecolife.me.go.kr/ecolife/resources/js/common.js
+2024-10-22 20:25:47,999 - ERROR - Error fetching file https://ecolife.me.go.kr/ecolife/resources/js/ext/homeSlide.js: 400 Client Error: Bad Request for url: https://ecolife.me.go.kr/ecolife/resources/js/ext/homeSlide.js
+2024-10-22 20:25:48,000 - ERROR - Error fetching file https://ecolife.me.go.kr/ecolife/resources/js/ext/handlebars-v4.0.5.js: 400 Client Error: Bad Request for url: https://ecolife.me.go.kr/ecolife/resources/js/ext/handlebars-v4.0.5.js
+2024-10-22 20:25:48,001 - ERROR - Error fetching file https://ecolife.me.go.kr/ecolife/resources/css/external.css?ver=2: 400 Client Error: Bad Request for url: https://ecolife.me.go.kr/ecolife/resources/css/external.css?ver=2
+2024-10-22 20:25:48,004 - ERROR - Error fetching file https://ecolife.me.go.kr/ecolife/resources/css/application.css: 400 Client Error: Bad Request for url: https://ecolife.me.go.kr/ecolife/resources/css/application.css
+2024-10-22 20:25:48,006 - ERROR - Error fetching file https://ecolife.me.go.kr/ecolife/resources/css/ext/sweetalert.css: 400 Client Error: Bad Request for url: https://ecolife.me.go.kr/ecolife/resources/css/ext/sweetalert.css
+2024-10-22 20:25:48,008 - ERROR - Error fetching file https://ecolife.me.go.kr/ecolife/resources/css/ptech.css: 400 Client Error: Bad Request for url: https://ecolife.me.go.kr/ecolife/resources/css/ptech.css
+2024-10-22 20:25:48,014 - ERROR - Error fetching file https://ecolife.me.go.kr/ecolife/resources/js/fmslider.js: 400 Client Error: Bad Request for url: https://ecolife.me.go.kr/ecolife/resources/js/fmslider.js
+2024-10-22 20:25:48,037 - ERROR - Error fetching file https://ecolife.me.go.kr/ecolife/resources/css/buttons.css?ver=2: 400 Client Error: Bad Request for url: https://ecolife.me.go.kr/ecolife/resources/css/buttons.css?ver=2
+2024-10-22 20:25:48,039 - ERROR - Error fetching file https://ecolife.me.go.kr/ecolife/resources/css/survey.css: 400 Client Error: Bad Request for url: https://ecolife.me.go.kr/ecolife/resources/css/survey.css
+2024-10-22 20:25:48,046 - ERROR - Error fetching file https://ecolife.me.go.kr/ecolife/resources/css/style.css?ver=17a: 400 Client Error: Bad Request for url: https://ecolife.me.go.kr/ecolife/resources/css/style.css?ver=17a
+2024-10-22 20:25:48,047 - ERROR - Error fetching file https://ecolife.me.go.kr/ecolife/resources/css/ext/gis.css: 400 Client Error: Bad Request for url: https://ecolife.me.go.kr/ecolife/resources/css/ext/gis.css
+2024-10-22 20:25:48,049 - ERROR - Error fetching file https://ecolife.me.go.kr/ecolife/resources/css/ext/video-js.css: 400 Client Error: Bad Request for url: https://ecolife.me.go.kr/ecolife/resources/css/ext/video-js.css
+2024-10-22 20:25:48,054 - ERROR - Error fetching file https://ecolife.me.go.kr/ecolife/resources/css/ext/style_override.css?ver=18: 400 Client Error: Bad Request for url: https://ecolife.me.go.kr/ecolife/resources/css/ext/style_override.css?ver=18
+2024-10-22 20:25:48,057 - ERROR - Error fetching file https://ecolife.me.go.kr/ecolife/resources/css/ext/gis_override.css: 400 Client Error: Bad Request for url: https://ecolife.me.go.kr/ecolife/resources/css/ext/gis_override.css
+2024-10-22 20:25:48,063 - ERROR - Error fetching file https://ecolife.me.go.kr/ecolife/resources/css/intervalForm.css: 400 Client Error: Bad Request for url: https://ecolife.me.go.kr/ecolife/resources/css/intervalForm.css
+2024-10-22 20:25:48,065 - INFO - 1 files collected
+2024-10-22 20:25:54,349 - INFO - Saving data to database: index.html
+2024-10-22 20:25:54,350 - INFO - Saving traffic data to database: http://ecolife.me.go.kr
+2024-10-22 20:25:54,351 - INFO - Saving traffic data to database: http://ecolife.me.go.kr
+2024-10-22 20:25:54,352 - INFO - processlink : http://m.stat.me.go.kr
+2024-10-22 20:25:54,926 - INFO - Chromedriver is already installed.
+2024-10-22 20:25:59,264 - INFO - get start: http://m.stat.me.go.kr
+2024-10-22 20:26:03,201 - INFO - get end: http://m.stat.me.go.kr
+2024-10-22 20:26:03,272 - INFO - start traffic log
+2024-10-22 20:26:12,471 - INFO - Chromedriver is already installed.
+2024-10-22 20:26:19,135 - INFO - file collect start: http://m.stat.me.go.kr
+2024-10-22 20:26:20,473 - INFO - 23 files collected
+2024-10-22 20:26:29,112 - INFO - Saving data to database: index.html
+2024-10-22 20:26:29,115 - INFO - Saving data to database: commonchart.js
+2024-10-22 20:26:29,117 - INFO - Saving data to database: html5.js
+2024-10-22 20:26:29,120 - INFO - Saving data to database: ibchartinfo.js
+2024-10-22 20:26:29,125 - INFO - Saving data to database: mode-ecb.js
+2024-10-22 20:26:29,127 - INFO - Saving data to database: common.js
+2024-10-22 20:26:29,130 - INFO - Saving data to database: tripledes.js
+2024-10-22 20:26:29,134 - INFO - Saving data to database: base-by-developer.js
+2024-10-22 20:26:29,135 - INFO - Saving data to database: encrypt.js
+2024-10-22 20:26:29,137 - INFO - Saving data to database: ibsheetinfo.js
+2024-10-22 20:26:29,141 - INFO - Saving data to database: indexStme.js
+2024-10-22 20:26:29,142 - INFO - Saving data to database: popup.css
+2024-10-22 20:26:29,145 - INFO - Saving data to database: commonness.js
+2024-10-22 20:26:29,150 - INFO - Saving data to database: main.css
+2024-10-22 20:26:29,151 - INFO - Saving data to database: data.css
+2024-10-22 20:26:29,156 - INFO - Saving data to database: highcharts-3d.js
+2024-10-22 20:26:29,162 - INFO - Saving data to database: delegation.js
+2024-10-22 20:26:29,167 - INFO - Saving data to database: reset.css
+2024-10-22 20:26:29,171 - INFO - Saving data to database: accessibility.js
+2024-10-22 20:26:29,176 - INFO - Saving data to database: highcharts.js
+2024-10-22 20:26:29,181 - INFO - Saving data to database: layout_mobile.css
+2024-10-22 20:26:29,193 - INFO - Saving data to database: ibsheet.js
+2024-10-22 20:26:29,197 - INFO - Saving data to database: layout.css
+2024-10-22 20:26:29,198 - INFO - Saving traffic data to database: http://m.stat.me.go.kr
+2024-10-22 20:26:29,199 - INFO - Saving traffic data to database: http://m.stat.me.go.kr
+2024-10-22 20:26:29,206 - INFO - processlink : http://eco-tour.kr
+2024-10-22 20:26:29,937 - INFO - Chromedriver is already installed.
+2024-10-22 20:26:34,422 - INFO - get start: http://eco-tour.kr
+2024-10-22 20:26:51,356 - INFO - get end: http://eco-tour.kr
+2024-10-22 20:26:51,493 - INFO - start traffic log
+2024-10-22 20:26:58,486 - INFO - Chromedriver is already installed.
+2024-10-22 20:27:12,915 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000015E7CA35610>: Failed to establish a new connection: [WinError 10061] 대상 컴퓨터에서 연결을 거부했으므로 연결하지 못했습니다')': /session/8e2efa54421f3e5c677b8c051a4bf20d
+2024-10-22 20:27:17,013 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000015E7CA95E50>: Failed to establish a new connection: [WinError 10061] 대상 컴퓨터에서 연결을 거부했으므로 연결하지 못했습니다')': /session/8e2efa54421f3e5c677b8c051a4bf20d
+2024-10-22 20:27:21,089 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000015E7CA96810>: Failed to establish a new connection: [WinError 10061] 대상 컴퓨터에서 연결을 거부했으므로 연결하지 못했습니다')': /session/8e2efa54421f3e5c677b8c051a4bf20d
