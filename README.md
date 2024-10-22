@@ -18,33 +18,44 @@ jelly1500 , eclipse1228
 # 폴더 구조 
 ```python
 ├───── README.md
-├───── crawlingSpider  ( 크롤링 프레임워크 scrapy )
-│       ├───── crawlingSpider
-│       │       ├───── spiders        (사용 X)
-│       │       ├───── database.py    (데이터 베이스 함수(mongodb (pymongo)))
-│       │       ├───── driver.py      (드라이버 설정)
-│       │       ├───── items.py       (네트워크 트래픽 객체 (js,css,html ...))
-│       │       ├───── crawling_h.py  (학빈이가 전달한 코드 (임시))
-│       │       ├───── codeCrawler.py (html,js 원본 파일 크롤링)
-│       │       ├───── main.py        (메인 실행 함수)
-│       │       ├───── middlewares.py (사용 X)
-│       │       ├───── pipelines.py   (사용 X)
-│       │       ├───── search.py      (website BFS 탐색 코드)
-│       │       ├───── settings.py    (scrapy 설정)
-│       │       ├───── traffic.py     (크롤링 및 트래픽 검색)
-│       ├───── scrapy.cfg
-│       ├───── scrapy.md
+│       
 ├───── ecoweb
-|       ├───── app
+|       ├───── app (Flask server)
 |       │       ├───── templates   (템플릿)
-|       │       ├───── views       (플라스크 뷰)
-|       │       ├───── __init__.py (플라스크 실행 파일)
+|       │       ├───── routes.py   (플라스크 라우팅)
+|       │       ├───── static      (정적 파일)
+|       │       ├───── __init__.py (플라스크 실행)
 |       │       ├───── config.py   (환경설정)
 |       │       ├───── utils       (사용 X)
-|       │       ├───── wsgi.py     (사용 X (임시))
+|       ├───── crawlingSpider (Scrapy module)
+|       │       │       ├───── spiders        
+|       │       │       ├───── database.py    (데이터 베이스 함수(mongodb (pymongo)))
+|       │       │       ├───── driver.py      (드라이버 설정)
+|       │       │       ├───── items.py       (네트워크 트래픽 객체 (js,css,html ...))
+|       │       │       ├───── codeCrawler.py (html,js 원본 파일 크롤링)
+|       │       │       ├───── main.py        (메인 실행 함수)
+|       │       │       ├───── middlewares.py (사용 X)
+|       │       │       ├───── pipelines.py   (사용 X)
+|       │       │       ├───── search.py      (website BFS 탐색 코드)
+|       │       │       ├───── settings.py    (scrapy 설정)
+|       │       │       ├───── traffic.py     (크롤링 및 트래픽 검색)
+|       │       │       ├───── codeCrawler.py  (웹페이지 코드 크롤링)
+|       │       │       ├───── root_only_crawling.py  (홈페이지만 크롤링)
+|       │       ├───── scrapy.cfg
+|       │       ├───── scrapy.md
 ├───── urls        (공공기관 url 모음)
 ├───── LightHouse        (LightHouse 코드)
 ├───── venv        (가상환경)
 ├───── __init__.py 
 ├───── virtualenv.md (가상환경 셋팅)
 ```
+
+# Flask 실행
+```shell
+    가상환경 실행 (virtualenv.md 참고)
+```
+
+```python
+ecoweb/ecoweb/ python3 .\run.py
+```
+

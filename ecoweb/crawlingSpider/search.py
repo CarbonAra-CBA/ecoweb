@@ -6,7 +6,7 @@ from urllib.parse import urlparse, urljoin
 from scrapy.http import HtmlResponse
 from scrapy.linkextractors import LinkExtractor
 from traffic import trafficSpider
-# from database import save_to_database_website, save_to_database_traffic  # 데이터베이스 저장 함수
+from database import save_to_database_website, save_to_database_traffic  # 데이터베이스 저장 함수
 from selenium.common.exceptions import TimeoutException, WebDriverException
 import time
 from codeCrawler import CodeCrawler
@@ -15,7 +15,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from driver import init_driver
+from codeCrawler import codeItem
 
+'''
+BFS는 임시 중단합니다. 하드웨어 성능으로 20000개 웹사이트 크롤링을 저장할 저장공간 부족. 
+'''
 logging.basicConfig(
     level=logging.INFO,  # 로그의 기본 수준을 설정 (INFO 이상 로그가 기록됨)
     format='%(asctime)s - %(levelname)s - %(message)s',  # 로그 메시지의 포맷을 설정
@@ -77,25 +81,33 @@ class BFS_Spider:
         finally:
             pass
 
+
     def process_link(self, link):
         logging.info(f"processlink : {link}")
 
-        traffic_data = self.spider.crawling_items(link)   
-        code_data = self.code_crawler.collect_files(link) 
-        
-        for d in code_data:
-            website_data = {
-                'website_name': self.website_name,
-                'url': d['url'],
-                'current_url': link,
-                'file_name': d['filename'],
-                'type': d['type'],
-                'code': d['code'],
-            }
-            
-            # save_to_database_website(website_data)
-        logging.info(f"Saving traffic data to database: {traffic_data['url']}")
-        # save_to_database_traffic(traffic_data)
+        traffic_data = self.spider.crawling_items(link)             # 네트워크 트래픽 크롤링
+        code_items = self.code_crawler.collect_files(link)          # 코드 크롤링
+        print(traffic_data)
+
+        if traffic_data:                                            # 이미 없어진 url은 처리 X 
+            website_data_list= [] 
+            for item in code_items:
+                website_data = {
+                    'website_name': self.website_name,
+                    'url': item['url'],
+                    'current_url': link,
+                    'file_name': item['file_name'],
+                    'type': item['type'],
+                    'code': item['code'],
+                }
+                website_data_list.append(website_data)
+        # DB save.  
+            for website_data in website_data_list:
+                save_to_database_website(website_data)
+            logging.info(f"Saving traffic data to database: {traffic_data['url']}")
+            save_to_database_traffic(traffic_data)
+        else:
+            logging.info(f"There has no traffic data on : {link}")
 
     def fetch_response(self, url, driver):
         for attempt in range(self.retries):
@@ -146,8 +158,8 @@ class BFS_Spider:
         # logging.info(f"Validating link: {link}")
         # logging.info(f"Base URL: {self.base_url}")
         # logging.info(f"Parsed link netloc: {parsed_link.netloc}")
-    
         # print(parsed_link)
+
         # 기본 도메인 체크
         if not parsed_link.netloc.endswith(self.base_url):
             logging.info(f"Link rejected: domain mismatch")
@@ -164,11 +176,3 @@ class BFS_Spider:
             return False
         print("parsed_link : ",parsed_link)
         return True
-
-    # def normalize_url(self, url):
-    #     parsed = urlparse(url)
-    #     # 쿼리 파라미터 정렬
-    #     query = '&'.join(sorted(parsed.query.split('&')))
-    #     # 프래그먼트 제거 및 소문자로 변환
-    #     return urlunsplit((parsed.scheme.lower(), parsed.netloc.lower(), parsed.path.lower(), query, '')).rstrip('/')
-
