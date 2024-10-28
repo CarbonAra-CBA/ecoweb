@@ -2,7 +2,7 @@ from pymongo import MongoClient
 import logging
 
 import scrapy
-
+# from search import BFS_Spider
 global client, db, website_collection , traffic_collection
     # MongoDB 서버에 연결
 logging.info("Connecting to MongoDB...")
@@ -41,4 +41,8 @@ def find_url_in_database(url):
     if code and traffic:
         return code, traffic
     else:
+        # 없으면 traffic 및 code 크롤링
+        # bfs_spider = BFS_Spider(url)
+        # bfs_spider.process_link(url)
+
         return None, None
