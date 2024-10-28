@@ -22,7 +22,6 @@ class trafficSpider():
     def __init__(self):
         super().__init__()
         
-
     def crawling_items(self, url):
         try:
             driver = init_driver()
@@ -88,5 +87,5 @@ def create_traffic_item(url, resource_types, total_size):
     traffic_resource['image'] = resource_types['Image']
     traffic_resource['media'] = resource_types['Media']
     traffic_resource['script'] = resource_types['Script']
-    traffic_resource['total_size'] = traffic_resource['css'] + traffic_resource['image'] + traffic_resource['media'] + traffic_resource['script']
+    traffic_resource['total_size'] = traffic_resource['css'] + traffic_resource['image'] + traffic_resource['media'] + traffic_resource['script'] +traffic_resource['document']
     return traffic_resource

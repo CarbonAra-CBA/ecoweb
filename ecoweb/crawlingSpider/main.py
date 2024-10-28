@@ -43,18 +43,21 @@ def crawl_website(data):
 
 def main():
 
-     # 크롤링할 사이트 읽기 (절대경로)
-    file_path = os.path.join(os.path.dirname(__file__), '../../urls/eco_url.json')
-    # eco_url.json 파일 읽기 (eco_url.json : 12개의 가장 탄소중립과 가까운 공공기관 웹사이트, env_urls.json: 환경과 가까운 공공기관 웹사이트 약 200개)
+    #  # 크롤링할 사이트 읽기 (절대경로)
+    # file_path = os.path.join(os.path.dirname(__file__), '../../urls/eco_url.json')
+    # # eco_url.json 파일 읽기 (eco_url.json : 12개의 가장 탄소중립과 가까운 공공기관 웹사이트, env_urls.json: 환경과 가까운 공공기관 웹사이트 약 200개)
     
-    with open(file_path, 'r', encoding='utf-8') as file:
-        json_data = json.load(file)
+    # with open(file_path, 'r', encoding='utf-8') as file:
+    #     json_data = json.load(file)
 
 
-    logging.basicConfig(level=logging.INFO)
-    logger = logging.getLogger(__name__)
-    logger.info("Starting the application...")
-    crawl_website("http://nier.go.kr")
+    # logging.basicConfig(level=logging.INFO)
+    # logger = logging.getLogger(__name__)
+    # logger.info("Starting the application...")
+    # crawl_website("http://www.me.go.kr")
+
+
+
     # db.connect_to_database()
     # 멀티쓰레딩 쓰레드 12개로 크롤링
     # with ThreadPoolExecutor(max_workers=12) as executor:

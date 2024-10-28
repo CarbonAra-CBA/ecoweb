@@ -81,7 +81,6 @@ class BFS_Spider:
         finally:
             pass
 
-
     def process_link(self, link):
         logging.info(f"processlink : {link}")
 

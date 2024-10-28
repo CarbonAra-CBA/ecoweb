@@ -6,7 +6,7 @@ import re
 def run_lighthouse(chromePath, url, outputPath):
     # Lighthouse CLI 명령어 실행 (절대 경로 사용)
     result = subprocess.run(
-        ['lighthouse', url, '--output=html', '--locale=ko', f'--output-path={outputPath}', '--chrome-path', chromePath],
+        ['lighthouse', url, '--output=json', '--locale=ko', f'--output-path={outputPath}', '--chrome-path', chromePath],
         capture_output=True,
         text=True,
         encoding='utf-8',  # UTF-8 인코딩 사용
@@ -17,7 +17,6 @@ def run_lighthouse(chromePath, url, outputPath):
     if result.returncode != 0:
         print("Error running Lighthouse:", result.stderr)
         return None
-
 
 
 def is_valid_path(path):
