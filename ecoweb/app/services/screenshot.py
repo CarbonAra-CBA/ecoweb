@@ -1,6 +1,7 @@
 import time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from PIL import Image
 
 def capture_screenshot(url, output_path, is_file= False):
     chrome_options = Options()
@@ -28,6 +29,8 @@ def capture_screenshot(url, output_path, is_file= False):
         
         # 스크린샷 촬영
         driver.save_screenshot(output_path)
+        image = Image.open(output_path)
+        image.show()
         return True
 
     except Exception as e:

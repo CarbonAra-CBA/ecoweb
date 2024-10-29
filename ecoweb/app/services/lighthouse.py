@@ -7,7 +7,6 @@ def run_lighthouse(url):
     subprocess.run(command, shell=True)
 
 
-
 def process_report(url,collection_resource,collection_traffic):
     with open('report.json', 'r') as file:
         report = json.load(file)

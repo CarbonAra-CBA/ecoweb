@@ -21,7 +21,7 @@ def init_routes(app):
             run_lighthouse(url)
             view_data = process_report(url,collection_resource,collection_traffic) # result 화면에서 사용할 웹사이트에 대한 트래픽 평가 결과
             # 2) before(원본) 스크린샷
-            capture_screenshot(url, 'static/screenshots/before.png')
+            capture_screenshot(url, 'app/static/screenshots/before.png', is_file=False)
 
             # 3) LLAMA로부터 최적화된 코드 받기 (예시)
             try: 
@@ -58,7 +58,8 @@ def init_routes(app):
                 # 일단 collection_resource 에서 url의 html, css를 똑같이 저장해보자
 
                 # 4) 최적화된 페이지 스크린샷
-                after_screenshot_path = 'static/screenshots/after.png'
+                after_screenshot_path = 'app/static/screenshots/after.png'
+                print("saved_files['html_path']: ", saved_files['html_path'])
                 capture_screenshot(saved_files['html_path'], after_screenshot_path, is_file=True)
 
                 print("Screenshots captured successfully")  # 디버깅용
