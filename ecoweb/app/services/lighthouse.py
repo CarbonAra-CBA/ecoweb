@@ -14,32 +14,63 @@ def process_report(url,collection_resource,collection_traffic):
     # MongoDB에 저장할 데이터 추출
     network_requests = report['audits']['network-requests']['details']['items']
     resource_summary = report['audits']['resource-summary']['details']['items']
+    try:
+        traffic_data = {
+            'url' : url,
+            'resource_summary' : [{'resourceType': item['resourceType'], 'transferSize': item['transferSize']} for item in resource_summary],
+        }
 
-    traffic_data = {
-        'url' : url,
-        'resource_summary' : [{'resourceType': item['resourceType'], 'transferSize': item['transferSize']} for item in resource_summary],
-    }
+        resource_data = {
+            'url' : url,
+            'network_requests': [{'url': item['url'], 'resourceType': item['resourceType'], 'resourceSize': item['resourceSize']} for item in network_requests],
+        }
 
-    resource_data = {
-        'url' : url,
-        'network_requests': [{'url': item['url'], 'resourceType': item['resourceType']} for item in network_requests],
-    }
+        # MongoDB에 저장
+        collection_traffic.insert_one(traffic_data)
+        collection_resource.insert_one(resource_data)
+        
+        # 뷰에 전달할 데이터 준비 (python flask 에서 view로 전달. .. )
 
-    # MongoDB에 저장
-    collection_traffic.insert_one(traffic_data)
-    collection_resource.insert_one(resource_data)
-    
-    # 뷰에 전달할 데이터 준비 (python flask 에서 view로 전달. .. )
-    view_data = {
-        'third_party_summary': report['audits']['third-party-summary'],
-        'script_treemap_data': report['audits']['script-treemap-data'],
-        'total_byte_weight': report['audits']['total-byte-weight']['numericValue'],
-        'unused_css_rules': report['audits']['unused-css-rules'],
-        'unused_javascript': report['audits']['unused-javascript'],
-        'modern_image_formats': report['audits']['modern-image-formats'],
-        'efficient_animated_content': report['audits']['efficient-animated-content'],
-        'duplicated_javascript': report['audits']['duplicated-javascript'],
-        'js_libraries': report['audits']['js-libraries']
-    }
-
+        view_data = {
+            'third_party_summary': report['audits']['third-party-summary'],
+            'script_treemap_data': report['audits']['script-treemap-data'],
+            'total_byte_weight': report['audits']['total-byte-weight']['numericValue'],
+            'unused_css_rules': report['audits']['unused-css-rules'],
+            'unused_javascript': report['audits']['unused-javascript'],
+            'modern_image_formats': report['audits']['modern-image-formats'],
+            'efficient_animated_content': report['audits']['efficient-animated-content'],
+            'duplicated_javascript': report['audits']['duplicated-javascript'],
+            'js_libraries': report['audits']['js-libraries']
+        }
+    except:
+        print(f"Error in process_report: {url}")
+        
     return view_data
+
+# 공공기관 url 각각에 대해 Lighthouse 평가 결과 MongoDB에 저장 
+def process_Analysis(url,url_data,collection_resource,collection_traffic):
+    with open('report.json', 'r') as file:
+        report = json.load(file)
+    try:
+        # MongoDB에 저장할 데이터 추출
+        network_requests = report['audits']['network-requests']['details']['items']
+        resource_summary = report['audits']['resource-summary']['details']['items']
+        
+        traffic_data = {
+            'url' : url,
+            'resource_summary' : [{'resourceType': item['resourceType'], 'transferSize': item['transferSize']} for item in resource_summary],
+        }
+
+        resource_data = {
+            'url' : url,
+            'network_requests': [{'url': item['url'], 'resourceType': item['resourceType'], 'resourceSize': item['resourceSize']} for item in network_requests],
+        }
+
+        # MongoDB에 저장
+        collection_traffic.insert_one(traffic_data)
+        collection_traffic.insert_one(url_data)
+        collection_resource.insert_one(resource_data)
+    except:
+        print(f"Error in process_Analysis: {url}")
+        return 0
+    return 1

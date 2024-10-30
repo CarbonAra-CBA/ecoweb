@@ -8,6 +8,7 @@ from app.services.lighthouse import run_lighthouse
 from app.services.lighthouse import process_report
 from app.services.llama import llama_optimizing_code
 from utils.db_con import db_connect
+import os
 
 client, db, collection_traffic, collection_resource = db_connect()
 
@@ -18,7 +19,7 @@ def init_routes(app):
             url = request.form['url']
             
             # 1) Lighthouse 실행 
-            run_lighthouse(url)
+            # run_lighthouse(url)
             view_data = process_report(url,collection_resource,collection_traffic) # result 화면에서 사용할 웹사이트에 대한 트래픽 평가 결과
             # 2) before(원본) 스크린샷
             capture_screenshot(url, 'app/static/screenshots/before.png', is_file=False)
@@ -29,15 +30,23 @@ def init_routes(app):
                 if not resource_doc:
                     raise Exception("Resource document not found in database")
                 
-                # HTML 문서 찾기
-                html_request = next(
-                    (req for req in resource_doc['network_requests']
-                     if req['resourceType'] == 'Document'),
-                     None
-                )
-                if not html_request:
+                document_requests = [ 
+                    req for req in resource_doc['network_requests'] 
+                    if req['resourceType'] == 'Document'
+                ]
+                print("document_requests:", document_requests)
+
+                if not document_requests:
                     raise Exception("HTML document not found in network requests")
                 
+                # 가장 큰 크기의 HTML 문서 찾기
+                html_request = max(
+                    document_requests,
+                    key=lambda x: x.get('resourceSize', 0)
+                )
+                html_request_url = html_request['url']
+                print("html_request_url:", html_request_url)
+
                 css_files_link = [
                     req for req in resource_doc['network_requests'] 
                     if req['resourceType'] == 'Stylesheet'
@@ -50,7 +59,7 @@ def init_routes(app):
                 ]
                 # 파일 저장 및 스크린샷
                 saved_files = test_html_css_for_selenium_file_screenshot(
-                    html_request, css_files_link, js_files_link
+                    html_request_url, css_files_link, js_files_link
                 )
                 # optimized_files = llama_optimizing_code(html_file_link, css_files_link, js_files_link)
 
@@ -59,8 +68,10 @@ def init_routes(app):
 
                 # 4) 최적화된 페이지 스크린샷
                 after_screenshot_path = 'app/static/screenshots/after.png'
+                relative_html_path = os.path.abspath(saved_files['html_path'])
+
                 print("saved_files['html_path']: ", saved_files['html_path'])
-                capture_screenshot(saved_files['html_path'], after_screenshot_path, is_file=True)
+                capture_screenshot(relative_html_path, after_screenshot_path, is_file=True)
 
                 print("Screenshots captured successfully")  # 디버깅용
                 total_byte_weight = view_data['total_byte_weight'] / 1024
@@ -79,3 +90,4 @@ def init_routes(app):
         grade = request.args.get('grade')
         view_data = request.args.get('view_data')
         return render_template('result.html', url=url, grade=grade)
+    
