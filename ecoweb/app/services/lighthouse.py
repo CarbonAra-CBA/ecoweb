@@ -8,7 +8,7 @@ def run_lighthouse(url):
 
 
 def process_report(url,collection_resource,collection_traffic):
-    with open('report.json', 'r') as file:
+    with open('report.json', 'r', encoding='utf-8') as file:
         report = json.load(file)
     
     # MongoDB에 저장할 데이터 추출
@@ -49,28 +49,40 @@ def process_report(url,collection_resource,collection_traffic):
 
 # 공공기관 url 각각에 대해 Lighthouse 평가 결과 MongoDB에 저장 
 def process_Analysis(url,url_data,collection_resource,collection_traffic):
-    with open('report.json', 'r') as file:
+    with open('report.json', 'r', encoding='utf-8') as file:
         report = json.load(file)
     try:
         # MongoDB에 저장할 데이터 추출
         network_requests = report['audits']['network-requests']['details']['items']
         resource_summary = report['audits']['resource-summary']['details']['items']
         
+        # resourceType 이 없는 경우는 'unknown'으로 저장하고 transferSize 가 없는 경우는 0으로 저장한다.
         traffic_data = {
             'url' : url,
-            'resource_summary' : [{'resourceType': item['resourceType'], 'transferSize': item['transferSize']} for item in resource_summary],
+            'resource_summary' : [
+                {'resourceType': item.get('resourceType', 'unknown'), 'transferSize': item.get('transferSize', 0)} 
+                for item in resource_summary
+            ],
+            # url_data에 있는 요소 전부 넣기
+            **url_data
         }
 
         resource_data = {
-            'url' : url,
-            'network_requests': [{'url': item['url'], 'resourceType': item['resourceType'], 'resourceSize': item['resourceSize']} for item in network_requests],
+            'url': url,
+            'network_requests': [
+                {
+                    'url': item.get('url', ''),
+                    'resourceType': item.get('resourceType', 'unknown'),
+                    'resourceSize': item.get('resourceSize', 0)
+                } for item in network_requests
+            ],
         }
 
         # MongoDB에 저장
         collection_traffic.insert_one(traffic_data)
-        collection_traffic.insert_one(url_data)
+        # collection_traffic.insert_one(url_data)
         collection_resource.insert_one(resource_data)
-    except:
-        print(f"Error in process_Analysis: {url}")
+    except Exception as e:
+        print(f"Error in process_Analysis: {url}, {e}")
         return 0
     return 1

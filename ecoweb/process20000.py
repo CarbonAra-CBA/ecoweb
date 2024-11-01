@@ -25,13 +25,15 @@ success_count = 0
 error_count = 0
 # 공공기관 url 각각에 대해 Lighthouse 평가 결과 MongoDB에 저장 
 for url in urls:
+    # http를 https 로 변경 
+    url['siteLink'] = url['siteLink'].replace('http://', 'https://')
     run_lighthouse(url['siteLink'])
     signal = process_Analysis(url['siteLink'],url,collection_resource,collection_traffic)
     if signal == 1:
-        print(f"현재시각: {datetime.now()}, {url['siteLink']} Done. Success Count: {success_count}")
+        print(f"현재시각: {datetime.now()}, {url['siteLink']} Done. Success!! \n Success Count: {success_count} , Error Count: {error_count}")
         success_count += 1
     else: 
-        print(f"현재시각: {datetime.now()}, {url['siteLink']} URL Error. Error Count: {error_count}")
+        print(f"현재시각: {datetime.now()}, {url['siteLink']} URL Error. Error!! \n Success Count: {success_count} , Error Count: {error_count}")
         error_count += 1
     
 print(f"Success Count: {success_count}, Error Count: {error_count}")
