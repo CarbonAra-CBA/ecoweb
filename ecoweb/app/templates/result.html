@@ -58,7 +58,20 @@
                         <p>나무 1그루의<br>2일 흡수량</p>
                     </div>
                 </div>
-                <svg width="800" height="500"></svg>
+
+                <!-- 기존 탄소 배출량 시각화 SVG 부분을 수정 -->
+                <div class="mt-5">
+                    <h4>탄소 배출량 분포</h4>
+                    <svg id="histogram" width="800" height="300"></svg>
+                </div>
+
+                <!-- 새로운 멀티라인 그래프 추가 -->
+                <div class="mt-5">
+                    <h4>공공기관 탄소배출량 추이</h4>
+                    <svg id="multiline" width="800" height="400"></svg>
+                </div>
+
+
                 <!-- 지속가능한 웹개발 가이드라인 -->
                 <div class="mt-5">
                     <h4>지속가능한 웹개발 가이드라인 준수 현황</h4>
@@ -89,6 +102,50 @@
                         </tbody>
                     </table>
                 </div>
+
+<!-- Google Lighthouse 상세 보고서 -->
+<div class="container mt-5">
+    <h4>Google Lighthouse 상세 분석 결과</h4>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>분석 항목</th>
+                    <th>절감 가능 용량</th>
+                    <th>상세 내용</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>미사용 JavaScript</td>
+                    <td>{{ unused_javascript.details.overallSavingsBytes | default(0) | filesizeformat }}</td>
+                    <td>사용되지 않는 JavaScript 코드 제거</td>
+                </tr>
+                <tr>
+                    <td>미사용 CSS</td>
+                    <td>{{ unused_css_rules.details.overallSavingsBytes | default(0) | filesizeformat }}</td>
+                    <td>사용되지 않는 CSS 규칙 제거</td>
+                </tr>
+                <tr>
+                    <td>이미지 최적화</td>
+                    <td>{{ modern_image_formats.details.overallSavingsBytes | default(0) | filesizeformat }}</td>
+                    <td>WebP/AVIF 등 최신 이미지 포맷 사용</td>
+                </tr>
+                <tr>
+                    <td>애니메이션 최적화</td>
+                    <td>{{ efficient_animated_content.details.overallSavingsBytes | default(0) | filesizeformat }}</td>
+                    <td>애니메이션 GIF를 동영상으로 대체</td>
+                </tr>
+                <tr>
+                    <td>중복 JavaScript</td>
+                    <td>{{ duplicated_javascript.details.overallSavingsBytes | default(0) | filesizeformat }}</td>
+                    <td>중복된 JavaScript 모듈 통합</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
 
                 <!-- 에코웹 뱃지 -->
                 <div class="text-center mt-5">
@@ -121,6 +178,8 @@
             </div>
         </div>
     </div>
+
+
 
 
     <script>
@@ -199,6 +258,119 @@ g.append("line")
     .attr("stroke-width", 2)
     .attr("stroke-dasharray", "4,4");
 
+
+    // 기존 히스토그램 코드는 유지하고, 아래 코드를 추가
+
+// 멀티라인 그래프 생성
+const multilineSvg = d3.select("#multiline");
+const multilineMargin = {top: 40, right: 80, bottom: 50, left: 60};
+const multilineWidth = +multilineSvg.attr("width") - multilineMargin.left - multilineMargin.right;
+const multilineHeight = +multilineSvg.attr("height") - multilineMargin.top - multilineMargin.bottom;
+
+const multilineG = multilineSvg.append("g")
+    .attr("transform", `translate(${multilineMargin.left},${multilineMargin.top})`);
+
+// 가상의 데이터 생성 (실제 데이터로 교체 필요)
+const institutions = Array.from({length: 100}, (_, i) => i);
+const carbonLevels = institutions.map(() => Math.random() * 100 + 50);
+const guidelineCount = institutions.map(() => Math.random() * 30 + 10);
+const lowCarbonAvg = institutions.map(() => 40 + Math.random() * 10); // 저탄소 평균은 40~50 정도
+const highlightIndex = 42; // 현재 분석 중인 URL의 인덱스
+
+// 스케일 설정
+const multilineX = d3.scaleLinear()
+    .domain([0, institutions.length - 1])
+    .range([0, multilineWidth]);
+
+const multilineY = d3.scaleLinear()
+    .domain([0, d3.max([...carbonLevels, ...guidelineCount, ...lowCarbonAvg]) * 1.2])
+    .range([multilineHeight, 0]);
+
+// 라인 생성기
+const line = d3.line()
+    .x((d, i) => multilineX(i))
+    .y(d => multilineY(d))
+    .curve(d3.curveNatural);
+
+// 각 라인 그리기
+multilineG.append("path")
+    .datum(carbonLevels)
+    .attr("class", "line")
+    .style("stroke", "#ff0000")
+    .style("fill", "none")
+    .style("stroke-width", 2)
+    .attr("d", line);
+
+multilineG.append("path")
+    .datum(guidelineCount)
+    .attr("class", "line")
+    .style("stroke", "#0000ff")
+    .style("fill", "none")
+    .style("stroke-width", 2)
+    .attr("d", line);
+
+multilineG.append("path")
+    .datum(lowCarbonAvg)
+    .attr("class", "line")
+    .style("stroke", "#00ff00")
+    .style("fill", "none")
+    .style("stroke-width", 2)
+    .attr("d", line);
+
+// 하이라이트 포인트
+multilineG.append("circle")
+    .attr("cx", multilineX(highlightIndex))
+    .attr("cy", multilineY(carbonLevels[highlightIndex]))
+    .attr("r", 6)
+    .style("fill", "#800080");
+
+// 축 추가
+multilineG.append("g")
+    .attr("transform", `translate(0,${multilineHeight})`)
+    .call(d3.axisBottom(multilineX).ticks(10))
+    .append("text")
+    .attr("x", multilineWidth / 2)
+    .attr("y", 40)
+    .attr("fill", "black")
+    .text("공공기관");
+
+multilineG.append("g")
+    .call(d3.axisLeft(multilineY))
+    .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", -50)
+    .attr("x", -multilineHeight / 2)
+    .attr("fill", "black")
+    .attr("text-anchor", "middle")
+    .text("탄소배출량");
+
+// 범례 추가
+const legend = multilineG.append("g")
+    .attr("font-family", "sans-serif")
+    .attr("font-size", 10)
+    .attr("text-anchor", "start")
+    .attr("transform", `translate(${multilineWidth + 10},0)`);
+
+const legendItems = [
+    {color: "#ff0000", text: "탄소량"},
+    {color: "#0000ff", text: "가이드라인 준수"},
+    {color: "#00ff00", text: "저탄소 평균"}
+];
+
+legendItems.forEach((item, i) => {
+    const legendRow = legend.append("g")
+        .attr("transform", `translate(0,${i * 20})`);
+        
+    legendRow.append("rect")
+        .attr("width", 15)
+        .attr("height", 2)
+        .attr("fill", item.color);
+        
+    legendRow.append("text")
+        .attr("x", 20)
+        .attr("y", 5)
+        .text(item.text);
+});
     </script>
 </body>
 </html>
