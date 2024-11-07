@@ -82,6 +82,7 @@
       "id": "unused-javascript",
       "title": "Reduce unused JavaScript",
       "description": "Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity. [Learn how to reduce unused JavaScript](https://developer.chrome.com/docs/lighthouse/performance/unused-javascript/).",
+
       "score": null,
       "scoreDisplayMode": "error",
       "errorMessage": "Chrome prevented page load with an interstitial. Make sure you are testing the correct URL and that the server is properly responding to all requests.",
@@ -678,12 +679,6 @@
       ],
       "core/audits/byte-efficiency/unused-css-rules.js | description": [
         "audits[unused-css-rules].description"
-      ],
-      "core/audits/byte-efficiency/unused-javascript.js | title": [
-        "audits[unused-javascript].title"
-      ],
-      "core/audits/byte-efficiency/unused-javascript.js | description": [
-        "audits[unused-javascript].description"
       ],
       "core/audits/byte-efficiency/modern-image-formats.js | title": [
         "audits[modern-image-formats].title"
