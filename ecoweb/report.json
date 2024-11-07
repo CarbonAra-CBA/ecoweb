@@ -1,17 +1,23 @@
 {
   "lighthouseVersion": "12.2.1",
-  "requestedUrl": "https://imsm.kcg.go.kr/",
-  "mainDocumentUrl": "https://imsm.kcg.go.kr/",
-  "finalDisplayedUrl": "https://imsm.kcg.go.kr/",
-  "finalUrl": "https://imsm.kcg.go.kr/",
-  "fetchTime": "2024-11-02T03:39:12.097Z",
+  "requestedUrl": "https://www.kcm.hs.kr/",
+  "mainDocumentUrl": "chrome-error://chromewebdata/",
+  "finalDisplayedUrl": "chrome-error://chromewebdata/",
+  "finalUrl": "chrome-error://chromewebdata/",
+  "fetchTime": "2024-11-05T01:10:10.257Z",
   "gatherMode": "navigation",
-  "runWarnings": [],
+  "runtimeError": {
+    "code": "CHROME_INTERSTITIAL_ERROR",
+    "message": "Chrome prevented page load with an interstitial. Make sure you are testing the correct URL and that the server is properly responding to all requests."
+  },
+  "runWarnings": [
+    "The page may not be loading as expected because your test URL (https://www.kcm.hs.kr/) was redirected to chrome-error://chromewebdata/. Try testing the second URL directly.",
+    "Chrome prevented page load with an interstitial. Make sure you are testing the correct URL and that the server is properly responding to all requests."
+  ],
   "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
   "environment": {
-    "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
     "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
-    "benchmarkIndex": 464.5,
+    "benchmarkIndex": 2300.5,
     "credits": {}
   },
   "audits": {
@@ -19,715 +25,108 @@
       "id": "network-requests",
       "title": "Network Requests",
       "description": "Lists the network requests that were made during page load.",
-      "score": 1,
-      "scoreDisplayMode": "informative",
-      "details": {
-        "type": "table",
-        "headings": [
-          {
-            "key": "url",
-            "valueType": "url",
-            "label": "URL"
-          },
-          {
-            "key": "protocol",
-            "valueType": "text",
-            "label": "Protocol"
-          },
-          {
-            "key": "networkRequestTime",
-            "valueType": "ms",
-            "granularity": 1,
-            "label": "Network Request Time"
-          },
-          {
-            "key": "networkEndTime",
-            "valueType": "ms",
-            "granularity": 1,
-            "label": "Network End Time"
-          },
-          {
-            "key": "transferSize",
-            "valueType": "bytes",
-            "displayUnit": "kb",
-            "granularity": 1,
-            "label": "Transfer Size"
-          },
-          {
-            "key": "resourceSize",
-            "valueType": "bytes",
-            "displayUnit": "kb",
-            "granularity": 1,
-            "label": "Resource Size"
-          },
-          {
-            "key": "statusCode",
-            "valueType": "text",
-            "label": "Status Code"
-          },
-          {
-            "key": "mimeType",
-            "valueType": "text",
-            "label": "MIME Type"
-          },
-          {
-            "key": "resourceType",
-            "valueType": "text",
-            "label": "Resource Type"
-          }
-        ],
-        "items": [
-          {
-            "url": "https://imsm.kcg.go.kr/",
-            "sessionTargetType": "page",
-            "protocol": "http/1.1",
-            "rendererStartTime": 0,
-            "networkRequestTime": 2.4950000047683716,
-            "networkEndTime": 212.3299999833107,
-            "finished": true,
-            "transferSize": 4849,
-            "resourceSize": 4508,
-            "statusCode": 200,
-            "mimeType": "text/html",
-            "resourceType": "Document",
-            "priority": "VeryHigh",
-            "experimentalFromMainFrame": true,
-            "entity": "kcg.go.kr"
-          },
-          {
-            "url": "https://imsm.kcg.go.kr/css/intro.css",
-            "sessionTargetType": "page",
-            "protocol": "http/1.1",
-            "rendererStartTime": 225.9360000193119,
-            "networkRequestTime": 230.78499999642372,
-            "networkEndTime": 262.27200001478195,
-            "finished": true,
-            "transferSize": 7033,
-            "resourceSize": 6765,
-            "statusCode": 200,
-            "mimeType": "text/css",
-            "resourceType": "Stylesheet",
-            "priority": "VeryHigh",
-            "experimentalFromMainFrame": true,
-            "entity": "kcg.go.kr"
-          },
-          {
-            "url": "https://imsm.kcg.go.kr/js/jquery-1.10.2.js",
-            "sessionTargetType": "page",
-            "protocol": "http/1.1",
-            "rendererStartTime": 226.84999999403954,
-            "networkRequestTime": 231.3449999988079,
-            "networkEndTime": 481.9090000092983,
-            "finished": true,
-            "transferSize": 273483,
-            "resourceSize": 273203,
-            "statusCode": 200,
-            "mimeType": "text/javascript",
-            "resourceType": "Script",
-            "priority": "High",
-            "experimentalFromMainFrame": true,
-            "entity": "kcg.go.kr"
-          },
-          {
-            "url": "https://imsm.kcg.go.kr/images/intro/intro_logo1.png",
-            "sessionTargetType": "page",
-            "protocol": "http/1.1",
-            "rendererStartTime": 227.25999999046326,
-            "networkRequestTime": 231.6850000023842,
-            "networkEndTime": 303.4860000014305,
-            "finished": true,
-            "transferSize": 9359,
-            "resourceSize": 9090,
-            "statusCode": 200,
-            "mimeType": "image/png",
-            "resourceType": "Image",
-            "priority": "Medium",
-            "experimentalFromMainFrame": true,
-            "entity": "kcg.go.kr"
-          },
-          {
-            "url": "https://imsm.kcg.go.kr/images/intro/intro_tit.png",
-            "sessionTargetType": "page",
-            "protocol": "http/1.1",
-            "rendererStartTime": 227.6670000255108,
-            "networkRequestTime": 232.17400002479553,
-            "networkEndTime": 338.75999999046326,
-            "finished": true,
-            "transferSize": 9622,
-            "resourceSize": 9352,
-            "statusCode": 200,
-            "mimeType": "image/png",
-            "resourceType": "Image",
-            "priority": "Medium",
-            "experimentalFromMainFrame": true,
-            "entity": "kcg.go.kr"
-          },
-          {
-            "url": "https://imsm.kcg.go.kr/images/intro/intro_text2.png",
-            "sessionTargetType": "page",
-            "protocol": "http/1.1",
-            "rendererStartTime": 228.03700000047684,
-            "networkRequestTime": 305.08799999952316,
-            "networkEndTime": 329.88400000333786,
-            "finished": true,
-            "transferSize": 5489,
-            "resourceSize": 5220,
-            "statusCode": 200,
-            "mimeType": "image/png",
-            "resourceType": "Image",
-            "priority": "Medium",
-            "experimentalFromMainFrame": true,
-            "entity": "kcg.go.kr"
-          },
-          {
-            "url": "https://imsm.kcg.go.kr/images/intro/intro_text3.png",
-            "sessionTargetType": "page",
-            "protocol": "http/1.1",
-            "rendererStartTime": 228.31700000166893,
-            "networkRequestTime": 331.02699998021126,
-            "networkEndTime": 362.2539999783039,
-            "finished": true,
-            "transferSize": 5794,
-            "resourceSize": 5525,
-            "statusCode": 200,
-            "mimeType": "image/png",
-            "resourceType": "Image",
-            "priority": "Medium",
-            "experimentalFromMainFrame": true,
-            "entity": "kcg.go.kr"
-          },
-          {
-            "url": "https://imsm.kcg.go.kr/images/intro/intro_bg.png",
-            "sessionTargetType": "page",
-            "protocol": "http/1.1",
-            "rendererStartTime": 514.6510000228882,
-            "networkRequestTime": 515.5490000247955,
-            "networkEndTime": 589.2680000066757,
-            "finished": true,
-            "transferSize": 92674,
-            "resourceSize": 92403,
-            "statusCode": 200,
-            "mimeType": "image/png",
-            "resourceType": "Image",
-            "priority": "High",
-            "experimentalFromMainFrame": true,
-            "entity": "kcg.go.kr"
-          },
-          {
-            "url": "https://imsm.kcg.go.kr/images/intro/intro_menu_bg.png",
-            "sessionTargetType": "page",
-            "protocol": "http/1.1",
-            "rendererStartTime": 515.7010000050068,
-            "networkRequestTime": 516.5489999949932,
-            "networkEndTime": 564.1759999990463,
-            "finished": true,
-            "transferSize": 15883,
-            "resourceSize": 15612,
-            "statusCode": 200,
-            "mimeType": "image/png",
-            "resourceType": "Image",
-            "priority": "High",
-            "experimentalFromMainFrame": true,
-            "entity": "kcg.go.kr"
-          },
-          {
-            "url": "https://imsm.kcg.go.kr/favicon.ico",
-            "sessionTargetType": "page",
-            "protocol": "http/1.1",
-            "rendererStartTime": 598.2809999883175,
-            "networkRequestTime": 599.8129999935627,
-            "networkEndTime": 622.3420000076294,
-            "finished": true,
-            "transferSize": 488,
-            "resourceSize": 297,
-            "statusCode": 404,
-            "mimeType": "text/html",
-            "resourceType": "Other",
-            "priority": "High",
-            "experimentalFromMainFrame": true,
-            "entity": "kcg.go.kr"
-          }
-        ],
-        "debugData": {
-          "type": "debugdata",
-          "networkStartTimeTs": 261018479285
-        }
-      }
+      "score": null,
+      "scoreDisplayMode": "error",
+      "errorMessage": "Chrome prevented page load with an interstitial. Make sure you are testing the correct URL and that the server is properly responding to all requests.",
+      "errorStack": "LighthouseError: CHROME_INTERSTITIAL_ERROR\n    at getInterstitialError (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/lib/navigation-error.js:97:10)\n    at getPageLoadError (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/lib/navigation-error.js:163:29)\n    at _computeNavigationResult (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:146:7)\n    at async gatherFn (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:300:23)\n    at async Runner.gather (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/runner.js:210:25)\n    at async navigationGather (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:306:21)\n    at async navigation (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/index.js:58:24)\n    at async runLighthouse (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/cli/run.js:210:26)\n    at async file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/cli/index.js:10:1"
     },
     "resource-summary": {
       "id": "resource-summary",
       "title": "Resources Summary",
       "description": "Aggregates all network requests and groups them by type",
-      "score": 1,
-      "scoreDisplayMode": "informative",
-      "details": {
-        "type": "table",
-        "headings": [
-          {
-            "key": "label",
-            "valueType": "text",
-            "label": "Resource Type"
-          },
-          {
-            "key": "requestCount",
-            "valueType": "numeric",
-            "label": "Requests"
-          },
-          {
-            "key": "transferSize",
-            "valueType": "bytes",
-            "label": "Transfer Size"
-          }
-        ],
-        "items": [
-          {
-            "resourceType": "total",
-            "label": "Total",
-            "requestCount": 9,
-            "transferSize": 424186
-          },
-          {
-            "resourceType": "script",
-            "label": "Script",
-            "requestCount": 1,
-            "transferSize": 273483
-          },
-          {
-            "resourceType": "image",
-            "label": "Image",
-            "requestCount": 6,
-            "transferSize": 138821
-          },
-          {
-            "resourceType": "stylesheet",
-            "label": "Stylesheet",
-            "requestCount": 1,
-            "transferSize": 7033
-          },
-          {
-            "resourceType": "document",
-            "label": "Document",
-            "requestCount": 1,
-            "transferSize": 4849
-          },
-          {
-            "resourceType": "media",
-            "label": "Media",
-            "requestCount": 0,
-            "transferSize": 0
-          },
-          {
-            "resourceType": "font",
-            "label": "Font",
-            "requestCount": 0,
-            "transferSize": 0
-          },
-          {
-            "resourceType": "other",
-            "label": "Other",
-            "requestCount": 0,
-            "transferSize": 0
-          },
-          {
-            "resourceType": "third-party",
-            "label": "Third-party",
-            "requestCount": 0,
-            "transferSize": 0
-          }
-        ]
-      }
+      "score": null,
+      "scoreDisplayMode": "error",
+      "errorMessage": "Chrome prevented page load with an interstitial. Make sure you are testing the correct URL and that the server is properly responding to all requests.",
+      "errorStack": "LighthouseError: CHROME_INTERSTITIAL_ERROR\n    at getInterstitialError (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/lib/navigation-error.js:97:10)\n    at getPageLoadError (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/lib/navigation-error.js:163:29)\n    at _computeNavigationResult (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:146:7)\n    at async gatherFn (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:300:23)\n    at async Runner.gather (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/runner.js:210:25)\n    at async navigationGather (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:306:21)\n    at async navigation (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/index.js:58:24)\n    at async runLighthouse (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/cli/run.js:210:26)\n    at async file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/cli/index.js:10:1"
     },
     "third-party-summary": {
       "id": "third-party-summary",
       "title": "Minimize third-party usage",
       "description": "Third-party code can significantly impact load performance. Limit the number of redundant third-party providers and try to load third-party code after your page has primarily finished loading. [Learn how to minimize third-party impact](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/).",
       "score": null,
-      "scoreDisplayMode": "notApplicable",
-      "metricSavings": {
-        "TBT": 0
-      },
+      "scoreDisplayMode": "error",
+      "errorMessage": "Chrome prevented page load with an interstitial. Make sure you are testing the correct URL and that the server is properly responding to all requests.",
+      "errorStack": "LighthouseError: CHROME_INTERSTITIAL_ERROR\n    at getInterstitialError (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/lib/navigation-error.js:97:10)\n    at getPageLoadError (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/lib/navigation-error.js:163:29)\n    at _computeNavigationResult (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:146:7)\n    at async gatherFn (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:300:23)\n    at async Runner.gather (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/runner.js:210:25)\n    at async navigationGather (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:306:21)\n    at async navigation (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/index.js:58:24)\n    at async runLighthouse (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/cli/run.js:210:26)\n    at async file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/cli/index.js:10:1",
       "guidanceLevel": 1
     },
     "script-treemap-data": {
       "id": "script-treemap-data",
       "title": "Script Treemap Data",
       "description": "Used for treemap app",
-      "score": 1,
-      "scoreDisplayMode": "informative",
-      "details": {
-        "type": "treemap-data",
-        "nodes": [
-          {
-            "name": "https://imsm.kcg.go.kr/js/jquery-1.10.2.js",
-            "resourceBytes": 273203,
-            "unusedBytes": 176398
-          },
-          {
-            "name": "https://imsm.kcg.go.kr/",
-            "resourceBytes": 1574,
-            "unusedBytes": 1108,
-            "children": [
-              {
-                "name": "(inline) $(document).rea…",
-                "resourceBytes": 1574,
-                "unusedBytes": 1108
-              }
-            ]
-          }
-        ]
-      }
+      "score": null,
+      "scoreDisplayMode": "error",
+      "errorMessage": "Chrome prevented page load with an interstitial. Make sure you are testing the correct URL and that the server is properly responding to all requests.",
+      "errorStack": "LighthouseError: CHROME_INTERSTITIAL_ERROR\n    at getInterstitialError (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/lib/navigation-error.js:97:10)\n    at getPageLoadError (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/lib/navigation-error.js:163:29)\n    at _computeNavigationResult (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:146:7)\n    at async gatherFn (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:300:23)\n    at async Runner.gather (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/runner.js:210:25)\n    at async navigationGather (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:306:21)\n    at async navigation (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/index.js:58:24)\n    at async runLighthouse (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/cli/run.js:210:26)\n    at async file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/cli/index.js:10:1"
     },
     "total-byte-weight": {
       "id": "total-byte-weight",
       "title": "Avoids enormous network payloads",
       "description": "Large network payloads cost users real money and are highly correlated with long load times. [Learn how to reduce payload sizes](https://developer.chrome.com/docs/lighthouse/performance/total-byte-weight/).",
-      "score": 1,
-      "scoreDisplayMode": "informative",
-      "numericValue": 424674,
-      "numericUnit": "byte",
-      "displayValue": "Total size was 415 KiB",
-      "details": {
-        "type": "table",
-        "headings": [
-          {
-            "key": "url",
-            "valueType": "url",
-            "label": "URL"
-          },
-          {
-            "key": "totalBytes",
-            "valueType": "bytes",
-            "label": "Transfer Size"
-          }
-        ],
-        "items": [
-          {
-            "url": "https://imsm.kcg.go.kr/js/jquery-1.10.2.js",
-            "totalBytes": 273483
-          },
-          {
-            "url": "https://imsm.kcg.go.kr/images/intro/intro_bg.png",
-            "totalBytes": 92674
-          },
-          {
-            "url": "https://imsm.kcg.go.kr/images/intro/intro_menu_bg.png",
-            "totalBytes": 15883
-          },
-          {
-            "url": "https://imsm.kcg.go.kr/images/intro/intro_tit.png",
-            "totalBytes": 9622
-          },
-          {
-            "url": "https://imsm.kcg.go.kr/images/intro/intro_logo1.png",
-            "totalBytes": 9359
-          },
-          {
-            "url": "https://imsm.kcg.go.kr/css/intro.css",
-            "totalBytes": 7033
-          },
-          {
-            "url": "https://imsm.kcg.go.kr/images/intro/intro_text3.png",
-            "totalBytes": 5794
-          },
-          {
-            "url": "https://imsm.kcg.go.kr/images/intro/intro_text2.png",
-            "totalBytes": 5489
-          },
-          {
-            "url": "https://imsm.kcg.go.kr/",
-            "totalBytes": 4849
-          },
-          {
-            "url": "https://imsm.kcg.go.kr/favicon.ico",
-            "totalBytes": 488
-          }
-        ],
-        "sortedBy": [
-          "totalBytes"
-        ]
-      },
+      "score": null,
+      "scoreDisplayMode": "error",
+      "errorMessage": "Chrome prevented page load with an interstitial. Make sure you are testing the correct URL and that the server is properly responding to all requests.",
+      "errorStack": "LighthouseError: CHROME_INTERSTITIAL_ERROR\n    at getInterstitialError (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/lib/navigation-error.js:97:10)\n    at getPageLoadError (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/lib/navigation-error.js:163:29)\n    at _computeNavigationResult (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:146:7)\n    at async gatherFn (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:300:23)\n    at async Runner.gather (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/runner.js:210:25)\n    at async navigationGather (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:306:21)\n    at async navigation (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/index.js:58:24)\n    at async runLighthouse (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/cli/run.js:210:26)\n    at async file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/cli/index.js:10:1",
       "guidanceLevel": 1
     },
     "unused-css-rules": {
       "id": "unused-css-rules",
       "title": "Reduce unused CSS",
       "description": "Reduce unused rules from stylesheets and defer CSS not used for above-the-fold content to decrease bytes consumed by network activity. [Learn how to reduce unused CSS](https://developer.chrome.com/docs/lighthouse/performance/unused-css-rules/).",
-      "score": 1,
-      "scoreDisplayMode": "metricSavings",
-      "numericValue": 0,
-      "numericUnit": "millisecond",
-      "displayValue": "",
-      "metricSavings": {
-        "FCP": 0,
-        "LCP": 0
-      },
-      "details": {
-        "type": "opportunity",
-        "headings": [],
-        "items": [],
-        "overallSavingsMs": 0,
-        "overallSavingsBytes": 0,
-        "sortedBy": [
-          "wastedBytes"
-        ],
-        "debugData": {
-          "type": "debugdata",
-          "metricSavings": {
-            "FCP": 0,
-            "LCP": 0
-          }
-        }
-      },
+      "score": null,
+      "scoreDisplayMode": "error",
+      "errorMessage": "Chrome prevented page load with an interstitial. Make sure you are testing the correct URL and that the server is properly responding to all requests.",
+      "errorStack": "LighthouseError: CHROME_INTERSTITIAL_ERROR\n    at getInterstitialError (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/lib/navigation-error.js:97:10)\n    at getPageLoadError (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/lib/navigation-error.js:163:29)\n    at _computeNavigationResult (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:146:7)\n    at async gatherFn (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:300:23)\n    at async Runner.gather (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/runner.js:210:25)\n    at async navigationGather (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:306:21)\n    at async navigation (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/index.js:58:24)\n    at async runLighthouse (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/cli/run.js:210:26)\n    at async file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/cli/index.js:10:1",
       "guidanceLevel": 1
     },
     "unused-javascript": {
       "id": "unused-javascript",
       "title": "Reduce unused JavaScript",
       "description": "Reduce unused JavaScript and defer loading scripts until they are required to decrease bytes consumed by network activity. [Learn how to reduce unused JavaScript](https://developer.chrome.com/docs/lighthouse/performance/unused-javascript/).",
-      "score": 0,
-      "scoreDisplayMode": "metricSavings",
-      "numericValue": 180,
-      "numericUnit": "millisecond",
-      "displayValue": "Potential savings of 172 KiB",
-      "metricSavings": {
-        "FCP": 100,
-        "LCP": 200
-      },
-      "details": {
-        "type": "opportunity",
-        "headings": [
-          {
-            "key": "url",
-            "valueType": "url",
-            "subItemsHeading": {
-              "key": "source",
-              "valueType": "code"
-            },
-            "label": "URL"
-          },
-          {
-            "key": "totalBytes",
-            "valueType": "bytes",
-            "subItemsHeading": {
-              "key": "sourceBytes"
-            },
-            "label": "Transfer Size"
-          },
-          {
-            "key": "wastedBytes",
-            "valueType": "bytes",
-            "subItemsHeading": {
-              "key": "sourceWastedBytes"
-            },
-            "label": "Potential Savings"
-          }
-        ],
-        "items": [
-          {
-            "url": "https://imsm.kcg.go.kr/js/jquery-1.10.2.js",
-            "totalBytes": 273203,
-            "wastedBytes": 176398,
-            "wastedPercent": 64.56664092268386
-          }
-        ],
-        "overallSavingsMs": 180,
-        "overallSavingsBytes": 176398,
-        "sortedBy": [
-          "wastedBytes"
-        ],
-        "debugData": {
-          "type": "debugdata",
-          "metricSavings": {
-            "FCP": 120,
-            "LCP": 180
-          }
-        }
-      },
+
+      "score": null,
+      "scoreDisplayMode": "error",
+      "errorMessage": "Chrome prevented page load with an interstitial. Make sure you are testing the correct URL and that the server is properly responding to all requests.",
+      "errorStack": "LighthouseError: CHROME_INTERSTITIAL_ERROR\n    at getInterstitialError (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/lib/navigation-error.js:97:10)\n    at getPageLoadError (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/lib/navigation-error.js:163:29)\n    at _computeNavigationResult (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:146:7)\n    at async gatherFn (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:300:23)\n    at async Runner.gather (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/runner.js:210:25)\n    at async navigationGather (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:306:21)\n    at async navigation (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/index.js:58:24)\n    at async runLighthouse (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/cli/run.js:210:26)\n    at async file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/cli/index.js:10:1",
       "guidanceLevel": 1
     },
     "modern-image-formats": {
       "id": "modern-image-formats",
       "title": "Serve images in next-gen formats",
       "description": "Image formats like WebP and AVIF often provide better compression than PNG or JPEG, which means faster downloads and less data consumption. [Learn more about modern image formats](https://developer.chrome.com/docs/lighthouse/performance/uses-webp-images/).",
-      "score": 0,
-      "scoreDisplayMode": "metricSavings",
-      "numericValue": 80,
-      "numericUnit": "millisecond",
-      "displayValue": "Potential savings of 80 KiB",
-      "warnings": [],
-      "metricSavings": {
-        "FCP": 0,
-        "LCP": 100
-      },
-      "details": {
-        "type": "opportunity",
-        "headings": [
-          {
-            "key": "node",
-            "valueType": "node",
-            "label": ""
-          },
-          {
-            "key": "url",
-            "valueType": "url",
-            "label": "URL"
-          },
-          {
-            "key": "totalBytes",
-            "valueType": "bytes",
-            "label": "Resource Size"
-          },
-          {
-            "key": "wastedBytes",
-            "valueType": "bytes",
-            "label": "Potential Savings"
-          }
-        ],
-        "items": [
-          {
-            "node": {
-              "type": "node",
-              "lhId": "1-4-BODY",
-              "path": "1,HTML,1,BODY",
-              "selector": "body.bg",
-              "boundingRect": {
-                "top": -12,
-                "bottom": 705,
-                "left": 8,
-                "right": 1342,
-                "width": 1334,
-                "height": 717
-              },
-              "snippet": "<body class=\"bg\" style=\"\">",
-              "nodeLabel": "body.bg"
-            },
-            "url": "https://imsm.kcg.go.kr/images/intro/intro_bg.png",
-            "fromProtocol": true,
-            "isCrossOrigin": false,
-            "totalBytes": 92403,
-            "wastedBytes": 82275.55,
-            "wastedWebpBytes": 84145
-          }
-        ],
-        "overallSavingsMs": 80,
-        "overallSavingsBytes": 82275.55,
-        "sortedBy": [
-          "wastedBytes"
-        ],
-        "debugData": {
-          "type": "debugdata",
-          "metricSavings": {
-            "FCP": 0,
-            "LCP": 80
-          }
-        }
-      },
+      "score": null,
+      "scoreDisplayMode": "error",
+      "errorMessage": "Chrome prevented page load with an interstitial. Make sure you are testing the correct URL and that the server is properly responding to all requests.",
+      "errorStack": "LighthouseError: CHROME_INTERSTITIAL_ERROR\n    at getInterstitialError (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/lib/navigation-error.js:97:10)\n    at getPageLoadError (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/lib/navigation-error.js:163:29)\n    at _computeNavigationResult (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:146:7)\n    at async gatherFn (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:300:23)\n    at async Runner.gather (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/runner.js:210:25)\n    at async navigationGather (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:306:21)\n    at async navigation (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/index.js:58:24)\n    at async runLighthouse (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/cli/run.js:210:26)\n    at async file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/cli/index.js:10:1",
       "guidanceLevel": 3
     },
     "efficient-animated-content": {
       "id": "efficient-animated-content",
       "title": "Use video formats for animated content",
       "description": "Large GIFs are inefficient for delivering animated content. Consider using MPEG4/WebM videos for animations and PNG/WebP for static images instead of GIF to save network bytes. [Learn more about efficient video formats](https://developer.chrome.com/docs/lighthouse/performance/efficient-animated-content/)",
-      "score": 1,
-      "scoreDisplayMode": "metricSavings",
-      "numericValue": 0,
-      "numericUnit": "millisecond",
-      "displayValue": "",
-      "metricSavings": {
-        "FCP": 0,
-        "LCP": 0
-      },
-      "details": {
-        "type": "opportunity",
-        "headings": [],
-        "items": [],
-        "overallSavingsMs": 0,
-        "overallSavingsBytes": 0,
-        "sortedBy": [
-          "wastedBytes"
-        ],
-        "debugData": {
-          "type": "debugdata",
-          "metricSavings": {
-            "FCP": 0,
-            "LCP": 0
-          }
-        }
-      },
+      "score": null,
+      "scoreDisplayMode": "error",
+      "errorMessage": "Chrome prevented page load with an interstitial. Make sure you are testing the correct URL and that the server is properly responding to all requests.",
+      "errorStack": "LighthouseError: CHROME_INTERSTITIAL_ERROR\n    at getInterstitialError (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/lib/navigation-error.js:97:10)\n    at getPageLoadError (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/lib/navigation-error.js:163:29)\n    at _computeNavigationResult (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:146:7)\n    at async gatherFn (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:300:23)\n    at async Runner.gather (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/runner.js:210:25)\n    at async navigationGather (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:306:21)\n    at async navigation (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/index.js:58:24)\n    at async runLighthouse (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/cli/run.js:210:26)\n    at async file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/cli/index.js:10:1",
       "guidanceLevel": 3
     },
     "duplicated-javascript": {
       "id": "duplicated-javascript",
       "title": "Remove duplicate modules in JavaScript bundles",
       "description": "Remove large, duplicate JavaScript modules from bundles to reduce unnecessary bytes consumed by network activity. ",
-      "score": 1,
-      "scoreDisplayMode": "metricSavings",
-      "numericValue": 0,
-      "numericUnit": "millisecond",
-      "displayValue": "",
-      "metricSavings": {
-        "FCP": 0,
-        "LCP": 0
-      },
-      "details": {
-        "type": "opportunity",
-        "headings": [],
-        "items": [],
-        "overallSavingsMs": 0,
-        "overallSavingsBytes": 0,
-        "sortedBy": [
-          "wastedBytes"
-        ],
-        "debugData": {
-          "type": "debugdata",
-          "metricSavings": {
-            "FCP": 0,
-            "LCP": 0
-          }
-        }
-      },
+      "score": null,
+      "scoreDisplayMode": "error",
+      "errorMessage": "Chrome prevented page load with an interstitial. Make sure you are testing the correct URL and that the server is properly responding to all requests.",
+      "errorStack": "LighthouseError: CHROME_INTERSTITIAL_ERROR\n    at getInterstitialError (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/lib/navigation-error.js:97:10)\n    at getPageLoadError (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/lib/navigation-error.js:163:29)\n    at _computeNavigationResult (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:146:7)\n    at async gatherFn (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:300:23)\n    at async Runner.gather (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/runner.js:210:25)\n    at async navigationGather (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:306:21)\n    at async navigation (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/index.js:58:24)\n    at async runLighthouse (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/cli/run.js:210:26)\n    at async file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/cli/index.js:10:1",
       "guidanceLevel": 2
     },
     "js-libraries": {
       "id": "js-libraries",
       "title": "Detected JavaScript libraries",
       "description": "All front-end JavaScript libraries detected on the page. [Learn more about this JavaScript library detection diagnostic audit](https://developer.chrome.com/docs/lighthouse/best-practices/js-libraries/).",
-      "score": 1,
-      "scoreDisplayMode": "informative",
-      "details": {
-        "type": "table",
-        "headings": [
-          {
-            "key": "name",
-            "valueType": "text",
-            "label": "Name"
-          },
-          {
-            "key": "version",
-            "valueType": "text",
-            "label": "Version"
-          }
-        ],
-        "items": [
-          {
-            "name": "jQuery",
-            "version": "1.10.2",
-            "npm": "jquery"
-          }
-        ],
-        "debugData": {
-          "type": "debugdata",
-          "stacks": [
-            {
-              "id": "jquery",
-              "version": "1.10.2"
-            },
-            {
-              "id": "jquery-fast"
-            }
-          ]
-        }
-      }
+      "score": null,
+      "scoreDisplayMode": "error",
+      "errorMessage": "Chrome prevented page load with an interstitial. Make sure you are testing the correct URL and that the server is properly responding to all requests.",
+      "errorStack": "LighthouseError: CHROME_INTERSTITIAL_ERROR\n    at getInterstitialError (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/lib/navigation-error.js:97:10)\n    at getPageLoadError (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/lib/navigation-error.js:163:29)\n    at _computeNavigationResult (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:146:7)\n    at async gatherFn (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:300:23)\n    at async Runner.gather (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/runner.js:210:25)\n    at async navigationGather (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/gather/navigation-runner.js:306:21)\n    at async navigation (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/core/index.js:58:24)\n    at async runLighthouse (file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/cli/run.js:210:26)\n    at async file:///C:/Users/%EA%B3%A0%EB%B3%91%EC%88%98/AppData/Roaming/npm/node_modules/lighthouse/cli/index.js:10:1"
     }
   },
   "configSettings": {
@@ -945,545 +344,172 @@
     }
   },
   "stackPacks": [],
-  "entities": [
-    {
-      "name": "kcg.go.kr",
-      "origins": [
-        "https://imsm.kcg.go.kr"
-      ],
-      "isFirstParty": true,
-      "isUnrecognized": true
-    }
-  ],
-  "fullPageScreenshot": {
-    "screenshot": {
-      "data": "data:image/webp;base64,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",
-      "width": 1350.4000244140625,
-      "height": 940
-    },
-    "nodes": {
-      "1-0-IMG": {
-        "id": "",
-        "top": -12,
-        "bottom": 41,
-        "left": 173,
-        "right": 355,
-        "width": 182,
-        "height": 53
-      },
-      "1-1-IMG": {
-        "id": "",
-        "top": 45,
-        "bottom": 201,
-        "left": 504,
-        "right": 846,
-        "width": 342,
-        "height": 156
-      },
-      "1-2-IMG": {
-        "id": "",
-        "top": 534,
-        "bottom": 701,
-        "left": 415,
-        "right": 676,
-        "width": 261,
-        "height": 167
-      },
-      "1-3-IMG": {
-        "id": "",
-        "top": 534,
-        "bottom": 701,
-        "left": 676,
-        "right": 936,
-        "width": 260,
-        "height": 167
-      },
-      "1-4-BODY": {
-        "id": "",
-        "top": -12,
-        "bottom": 705,
-        "left": 8,
-        "right": 1342,
-        "width": 1334,
-        "height": 717
-      },
-      "1-5-DIV": {
-        "id": "",
-        "top": 324,
-        "bottom": 705,
-        "left": 415,
-        "right": 936,
-        "width": 521,
-        "height": 381
-      },
-      "1-6-LI": {
-        "id": "",
-        "top": 0,
-        "bottom": 0,
-        "left": 0,
-        "right": 0,
-        "width": 0,
-        "height": 0
-      },
-      "1-7-LI": {
-        "id": "",
-        "top": 0,
-        "bottom": 0,
-        "left": 0,
-        "right": 0,
-        "width": 0,
-        "height": 0
-      },
-      "1-8-LI": {
-        "id": "",
-        "top": 0,
-        "bottom": 0,
-        "left": 0,
-        "right": 0,
-        "width": 0,
-        "height": 0
-      },
-      "1-9-LI": {
-        "id": "",
-        "top": 0,
-        "bottom": 0,
-        "left": 0,
-        "right": 0,
-        "width": 0,
-        "height": 0
-      },
-      "1-10-LI": {
-        "id": "",
-        "top": 0,
-        "bottom": 0,
-        "left": 0,
-        "right": 0,
-        "width": 0,
-        "height": 0
-      },
-      "1-11-LI": {
-        "id": "",
-        "top": 0,
-        "bottom": 0,
-        "left": 0,
-        "right": 0,
-        "width": 0,
-        "height": 0
-      },
-      "1-12-LI": {
-        "id": "",
-        "top": 0,
-        "bottom": 0,
-        "left": 0,
-        "right": 0,
-        "width": 0,
-        "height": 0
-      },
-      "1-13-LI": {
-        "id": "",
-        "top": 0,
-        "bottom": 0,
-        "left": 0,
-        "right": 0,
-        "width": 0,
-        "height": 0
-      }
-    }
-  },
   "timing": {
     "entries": [
       {
-        "startTime": 5271.88,
+        "startTime": 1420.45,
         "name": "lh:config",
-        "duration": 3617.07,
+        "duration": 580.72,
         "entryType": "measure"
       },
       {
-        "startTime": 5287.97,
+        "startTime": 1422.32,
         "name": "lh:config:resolveArtifactsToDefns",
-        "duration": 1227.87,
+        "duration": 111.25,
         "entryType": "measure"
       },
       {
-        "startTime": 8889.24,
+        "startTime": 2001.42,
         "name": "lh:runner:gather",
-        "duration": 7884.06,
+        "duration": 5548.68,
         "entryType": "measure"
       },
       {
-        "startTime": 9206.67,
+        "startTime": 2177.77,
         "name": "lh:driver:connect",
-        "duration": 123.63,
+        "duration": 22.28,
         "entryType": "measure"
       },
       {
-        "startTime": 9331.31,
+        "startTime": 2200.35,
         "name": "lh:driver:navigate",
-        "duration": 48.49,
+        "duration": 14.45,
         "entryType": "measure"
       },
       {
-        "startTime": 9380.9,
+        "startTime": 2215.16,
         "name": "lh:gather:getBenchmarkIndex",
-        "duration": 1030.53,
+        "duration": 1008.19,
         "entryType": "measure"
       },
       {
-        "startTime": 10411.79,
+        "startTime": 3223.61,
         "name": "lh:gather:getVersion",
-        "duration": 2.76,
+        "duration": 0.76,
         "entryType": "measure"
       },
       {
-        "startTime": 10415.12,
+        "startTime": 3224.52,
         "name": "lh:prepare:navigationMode",
-        "duration": 357.22,
+        "duration": 74.47,
         "entryType": "measure"
       },
       {
-        "startTime": 10478.08,
+        "startTime": 3247.12,
         "name": "lh:storage:clearDataForOrigin",
-        "duration": 148.71,
+        "duration": 22.79,
         "entryType": "measure"
       },
       {
-        "startTime": 10627.19,
+        "startTime": 3270.1,
         "name": "lh:storage:clearBrowserCaches",
-        "duration": 139.69,
+        "duration": 25.8,
         "entryType": "measure"
       },
       {
-        "startTime": 10768.95,
+        "startTime": 3296.92,
         "name": "lh:gather:prepareThrottlingAndNetwork",
-        "duration": 3.32,
+        "duration": 1.97,
         "entryType": "measure"
       },
       {
-        "startTime": 11085.25,
+        "startTime": 3359.37,
         "name": "lh:driver:navigate",
-        "duration": 2998.23,
+        "duration": 4058.65,
         "entryType": "measure"
       },
       {
-        "startTime": 14547.65,
+        "startTime": 7525.31,
         "name": "lh:computed:NetworkRecords",
-        "duration": 2.86,
+        "duration": 0.63,
         "entryType": "measure"
       },
       {
-        "startTime": 14552.19,
-        "name": "lh:gather:getArtifact:DevtoolsLog",
-        "duration": 0.25,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 14552.5,
-        "name": "lh:gather:getArtifact:Trace",
-        "duration": 0.14,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 14552.68,
-        "name": "lh:gather:getArtifact:CSSUsage",
-        "duration": 25.55,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 14578.28,
-        "name": "lh:gather:getArtifact:ImageElements",
-        "duration": 286.17,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 14864.53,
-        "name": "lh:gather:getArtifact:JsUsage",
-        "duration": 0.46,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 14865.39,
-        "name": "lh:gather:getArtifact:NetworkUserAgent",
-        "duration": 0.3,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 14865.78,
-        "name": "lh:gather:getArtifact:OptimizedImages",
-        "duration": 523.13,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 15388.98,
-        "name": "lh:gather:getArtifact:Scripts",
-        "duration": 0.39,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 15389.45,
-        "name": "lh:gather:getArtifact:SourceMaps",
-        "duration": 0.19,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 15389.68,
-        "name": "lh:gather:getArtifact:Stacks",
-        "duration": 23.9,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 15389.95,
-        "name": "lh:gather:collectStacks",
-        "duration": 23.59,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 15413.6,
-        "name": "lh:gather:getArtifact:Stylesheets",
-        "duration": 13.59,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 15427.31,
-        "name": "lh:gather:getArtifact:devtoolsLogs",
-        "duration": 0.31,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 15427.71,
-        "name": "lh:gather:getArtifact:traces",
-        "duration": 0.21,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 15427.96,
-        "name": "lh:gather:getArtifact:FullPageScreenshot",
-        "duration": 1308.75,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 16774.28,
+        "startTime": 7550.32,
         "name": "lh:runner:audit",
-        "duration": 235.07,
+        "duration": 12.65,
         "entryType": "measure"
       },
       {
-        "startTime": 16774.6,
+        "startTime": 7550.41,
         "name": "lh:runner:auditing",
-        "duration": 233.21,
+        "duration": 10.65,
         "entryType": "measure"
       },
       {
-        "startTime": 16777.81,
+        "startTime": 7551.03,
         "name": "lh:audit:network-requests",
-        "duration": 10.06,
+        "duration": 0.87,
         "entryType": "measure"
       },
       {
-        "startTime": 16778.82,
-        "name": "lh:computed:EntityClassification",
-        "duration": 6.2,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 16785.18,
-        "name": "lh:computed:MainResource",
-        "duration": 0.37,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 16788.04,
+        "startTime": 7551.93,
         "name": "lh:audit:resource-summary",
-        "duration": 4.02,
+        "duration": 0.36,
         "entryType": "measure"
       },
       {
-        "startTime": 16788.62,
-        "name": "lh:computed:ResourceSummary",
-        "duration": 1.3,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 16793.12,
+        "startTime": 7552.55,
         "name": "lh:audit:third-party-summary",
-        "duration": 118.94,
+        "duration": 1.1,
         "entryType": "measure"
       },
       {
-        "startTime": 16794.57,
-        "name": "lh:computed:TBTImpactTasks",
-        "duration": 113.07,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 16794.72,
-        "name": "lh:computed:TotalBlockingTime",
-        "duration": 99.26,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 16794.9,
-        "name": "lh:computed:ProcessedTrace",
-        "duration": 45.34,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 16840.33,
-        "name": "lh:computed:ProcessedNavigation",
-        "duration": 1.94,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 16842.62,
-        "name": "lh:computed:LanternTotalBlockingTime",
-        "duration": 51.31,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 16842.78,
-        "name": "lh:computed:LanternFirstContentfulPaint",
-        "duration": 38.44,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 16843.11,
-        "name": "lh:computed:PageDependencyGraph",
-        "duration": 18.6,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 16861.78,
-        "name": "lh:computed:LoadSimulator",
-        "duration": 3.45,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 16861.88,
-        "name": "lh:computed:NetworkAnalysis",
-        "duration": 2.5,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 16881.28,
-        "name": "lh:computed:LanternInteractive",
-        "duration": 9.34,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 16881.41,
-        "name": "lh:computed:LanternLargestContentfulPaint",
-        "duration": 5.88,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 16894.01,
-        "name": "lh:computed:MainThreadTasks",
-        "duration": 8.11,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 16902.39,
-        "name": "lh:computed:FirstContentfulPaint",
-        "duration": 0.29,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 16902.73,
-        "name": "lh:computed:Interactive",
-        "duration": 0.15,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 16912.11,
+        "startTime": 7553.69,
         "name": "lh:audit:script-treemap-data",
-        "duration": 30.72,
+        "duration": 0.32,
         "entryType": "measure"
       },
       {
-        "startTime": 16913.54,
-        "name": "lh:computed:JSBundles",
-        "duration": 0.56,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 16914.16,
-        "name": "lh:computed:ModuleDuplication",
-        "duration": 0.97,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 16915.27,
-        "name": "lh:computed:UnusedJavascriptSummary",
-        "duration": 26.87,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 16942.44,
-        "name": "lh:computed:UnusedJavascriptSummary",
-        "duration": 0.25,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 16943.45,
+        "startTime": 7554.23,
         "name": "lh:audit:total-byte-weight",
-        "duration": 5.53,
+        "duration": 0.72,
         "entryType": "measure"
       },
       {
-        "startTime": 16949.71,
+        "startTime": 7555.09,
         "name": "lh:audit:unused-css-rules",
-        "duration": 9.94,
+        "duration": 0.66,
         "entryType": "measure"
       },
       {
-        "startTime": 16950.62,
-        "name": "lh:computed:UnusedCSS",
-        "duration": 1.65,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 16957.2,
-        "name": "lh:computed:LCPImageRecord",
-        "duration": 1.12,
-        "entryType": "measure"
-      },
-      {
-        "startTime": 16960.28,
+        "startTime": 7555.87,
         "name": "lh:audit:unused-javascript",
-        "duration": 8.55,
+        "duration": 0.57,
         "entryType": "measure"
       },
       {
-        "startTime": 16969.47,
+        "startTime": 7556.57,
         "name": "lh:audit:modern-image-formats",
-        "duration": 11.04,
+        "duration": 0.81,
         "entryType": "measure"
       },
       {
-        "startTime": 16981.22,
+        "startTime": 7557.52,
         "name": "lh:audit:efficient-animated-content",
-        "duration": 11.4,
+        "duration": 0.67,
         "entryType": "measure"
       },
       {
-        "startTime": 16993.68,
+        "startTime": 7558.51,
         "name": "lh:audit:duplicated-javascript",
-        "duration": 10.19,
+        "duration": 0.7,
         "entryType": "measure"
       },
       {
-        "startTime": 17005,
+        "startTime": 7559.36,
         "name": "lh:audit:js-libraries",
-        "duration": 2.74,
+        "duration": 1.57,
         "entryType": "measure"
       },
       {
-        "startTime": 17007.83,
+        "startTime": 7561.07,
         "name": "lh:runner:generate",
-        "duration": 1.48,
+        "duration": 1.8,
         "entryType": "measure"
       }
     ],
-    "total": 8119.13
+    "total": 5561.33
   },
   "i18n": {
     "rendererFormattedStrings": {
@@ -1547,43 +573,94 @@
       "warningHeader": "Warnings: "
     },
     "icuMessagePaths": {
-      "core/lib/i18n/i18n.js | columnResourceType": [
-        "audits[resource-summary].details.headings[0].label"
+      "core/lib/lh-error.js | pageLoadFailedInterstitial": [
+        {
+          "values": {
+            "errorCode": "CHROME_INTERSTITIAL_ERROR"
+          },
+          "path": "runtimeError.message"
+        },
+        {
+          "values": {
+            "errorCode": "CHROME_INTERSTITIAL_ERROR"
+          },
+          "path": "runWarnings[1]"
+        },
+        {
+          "values": {
+            "errorCode": "CHROME_INTERSTITIAL_ERROR"
+          },
+          "path": "audits[network-requests].errorMessage"
+        },
+        {
+          "values": {
+            "errorCode": "CHROME_INTERSTITIAL_ERROR"
+          },
+          "path": "audits[resource-summary].errorMessage"
+        },
+        {
+          "values": {
+            "errorCode": "CHROME_INTERSTITIAL_ERROR"
+          },
+          "path": "audits[third-party-summary].errorMessage"
+        },
+        {
+          "values": {
+            "errorCode": "CHROME_INTERSTITIAL_ERROR"
+          },
+          "path": "audits[script-treemap-data].errorMessage"
+        },
+        {
+          "values": {
+            "errorCode": "CHROME_INTERSTITIAL_ERROR"
+          },
+          "path": "audits[total-byte-weight].errorMessage"
+        },
+        {
+          "values": {
+            "errorCode": "CHROME_INTERSTITIAL_ERROR"
+          },
+          "path": "audits[unused-css-rules].errorMessage"
+        },
+        {
+          "values": {
+            "errorCode": "CHROME_INTERSTITIAL_ERROR"
+          },
+          "path": "audits[unused-javascript].errorMessage"
+        },
+        {
+          "values": {
+            "errorCode": "CHROME_INTERSTITIAL_ERROR"
+          },
+          "path": "audits[modern-image-formats].errorMessage"
+        },
+        {
+          "values": {
+            "errorCode": "CHROME_INTERSTITIAL_ERROR"
+          },
+          "path": "audits[efficient-animated-content].errorMessage"
+        },
+        {
+          "values": {
+            "errorCode": "CHROME_INTERSTITIAL_ERROR"
+          },
+          "path": "audits[duplicated-javascript].errorMessage"
+        },
+        {
+          "values": {
+            "errorCode": "CHROME_INTERSTITIAL_ERROR"
+          },
+          "path": "audits[js-libraries].errorMessage"
+        }
       ],
-      "core/lib/i18n/i18n.js | columnRequests": [
-        "audits[resource-summary].details.headings[1].label"
-      ],
-      "core/lib/i18n/i18n.js | columnTransferSize": [
-        "audits[resource-summary].details.headings[2].label",
-        "audits[total-byte-weight].details.headings[1].label",
-        "audits[unused-javascript].details.headings[1].label"
-      ],
-      "core/lib/i18n/i18n.js | totalResourceType": [
-        "audits[resource-summary].details.items[0].label"
-      ],
-      "core/lib/i18n/i18n.js | scriptResourceType": [
-        "audits[resource-summary].details.items[1].label"
-      ],
-      "core/lib/i18n/i18n.js | imageResourceType": [
-        "audits[resource-summary].details.items[2].label"
-      ],
-      "core/lib/i18n/i18n.js | stylesheetResourceType": [
-        "audits[resource-summary].details.items[3].label"
-      ],
-      "core/lib/i18n/i18n.js | documentResourceType": [
-        "audits[resource-summary].details.items[4].label"
-      ],
-      "core/lib/i18n/i18n.js | mediaResourceType": [
-        "audits[resource-summary].details.items[5].label"
-      ],
-      "core/lib/i18n/i18n.js | fontResourceType": [
-        "audits[resource-summary].details.items[6].label"
-      ],
-      "core/lib/i18n/i18n.js | otherResourceType": [
-        "audits[resource-summary].details.items[7].label"
-      ],
-      "core/lib/i18n/i18n.js | thirdPartyResourceType": [
-        "audits[resource-summary].details.items[8].label"
+      "core/gather/driver/navigation.js | warningRedirected": [
+        {
+          "values": {
+            "requested": "https://www.kcm.hs.kr/",
+            "final": "chrome-error://chromewebdata/"
+          },
+          "path": "runWarnings[0]"
+        }
       ],
       "core/audits/third-party-summary.js | title": [
         "audits[third-party-summary].title"
@@ -1597,57 +674,17 @@
       "core/audits/byte-efficiency/total-byte-weight.js | description": [
         "audits[total-byte-weight].description"
       ],
-      "core/audits/byte-efficiency/total-byte-weight.js | displayValue": [
-        {
-          "values": {
-            "totalBytes": 424674
-          },
-          "path": "audits[total-byte-weight].displayValue"
-        }
-      ],
-      "core/lib/i18n/i18n.js | columnURL": [
-        "audits[total-byte-weight].details.headings[0].label",
-        "audits[unused-javascript].details.headings[0].label",
-        "audits[modern-image-formats].details.headings[1].label"
-      ],
       "core/audits/byte-efficiency/unused-css-rules.js | title": [
         "audits[unused-css-rules].title"
       ],
       "core/audits/byte-efficiency/unused-css-rules.js | description": [
         "audits[unused-css-rules].description"
       ],
-      "core/audits/byte-efficiency/unused-javascript.js | title": [
-        "audits[unused-javascript].title"
-      ],
-      "core/audits/byte-efficiency/unused-javascript.js | description": [
-        "audits[unused-javascript].description"
-      ],
-      "core/lib/i18n/i18n.js | displayValueByteSavings": [
-        {
-          "values": {
-            "wastedBytes": 176398
-          },
-          "path": "audits[unused-javascript].displayValue"
-        },
-        {
-          "values": {
-            "wastedBytes": 82275.55
-          },
-          "path": "audits[modern-image-formats].displayValue"
-        }
-      ],
-      "core/lib/i18n/i18n.js | columnWastedBytes": [
-        "audits[unused-javascript].details.headings[2].label",
-        "audits[modern-image-formats].details.headings[3].label"
-      ],
       "core/audits/byte-efficiency/modern-image-formats.js | title": [
         "audits[modern-image-formats].title"
       ],
       "core/audits/byte-efficiency/modern-image-formats.js | description": [
         "audits[modern-image-formats].description"
-      ],
-      "core/lib/i18n/i18n.js | columnResourceSize": [
-        "audits[modern-image-formats].details.headings[2].label"
       ],
       "core/audits/byte-efficiency/efficient-animated-content.js | title": [
         "audits[efficient-animated-content].title"
@@ -1666,12 +703,6 @@
       ],
       "core/audits/dobetterweb/js-libraries.js | description": [
         "audits[js-libraries].description"
-      ],
-      "core/lib/i18n/i18n.js | columnName": [
-        "audits[js-libraries].details.headings[0].label"
-      ],
-      "core/audits/dobetterweb/js-libraries.js | columnVersion": [
-        "audits[js-libraries].details.headings[1].label"
       ],
       "core/config/default-config.js | performanceCategoryTitle": [
         "categories.performance.title"
