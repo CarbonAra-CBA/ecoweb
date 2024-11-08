@@ -1,4 +1,4 @@
-﻿anyio==3.6.2
+anyio==3.6.2
 APScheduler==3.10.4
 argon2-cffi==21.3.0
 argon2-cffi-bindings==21.2.0

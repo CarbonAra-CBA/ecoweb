@@ -1,6 +1,5 @@
 import json
 import subprocess
-from utils.db_con import db_connect
 
 def run_lighthouse(url):
     command = f'lighthouse {url} --only-audits=network-requests,resource-summary,third-party-summary,script-treemap-data,total-byte-weight,unused-css-rules,unused-javascript,modern-image-formats,efficient-animated-content,duplicated-javascript,js-libraries --output json --output-path ./report.json --preset=desktop'
@@ -105,7 +104,10 @@ def process_Analysis(url,url_data,collection_resource,collection_traffic):
                 } for item in network_requests
             ],
         }
-
+        print('traffic_data')
+        print(traffic_data)
+        print('resource_data')
+        print(resource_data)
         # MongoDB에 저장
         collection_traffic.insert_one(traffic_data)
         # collection_traffic.insert_one(url_data)
