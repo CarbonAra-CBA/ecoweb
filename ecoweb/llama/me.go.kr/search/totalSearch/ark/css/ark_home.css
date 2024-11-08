@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+/* 자동완성 전체 지정*/
+.ark_wrap {position:relative; width:100% !important; display:none; background: #FFFFFF; border: 1px solid #0D89CE; border-radius: 24px; z-index: 1; overflow: hidden; z-index:999999;}
+.ark_wrap ul {margin:0; padding:0;}
+.ark_wrap li {margin:0; padding:0; list-style:none; text-align:left;}
+.ark_wrap .ark_content {overflow-x:hidden; overflow-y:auto;}
+.ark_wrap .ark_content li {font-weight: 400; font-size: 16px; color: #000000; line-height: 2; padding-left: 20px;}
+.ark_wrap .ark_content li:first-child {margin-top: 18px;}
+.ark_wrap .ark_content li strong {color:#EB7225; font-weight:bold;}
+.ark_wrap .ark_content li label{position:relative !important;}
+.ark_wrap .ark_footer {position:relative; font-size: 16px; height: 54px; text-align:center; margin-top: 25.5px; border-top: 1px solid #0083cb; padding: 13.5px 0 19px 0;}
+.ark_wrap .ark_footer a {color:#666666; text-decoration:none;}
+.ark_wrap .ark_footer .left {float:left; overflow: hidden; padding-left: 32px;}
+.ark_wrap .ark_footer .left label{font-size: 16px; position: static; font-weight: 400;}
+.ark_wrap .ark_footer .right {float:right; overflow: hidden; padding-right: 32px;}
+.ark_wrap .ark_footer .right label{font-size: 16px; position: static; font-weight: 400;}

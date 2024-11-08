@@ -7,6 +7,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
+        .institution-chart-container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        #institution-chart {
+            width: 100%;
+            height: 500px;
+        }
         .eco-badge {
             display: inline-flex;
             align-items: center;
@@ -61,14 +73,14 @@
         margin-top: 50px;
     }
     .grade-circle {
-        width: 120px;
-        height: 120px;
+        width: 300px;
+        height: 300px;
         background-color: #ff0000;  /* F 등급은 빨간색 */
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 60px;
+        font-size: 148px;
         color: white;
         margin-bottom: 20px;
     }
@@ -100,8 +112,7 @@
     }
     .grade-marker {
         position: absolute;
-        right: 0;
-        top: -10px;
+        top: -6px;
         width: 40px;
         height: 40px;
         background: white;
@@ -109,8 +120,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #ff0000;
         font-weight: bold;
+        transition: left 0.5s ease;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
     .copy-url-btn {
         background-color: #00ffbb;
@@ -237,23 +249,28 @@
             <div class="col-md-8">
                 
                 <div class="result-card" style="color: white;">
-                    <p style="font-size: 14px;">측정한 웹사이트: www.yourwebsiteisgood</p>
+                    <p style="font-size: 14px;">측정한 웹사이트: {{url}}</p>
                     
                     <div class="result-header" style="display: flex; align-items: flex-start; gap: 30px;">
-                        <div class="grade-circle">F</div>
+                        <div class="grade-circle" id="grade", class="text-center">{{grade}}</div>
+                        <!-- <h3 id="grade" class="text-center">등급: {{ grade }}</h3> -->
                         <div class="result-info">
-                            <p style="font-size: 24px; font-weight: bold;">해당 웹페이지는 탄소 배출 F 등급입니다.</p>
-                            <p style="font-size: 20px;">전 세계 평균보다 44% 더 배출</p>
-                            <p style="font-size: 20px;">대한민국 평균보다 61% 더 배출</p>
-                            <p style="font-size: 20px;">메인페이지 배출량 4.2g</p>
+                            
+                            <p style="font-size: 24px; font-weight: bold;">해당 웹페이지는 탄소 배출 {{grade}} 등급입니다.</p>
+                            <p style="font-size: 20px;">전 세계 평균보다 {{global_avg_diff}}MB 더 배출</p> 
+                            <!-- 전세계 평균은 2.4MB , 현재는 {{view_data['total_byte_weight']}}MB -->
+                            <p style="font-size: 20px;">대한민국 평균보다 {% if korea_avg_diff > 0 %}{{korea_avg_diff}}MB 더 배출{% else %}{{-korea_avg_diff}}MB 덜 배출{% endif %}</p>
+                            <p style="font-size: 20px;">메인페이지 용량: {{kb_weight/1024|round(2)}}MB</p>
+                            <p style="font-size: 20px;">탄소 배출량: {{carbon_emission}}g</p>
                         </div>
                     </div>
                     
-                    <div class="grade-bar">
-                        <span class="global-average" style="font-size: 16px;">전 세계 평균</span>
-                        <span class="earth-icon">🌍</span>
-                        <span class="grade-marker">F</span>
-                    </div>
+<!-- 등급 바 HTML -->
+<div class="grade-bar">
+    <span class="global-average">전 세계 평균</span>
+    <span class="earth-icon">🌍</span>
+    <span class="grade-marker">{{grade}}</span>
+</div>
                     
                     <p style="font-size: 16px;">마지막 측정일: 2024-10-11 <a href="#" style="color: white;">다시 측정하기</a></p>
                 </div>
@@ -282,6 +299,16 @@
                 <div class="mt-5">
                     <h4>탄소 배출량 분포</h4>
                     <svg id="histogram" width="800" height="300"></svg>
+                </div>
+
+                <div class="distribution-chart">
+                    <h4>웹사이트 트래픽 분포</h4>
+                    <div id="kde-plot"></div>
+                </div>
+
+                <div class="institution-chart-container">
+                    <h4>기관별 웹사이트 전송 크기 분포</h4>
+                    <div id="institution-chart"></div>
                 </div>
 
                 <!-- 새로운 멀티라인 그래프 추가 -->
@@ -351,7 +378,6 @@
                         </tbody>
                     </table>
                 </section>
-
 <!-- Google Lighthouse 상세 보고서 -->
 <div class="container mt-5">
     <h4>Google Lighthouse 상세 분석 결과</h4>
@@ -366,66 +392,78 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>네트워크 요청</td>
-                    <td>1.2MB</td>
-                    <td>총 45개 요청 중 불필요한 요청 최적화</td>
-                </tr>
-                <tr>
-                    <td>리소스 요약</td>
-                    <td>2.5MB</td>
-                    <td>Document: 0.2MB, Script: 1.2MB, Style: 0.3MB, Image: 0.8MB</td>
-                </tr>
-                <tr>
-                    <td>서드파티 스크립트</td>
-                    <td>0.8MB</td>
-                    <td>Google Analytics, Facebook SDK 등 외부 스크립트 최적화</td>
-                </tr>
-                <tr>
-                    <td>JavaScript 트리맵</td>
-                    <td>1.5MB</td>
-                    <td>번들 크기: 1.2MB, 미사용 코드: 0.3MB</td>
-                </tr>
-                <tr>
-                    <td>총 바이트 용량</td>
-                    <td>3.5MB</td>
+                    <td>총 리소스 용량</td>
+                    <td>{{ (view_data.total_byte_weight / 1024 / 1024)|round(2) }}MB</td>
                     <td>전체 페이지 리소스 크기</td>
                 </tr>
                 <tr>
-                    <td>미사용 CSS</td>
-                    <td>0.3MB</td>
-                    <td>사용되지 않는 CSS 규칙 제거로 최적화</td>
+                    <td>서드파티 스크립트</td>
+                    <td>{{ (view_data.third_party_summary_wasted_bytes / 1024 / 1024)|round(2) }}MB</td>
+                    <td>외부 스크립트로 인한 낭비 용량</td>
                 </tr>
+                <tr>
+                    <td>JavaScript 분석</td>
+                    <td>
+                        미사용: {{ (view_data.total_unused_bytes / 1024 / 1024)|round(2) }}MB<br>
+                        전체: {{ (view_data.total_resource_bytes / 1024 / 1024)|round(2) }}MB
+                    </td>
+                    <td>전체 JavaScript 중 미사용 코드 비율: 
+                        {{ ((view_data.total_unused_bytes / view_data.total_resource_bytes) * 100)|round(1) }}%
+                    </td>
+                </tr>
+                {% if view_data.can_optimize_css_bytes > 0 %}
+                <tr>
+                    <td>미사용 CSS</td>
+                    <td>{{ (view_data.can_optimize_css_bytes / 1024)|round(2) }}KB</td>
+                    <td>사용되지 않는 CSS 규칙 제거로 최적화 가능</td>
+                </tr>
+                {% endif %}
+                {% if view_data.can_optimize_js_bytes > 0 %}
                 <tr>
                     <td>미사용 JavaScript</td>
-                    <td>0.7MB</td>
-                    <td>지연 로딩 및 미사용 코드 제거로 최적화</td>
+                    <td>{{ (view_data.can_optimize_js_bytes / 1024)|round(2) }}KB</td>
+                    <td>지연 로딩 및 미사용 코드 제거로 최적화 가능</td>
                 </tr>
+                {% endif %}
+                {% if view_data.modern_image_formats_bytes > 0 %}
                 <tr>
                     <td>이미지 최적화</td>
-                    <td>0.6MB</td>
-                    <td>WebP/AVIF 포맷 변환으로 절감</td>
+                    <td>{{ (view_data.modern_image_formats_bytes / 1024)|round(2) }}KB</td>
+                    <td>WebP/AVIF 포맷 변환으로 절감 가능</td>
                 </tr>
+                {% endif %}
+                {% if view_data.efficient_animated_content > 0 %}
                 <tr>
                     <td>애니메이션 최적화</td>
-                    <td>0.4MB</td>
-                    <td>GIF를 MP4/WebM으로 변환</td>
+                    <td>{{ (view_data.efficient_animated_content / 1024)|round(2) }}KB</td>
+                    <td>GIF를 MP4/WebM으로 변환하여 절감 가능</td>
                 </tr>
+                {% endif %}
+                {% if view_data.duplicated_javascript > 0 %}
                 <tr>
                     <td>중복 JavaScript</td>
-                    <td>0.3MB</td>
-                    <td>jQuery(2.2), Lodash(4.1) 등 중복 모듈 통합</td>
+                    <td>{{ (view_data.duplicated_javascript / 1024)|round(2) }}KB</td>
+                    <td>중복된 JavaScript 모듈 제거로 최적화 가능</td>
                 </tr>
-                <tr>
-                    <td>JavaScript 라이브러리</td>
-                    <td>0.9MB</td>
-                    <td>jQuery, React, Lodash 등 사용 중</td>
-                </tr>
+                {% endif %}
             </tbody>
         </table>
     </div>
+    
+    <!-- 총 최적화 가능 용량 계산 및 표시 -->
+    {% set total_optimization = view_data.can_optimize_css_bytes + 
+                              view_data.can_optimize_js_bytes + 
+                              view_data.modern_image_formats_bytes + 
+                              view_data.efficient_animated_content + 
+                              view_data.duplicated_javascript %}
+    {% if total_optimization > 0 %}
+    <div class="alert alert-info mt-3">
+        <strong>총 최적화 가능 용량:</strong> 
+        {{ (total_optimization / 1024 / 1024)|round(2) }}MB 
+        (현재 용량의 {{ ((total_optimization / view_data.total_byte_weight) * 100)|round(1) }}%)
+    </div>
+    {% endif %}
 </div>
-
-
                 <!-- 에코웹 뱃지 -->
                  <!-- 탄소뱃지를 얻으세요!  -->
                 <div class="badge-section">
@@ -434,7 +472,7 @@
                         당신의 웹사이트가 환경에 미치는 영향을 보여주세요
                     </p>
                     <div class="eco-badge light">
-                        <span class="carbon-amount">4.2g of CO2/view</span>
+                        <span class="carbon-amount">{{carbon_emission}}g of CO2/view</span>
                         <span class="badge-text">Eco-Web</span>
                     </div>
                     <div class="badge-subtitle">
@@ -484,7 +522,44 @@
         //     case 'E': gradeBar.classList.add('bg-orange'); break;
         //     case 'F': gradeBar.classList.add('bg-danger'); break;
         // }
-
+    // 등급에 따른 위치 설정
+    const grade = "{{ grade }}";
+    const gradeMarker = document.querySelector('.grade-marker');
+    
+    // 등급별 위치 매핑 (왼쪽부터 오른쪽으로)
+    const gradePositions = {
+        'A+': '0%',
+        'A': '20%',
+        'B': '40%',
+        'C': '60%',
+        'D': '80%',
+        'F': '95%'  // 완전히 오른쪽 끝
+    };
+    
+    // 등급별 색상 매핑
+    const gradeColors = {
+        'A+': '#00ffbb',
+        'A': '#00ff00',
+        'B': '#ffff00',
+        'C': '#ffa500',
+        'D': '#ff6b00',
+        'F': '#ff0000'
+    };
+    
+    // 마커 위치와 색상 설정
+    if (gradeMarker) {
+        gradeMarker.style.left = gradePositions[grade];
+        gradeMarker.style.color = gradeColors[grade];
+        
+        // 마커가 양 끝에 있을 때 화면 밖으로 나가지 않도록 조정
+        if (grade === 'A+') {
+            gradeMarker.style.transform = 'translateX(-20%)';
+        } else if (grade === 'F') {
+            gradeMarker.style.transform = 'translateX(-80%)';
+        } else {
+            gradeMarker.style.transform = 'translateX(-50%)';
+        }
+    }
 // 예시 데이터 생성 (파이썬에서 만든 데이터와 유사하게)
 const existingData = Array.from({length: 25000}, () => d3.randomNormal(0.7,0.05)()); // 0.3은 평균, 0.3은 표준편차
 
@@ -655,6 +730,125 @@ legendItems.forEach((item, i) => {
         .attr("y", 5)
         .text(item.text);
 });
+
+
+
+// D3.js로 KDE 그래프 그리기
+async function drawKDEPlot(kb_weight) {
+    // JSON 데이터 로드
+    const current_mb = kb_weight / 1024;
+
+    const data = await d3.json('/static/js/distribution_data.json');
+    
+    // 그래프 크기 설정
+    const margin = {top: 40, right: 40, bottom: 40, left: 60};
+    const width = 800 - margin.left - margin.right;
+    const height = 400 - margin.top - margin.bottom;
+    
+    // SVG 생성
+    const svg = d3.select("#kde-plot")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+    
+    // 스케일 설정
+    const x = d3.scaleLinear()
+        .domain([0, 20])
+        .range([0, width]);
+        
+    const y = d3.scaleLinear()
+        .domain([0, d3.max(data.kde_points, d => d.y)])
+        .range([height, 0]);
+    
+    // KDE 곡선 그리기
+    const line = d3.line()
+        .x(d => x(d.x))
+        .y(d => y(d.y));
+        
+    svg.append("path")
+        .datum(data.kde_points)
+        .attr("fill", "none")
+        .attr("stroke", "red")
+        .attr("stroke-width", 2)
+        .attr("d", line);
+    
+    // 한국 평균선 그리기
+    svg.append("line")
+        .attr("x1", x(4.7))
+        .attr("x2", x(4.7))
+        .attr("y1", 0)
+        .attr("y2", height)
+        .attr("stroke", "green")
+        .attr("stroke-dasharray", "5,5");
+
+        // 세계 평균선 (2.4MB)
+    svg.append("line")
+        .attr("x1", x(2.4))
+        .attr("x2", x(2.4))
+        .attr("y1", 0)
+        .attr("y2", height)
+        .attr("stroke", "blue")
+        .attr("stroke-dasharray", "5,5");
+
+    // 현재 사이트 배출량
+    svg.append("line")
+        .attr("x1", x(current_mb))
+        .attr("x2", x(current_mb))
+        .attr("y1", 0)
+        .attr("y2", height)
+        .attr("stroke", "red")
+        .attr("stroke-width", 2);
+    // 축 그리기
+    svg.append("g")
+        .attr("transform", `translate(0,${height})`)
+        .call(d3.axisBottom(x));
+        
+    svg.append("g")
+        .call(d3.axisLeft(y));
+    
+    // 범례 추가
+    const legendItems = [
+            {color: "red", text: "현재 사이트", dash: "0"},
+            {color: "green", text: "한국 평균 (4.7MB)", dash: "5,5"},
+        {color: "blue", text: "세계 평균 (2.4MB)", dash: "5,5"}
+    ];
+
+
+    const legend = svg.append("g")
+            .attr("transform", `translate(${width - 150}, 20)`);
+
+        legendItems.forEach((item, i) => {
+            const g = legend.append("g")
+                .attr("transform", `translate(0, ${i * 20})`);
+                
+            g.append("line")
+                .attr("x1", 0)
+                .attr("x2", 20)
+                .attr("y1", 0)
+                .attr("y2", 0)
+                .attr("stroke", item.color)
+                .attr("stroke-width", 2)
+                .attr("stroke-dasharray", item.dash);
+                
+            g.append("text")
+                .attr("x", 25)
+                .attr("y", 5)
+                .text(item.text);
+        });
+}
+
+drawKDEPlot({{kb_weight|round(2)}});
+
+document.addEventListener('DOMContentLoaded', function() {
+        const currentKB = {{kb_weight|round(2)}};
+        const currentMB = currentKB / 1024;
+        const institutionType = "{{institution_type}}";  // Flask에서 전달받은 기관 타입
+        drawInstitutionChart(currentMB, institutionType);
+    });
     </script>
+    <script src="{{ url_for('static', filename='js/institution_chart.js') }}"></script>
+
 </body>
 </html>
