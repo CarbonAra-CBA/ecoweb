@@ -1,22 +1,96 @@
-# Improve your website for a sustainable website ...  
-## Docs
-https://busy-christmas-93f.notion.site/ECO-WEB-a6660c106ea44a89a9c8f593ca1621f4?pvs=74
-## 순서
-1. 탄소발자국 분석 :  
-2. 전력소비 분석 :(크롤링을 이용한 Page별 전력소비량 DB 구축) 
-3. 비교분석 :웹 표준에 의거한 분류, 빅데이터에 의거한 분류
-4. 시뮬레이션 (Before & After) 
-5. 솔루션 (Google Insight API)
-6. 기술고도화 (ML, Image 압축, Code spliting)
+# ECO-WEB
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FCarbonAra-CBA%2Fecoweb&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 
-## 요구사항
-![image](https://github.com/user-attachments/assets/241b8e0b-f4e2-4842-9ac1-8eb8753d372d)
+<div align="center">
+<img width="329" alt="image" src="https://raw.githubusercontent.com/eclipse1228/Githun-User-Content/main/ecoweblogo.png">
+</div>
 
-# 팀원
-jelly1500 , eclipse1228 
+## Eco-web v1.0
+> **정부/ 공공기관 웹사이트 저전력 웹페이지 구축 서비스** <br/> **개발기간: 2024.09 ~ 2024.11**
 
-# 폴더 구조 
-```python
+## 배포주소
+> **개발 버전** : [http://ecoweb.cs.skku.edu/](http://ecoweb.cs.skku.edu/) <br>
+> **프론트 서버** : [http://ecoweb.cs.skku.edu:33307/](http://ecoweb.cs.skku.edu:33307/)<br>
+> **백엔드 서버** : [http://ecoweb.cs.skku.edu:2223/](http://ecoweb.cs.skku.edu:2223/)<br>
+
+## Team Info
+
+|      고병수       |          허세진         |       한동규         | 이희수|                                                                                                               
+| :------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | 
+|   <img width="160px"  src="https://avatars.githubusercontent.com/u/107296751?v=4" />    |                      <img width="160px" src="" />    |                   <img width="160px" src=""/>   |
+|   [@eclipse1228](https://github.com/eclipse1228)   |    [@jelly1500](https://github.com/jelly1500)  | [@dongkyu20](https://github.com/dongkyu20)  | [@magatia3113](https://github.com/magatia3113) |
+| 동아대학교 컴퓨터공학과 3학년 | 동아대학교 컴퓨터공학과 3학년 | 동아대학교 컴퓨터공학과 3학년 | 동아대학교 컴퓨터공학과 4학년 |
+
+## 프로젝트 소개 
+
+## 시작 가이드
+### Requirements
+For building and running the application you need:
+
+- [Python 3.10.12](https://www.python.org/downloads/release/python-31012/)
+- [Lighthouse 9.1.1](https://github.com/GoogleChrome/lighthouse/releases/tag/v9.1.1)
+### Installation
+``` bash
+$ git clone https://github.com/CarbonAra-CBA/ecoweb.git
+$ cd ecoweb
+```
+#### Backend
+```
+$ cd ecoweb/app
+$ python -m venv venv
+$ source venv/bin/activate
+$ pip install -r requirements.txt
+$ python run.py
+```
+
+## Stacks
+
+### Environment
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?style=for-the-badge&logo=Visual%20Studio%20Code&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white)
+![Github](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white)             
+### Config
+![venv](https://img.shields.io/badge/venv-007ACC?style=for-the-badge&logo=venv&logoColor=white)        
+
+### Development
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=Flask&logoColor=white)
+![Lighthouse](https://img.shields.io/badge/Lighthouse-000000?style=for-the-badge&logo=Lighthouse&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=Pandas&logoColor=white)
+![Tensorflow](https://img.shields.io/badge/Tensorflow-FF6F00?style=for-the-badge&logo=Tensorflow&logoColor=white)
+### Communication
+![Notion](https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white)
+![GoogleMeet](https://img.shields.io/badge/GoogleMeet-00897B?style=for-the-badge&logo=Google%20Meet&logoColor=white)
+
+## 화면 구성
+| 메인 페이지  |  소개 페이지   |
+| :-------------------------------------------: | :------------: |
+|  <img width="329" src="https://user-images.githubusercontent.com/50205887/208036155-a57900f7-c68a-470d-923c-ff3c296ea635.png"/> |  <img width="329" src="https://user-images.githubusercontent.com/50205887/208036645-a76cf400-85bc-4fa2-af72-86d2abf61366.png"/>|  
+| 강좌 소개 페이지   |  강의 영상 페이지   |  
+| <img width="329" src="https://user-images.githubusercontent.com/50205887/208038737-2b32b7d2-25f4-4949-baf5-83b5c02915a3.png"/>   |  <img width="329" src="https://user-images.githubusercontent.com/50205887/208038965-43a6318a-7b05-44bb-97c8-b08b0495fba7.png"/>     |
+
+---
+
+
+## 주요 기능
+### ⭐️ 탄소발자국 분석, 계산 
+- Scratch, Python 2개 강좌 및 각 강좌마다 10개 가량의 강의 영상 제공
+- 추후 지속적으로 강좌 추가 및 업로드 예정
+
+### ⭐️ 공기관 별 비교분석
+- 웹 표준에 의거한 분류, 빅데이터에 의거한 분류
+- 시뮬레이션 (Before & After)
+### ⭐️ 솔루션(ML-Classification, LLM Code spliting )
+- 머신러닝 분류 모델 제공
+- 코드 스플리팅 모델 제공
+
+
+## 아키텍쳐
+
+
+## 디렉토리 구조 
+```bash
 ├───── README.md
 │       
 ├───── ecoweb
@@ -37,13 +111,3 @@ jelly1500 , eclipse1228
 ├───── virtualenv.md (virtual environment setting)
 ├───── __init__.py 
 ```
-
-# Flask 실행
-```shell
-    가상환경 실행 (virtualenv.md 참고)
-```
-
-```python
-ecoweb/ecoweb/ python3 .\run.py
-```
-
