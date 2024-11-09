@@ -271,9 +271,9 @@
                 정부 및 공공기관을 위한 웹사이트 탄소 배출량 측정 및 저탄소 솔루션
             </p>
             
-            <form id="measurementForm">
+            <form id="measurementForm" method="post" action="{{ url_for('home')}}">
                 <label for="url">웹사이트 URL</label>
-                <input type="url" id="url" class="url-input" 
+                <input type="url" id="url" class="url-input" name="wgd-cc-url"
                        placeholder="https://example.gov.kr" required>
                 <button type="submit" class="measure-btn">측정하기</button>
             </form>
@@ -374,12 +374,21 @@ ecoWebsites.forEach(site => {
     `;
     ecoWebsitesGrid.appendChild(card);
 });
-        // Handle form submission
         document.getElementById('measurementForm').addEventListener('submit', function(e) {
-            e.preventDefault();
             const url = document.getElementById('url').value;
-            // Add your measurement logic here
-            console.log('Measuring URL:', url);
+            
+            // URL 유효성 검사
+            try {
+                new URL(url);
+            } catch (error) {
+                e.preventDefault();
+                alert('올바른 URL을 입력해주세요.');
+                return;
+            }
+
+            // 로딩 상태 표시 (선택사항)
+            document.querySelector('.measure-btn').textContent = '측정 중...';
+            document.querySelector('.measure-btn').disabled = true;
         });
     </script>
 </body>

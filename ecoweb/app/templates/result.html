@@ -258,19 +258,19 @@
             <div class="col-md-8">
                 
                 <div class="result-card" style="color: white;">
-                    <p style="font-size: 14px;">측정한 웹사이트: {{url}}</p>
+                    <p style="font-size: 19px;">측정한 웹사이트: {{url}}</p>
                     
                     <div class="result-header" style="display: flex; align-items: flex-start; gap: 30px;">
                         <div class="grade-circle" id="grade", class="text-center">{{grade}}</div>
                         <!-- <h3 id="grade" class="text-center">등급: {{ grade }}</h3> -->
                         <div class="result-info">
-                            
-                            <p style="font-size: 24px; font-weight: bold;">해당 웹페이지는 탄소 배출 {{grade}} 등급입니다.</p>
-                            <p style="font-size: 20px;">전 세계 평균보다 {{global_avg_diff}}MB 더 배출</p> 
+
+                            <p style="font-size: 27px; font-weight: bold;">해당 웹페이지는 탄소 배출 {{grade}} 등급입니다.</p>
+                            <p style="font-size: 25px;">전 세계 평균보다 {{global_avg_diff}}MB 더 배출</p> 
                             <!-- 전세계 평균은 2.4MB , 현재는 {{view_data['total_byte_weight']}}MB -->
-                            <p style="font-size: 20px;">대한민국 평균보다 {% if korea_avg_diff > 0 %}{{korea_avg_diff}}MB 더 배출{% else %}{{-korea_avg_diff}}MB 덜 배출{% endif %}</p>
-                            <p style="font-size: 20px;">메인페이지 용량: {{kb_weight/1024|round(2)}}MB</p>
-                            <p style="font-size: 20px;">탄소 배출량: {{carbon_emission}}g</p>
+                            <p style="font-size: 25px;">대한민국 평균보다 {% if korea_avg_diff > 0 %}{{korea_avg_diff}}MB 더 배출{% else %}{{-korea_avg_diff}}MB 덜 배출{% endif %}</p>
+                            <p style="font-size: 25px;">메인페이지 용량: {{kb_weight/1024|round(2)}}MB</p>
+                            <p style="font-size: 25px;">탄소 배출량: {{carbon_emission}}g</p>
                         </div>
                     </div>
                     
