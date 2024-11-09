@@ -16,6 +16,8 @@ from flask import current_app, flash
 from app import db
 from werkzeug.security import generate_password_hash, check_password_hash  # check_password_hash 추가
 from datetime import datetime
+from flask import jsonify
+
 def init_routes(app):
     @app.route('/', methods=['GET', 'POST'])
     def home():
@@ -212,3 +214,33 @@ def init_routes(app):
         session.clear()
         flash('로그아웃이 완료되었습니다!', 'success')
         return redirect(url_for('home'))
+
+    @app.route('/api/badge')
+    def badge_data():
+        url = request.args.get('url')
+        if not url:
+            return jsonify({'error': 'URL parameter is required'}), 400
+
+        try:
+            # MongoDB에서 데이터 조회
+            data = db.db.lighthouse_resource.find_one({'url': url})
+            if not data:
+                return jsonify({'error': 'URL not found'}), 404
+
+            # 탄소 배출량 계산
+            kb_weight = data['total_byte_weight'] / 1024
+            carbon = round((kb_weight * 0.04) / 272.51, 3)
+            
+            # 백분위 계산 (다른 사이트들과 비교)
+            all_sites = list(db.db.lighthouse_resource.find())
+            better_than = sum(1 for site in all_sites 
+                            if site['total_byte_weight'] > data['total_byte_weight'])
+            percentage = round((better_than / len(all_sites)) * 100)
+
+            return jsonify({
+                'carbon': carbon,
+                'percentage': percentage
+            })
+
+        except Exception as e:
+            return jsonify({'error': str(e)}), 500
