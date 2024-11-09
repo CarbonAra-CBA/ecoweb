@@ -1,9 +1,15 @@
 from flask import Flask
-# from config import Config
 from flask import session
-# Run 할 시 이것부터 create_app 함수부터 실행됨.
+from flask_mongoengine import MongoEngine
+
 def create_app():
     app = Flask(__name__)
+    app.config['MONGODB_SETTINGS'] = {
+        'db': 'ecoweb',
+        'host': 'mongodb://localhost:27017/ecoweb'
+    }
+    db = MongoEngine()
+    db.init_app(app)
     # 디버그모드 on
     with app.app_context():
         from . import routes
