@@ -77,8 +77,8 @@ def init_routes(app):
             except Exception as e:
                 print(f"Error processing optimized files: {str(e)}")
                 return "Error processing files", 500
-
-        return render_template('main.html')
+        if request.method == 'GET':
+            return render_template('main.html')
     
     @app.route('/result')
     def result():
@@ -94,7 +94,7 @@ def init_routes(app):
                 print("view_data_on url:")
             # view_data가 세션에 있는 경우
             elif session.get('view_data'):
-                view_data = json.loads(session.get('view_data'))
+                view_data = json.loads(session.get('view_data'))    
                 print("view_data_on session:")
             # 둘 다 없는 경우
             else:
@@ -121,7 +121,6 @@ def init_routes(app):
                 institution_type = "공공기관"  # 기본값 설정
                 print(f"Institution type not found for URL: {url}")
             session['institution_type'] = institution_type
-
             
             return render_template('result.html', 
                                 url=url_s, 
