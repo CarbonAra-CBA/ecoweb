@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECO-WEB</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            margin: 0;
+            background-color: #f3f4f6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 1rem;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00824c;
+        }
+
+        .login-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        main {
+            flex-grow: 1;
+            max-width: 1200px;
+            margin: 2rem 37rem;
+            padding: 0 1rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #00824c;
+        }
+
+        .card-description {
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+        }
+
+        .url-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            box-sizing: border-box;
+        }
+
+        .measure-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: #00824c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: #00824c;
+            margin-bottom: 1rem;
+        }
+
+        .eco-websites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .eco-website-card {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+
+        .eco-website-card h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.2rem;
+        }
+
+        .eco-website-card p {
+            margin: 0 0 1rem 0;
+            color: #6b7280;
+        }
+
+        .eco-website-card a {
+            color: #00824c;
+            text-decoration: none;
+        }
+
+        .eco-website-card a:hover {
+            text-decoration: underline;
+        }
+        .eco-website-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+        footer {
+            background: #1f2937;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-text {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1 class="logo">ECO-WEB</h1>
+            <button class="login-btn">
+                <i class="fas fa-sign-in-alt"></i>
+                로그인
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Introduction Card -->
+        <div class="card">
+            <h2>국내 그린 호스팅 비율 0%</h2>
+            <p>인터넷은 매우 많은 전력을 소모합니다. 대략, 연간 2021 TWh를 사용합니다. 비교를 위해 말씀드리면, 이는 약 3억 3천만 대의 전기차를 완전히 충전할 수 있는 양입니다.</p>
+            <p>데이터 센터에서 전송 네트워크, 우리가 직접 만지는 수십억 개의 장치에 까지, 모두 전기를 소비하고 있으며, 저희는 환경에 대한 아무 고민 없이, 매우 많은량의 탄소 배출을 발생시키고 있습니다.</p>
+            <p>이곳은 웹사이트의 탄소배출량을 측정하기 위한 사이트입니다. 환경에 대한 문제 인식을 높이고, 보다 지속 가능한 웹을 만드는 것에 힘쓰고 있습니다.</p>
+            <p>더 자세한 분석을 원하시거나, 웹 프로젝트의 탄소 배출량을 줄이는 데 도움이 필요하시면, 저희가 기꺼이 도와드리겠습니다.</p>
+            <!-- ... rest of the introduction text ... -->
+        </div>
+
+        <!-- Measurement Card -->
+        <div class="card">
+            <h2 class="card-title text-center">웹사이트 탄소 배출량 측정</h2>
+            <p class="card-description text-center">
+                정부 및 공공기관을 위한 웹사이트 탄소 배출량 측정 및 저탄소 솔루션
+            </p>
+            
+            <form id="measurementForm">
+                <label for="url">웹사이트 URL</label>
+                <input type="url" id="url" class="url-input" 
+                       placeholder="https://example.gov.kr" required>
+                <button type="submit" class="measure-btn">측정하기</button>
+            </form>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-leaf feature-icon"></i>
+                    <h3>친환경 호스팅</h3>
+                    <p>재생 에너지를 사용하는 친환경 호스팅으로 전환하세요.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-code feature-icon"></i>
+                    <h3>최적화</h3>
+                    <p>웹사이트 코드 최적화를 통해 서버와 사이트 사용량을 줄일 수 있습니다.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-recycle feature-icon"></i>
+                    <h3>지속가능한 디자인</h3>
+                    <p>에너지 효율적인 디자인으로 탄소 발자국을 줄일 수 있습니다.</p>
+                </div>
+                <!-- ... other feature cards ... -->
+            </div>
+        </div>
+
+        <!-- Eco Websites Card -->
+        <div class="card">
+            <h2 class="card-title">친환경 웹사이트 예시</h2>
+            <div class="eco-websites-grid">
+                <!-- Eco website cards will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p class="footer-text">ECO-WEB, DONGA-UNIVERSITY</p>
+            <p class="footer-text">Address: 37, Nakdong-daero 550beon-gil, Saha-gu, Busan, Republic of Korea.</p>
+            <p class="footer-text">Tel: 010-8477-6339</p>
+            <p class="footer-text">E-mail: qudtnrh@gmail.com</p>
+        </div>
+    </footer>
+
+    <script>
+        // Eco websites data
+        // Eco websites data
+
+        const ecoWebsites = [
+    { 
+        name: "Google", 
+        url: "https://www.google.com/", 
+        emission: "0.2g CO2/page view",
+        image: "https://cdn.shortpixel.ai/spai/w_255+q_glossy+ret_img+to_auto/www.websitecarbon.com/wp-content/uploads/2022/05/Screenshot-2022-05-17-at-13-21-41-Do-Nation-pledge-healthier-habits-for-people-and-planet-2048x1335.png"
+    },
+    { 
+        name: "BBC", 
+        url: "https://www.bbc.com/", 
+        emission: "0.34g CO2/page view",
+        image: "https://cdn.shortpixel.ai/spai/w_255+q_glossy+ret_img+to_auto/www.websitecarbon.com/wp-content/uploads/2022/05/Screenshot-2022-05-17-at-13-32-00-C40-Cities-A-global-network-of-mayors-taking-urgent-action-to-confront-the-climate-crisis-and-create-a-future-where-everyone-can-thrive-2048x1335.png"
+    },
+    { 
+        name: "Organic Basics", 
+        url: "https://organicbasics.com/", 
+        emission: "0.23g CO2/page view",
+        image: "https://cdn.shortpixel.ai/spai/w_249+q_glossy+ret_img+to_auto/www.websitecarbon.com/wp-content/uploads/2020/04/riverford-webcarbon.jpg"
+    },
+    { 
+        name: "Wholegrain Digital", 
+        url: "https://www.wholegraindigital.com/", 
+        emission: "0.1g CO2/page view",
+        image: "https://cdn.shortpixel.ai/spai/w_249+q_glossy+ret_img+to_auto/www.websitecarbon.com/wp-content/uploads/2019/11/Screenshot-2019-11-01-at-11.56.22-2000x1332.png"
+    },
+    { 
+        name: "Digital Malayali Studio", 
+        url: "https://digitalmalayali.studio/", 
+        emission: "0.15g CO2/page view",
+        image: "https://cdn.shortpixel.ai/spai/w_249+q_glossy+ret_img+to_auto/www.websitecarbon.com/wp-content/uploads/2019/11/Screenshot-2019-11-01-at-11.56.40-2000x1335.png"
+    },
+    { 
+        name: "Rediscovery Centre", 
+        url: "https://www.rediscoverycentre.ie/", 
+        emission: "0.19g CO2/page view",
+        image: "https://cdn.shortpixel.ai/spai/w_249+q_glossy+ret_img+to_auto/www.websitecarbon.com/wp-content/uploads/2019/11/Screenshot-2019-11-01-at-11.56.56-2000x1335.png"
+    }
+];
+
+// Populate eco websites grid
+const ecoWebsitesGrid = document.querySelector('.eco-websites-grid');
+ecoWebsites.forEach(site => {
+    const card = document.createElement('div');
+    card.className = 'eco-website-card';
+    card.innerHTML = `
+        <img src="${site.image}" alt="${site.name} screenshot">
+        <h3>${site.name}</h3>
+        <p>${site.emission}</p>
+        <a href="${site.url}" target="_blank" rel="noopener noreferrer">웹사이트 방문</a>
+    `;
+    ecoWebsitesGrid.appendChild(card);
+});
+        // Handle form submission
+        document.getElementById('measurementForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const url = document.getElementById('url').value;
+            // Add your measurement logic here
+            console.log('Measuring URL:', url);
+        });
+    </script>
+</body>
+</html>

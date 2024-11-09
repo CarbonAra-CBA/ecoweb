@@ -130,3 +130,7 @@ def init_routes(app):
         except Exception as e:
             print(f"Error in result route: {str(e)}")
             return redirect(url_for('home'))
+        
+    @app.route('/login')
+    def login():
+        return render_template('login.html')

@@ -5,19 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>트래픽 등급 결과</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
-        .institution-chart-container {
+        /* .institution-chart-container {
             background: white;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             padding: 20px;
             margin: 20px 0;
+        } */
+        body{
+            font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
         }
-
         #institution-chart {
-            width: 100%;
-            height: 500px;
+            width: 800px;
+            height: 400px;
         }
         .eco-badge {
             display: inline-flex;
@@ -238,7 +242,12 @@
                         <a class="nav-link" href="/about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/others">Others</a>
+                        {% if not session['user'] %}
+                        <a class="nav-link" href="/login">Login</a>
+                        {% endif %}
+                        {% if session['user'] %}
+                        <a class="nav-link" href="/logout">Logout</a>
+                        {% endif %}
                     </li>
                 </ul>
             </div>
@@ -272,7 +281,7 @@
     <span class="grade-marker">{{grade}}</span>
 </div>
                     
-                    <p style="font-size: 16px;">마지막 측정일: 2024-10-11 <a href="#" style="color: white;">다시 측정하기</a></p>
+                    <p style="font-size: 16px;">마지막 측정일: 2024-10-11 <a href="/" style="color: white;">다시 측정하기</a></p>
                 </div>
 
                 <!-- 탄소 배출량 시각화 -->
@@ -308,12 +317,12 @@
 
                 <div class="institution-chart-container">
                     <h4>기관별 웹사이트 전송 크기 분포</h4>
-                    <div id="institution-chart"></div>
+                    <div id="institution-chart" width="800" height="300"></div>
                 </div>
 
                 <!-- 새로운 멀티라인 그래프 추가 -->
                 <div class="mt-5">
-                    <h4>공공기관 탄소배출량 추이</h4>
+                    <h4>실시간 공공기관 탄소배출량 추이(업데이트)</h4>
                     <svg id="multiline" width="800" height="400"></svg>
                 </div>
 
@@ -386,7 +395,7 @@
             <thead class="thead-light">
                 <tr>
                     <th>분석 항목</th>
-                    <th>절감 가능 용량</th>
+                    <th>용량</th>
                     <th>상세 내용</th>
                 </tr>
             </thead>
@@ -397,7 +406,7 @@
                     <td>전체 페이지 리소스 크기</td>
                 </tr>
                 <tr>
-                    <td>서드파티 스크립트</td>
+                    <td>서드파티 스크립트 제거</td>
                     <td>{{ (view_data.third_party_summary_wasted_bytes / 1024 / 1024)|round(2) }}MB</td>
                     <td>외부 스크립트로 인한 낭비 용량</td>
                 </tr>
@@ -427,7 +436,7 @@
                 {% endif %}
                 {% if view_data.modern_image_formats_bytes > 0 %}
                 <tr>
-                    <td>이미지 최적화</td>
+                    <td>이미지 최적화 가능</td>
                     <td>{{ (view_data.modern_image_formats_bytes / 1024)|round(2) }}KB</td>
                     <td>WebP/AVIF 포맷 변환으로 절감 가능</td>
                 </tr>
@@ -476,7 +485,7 @@
                         <span class="badge-text">Eco-Web</span>
                     </div>
                     <div class="badge-subtitle">
-                        테스트 된 페이지중 하위 1% 이하
+                        배지를 사용하시면 1회 무료 컨설팅 기회를 제공합니다.
                     </div>
                     <a href="/get-badge" class="btn get-badge-btn">
                         배지 얻기
@@ -490,12 +499,12 @@
                         <div class="col-md-6">
                             <h5>Before</h5>
                             <img src="../static/screenshots/before.png" alt="Before" class="comparison-image">
-                            <p>총 리소스: 3.3MB</p>
+                            <p>총 리소스: {{view_data.total_byte_weight/1024/1024|round(2)}}MB</p>
                         </div>
                         <div class="col-md-6">
                             <h5>After</h5>
                             <img src="../static/screenshots/before.png" alt="Before" class="comparison-image">
-                            <p>총 리소스: 1.1MB</p>
+                            <p>절감 후 리소스: {{((view_data.total_byte_weight - total_optimization)/1024/1024)|round(2)}}MB</p>
                         </div>
                     </div>
                 </div>
