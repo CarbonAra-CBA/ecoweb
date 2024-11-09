@@ -3,7 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from PIL import Image
 import os
-from local_server import LocalServer
+from app.services.local_server import LocalServer
 
 def capture_screenshot(url, output_path, is_file= False):
     chrome_options = Options()

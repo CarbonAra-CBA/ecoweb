@@ -7,12 +7,15 @@ from app.services.screenshot import capture_screenshot
 from app.services.lighthouse import run_lighthouse
 from app.services.lighthouse import process_report
 from app.services.llama import llama_optimizing_code
-from utils.db_con import db_connect
 import os
 import json
 from flask import session
-client, db, collection_traffic, collection_resource = db_connect()
-
+from app.models import User, Institution
+from werkzeug.security import generate_password_hash
+from flask import current_app, flash
+from app import db
+from werkzeug.security import generate_password_hash, check_password_hash  # check_password_hash 추가
+from datetime import datetime
 def init_routes(app):
     @app.route('/', methods=['GET', 'POST'])
     def home():
@@ -21,6 +24,9 @@ def init_routes(app):
             
             # 1) Lighthouse 실행 
             run_lighthouse(url)
+            # MongoDB 컬렉션 가져오기
+            collection_traffic = db.db.lighthouse_traffic
+            collection_resource = db.db.lighthouse_resource
             view_data = process_report(url,collection_resource,collection_traffic) # result 화면에서 사용할 웹사이트에 대한 트래픽 평가 결과
             
             print("view_data first: ", view_data)
@@ -72,7 +78,7 @@ def init_routes(app):
                 print(f"Error processing optimized files: {str(e)}")
                 return "Error processing files", 500
 
-        return render_template('index.html')
+        return render_template('main.html')
     
     @app.route('/result')
     def result():
@@ -92,7 +98,7 @@ def init_routes(app):
                 print("view_data_on session:")
             # 둘 다 없는 경우
             else:
-                return redirect(url_for('home'))
+                return redirect(url_for('/'))
             
             # 탄소 배출량 계산
             kb_weight = view_data['total_byte_weight'] / 1024  # bytes to KB
@@ -108,7 +114,7 @@ def init_routes(app):
             session['view_data'] = json.dumps(view_data)
 
             # institution_type 조회 및 예외 처리
-            traffic_doc = collection_traffic.find_one({'url': url})
+            traffic_doc = db.db.lighthouse_traffic.find_one({'url': url})
             if traffic_doc and 'institution_type' in traffic_doc:
                 institution_type = traffic_doc['institution_type']
             else:
@@ -129,8 +135,81 @@ def init_routes(app):
                                 
         except Exception as e:
             print(f"Error in result route: {str(e)}")
-            return redirect(url_for('home'))
+            return redirect(url_for('/'))
         
-    @app.route('/login')
+    @app.route('/login', methods=['GET', 'POST'])  # methods=['GET', 'POST'] 추가 필요
     def login():
+        if request.method == 'POST':
+            # 로그인 처리 
+            username = request.form['username']
+            password = request.form['password']
+            # hash 디코딩 
+            login_user = db.db.users.find_one({'username': username})
+
+            if login_user and check_password_hash(login_user['password'], password):
+                flash('로그인이 완료되었습니다!', 'success')
+
+                db.db.users.update_one(
+                    {'username':username},
+                    {'$set':{'last_login':datetime.now()}}
+                )
+
+                session['user_id'] = str(login_user['_id']) # 세션에 사용자 ID 저장
+                session['username'] = login_user['username']
+                session['department'] = login_user['department']  # 부서 정보 추가  
+                session['institution'] = login_user['institution']['name'] # 기관 정보 추가 
+
+                return redirect(url_for('home'))
+            else:
+                # 로그인 실패 
+                flash('아이디 또는 비밀번호가 일치하지 않습니다.', 'error')
+                return redirect(url_for('login'))
+            
         return render_template('login.html')
+    
+    @app.route('/signup', methods=['GET', 'POST'])
+    def signup():
+        if request.method == 'POST':
+            # 아아디 중복 확인 
+            if db.db.users.find_one({'username': request.form['username']}):
+                flash('이미 존재하는 아이디입니다.', 'error')
+                return redirect(url_for('signup'))
+
+            # 기관 정보 생성
+            institution = Institution(
+                name=request.form['institution_name'],
+                type=request.form['institution_type'],
+                website_url=request.form['institution_website_url']
+            )
+
+            # 사용자 정보 생성
+            user = User(
+                username=request.form['username'],
+                password=generate_password_hash(request.form['password']),
+                name=request.form['name'],
+                email=request.form['email'],
+                phone=request.form['phone'],
+                department=request.form['department'],
+                position=request.form['position'],
+                institution=institution.to_dict()
+            )
+
+            try:
+                # MongoDB에 저장
+                result = db.db.users.insert_one(user.to_dict())
+                print("Inserted document ID:", result.inserted_id)  # 삽입된 문서 ID 출력
+                flash('회원가입이 완료되었습니다!', 'success')
+                return redirect(url_for('login'))
+            except Exception as e:
+                print(f"Error creating user: {str(e)}")
+                flash('회원가입 중 오류가 발생했습니다.', 'error')
+                return redirect(url_for('signup'))
+            
+        return render_template('signup.html')
+    
+
+    @app.route('/logout')
+    def logout():
+        session.clear()
+        flash('로그아웃이 완료되었습니다!', 'success')
+        return redirect(url_for('home'))

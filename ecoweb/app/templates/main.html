@@ -169,19 +169,90 @@
         .footer-text {
             margin: 0.5rem 0;
         }
+        .auth-buttons {
+        display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .auth-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: inherit;
+            font-size: 0.9rem;
+        }
+
+        .signup-btn {
+            background-color: #00824c;
+            color: white;
+            border: none;
+        }
+
+        .signup-btn:hover {
+            background-color: #006e41;
+        }
+
+        .login-btn:hover {
+            background-color: #f3f4f6;
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-name {
+            font-weight: 500;
+            color: #00824c;
+        }
+
+        .logout-btn {
+            color: #dc2626;
+            border-color: #dc2626;
+        }
+
+        .logout-btn:hover {
+            background-color: #fee2e2;
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="header-content">
             <h1 class="logo">ECO-WEB</h1>
-            <button class="login-btn">
-                <i class="fas fa-sign-in-alt"></i>
-                로그인
-            </button>
+            <div class="auth-buttons">
+                {% if session.get('username') %}
+                <div class="user-info">
+                    <div class="user-details">
+                        <span class="user-institution">{{ session.get('institution') }}</span>
+                        <span class="user-department">{{ session.get('department') }} 부서</span>
+                        <span class="user-name">{{ session.get('username') }} 님</span>
+                    </div>
+                    <a href="{{ url_for('logout') }}" class="auth-btn logout-btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        로그아웃
+                    </a>
+                </div>
+                {% else %}
+                    <a href="{{ url_for('login') }}" class="auth-btn login-btn">
+                        <i class="fas fa-sign-in-alt"></i>
+                        로그인
+                    </a>
+                    <a href="{{ url_for('signup') }}" class="auth-btn signup-btn">
+                        <i class="fas fa-user-plus"></i>
+                        회원가입
+                    </a>
+                {% endif %}
+            </div>
         </div>
     </header>
-
     <main>
         <!-- Introduction Card -->
         <div class="card">

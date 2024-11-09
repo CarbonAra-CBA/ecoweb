@@ -1,18 +1,18 @@
 from flask import Flask
-from flask import session
-from flask_mongoengine import MongoEngine
+from config import Config
+from app.database import MongoDB
 
-def create_app():
+db = MongoDB()
+
+def create_app(config_class=Config):
     app = Flask(__name__)
-    app.config['MONGODB_SETTINGS'] = {
-        'db': 'ecoweb',
-        'host': 'mongodb://localhost:27017/ecoweb'
-    }
-    db = MongoEngine()
+    app.config.from_object(config_class)
+    
+    # MongoDB 초기화
     db.init_app(app)
-    # 디버그모드 on
-    with app.app_context():
-        from . import routes
-        routes.init_routes(app)
-        
+    
+    # 라우트 등록
+    from . import routes
+    routes.init_routes(app)
+    
     return app

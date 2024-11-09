@@ -76,10 +76,39 @@
         .login-button:hover {
             background-color: #333;
         }
+         /* Flash 메시지 스타일 추가 */
+    .alert {
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 4px;
+        text-align: center;
+    }
+    
+    .alert-success {
+        background-color: #d1fae5;
+        color: #065f46;
+        border: 1px solid #059669;
+    }
+    
+    .alert-error {
+            background-color: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #dc2626;
+        }
     </style>
 </head>
 <body>
     <div class="login-card">
+        <!-- Flash 메시지 표시 영역 추가 -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
         <div class="card-header">
             <h2 class="card-title">로그인</h2>
             <p class="card-description">아이디와 비밀번호를 입력하세요</p>
@@ -113,33 +142,8 @@
 
     <script>
         document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
-
-            fetch('/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    username: username,
-                    password: password
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    window.location.href = '/';  // 로그인 성공시 메인 페이지로 이동
-                } else {
-                    alert('로그인 실패: ' + data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('로그인 처리 중 오류가 발생했습니다.');
-            });
         });
     </script>
 </body>
