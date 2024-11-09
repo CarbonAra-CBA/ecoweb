@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+    <style>
+        body {
+            font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .signup-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #00824c;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .required::after {
+            content: "*";
+            color: #dc2626;
+            margin-left: 4px;
+        }
+
+        .submit-button {
+            background-color: #00824c;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .submit-button:hover {
+            background-color: #006e41;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h1 style="text-align: center; margin-bottom: 40px;">기관 회원가입</h1>
+        
+        <form id="signupForm">
+            <!-- 기관 정보 섹션 -->
+            <div class="form-section">
+                <h2 class="section-title">기관 정보</h2>
+                
+                <div class="form-group">
+                    <label class="form-label required">기관명</label>
+                    <input type="text" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label required">기관 유형</label>
+                    <select class="form-input" required>
+                        <option value="">선택해주세요</option>
+                        <option value="central">중앙행정기관</option>
+                        <option value="local">지방자치단체</option>
+                        <option value="public">공공기관</option>
+                        <option value="other">기타</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label required">사업자등록번호</label>
+                    <input type="text" class="form-input" pattern="\d{3}-\d{2}-\d{5}" placeholder="000-00-00000" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label required">대표 웹사이트 URL</label>
+                    <input type="url" class="form-input" required>
+                </div>
+            </div>
+
+            <!-- 담당자 정보 섹션 -->
+            <div class="form-section">
+                <h2 class="section-title">담당자 정보</h2>
+                
+                <div class="form-group">
+                    <label class="form-label required">이름</label>
+                    <input type="text" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label required">부서명</label>
+                    <input type="text" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label required">직책</label>
+                    <input type="text" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label required">업무용 이메일</label>
+                    <input type="email" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label required">업무용 전화번호</label>
+                    <input type="tel" class="form-input" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" placeholder="02-123-4567" required>
+                </div>
+            </div>
+
+            <!-- 계정 정보 섹션 -->
+            <div class="form-section">
+                <h2 class="section-title">계정 정보</h2>
+                
+                <div class="form-group">
+                    <label class="form-label required">아이디</label>
+                    <input type="text" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label required">비밀번호</label>
+                    <input type="password" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label required">비밀번호 확인</label>
+                    <input type="password" class="form-input" required>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-button">회원가입</button>
+        </form>
+    </div>
+</body>
+</html>
