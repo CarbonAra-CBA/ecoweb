@@ -73,25 +73,66 @@
         .submit-button:hover {
             background-color: #006e41;
         }
+        .alert {
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 4px;
+        text-align: center;
+    }
+    
+    .alert-success {
+        background-color: #d1fae5;
+        color: #065f46;
+        border: 1px solid #059669;
+    }
+    
+    .alert-error {
+        background-color: #fee2e2;
+        color: #991b1b;
+            border: 1px solid #dc2626;
+        }
     </style>
 </head>
+<script>
+    document.getElementById('signupForm').addEventListener('submit', function(e) {
+        const password = document.querySelector('input[name="password"]').value;
+        const passwordConfirm = document.querySelector('input[name="password_confirm"]').value;
+        
+        if (password !== passwordConfirm) {
+            e.preventDefault();
+            alert('비밀번호가 일치하지 않습니다.');
+            return false;
+        }
+        // 비밀번호가 일치하면 form이 정상적으로 제출됨
+    });
+</script>
 <body>
     <div class="signup-container">
+        <!-- Flash 메시지 표시 영역 추가 -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
         <h1 style="text-align: center; margin-bottom: 40px;">기관 회원가입</h1>
         
-        <form id="signupForm">
+        <form id="signupForm" method="POST" action="{{ url_for('signup') }}">
             <!-- 기관 정보 섹션 -->
             <div class="form-section">
                 <h2 class="section-title">기관 정보</h2>
                 
                 <div class="form-group">
                     <label class="form-label required">기관명</label>
-                    <input type="text" class="form-input" required>
+                    <input type="text" name="institution_name" class="form-input" required>
                 </div>
-
+        
                 <div class="form-group">
                     <label class="form-label required">기관 유형</label>
-                    <select class="form-input" required>
+                    <select name="institution_type" class="form-input" required>
                         <option value="">선택해주세요</option>
                         <option value="central">중앙행정기관</option>
                         <option value="local">지방자치단체</option>
@@ -99,15 +140,10 @@
                         <option value="other">기타</option>
                     </select>
                 </div>
-
-                <div class="form-group">
-                    <label class="form-label required">사업자등록번호</label>
-                    <input type="text" class="form-input" pattern="\d{3}-\d{2}-\d{5}" placeholder="000-00-00000" required>
-                </div>
-
+        
                 <div class="form-group">
                     <label class="form-label required">대표 웹사이트 URL</label>
-                    <input type="url" class="form-input" required>
+                    <input type="url" name="institution_website_url" class="form-input" required>
                 </div>
             </div>
 
@@ -117,27 +153,27 @@
                 
                 <div class="form-group">
                     <label class="form-label required">이름</label>
-                    <input type="text" class="form-input" required>
+                    <input type="text" name ="name" class="form-input" required>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label required">부서명</label>
-                    <input type="text" class="form-input" required>
+                    <input type="text" name="department" class="form-input" required>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label required">직책</label>
-                    <input type="text" class="form-input" required>
+                    <input type="text" name="position" class="form-input" required>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label required">업무용 이메일</label>
-                    <input type="email" class="form-input" required>
+                    <input type="email" name="email" class="form-input" required>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label required">업무용 전화번호</label>
-                    <input type="tel" class="form-input" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" placeholder="02-123-4567" required>
+                    <input type="tel" name="phone" class="form-input" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" placeholder="02-123-4567" required>
                 </div>
             </div>
 
@@ -147,22 +183,22 @@
                 
                 <div class="form-group">
                     <label class="form-label required">아이디</label>
-                    <input type="text" class="form-input" required>
+                    <input type="text" name="username" class="form-input" required>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label required">비밀번호</label>
-                    <input type="password" class="form-input" required>
+                    <input type="password" name="password" class="form-input" required>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label required">비밀번호 확인</label>
-                    <input type="password" class="form-input" required>
+                    <input type="password" name="password_confirm" class="form-input" required>
                 </div>
             </div>
-
             <button type="submit" class="submit-button">회원가입</button>
         </form>
+
     </div>
 </body>
 </html>
