@@ -16,6 +16,11 @@ from flask import current_app, flash
 from app import db
 from werkzeug.security import generate_password_hash, check_password_hash  # check_password_hash 추가
 from datetime import datetime
+import re
+from app.Image_Classification import model_test
+from app.lighthouse import process_urls as proc_url
+import urllib.request
+
 def init_routes(app):
     @app.route('/', methods=['GET', 'POST'])
     def home():
@@ -32,6 +37,21 @@ def init_routes(app):
             print("view_data first: ", view_data)
             # 2) before(원본) 스크린샷
             capture_screenshot(url, 'app/static/screenshots/before.png', is_file=False)
+
+            # 이미지 분류
+            Image_paths = proc_url.get_report_imagepath()
+            image_dir_path = 'images'
+            if not os.path.exists(image_dir_path):
+                os.mkdir(image_dir_path)
+            for imageurl in Image_paths:
+                try:
+                    spliturl = re.split(r':|\/|\.', imageurl)
+                    filename = spliturl[-2] + '.' + spliturl[-1]
+                    destination = os.path.join(image_dir_path, filename)
+                    urllib.request.urlretrieve(imageurl, destination)
+                    model_test.predict_image(destination, filename, 'images/results')
+                except Exception as e:
+                    print(f"download error : {e}")
 
             # 3) LLAMA로부터 최적화된 코드 받기 (예시)
             try: 
