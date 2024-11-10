@@ -90,7 +90,7 @@ $ python run.py
 <!-- https://img.shields.io/badge/:badgeContent -->
 
 
-- 동작방식(로직 순서)/데이터 흐름(플로우차트)
+- 동작방식(로직 순서)/데이터 흐름
 <img width="800" src="https://github.com/magatia3113/edit-eco/blob/main/%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98%20%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%9D%B4%EB%AF%B8%EC%A7%80/%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90%EC%9D%B4%EB%AF%B8%EC%A7%80-%EA%B3%A0%EB%B3%91%EC%88%98.png?raw=true"/>
 <br>
 
