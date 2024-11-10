@@ -15,10 +15,10 @@
 
 ## Team Info
 
-|      고병수       |          허세진         |       한동규         | 이희수|                                                                                                               
-| :------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | 
-|   <img width="160px"  src="https://avatars.githubusercontent.com/u/107296751?v=4" />    |                      <img width="160px" src="" />    |                   <img width="160px" src=""/>   |
-|   [@eclipse1228](https://github.com/eclipse1228)   |    [@jelly1500](https://github.com/jelly1500)  | [@dongkyu20](https://github.com/dongkyu20)  | [@magatia3113](https://github.com/magatia3113) |
+|      고병수       |          허세진         |       한동규         | 이희수                                                                                                               
+| :---------------: | :----------------------: | :------------------: | :---------------------------------------------------------------------: | 
+| <img width="160px" src="https://avatars.githubusercontent.com/u/107296751?v=4" /> | <img width="160px" src="" /> | <img width="160px" src=""/> | <img width="160px" src="" /> |
+| [@eclipse1228](https://github.com/eclipse1228) | [@jelly1500](https://github.com/jelly1500) | [@dongkyu20](https://github.com/dongkyu20) | [@magatia3113](https://github.com/magatia3113) |
 | 동아대학교 컴퓨터공학과 3학년 | 동아대학교 컴퓨터공학과 3학년 | 동아대학교 컴퓨터공학과 3학년 | 동아대학교 컴퓨터공학과 4학년 |
 
 ## 프로젝트 소개 
@@ -66,7 +66,7 @@ $ python run.py
 ## 화면 구성
 | 메인 페이지  |  소개 페이지   |
 | :-------------------------------------------: | :------------: |
-|  <img width="329" src=""/> |  <img width="329" src=""/>|  
+|  <img width="329" src="https://github.com/magatia3113/edit-eco/blob/main/%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98%20%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%A1%B1.png?raw=true"/> |  <img width="329" src="" alt="제작중"/>|  
 | 강좌 소개 페이지   |  강의 영상 페이지   |  
 | <img width="329" src=""/>   |  <img width="329" src=""/>     |
 
@@ -87,7 +87,24 @@ $ python run.py
 
 
 ## 아키텍쳐
-https://img.shields.io/badge/:badgeContent
+<!-- https://img.shields.io/badge/:badgeContent -->
+
+
+- 동작방식(로직 순서)/데이터 흐름(플로우차트)
+<img width="800" src="https://github.com/magatia3113/edit-eco/blob/main/%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98%20%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%9D%B4%EB%AF%B8%EC%A7%80/%EC%95%84%EC%BC%80%ED%85%8D%EC%B3%90%ED%8E%98%EC%9D%B4%EC%A7%801.png?raw=true"/>
+<br>
+
+- 구성요소/시스템 구조
+<img width="800" src="https://github.com/magatia3113/edit-eco/blob/main/%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98%20%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%9D%B4%EB%AF%B8%EC%A7%80/%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90%ED%8E%98%EC%9D%B4%EC%A7%802.png?raw=true"/>
+<br>
+
+- 프로젝트 목표
+<img width="600" src="https://github.com/magatia3113/edit-eco/blob/main/%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98%20%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%9D%B4%EB%AF%B8%EC%A7%80/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%AA%A9%ED%91%9C%20-%20%EC%9D%B4%ED%9D%AC%EC%88%98.png?raw=true"/>
+
+
+
+
+
 
 
 ## 디렉토리 구조 
