@@ -91,17 +91,16 @@ $ python run.py
 
 
 - 동작방식(로직 순서)/데이터 흐름(플로우차트)
-<img width="800" src="https://github.com/magatia3113/edit-eco/blob/main/%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98%20%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%9D%B4%EB%AF%B8%EC%A7%80/%EC%95%84%EC%BC%80%ED%85%8D%EC%B3%90%ED%8E%98%EC%9D%B4%EC%A7%801.png?raw=true"/>
+<img width="800" src="https://github.com/magatia3113/edit-eco/blob/main/%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98%20%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%9D%B4%EB%AF%B8%EC%A7%80/%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90%EC%9D%B4%EB%AF%B8%EC%A7%80-%EA%B3%A0%EB%B3%91%EC%88%98.png?raw=true"/>
 <br>
 
-- 구성요소/시스템 구조
-<img width="800" src="https://github.com/magatia3113/edit-eco/blob/main/%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98%20%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%9D%B4%EB%AF%B8%EC%A7%80/%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90%ED%8E%98%EC%9D%B4%EC%A7%802.png?raw=true"/>
-<br>
 
 - 프로젝트 목표
 <img width="600" src="https://github.com/magatia3113/edit-eco/blob/main/%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98%20%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%9D%B4%EB%AF%B8%EC%A7%80/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%AA%A9%ED%91%9C%20-%20%EC%9D%B4%ED%9D%AC%EC%88%98.png?raw=true"/>
 
 
+- 사용자 뱃지 시스템 동작방식
+<img width="1000" src="https://github.com/magatia3113/edit-eco/blob/main/%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98%20%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%9D%B4%EB%AF%B8%EC%A7%80/%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20-%EB%B1%83%EC%A7%80%20.png?raw=true"/> 
 
 
 
