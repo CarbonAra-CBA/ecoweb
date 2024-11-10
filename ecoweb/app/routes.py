@@ -32,6 +32,9 @@ def init_routes(app):
             view_data = process_report(url,collection_resource,collection_traffic) # result 화면에서 사용할 웹사이트에 대한 트래픽 평가 결과
             
             print("view_data first: ", view_data)
+            # 만약, viewdata의 total_byte_weight이 0이라면 예외처리 (error.html 페이지로 리다이렉트)
+            if view_data['total_byte_weight'] == 0:
+                return redirect(url_for('error'))
             # 2) before(원본) 스크린샷
             capture_screenshot(url, 'app/static/screenshots/before.png', is_file=False)
 
@@ -244,3 +247,15 @@ def init_routes(app):
 
         except Exception as e:
             return jsonify({'error': str(e)}), 500
+    
+    @app.route('/badge')
+    def badge():
+        return render_template('badge.html')
+
+    @app.route('/error')
+    def error():
+        return render_template('error.html')
+
+    # @app.route('/newresult')
+    # def newresult():
+    #     return render_template('newresult.html')
