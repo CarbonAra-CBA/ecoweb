@@ -1,7 +1,7 @@
 function drawInstitutionChart(currentMB, institutionType) {
     const margin = {top: 40, right: 120, bottom: 40, left: 60};
-    const width = 800 - margin.left - margin.right;
-    const height = 400 - margin.top - margin.bottom;
+    const width = 1600 - margin.left - margin.right;
+    const height = 500 - margin.top - margin.bottom;
 
     const colors = ['#ff0000', '#0000ff', '#00ff00', '#800080'];
     
@@ -108,7 +108,7 @@ function drawInstitutionChart(currentMB, institutionType) {
         // 범례 추가
         const legendItems = [
             {color: "red", text: `현재 사이트 (${currentMB.toFixed(2)}MB)`, dash: "0"},
-            {color: "black", text: "4.7MB 기준선", dash: "5,5"}
+            {color: "black", text: "대한민국 평균선(4.7MB)", dash: "5,5"}
         ];
 
         const legend = svg.append("g")
