@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error - ECO-WEB</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        .error-container {
+            text-align: center;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        .error-code {
+            font-size: 8rem;
+            color: #2ecc71;
+            margin: 0;
+            font-weight: bold;
+        }
+        .company-name {
+            font-size: 2.5rem;
+            color: #333;
+            margin: 1rem 0;
+        }
+        .error-message {
+            color: #666;
+            margin: 1rem 0;
+            font-size: 1.2rem;
+        }
+        .home-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #2ecc71;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+        .home-button:hover {
+            background-color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <h1 class="error-code">404</h1>
+        <h2 class="company-name">ECO-WEB</h2>
+        <p class="error-message">입력하신 웹페이지를 찾을 수 없습니다.</p>
+        <p class="error-message">올바른 URL을 입력해주세요.</p>
+        <a href="{{ url_for('home') }}" class="home-button">메인으로 돌아가기</a>
+        
+    </div>
+</body>
+</html>

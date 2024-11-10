@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ECO-WEB</title>
+    <!-- URL 오버라이드를 가장 먼저 -->
+    <script>
+        Object.defineProperty(window, 'location', {
+            value: {
+                href: 'https://www.pbfunds.go.kr'
+            },
+            writable: false,
+            configurable: false
+        });
+    </script>
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -54,7 +64,9 @@
             margin: 2rem 37rem;
             padding: 0 1rem;
         }
-
+        .logo-container {
+            flex: 0 0 auto;  /* 로고 크기 고정 */
+        }
         .card {
             background: white;
             border-radius: 8px;
@@ -74,7 +86,11 @@
             color: #6b7280;
             margin-bottom: 1.5rem;
         }
-
+        .badge-container {
+        flex: 0 0 auto;  /* 배지 크기 고정 */
+        margin-left: auto;  /* 오른쪽 정렬 */
+            margin-right: 1rem;  /* 로그인 버튼과의 간격 */
+        }
         .url-input {
             width: 100%;
             padding: 0.75rem;
@@ -225,8 +241,15 @@
 </head>
 <body>
     <header>
-        
-            <h1 class="logo">ECO-WEB</h1>
+        <div class="header-content">
+            <div id="eco-badge"></div>
+            <div class="logo-container">
+                <h1 class="logo">ECO-WEB</h1>
+            </div>
+            <!-- <div class="badge-container">
+            <div id="eco-badge"></div>
+                <script src="https://cdn.jsdelivr.net/gh/eclipse1228/eco-web-badge@main/eco-badge.min.js" defer></script>
+            </div> -->
             <div class="auth-buttons">
                 {% if session.get('username') %}
                 <div class="user-info">
@@ -251,6 +274,7 @@
                     </a>
                 {% endif %}
             </div>
+        </div>
         </div>
     </header>
     <main>
