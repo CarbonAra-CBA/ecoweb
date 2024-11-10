@@ -87,6 +87,7 @@ $ python run.py
 
 
 ## 아키텍쳐
+https://img.shields.io/badge/:badgeContent
 
 
 ## 디렉토리 구조 
