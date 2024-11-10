@@ -20,6 +20,7 @@ import rjsmin
 
 from concurrent.futures import ThreadPoolExecutor
 
+# 현재 컴퓨터 환경에서의 절대 경로로 수정 필요!
 load_dotenv("C:/Users/windowadmin1.WIN-TAQQ3RO5V1L.000/Desktop/ecoweb/ecoweb/app/.env")
 embed = OllamaEmbeddings(
     model="llama3.2:latest"
@@ -214,18 +215,18 @@ def guideline_summarize(answer_list):
         [{number : 1, title : ~ , isFellow : True of False}, {}, ...]
         """
     all_guidelines = [
-        {"number": 1, "title": "Whenever possible, avoid using .png format images and use .svg format images instead."},
-        {"number": 2, "title": "Minimize HTML, CSS, and JavaScript code."},
-        {"number": 3, "title": "Use dynamic imports when loading modules."},
-        {"number": 4, "title": "Split code whenever possible."},
-        {"number": 5, "title": "Implement lazy loading for non-essential or non-visible parts of the webpage."},
-        {"number": 6, "title": "The alt attribute should contain a brief description conveying essential information presented by the image."},
-        {"number": 7, "title": "Avoid using flag arguments. If you see a flag argument, consider splitting the function into two."},
-        {"number": 8, "title": "Remove duplicate title attributes and replace div with more semantic tags."},
-        {"number": 9, "title": "CSS files should be split based on media queries."},
-        {"number": 10, "title": "Use required, minlength, maxlength, min, max, and type attributes for form validation."},
-        {"number": 11, "title": "Use the Page Visibility API to check document visibility."},
-        {"number": 12, "title": "Use web APIs instead of directly writing native functions and features."},
+        {"number": '1', "title": "Whenever possible, avoid using .png format images and use .svg format images instead."},
+        {"number": '2', "title": "Minimize HTML, CSS, and JavaScript code."},
+        {"number": '3', "title": "Use dynamic imports when loading modules."},
+        {"number": '4', "title": "Split code whenever possible."},
+        {"number": '5', "title": "Implement lazy loading for non-essential or non-visible parts of the webpage."},
+        {"number": '6', "title": "The alt attribute should contain a brief description conveying essential information presented by the image."},
+        {"number": '7', "title": "Avoid using flag arguments. If you see a flag argument, consider splitting the function into two."},
+        {"number": '8', "title": "Remove duplicate title attributes and replace div with more semantic tags."},
+        {"number": '9', "title": "CSS files should be split based on media queries."},
+        {"number": '10', "title": "Use required, minlength, maxlength, min, max, and type attributes for form validation."},
+        {"number": '11', "title": "Use the Page Visibility API to check document visibility."},
+        {"number": '12', "title": "Use web APIs instead of directly writing native functions and features."},
     ]
     guideline_info_list = []
     for answer in answer_list:
@@ -250,13 +251,10 @@ def guideline_summarize(answer_list):
                 }
                 guideline_info_list.append(guideline_info)
 
+    # all_guidelines 요소 중, guideline_info_list에 없는 요소만 추가
+    existing_numbers = {item["number"] for item in guideline_info_list}  # 이미 있는 번호 집합
     for g in all_guidelines:
-        is_fellow = True
-        for nfg in guideline_info_list:
-            if g["number"] == nfg["number"]:
-                is_fellow = False
-                break
-        if is_fellow:
+        if g["number"] not in existing_numbers:  # 없는 번호만 추가
             guideline_info_list.append(
                 {
                     "number": g["number"],
@@ -265,6 +263,7 @@ def guideline_summarize(answer_list):
                     "isFellow": "True"
                 }
             )
+        print(g["number"])
 
     return guideline_info_list
 
