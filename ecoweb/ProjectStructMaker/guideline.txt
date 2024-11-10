@@ -1,0 +1,122 @@
+sustainable webdesign guideline
+- Guideline 1: Whenever possible, avoid using .png format images and use .svg format images instead.
+- Explanation: The size difference between png and svgs is approximately 5 to 10 times. Replacing images with svg format can reduce resource size, significantly lowering carbon emissions during website loading. Simple logo images can be replaced with svg.
+- Example: Images that are easy to convert to SVG include those made of basic geometric shapes such as lines, curves, circles, and rectangles. Simple shapes, rather than complex forms, are efficient for vector representation. Images with distinct boundaries and outlines convert well to SVG, as these are easy to define in vector coordinates. Images that use limited color palettes are also well-suited for SVG, as each color can be defined as an independent area in vector format, making the file simpler. Solid fills or gradient-filled areas work well in SVG, and SVG is ideal for icons and logos containing text, as text in SVG retains clarity without size and resolution limitations. Repetitive patterns or icons can also be effectively represented in SVG, efficiently stored through paths in SVG.
+sustainable webdesign guideline
+- Guideline 2: Minimize HTML, CSS, and JavaScript code.
+- Explanation: Reducing code length decreases file size, which in turn reduces the power consumption used during webpage loading. Code minimization can include removing code comments, \n, \t, spaces, unused code, and shortening variable and function names.
+- Example:
+- Unminimized HTML Code:
+<!-- gnb-->
+				<div class="gnb_box">
+					<div class="gnb_wrap">
+						<ul id="gnb">
+
+
+								<li id="depth1_01">
+									<a class="depth1_menu" href="/home/web/index.do?menuId=10110" >정보공개</a>
+									<div class="depth_box" >
+										<div class="center_sec">
+											<ul class="depth_menu">
+- Minimized HTML Code:
+<div class="gnb_box">
+<div class="gnb_wrap">
+<ul id="gnb">
+<li id="depth1_01">
+<a class="depth1_menu" href="/home/web/index.do?menuId=10110">정보공개</a>
+<div class="depth_box">
+<div class="center_sec">
+<ul class="depth_menu">
+sustainable webdesign guideline
+- Guideline 3: Use dynamic imports when loading modules.
+- Explanation: Dynamic imports in web development allow specific modules or files to be loaded asynchronously when the user needs them. This helps reduce initial load time and optimizes performance by loading code only when required. Additionally, modules can be loaded conditionally or as needed to prevent unnecessary resource usage.
+- Examples :
+- Page Component Loading via Routing:
+example code : import { BrowserRouter as Router, Route } from 'react-router-dom';const Home = React.lazy(() => import('./Home'));const About = React.lazy(() => import('./About'));function App() {  return (<Router><React.Suspense fallback={<div>Loading...</div>}><Route path="/" element={<Home />}/><Route path="/about" element={<About />}/></React.Suspense></Router>);}
+- Event-Based Module Loading:
+example code : document.getElementById('loadButton').addEventListener('click', async () => {const { showNotification } = await import('./notification.js');showNotification('Welcome!');});
+- Conditional Module Loading:
+example code : async function loadAnalytics() {if (process.env.NODE_ENV === 'production') {const { initAnalytics } = await import('./analytics.js');initAnalytics();}}loadAnalytics();
+sustainable webdesign guideline
+- Guideline 4: Split code whenever possible.
+- Explanation: Code splitting is the practice of dividing code (including both the application's own code and third-party dependencies) into separate bundles that can be loaded independently. This allows the application to load only the code needed at a specific time, and other bundles can be loaded as needed.
+- Examples :
+- Splitting Code by Page via Routing: For instance, if all pages’ code is loaded at once every time a user visits a page, the initial loading time can be very long. In React, React.lazy and Suspense can be used to split code by route.
+- Unsplitted Code (Loading All Pages at Once):
+example code : import Home from './pages/Home';import About from './pages/About';import Contact from './pages/Contact';function App() {return (<div><Route path="/" component={Home} /><Route path="/about" component={About} /><Route path="/contact" component={Contact} /></div>);}export default App;
+- Split Code (Dynamically Importing Required Components by Page):
+example code : import React, { Suspense, lazy } from 'react';import { BrowserRouter as Router, Route } from 'react-router-dom';const Home = lazy(() => import('./pages/Home'));const About = lazy(() => import('./pages/About'));const Contact = lazy(() => import('./pages/Contact'));function App() {return (<Router> <Suspense fallback={<div>Loading...</div>}><Route path="/" element={<Home />} /><Route path="/about" element={<About />} /> <Route path="/contact" element={<Contact />} /></Suspense></Router>);}export default App;
+- When using a large library or feature conditionally: For instance, if a heavy library like chart.js is not used across the entire application but only on specific pages, code splitting can be applied to load the library only on those pages where it’s needed.
+- Unsplitted Code (Loading chart.js on all pages):
+example code : import Chart from 'chart.js';function Dashboard() {return (<div><Chart data={data} options={options} /></div>);}export default Dashboard;
+- Split Code (Loading chart.js only when needed):
+example code : import React, { useEffect, useState } from 'react';function Dashboard() {const [Chart, setChart] = useState(null);useEffect(() => {async function loadChart() {const { default: ChartJS } = await import('chart.js');setChart(() => ChartJS);}loadChart();}, []);return (<div>{Chart ? <Chart data={data} options={options} /> : <div>Loading Chart...</div>}</div>);}export default Dashboard;
+sustainable webdesign guideline
+- Guideline 5: Implement lazy loading for non-essential or non-visible parts of the webpage.
+- Explanation: Lazy loading is a strategy where non-essential resources are identified and only loaded when needed, rather than loading them before required resources. By using lazy loading, additional carbon emissions generated from loading unnecessary resources can be reduced.
+- Examples :
+- Image Lazy Loading: Only load images that are visible on the screen when the user scrolls, and load others only when the user scrolls to that area. This approach reduces the initial loading time.
+example code : <img src="placeholder.jpg" data-src="real-image.jpg" class="lazy-load" alt="Example Image" /><script>const lazyImages = document.querySelectorAll('img.lazy-load');const observer = new IntersectionObserver((entries, observer) => {entries.forEach(entry => {if (entry.isIntersecting) {const img = entry.target;img.src = img.getAttribute('data-src'); img.classList.remove('lazy-load');observer.unobserve(img);}});});lazyImages.forEach(image => observer.observe(image));</script>
+- React Component Lazy Loading: In React, you can use React.lazy and Suspense to lazy load components. This allows you to load specific components only when they are needed, improving initial loading speed.
+example code : import React, { Suspense } from 'react';const HeavyComponent = React.lazy(() => import('./HeavyComponent'));function App() {return (<div><h1>Welcome to My App</h1><Suspense fallback={<div>Loading component...</div>}><HeavyComponent />  {/* HeavyComponent가 필요할 때만 로드 */}</Suspense></div>);}export default App;
+- Infinite Scroll Lazy Loading: For large data like posts, product lists, and comments, load only as much data as needed while scrolling. As the user scrolls down, additional data is loaded incrementally.
+example code : let currentPage = 1;async function loadMoreData() {const response = await fetch(`/api/data?page=${currentPage}`);const newData = await response.json();renderData(newData);currentPage++;}window.addEventListener('scroll', () => {if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 500) {loadMoreData();}});
+- Lazy Loading for Videos: On pages with a lot of video content, improving initial page load performance can be achieved by loading videos only when the user chooses to play them.
+example code : <video controls preload="none" poster="thumbnail.jpg"><source src="video.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+sustainable webdesign guideline
+- Guideline 6: The alt attribute should contain a brief description conveying essential information presented by the image.
+- Explanation: The alt attribute should succinctly describe the core information of the image to convey meaning when the image is not visible or is accessed through accessibility tools. It should focus solely on essential information to enhance accessibility and user experience.
+- Examples :
+- Product image: Concisely convey the color and type needed for the user to understand the product.
+example code : <img src="red-shoes.jpg" alt="빨간색 운동화" />
+- Team member profile photo: Describe the person’s role and name to reflect the purpose of the profile photo.
+example code : <img src="jane-doe.jpg" alt="팀 리더 제인 도" />
+- Site logo: Since the logo represents the company name, use a short description with the name.
+example code : <img src="company-logo.png" alt="AwesomeTech 로고" />
+- Decorative image: For purely decorative images, use an empty alt attribute so that screen readers ignore it.
+example code : <img src="decorative-pattern.jpg" alt="" />
+- Button icon: If an icon represents a specific function, describe that function concisely to convey the button's purpose to users.
+example code : <img src="download-icon.png" alt="다운로드" />
+sustainable webdesign guideline
+- Guideline 7: Avoid using flag arguments. If you see a flag argument, consider splitting the function into two.
+- Explanation: Avoiding flag arguments is essential to improve code readability and maintainability. A flag argument is a boolean value (e.g., true or false) used when calling a function to specify certain behavior. This makes the function perform multiple roles, increasing complexity and potential confusion. In web development, such functions can be especially problematic, as they make the code more complex and prone to unexpected errors. By avoiding flag arguments and separating functions by their roles, writing test cases becomes easier, and unexpected scenarios are reduced.
+- Examples:
+- Code example using a flag argument: Let’s say there is a function that displays different messages depending on whether a user is an administrator, using the isAdmin flag.
+example code : function displayWelcomeMessage(user, isAdmin) {if (isAdmin) {console.log(`Welcome Admin, ${user.name}!`);} else {console.log(`Welcome, ${user.name}!`);}}
+This function performs different roles based on theisAdminflag. From the function name alone, it is not clear thatdisplayWelcomeMessage` handles both regular user and admin messages.
+- Removing the flag argument and splitting functions: The above code can be divided into two functions, each with a clear purpose.
+example code : function displayAdminWelcome(user) {console.log(`Welcome Admin, ${user.name}!`);}function displayUserWelcome(user) {console.log(`Welcome, ${user.name}!`);}
+Now, each function performs a single role, and the function name clearly conveys its purpose when called.
+sustainable webdesign guideline
+- Guideline 8: Remove duplicate title attributes and replace div with more semantic tags.
+- Explanation: Removing duplicate title attributes and replacing div with more semantic tags is important for enhancing accessibility, SEO, and code readability. Following SEO best practices can reduce the frequency of users searching for your website, which helps prevent unnecessary energy consumption.
+- Examples :
+- Incorrect example (using duplicate title attributes and div)
+example code : <div title="소개 섹션"><div title="소개 섹션"><h2>About Us</h2><p>We provide quality services to our clients.</p></div></div>
+Problem: The duplicate title attributes can confuse screen reader users. Additionally, using div tags without purpose does not clarify the meaning of the page content.
+- Improved example (removing duplicate titles and using semantic tags)
+example code : <section aria-labelledby="about-title"><h2 id="about-title">About Us</h2><p>We provide quality services to our clients.</p></section>
+The section tag conveys the meaning of the introduction section, and the aria-labelledby attribute enhances accessibility. By removing duplicate title attributes and connecting with id and aria-labelledby, screen readers can clearly communicate the content to users.
+sustainable webdesign guideline
+- Guideline 9: CSS files should be split based on media queries.
+- Explanation: Splitting CSS files based on media queries is a useful practice for optimizing web performance and making maintenance easier. By splitting CSS files according to media queries, only the necessary styles for each device or screen size are loaded, eliminating the need to download unnecessary CSS files. Through media queries in HTML, each file can be loaded according to specific conditions, so that mobile devices do not load desktop styles, and desktops do not load mobile styles.
+- Example :
+- Loading CSS files based on media queries in HTML
+example code : <link rel="stylesheet" href="styles-base.css"><link rel="stylesheet" href="styles-mobile.css" media="(max-width: 768px)"><link rel="stylesheet" href="styles-desktop.css" media="(min-width: 769px)">
+styles-base.css defines styles common across all devices, while styles-mobile.css and styles-desktop.css contain styles optimized for each screen size.
+sustainable webdesign guideline
+- Guideline 10: Use required, minlength, maxlength, min, max, and type attributes for form validation.
+- Explanation: Using attributes like required, minlength, maxlength, min, max, and type in HTML forms is essential for automating simple client-side data validation, reducing user input errors, and enhancing the user experience. By using these basic attributes, input conditions can be set without the need for JavaScript. Although validation should still occur on the server side, client-side validation can quickly catch initial input errors, reducing the need for server requests.
+- Example :
+example code : <form action="/submit" method="post"><!-- name: required, max 50 words --><label for="name">Name:</label><input type="text" id="name" name="name" required maxlength="50"><!-- email: required, email format --><label for="email">Email:</label><input type="email" id="email" name="email" required><!-- password: required, more than 8 words, lower than 20 words --><label for="password">Password:</label><input type="password" id="password" name="password" required minlength="8" maxlength="20"><!-- age: required, numeric format, min 18, max 120 words --><label for="age">Age:</label><input type="number" id="age" name="age" required min="18" max="120"><button type="submit">Submit</button></form>
+sustainable webdesign guideline
+- Guideline 11: Use the Page Visibility API to check document visibility.
+- Explanation: The Page Visibility API allows you to detect whether a webpage is currently visible on the user’s screen. This enables resource conservation and user experience optimization when users leave the page or switch tabs.
+- Example :
+example code : document.addEventListener('visibilitychange', function() {const video = document.querySelector('video'); if (document.visibilityState === 'hidden') {video.pause();} else if (document.visibilityState === 'visible') { video.play();  }});
+sustainable webdesign guideline
+- Guideline 12: Use web APIs instead of directly writing native functions and features.
+- Explanation: In web development, using Web APIs instead of directly writing native functions provides benefits in efficiency, performance optimization, and compatibility. Web APIs allow quick and easy access to core functionalities provided by the browser, ensuring compatibility across various browsers.
+- Example :
+- Use requestAnimationFrame instead of setTimeout
+- Use the fetch API instead of manually writing Ajax requests

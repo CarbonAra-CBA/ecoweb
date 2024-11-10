@@ -1,11 +1,7 @@
-def ThirdPartyIgnore(url, url_list):
+def ThirdPartyIgnore(url_list):
     # 자주 사용되는 서드 파티 라이브러리 목록 정의
     third_party_resources = [
-        {"name": "jQuery", "file": "jquery", "cdn": "https://code.jquery.com/jquery-"},
-        {"name": "Chart.js", "file": "chart", "cdn": "https://cdn.jsdelivr.net/npm/chart.js"},
-        {"name": "Bootstrap CSS", "file": "bootstrap", "cdn": "https://stackpath.bootstrapcdn.com/bootstrap/"},
-        {"name": "Font Awesome", "file": "font-awesome",
-         "cdn": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/"},
+        "jquery", "swiper", "react", "React", "Angular", "Vue", "D3", "Axios", "Lodash", "Moment", "animate", "slick"
         # 필요에 따라 추가적인 서드 파티 리소스를 여기에 추가
     ]
 
@@ -13,21 +9,11 @@ def ThirdPartyIgnore(url, url_list):
     non_third_party_resources = []
 
     for link in url_list:
-        # link가 딕셔너리 형태일 때, 'url' 키가 있는지 확인
-        link_url = link.get("url") if isinstance(link, dict) else link
+        # "url" 키에서 URL을 가져옴
+        url = link.get("url", "")
 
-        # 서드 파티 리소스 여부 플래그
-        is_third_party = False
-        link_file = link_url.replace(url, '')  # 주어진 기본 url을 제거하여 상대 경로로 만듦
-
-        # CDN URL 또는 파일명을 기준으로 서드 파티 리소스 여부 확인
-        for resource in third_party_resources:
-            if resource["file"] in link_file or resource["cdn"] in link_url:
-                is_third_party = True
-                break
-
-        # 서드 파티 리소스가 아닌 경우 리스트에 추가
-        if not is_third_party:
+        # 서드 파티 리소스가 포함되어 있지 않다면 리스트에 추가
+        if not any(resource.lower() in url.lower() for resource in third_party_resources):
             non_third_party_resources.append(link)
 
     return non_third_party_resources

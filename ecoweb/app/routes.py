@@ -18,6 +18,12 @@ from werkzeug.security import generate_password_hash, check_password_hash  # che
 from datetime import datetime
 from flask import jsonify
 
+from ecoweb.ProjectStructMaker.DirectoryMaker import directory_maker
+from ecoweb.ProjectStructMaker.guideline_report import create_guideline_report, guideline_summarize
+from dotenv import load_dotenv
+
+load_dotenv()
+
 def init_routes(app):
     @app.route('/', methods=['GET', 'POST'])
     def home():
@@ -92,6 +98,9 @@ def init_routes(app):
         view_data_str = request.args.get('view_data')
         grade_s = session.get('grade')
         url_s = session.get('url')
+
+        collection_traffic = db.db.lighthouse_traffic
+        collection_resource = db.db.lighthouse_resource
         try:
             # view_data가 URL 파라미터로 전달된 경우
             if view_data_str:
@@ -126,7 +135,15 @@ def init_routes(app):
                 institution_type = "공공기관"  # 기본값 설정
                 print(f"Institution type not found for URL: {url}")
             session['institution_type'] = institution_type
-            
+
+            # 가이드라인 분석
+            root_path = directory_maker(url=url_s, collection_traffic=collection_traffic,
+                                        collection_resource=collection_resource)
+            print("directory make success. root path : ", root_path)
+            answer_list = create_guideline_report(project_root_path=root_path)
+            guideline_list = guideline_summarize(answer_list=answer_list)
+            print(guideline_list)
+
             return render_template('result.html', 
                                 url=url_s, 
                                 grade=grade_s,
