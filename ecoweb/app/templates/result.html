@@ -3,94 +3,320 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>트래픽 등급 결과</title>
+    <title>Document</title>
+    <title>ECO-WEB 결과</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script src="https://d3js.org/d3.v7.min.js"></script>
+
+</head>
+<body>
     <style>
-        /* .institution-chart-container {
+        body {
+            font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+        }
+        
+        .container {
+            max-width: 1578px;
+        }
+        /* 헤더 스타일 */
+        header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        padding: 1rem 0;  /* 좌우 패딩 제거, 상하 패딩만 유지 */
+        z-index: 1000;
+    }
+        .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0;  /* 패딩 제거 */
+        max-width: 100%;  /* 최대 너비를 100%로 설정 */
+        margin: 0;  /* 마진 제거 */
+    }
+
+        /* 사이드바 스타일 */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 250px;
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            padding: 20px;
-            margin: 20px 0;
-        } */
-        body{
-            font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            padding-top: 80px; /* 헤더 높이만큼 여백 */
+            z-index: 100;
         }
-        #institution-chart {
-            width: 800px;
-            height: 400px;
+    
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
-        .eco-badge {
-            display: inline-flex;
+        .sidebar-menu i {
+        margin-right: 12px;
+        font-size: 2.2rem;
+        color: #00824c;
+    }
+        .sidebar-menu li {
+            margin: 8px 0;
+        }
+    
+        .sidebar-menu a {
+            display: flex;
+            font-size: 1.2rem;
             align-items: center;
-            background: #1e1e1e;  /* 다크 테마 배경 */
-            border-radius: 4px;
-            padding: 8px;
-            color: white;
-            font-family: Arial, sans-serif;
-            gap: 8px;  /* 요소들 사이 간격 */
-        }
-
-        .eco-badge .carbon-amount {
-            background: #00ff9d;  /* 민트색 배경 */
-            color: #1e1e1e;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-weight: bold;
-        }
-
-        .eco-badge .badge-text {
+            padding: 12px 24px;
+            color: #1a1a1a;
+            text-decoration: none;
+            transition: all 0.3s ease;
             font-weight: 500;
         }
-
-        .badge-container {
-            text-align: center;
-            margin: 20px 0;
+        
+        .sidebar-menu a:hover {
+            background: #f8f9fa;
+            color: #00824c;
         }
-
-        .badge-subtitle {
-            color: #666;
-            font-size: 0.9em;
-            margin-top: 8px;
+    
+        .sidebar-menu i {
+            margin-right: 12px;
+            font-size: 1.2rem;
+            color: #00824c;
         }
-        .carbon-metric {
-            text-align: center;
-            margin: 20px 0;
+    
+        /* 메인 컨텐츠 영역 조정 */
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
         }
-        .carbon-icon {
-            font-size: 2em;
-            margin-bottom: 10px;
-        }
-        .navbar .container {
-            display: flex;
-            justify-content: center;
-            max-width: 800px;  /* 컨테이너 폭 제한 */
-        }
-
-    .result-card {
-        background-color: #00824c; 
-        border-radius: 30px;
-        padding: 40px;
-        margin-top: 50px;
-    }
-    .grade-circle {
-        width: 300px;
-        height: 300px;
-        background-color: #ff0000;  /* F 등급은 빨간색 */
-        border-radius: 50%;
+    
+        .logo-container {
         display: flex;
         align-items: center;
-        justify-content: center;
-        font-size: 148px;
-        color: white;
-        margin-bottom: 20px;
+        gap: 8px;
+        padding-left: 20px;  /* 로고에만 왼쪽 패딩 적용 */
     }
-    .grade-bar {
-        height: 30px;
-        background: linear-gradient(to right, 
+    
+        .logo-leaf {
+            color: #00824c;
+            font-size: 1.8rem;
+        }
+    
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00824c;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-leaf {
+            color: #00824c;
+            font-size: 1.8rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00824c;
+            text-decoration: none;
+        }
+
+        .auth-buttons {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding-right: 40px;  /* 오른쪽 여백 추가 */
+    }
+
+        .auth-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: inherit;
+            font-size: 0.9rem;
+        }
+        
+    .user-info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .user-details {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .user-institution,
+    .user-department,
+    .user-name {
+        color: #666;
+        font-size: 0.9rem;
+    }
+        /* 사이드바 스타일 */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 250px;
+            background: white;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+
+        /* 메인 컨텐츠 영역 조정 */
+        .main-content {
+            margin-left: 250px;
+            margin-top: 60px; /* 헤더 높이만큼 여백 */
+            padding: 20px;
+        }
+        
+
+        .content-card {
+        background: white;
+        border-radius: 12px;
+        padding: 24px;
+        margin-bottom: 24px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    
+    .analysis-wrapper {
+        margin-bottom: 30px;
+    }
+    .resource-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .resource-item {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .resource-item h4 {
+        color: #333;
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+    }
+
+    .resource-item p {
+        color: #666;
+        margin: 5px 0;
+        font-size: 1.1rem;
+    }
+
+    .optimization-items {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+        margin-top: 20px;
+    }
+
+    .optimization-item {
+        background: #f8f9fa;
+        padding: 16px;
+        border-radius: 8px;
+    }
+    .grade-circle {
+    width: 216px;
+    height: 216px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 72px;
+    color: white;
+    flex-shrink: 0;
+}
+
+    /* 등급별 색상 클래스 */
+    .grade-A-plus {
+        background-color: #00ffbb;
+    }
+    .grade-A {
+        background-color: #00ff00;
+    }
+    .grade-B {
+        background-color: #ffff00;
+    }
+    .grade-C {
+        background-color: #ffa500;
+    }
+    .grade-D {
+        background-color: #ff6b00;
+    }
+    .grade-F {
+        background-color: #ff0000;
+    }
+    .result-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 30px;
+        margin-top: 59px;
+        margin-inline: 24px;
+    }
+    .result-info {
+        flex-grow: 1;
+    }
+    .result-text {
+        font-size: 27px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .result-details p {
+        font-size: 25px;
+        margin: 10px 0;
+        color: #444;
+        line-height: 1.4;
+    }
+
+    .website-url {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 15px;
+    }
+    .carbon-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.metric-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.grade-bar {
+    position: relative;
+    height: 40px;
+    background: linear-gradient(to right, 
             #00ffbb,  /* A+ */
             #00ff00,  /* A */
             #ffff00,  /* B */
@@ -98,52 +324,24 @@
             #ff6b00,  /* D */
             #ff0000   /* F */
         );
-        border-radius: 15px;
-        position: relative;
-        margin: 30px 0;
+    border-radius: 20px;
+        margin: 20px 0;
     }
-    .global-average {
-        position: absolute;
-        top: -20px;
-        left: 63%;
-        color: #00ffbb;
-    }
-    .earth-icon {
-        position: absolute;
-        top: -4px;
-        left: 60%;
-        font-size: 24px;
-    }
-    .grade-marker {
-        position: absolute;
-        top: -6px;
-        width: 40px;
-        height: 40px;
-        background: white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        transition: left 0.5s ease;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-    .copy-url-btn {
-        background-color: #00ffbb;
-        color: #0a0054;
-        border: none;
-        border-radius: 10px;
-        padding: 10px 20px;
-        float: right;
-        cursor: pointer;
-    }
-        .comparison-image {
-        max-width: 100%;
-        height: auto;
-        width: 400px;  /* 원하는 크기로 조절 가능 */
-    }
+    .footer-content {
+    /* max-width: 1200px; */
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
 
-    .eco-badge.light {
+
+.footer-text {
+    margin: 5px 0;
+    color: #666;
+}
+
+
+.eco-badge.light {
         background: white;
         border: 1px solid #ddd;
         color: #1e1e1e;
@@ -214,185 +412,339 @@
         margin-top: 20px;
         transition: all 0.3s ease;
     }
-
     .get-badge-btn:hover {
         background-color: #00e6a8;
         transform: translateY(-1px);
     }
-</style>
+    .grade-marker {
+        position: absolute;
+        top: 0px;
+        width: 40px;
+        height: 40px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        transition: left 0.5s ease;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .earth-icon {
+        position: absolute;
+        top: -2px;
+        left: 60%;
+        font-size: 31px;
+    }
+    .global-average {
+        position: absolute;
+        top: -24px;
+        left: 63%;
+        color: 4cc2a5;
+    }
+    .metric-icon { 
+        font-size: 50px;
+    }
+    .col-md-6 {
+        /* padding: 0 15px; */
+        /* width: 500px; */
+    }
+    .charts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;  /* 두 개의 동일한 너비의 열 */
+    gap: 5px;  /* 그리드 아이템 사이의 간격 */
+    margin-bottom: 30px;
+}
+
+.chart-item {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+
+}
+
+/* 반응형 레이아웃을 위한 미디어 쿼리 */
+@media (max-width: 1200px) {
+    .charts-grid {
+        grid-template-columns: 1fr;  /* 화면이 작아지면 한 열로 변경 */
+    }
+}
+
+/* 그래프 크기 조정을 위한 스타일 */
+#resource-donut, #histogram {
+    width: 700px;
+    height: 100%;
+}
+
     </style>
-</head>
-<body>
-    <!-- 새로운 네비게이션 바 추가 -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="/">Eco-Website</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">HOME</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/faq">FAQ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        {% if not session['user'] %}
-                        <a class="nav-link" href="/login">Login</a>
-                        {% endif %}
-                        {% if session['user'] %}
-                        <a class="nav-link" href="/logout">Logout</a>
-                        {% endif %}
-                    </li>
-                </ul>
+    
+    <!-- 헤더 수정 -->
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <i class="fas fa-leaf logo-leaf"></i>
+                <a href="/" class="logo">ECO-WEB</a>
+            </div>
+            <div class="auth-buttons">
+                {% if session.get('username') %}
+                <div class="user-info">
+                    <div class="user-details">
+                        <span class="user-institution">{{ session.get('institution') }}</span>
+                        <span class="user-department">{{ session.get('department') }} 부서</span>
+                        <span class="user-name">{{ session.get('username') }} 님</span>
+                    </div>
+                    <a href="{{ url_for('logout') }}" class="auth-btn logout-btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        로그아웃
+                    </a>
+                </div>
+                {% else %}
+                <a href="{{ url_for('login') }}" class="auth-btn login-btn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    로그인
+                </a>
+                <a href="{{ url_for('signup') }}" class="auth-btn signup-btn">
+                    <i class="fas fa-user-plus"></i>
+                    회원가입
+                </a>
+                {% endif %}
             </div>
         </div>
-    </nav>
-    <div class="container">
-        <div class="row justify-content-center mt-5">
-            <div class="col-md-8">
-                
-                <div class="result-card" style="color: white;">
-                    <p style="font-size: 19px;">측정한 웹사이트: {{url}}</p>
+    </header>
+    
+    <!-- 사이드바 추가 -->
+    <nav class="sidebar">
+        <ul class="sidebar-menu">
+            <li>
+                <a href="#carbon-emission">
+                    <i class="fas fa-leaf"></i>
+                    탄소배출량
+                </a>
+            </li>
+            <li>
+                <a href="#statistics">
+                    <i class="fas fa-chart-bar"></i>
+                    공공기관 통계 현황
                     
-                    <div class="result-header" style="display: flex; align-items: flex-start; gap: 30px;">
-                        <div class="grade-circle" id="grade", class="text-center">{{grade}}</div>
-                        <!-- <h3 id="grade" class="text-center">등급: {{ grade }}</h3> -->
+                </a>
+            </li>
+            <li>
+                <a href="#ai-solution">
+                    <i class="fas fa-robot"></i>
+                    AI 솔루션
+                </a>
+            </li>
+            <li>
+                <a href="#mypage">
+                    <i class="fas fa-user"></i>
+                    마이페이지
+                </a>
+            </li>
+        </ul>
+    </nav>
+    
+    <!-- 메인 컨텐츠 래퍼 -->
+<div class="main-content">
+    <div class="container">
+        <!-- 기본 정보 카드 -->
+        <div class="content-card">
+            <div class="analysis-wrapper" style="display: flex; gap: 30px;">
+                <!-- 왼쪽: 웹사이트 분석 결과 -->
+                <div class="website-analysis" style="flex: 1; margin-inline:11px;">
+                    <h3 style="font-weight: bold;">웹사이트 분석 결과</h3>
+                    <p class="website-url">측정한 웹사이트: {{url}}</p>
+                    <div class="result-header">
+                        <div class="grade-circle grade-{{ grade }}">{{ grade }}</div>
                         <div class="result-info">
-
-                            <p style="font-size: 27px; font-weight: bold;">해당 웹페이지는 탄소 배출 {{grade}} 등급입니다.</p>
-                            <p style="font-size: 25px;">전 세계 평균보다 {{global_avg_diff}}MB 더 배출</p> 
-                            <!-- 전세계 평균은 2.4MB , 현재는 {{view_data['total_byte_weight']}}MB -->
-                            <p style="font-size: 25px;">대한민국 평균보다 {% if korea_avg_diff > 0 %}{{korea_avg_diff}}MB 더 배출{% else %}{{-korea_avg_diff}}MB 덜 배출{% endif %}</p>
-                            <p style="font-size: 25px;">메인페이지 용량: {{kb_weight/1024|round(2)}}MB</p>
-                            <p style="font-size: 25px;">탄소 배출량: {{carbon_emission}}g</p>
+                            <p class="result-text">해당 웹페이지는 탄소 배출 {{grade}} 등급입니다.</p>
+                            <div class="result-details">
+                                <p>전 세계 평균보다 {{global_avg_diff}}MB 더 배출</p>
+                                <p>대한민국 평균보다 {% if korea_avg_diff > 0 %}{{korea_avg_diff}}MB 더 배출{% else %}{{-korea_avg_diff}}MB 덜 배출{% endif %}</p>
+                                <p>메인페이지 용량: {{kb_weight/1024|round(2)}}MB</p>
+                                <p>탄소 배출량: {{carbon_emission}}g</p>
+                            </div>
                         </div>
                     </div>
-                    
-<!-- 등급 바 HTML -->
-<div class="grade-bar">
-    <span class="global-average">전 세계 평균</span>
-    <span class="earth-icon">🌍</span>
-    <span class="grade-marker">{{grade}}</span>
-</div>
-                    
-                    <p style="font-size: 16px;">마지막 측정일: 2024-10-11 <a href="/" style="color: white;">다시 측정하기</a></p>
                 </div>
-
-                <!-- 탄소 배출량 시각화 -->
-                <div class="row mt-5">
-                    <div class="col-md-3 carbon-metric">
-                        <div class="carbon-icon">☕</div>
-                        <p>커피 2잔 분량의<br>탄소 배출량</p>
-                    </div>
-                    <div class="col-md-3 carbon-metric">
-                        <div class="carbon-icon">🚗</div>
-                        <p>자동차 2km 주행<br>배출량과 동일</p>
-                    </div>
-                    <div class="col-md-3 carbon-metric">
-                        <div class="carbon-icon">📱</div>
-                        <p>스마트폰 4시간<br>충전량과 동일</p>
-                    </div>
-                    <div class="col-md-3 carbon-metric">
-                        <div class="carbon-icon">🌳</div>
-                        <p>나무 1그루의<br>2일 흡수량</p>
+                <!-- 오른쪽: 리소스 분석 -->
+                <div class="resource-analysis" style="flex: 1;">
+                    <h3 style="font-weight: bold;">리소스 분석</h3>
+                    <div class="resource-grid">
+                        <div class="resource-item">
+                            <h4>총 리소스 용량</h4>
+                            <p>{{ (view_data.total_byte_weight / 1024 / 1024)|round(2) }}MB</p>
+                        </div>
+                        <div class="resource-item">
+                            <h4>서드파티 스크립트</h4>
+                            <p>{{ (view_data.third_party_summary_wasted_bytes / 1024 / 1024)|round(2) }}MB</p>
+                        </div>
+                        <div class="resource-item">
+                            <h4>JavaScript 분석</h4>
+                            <p>미사용: {{ (view_data.total_unused_bytes_script / 1024 / 1024)|round(2) }}MB</p>
+                            <p>전체: {{ (view_data.total_resource_bytes_script / 1024 / 1024)|round(2) }}MB</p>
+                        </div>
                     </div>
                 </div>
+            </div>
+        
+            <!-- 등급 바 -->
+            <div class="grade-bar">
+                <span class="global-average">전 세계 평균</span>
+                <span class="earth-icon">🌍</span>
+                <span class="grade-marker" style="left: 95%; color: rgb(255, 0, 0); transform: translateX(-80%);">{{grade}}</span>
+            </div>
+            
+            <p style="font-size: 16px;">마지막 측정일: 2024-10-11 <a href="/" style="color: white;">다시 측정하기</a></p>
+        </div>
 
-                <!-- 기존 탄소 배출량 시각화 SVG 부분을 수정 -->
-                <div class="mt-5">
-                    <h4>탄소 배출량 분포</h4>
-                    <svg id="histogram" width="800" height="300"></svg>
+        <div class="content-card" >
+            <h3 style="font-weight: bold;">연간 탄소 배출량 환산</h3>
+            <p class="metrics-subtitle">월 10,000명 방문 기준 ({{carbon_emission / 1000 * 10000 * 12}} CO₂/kg)</p>
+            
+            <div class="carbon-metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-icon">☕</div>
+                    <div class="metric-content">
+                        <h4>커피 소비량</h4>
+                        <p class="metric-value">{{(carbon_emission /1000 * 10000 * 12 / 0.01)|round}}잔</p>
+                        <p class="metric-desc">커피 1잔 = 0.01g CO₂</p>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon">🚗</div>
+                    <div class="metric-content">
+                        <h4>전기차 주행거리</h4>
+                        <p class="metric-value">{{(carbon_emission/1000 * 10000 * 12 / 0.16 * 2)|round}}km</p>
+                        <p class="metric-desc">2km 주행 = 0.16kg CO₂</p>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon">📱</div>
+                    <div class="metric-content">
+                        <h4>스마트폰 충전</h4>
+                        <p class="metric-value">{{(carbon_emission/1000 * 10000 * 12 / 0.02 * 3)|round}}회</p>
+                        <p class="metric-desc">3회 충전 = 0.02g CO₂</p>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon">🌳</div>
+                    <div class="metric-content">
+                        <h4>나무 흡수량</h4>
+                        <p class="metric-value">{{(carbon_emission/1000 * 10000 * 12 / 0.02)|round}}그루</p>
+                        <p class="metric-desc">1그루 = 0.02kg CO₂/년</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-card">
+                <!-- 이곳에 탄소 배출량 분포 동그란 그래프 추가 -->
+                <div class="charts-grid">
+                    <!-- 리소스 타입별 도넛 차트 -->
+                    <div class="chart-item">
+                        <h3 style="font-weight: bold;">리소스 타입별 용량 분포</h3>
+                        <div id="resource-donut"></div>
+                    </div>
+            
+                    <!-- 전체 정부/공기관 탄소 배출량 분포 -->
+                    <div class="chart-item">
+                        <h3 style="font-weight: bold;">전체 정부/공기관 탄소 배출량 분포</h3>
+                        <svg id="histogram" width="800" height="300"></svg>
+                    </div>
                 </div>
 
                 <div class="distribution-chart">
-                    <h4>웹사이트 트래픽 분포</h4>
+                    <h4>현재 측정된 웹사이트 트래픽 분포 (약 7300개,kde)</h4>
                     <div id="kde-plot"></div>
                 </div>
 
                 <div class="institution-chart-container">
                     <h4>기관별 웹사이트 전송 크기 분포</h4>
-                    <div id="institution-chart" width="800" height="300"></div>
+                    <div id="institution-chart" width="1500" height="500"></div>
                 </div>
 
                 <!-- 새로운 멀티라인 그래프 추가 -->
                 <div class="mt-5">
-                    <h4>실시간 공공기관 탄소배출량 추이(업데이트)</h4>
-                    <svg id="multiline" width="800" height="400"></svg>
+                    <h4>실시간 탄소배출량 추이 (google analytics API 입력 필요)</h4>
+                    <svg id="multiline" width="1500" height="500"></svg>
                 </div>
+        </div>
 
+        <!-- 가이드라인 준수 현황 카드 -->
+        <div class="content-card">
+            <!-- 지속가능한 웹개발 가이드라인 -->
+            <section class="mt-5">
+                <h4>지속가능한 웹개발 가이드라인 준수 현황</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">번호</th>
+                            <th scope="col">항목</th>
+                            <th scope="col">준수여부</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>파일 전송 권한 확인</td>
+                            <td>✅</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>동적 리소스 로딩 사용</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>이미지 alt 속성 제공</td>
+                            <td>✅</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>함수 단일 책임 원칙 준수</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>HTML5 시맨틱 태그 사용</td>
+                            <td>✅</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>중복 ID/클래스 제거</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>클라이언트 양식 검증</td>
+                            <td>✅</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Web APIs 활용</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>Page Visibility API 활용</td>
+                            <td>✅</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
 
-                <!-- 지속가능한 웹개발 가이드라인 -->
-                <section class="mt-5">
-                    <h4>지속가능한 웹개발 가이드라인 준수 현황</h4>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">번호</th>
-                                <th scope="col">항목</th>
-                                <th scope="col">준수여부</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>파일 전송 권한 확인</td>
-                                <td>✅</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>동적 리소스 로딩 사용</td>
-                                <td>❌</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>이미지 alt 속성 제공</td>
-                                <td>✅</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>함수 단일 책임 원칙 준수</td>
-                                <td>❌</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>HTML5 시맨틱 태그 사용</td>
-                                <td>✅</td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>중복 ID/클래스 제거</td>
-                                <td>❌</td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>클라이언트 양식 검증</td>
-                                <td>✅</td>
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td>Web APIs 활용</td>
-                                <td>❌</td>
-                            </tr>
-                            <tr>
-                                <td>9</td>
-                                <td>Page Visibility API 활용</td>
-                                <td>✅</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </section>
-<!-- Google Lighthouse 상세 보고서 -->
-<div class="container mt-5">
-    <h4>Google Lighthouse 상세 분석 결과</h4>
-    <div class="table-responsive">
-        <table class="table table-bordered">
-            <thead class="thead-light">
+        <!-- 최적화 제안 카드 -->
+        <div class="content-card">
+            <h3>최적화 가능 항목</h3>
+            <!-- Google Lighthouse 상세 보고서 -->
+            <div class="container mt-5" style="font-size: 21px;">
+                <h4>Google Lighthouse 상세 분석 결과</h4>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="thead-light">
                 <tr>
                     <th>분석 항목</th>
                     <th>용량</th>
@@ -413,11 +765,11 @@
                 <tr>
                     <td>JavaScript 분석</td>
                     <td>
-                        미사용: {{ (view_data.total_unused_bytes / 1024 / 1024)|round(2) }}MB<br>
-                        전체: {{ (view_data.total_resource_bytes / 1024 / 1024)|round(2) }}MB
+                        미사용: {{ (view_data.total_unused_bytes_script / 1024 / 1024)|round(2) }}MB<br>
+                        전체: {{ (view_data.total_resource_bytes_script / 1024 / 1024)|round(2) }}MB
                     </td>
                     <td>전체 JavaScript 중 미사용 코드 비율: 
-                        {{ ((view_data.total_unused_bytes / view_data.total_resource_bytes) * 100)|round(1) }}%
+                        {{ ((view_data.total_unused_bytes_script / view_data.total_resource_bytes_script) * 100)|round(1) }}%
                     </td>
                 </tr>
                 {% if view_data.can_optimize_css_bytes > 0 %}
@@ -458,406 +810,541 @@
             </tbody>
         </table>
     </div>
-    
+
     <!-- 총 최적화 가능 용량 계산 및 표시 -->
     {% set total_optimization = view_data.can_optimize_css_bytes + 
-                              view_data.can_optimize_js_bytes + 
-                              view_data.modern_image_formats_bytes + 
-                              view_data.efficient_animated_content + 
-                              view_data.duplicated_javascript %}
-    {% if total_optimization > 0 %}
-    <div class="alert alert-info mt-3">
-        <strong>총 최적화 가능 용량:</strong> 
-        {{ (total_optimization / 1024 / 1024)|round(2) }}MB 
-        (현재 용량의 {{ ((total_optimization / view_data.total_byte_weight) * 100)|round(1) }}%)
-    </div>
-    {% endif %}
+        view_data.can_optimize_js_bytes + 
+        view_data.modern_image_formats_bytes + 
+        view_data.efficient_animated_content + 
+        view_data.duplicated_javascript %}
+{% if total_optimization > 0 %}
+<div class="alert alert-info mt-3">
+<strong>총 최적화 가능 용량:</strong> 
+{{ (total_optimization / 1024 / 1024)|round(2) }}MB 
+(현재 용량의 {{ ((total_optimization / view_data.total_byte_weight) * 100)|round(1) }}%)
 </div>
-                <!-- 에코웹 뱃지 -->
-                 <!-- 탄소뱃지를 얻으세요!  -->
-                <div class="badge-section">
-                    <h4>웹사이트 탄소 배지</h4>
-                    <p class="badge-description">
-                        당신의 웹사이트가 환경에 미치는 영향을 보여주세요
-                    </p>
-                    <div class="eco-badge light">
-                        <span class="carbon-amount">{{carbon_emission}}g of CO2/view</span>
-                        <span class="badge-text">Eco-Web</span>
-                    </div>
-                    <div class="badge-subtitle">
-                        배지를 사용하시면 1회 무료 컨설팅 기회를 제공합니다.
-                    </div>
-                    <a href="/get-badge" class="btn get-badge-btn">
-                        배지 얻기
-                    </a>
-                </div>
+{% endif %}
+</div>
 
-                <!-- 리소스 절감 현황 -->
-                <div class="mt-5">
-                    <h4>최적화 전/후 비교</h4>
-                    <div class="row">
-                        <div class="col-md-6">
+<div class="content-card">
+<div class="badge-section">
+    <h4>탄소 배출 증명 배지</h4>
+    <p class="badge-description">
+        배지는 웹사이트 헤더나 푸터에 추가하여 각 페이지의 탄소 배출량을 자동으로 계산하고 표시할 수 있습니다.
+    </p>
+    
+    <div class="eco-badge light">
+        <span class="carbon-amount">{{carbon_emission}}g of CO2/view</span>
+        <span class="badge-text">Eco-Web</span>
+    </div>
+    
+    <div class="mt-4">
+        <h5>오픈 소스 API</h5>
+        <p>
+            웹사이트 탄소 계산을 다른 도구와 워크플로우에 통합하는 데 사용할 수 있는 웹사이트 탄소 API를 제공합니다!
+        </p>
+    </div>
+    
+    <a href="/badge" class="btn get-badge-btn">
+        배지 설치하기
+    </a>
+        </div>
+    </div>
+</div>
+
+<div class="content-card">
+    <h3>최적화 전/후 비교</h3>
+    <div class="row">
+        <div class="col-md-6">
                             <h5>Before</h5>
-                            <img src="../static/screenshots/before.png" alt="Before" class="comparison-image">
-                            <p>총 리소스: {{view_data.total_byte_weight/1024/1024|round(2)}}MB</p>
+                            <img src="../static/screenshots/before.png" alt="Before" class="comparison-image" style="width: 87%;">
+                            <h2>총 리소스: {{view_data.total_byte_weight/1024/1024|round(2)}}MB</h2>
                         </div>
                         <div class="col-md-6">
-                            <h5>After</h5>
-                            <img src="../static/screenshots/before.png" alt="Before" class="comparison-image">
-                            <p>절감 후 리소스: {{((view_data.total_byte_weight - total_optimization)/1024/1024)|round(2)}}MB</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- 인증마크 받기 -->
+            <h5>After</h5>
+            <img src="../static/screenshots/before.png" alt="Before" class="comparison-image" style="width: 87%;">
+            <h2>절감 후 리소스: {{((view_data.total_byte_weight - total_optimization)/1024/1024)|round(2)}}MB</h2>
+        </div>
+    </div>
+</div>
                 <div class="text-center mt-4">
                     <a href="/" class="btn btn-secondary">다시 측정하기</a>
                 </div>
             </div>
         </div>
     </div>
+    <footer>    
+        <div class="footer-content">
+            <p class="footer-text">ECO-WEB, DONGA-UNIVERSITY</p>
+            <p class="footer-text">Address: 37, Nakdong-daero 550beon-gil, Saha-gu, Busan, Republic of Korea.</p>
+            <p class="footer-text">Tel: 010-8477-6339</p>
+            <p class="footer-text">E-mail: qudtnrh@gmail.com</p>
+        </div>
+    </footer>
+
     <script>
-        // 기존 등급 표시 스크립트
-        // const grade = "{{ grade }}";
-        // const grades = ['A', 'B', 'C', 'D', 'E', 'F'];
-        // const gradeBar = document.getElementById('gradeBar');
-        // gradeBar.style.width = (grades.indexOf(grade) + 1) * 16.66 + '%';
-        // gradeBar.textContent = grade;
-
-        // switch (grade) {
-        //     case 'A': gradeBar.classList.add('bg-success'); break;
-        //     case 'B': gradeBar.classList.add('bg-info'); break;
-        //     case 'C': gradeBar.classList.add('bg-primary'); break;
-        //     case 'D': gradeBar.classList.add('bg-warning'); break;
-        //     case 'E': gradeBar.classList.add('bg-orange'); break;
-        //     case 'F': gradeBar.classList.add('bg-danger'); break;
-        // }
-    // 등급에 따른 위치 설정
-    const grade = "{{ grade }}";
-    const gradeMarker = document.querySelector('.grade-marker');
-    
-    // 등급별 위치 매핑 (왼쪽부터 오른쪽으로)
-    const gradePositions = {
-        'A+': '0%',
-        'A': '20%',
-        'B': '40%',
-        'C': '60%',
-        'D': '80%',
-        'F': '95%'  // 완전히 오른쪽 끝
-    };
-    
-    // 등급별 색상 매핑
-    const gradeColors = {
-        'A+': '#00ffbb',
-        'A': '#00ff00',
-        'B': '#ffff00',
-        'C': '#ffa500',
-        'D': '#ff6b00',
-        'F': '#ff0000'
-    };
-    
-    // 마커 위치와 색상 설정
-    if (gradeMarker) {
-        gradeMarker.style.left = gradePositions[grade];
-        gradeMarker.style.color = gradeColors[grade];
+        // 등급에 따른 위치 설정
+        const grade = "{{ grade }}";
+        const gradeMarker = document.querySelector('.grade-marker');
         
-        // 마커가 양 끝에 있을 때 화면 밖으로 나가지 않도록 조정
-        if (grade === 'A+') {
-            gradeMarker.style.transform = 'translateX(-20%)';
-        } else if (grade === 'F') {
-            gradeMarker.style.transform = 'translateX(-80%)';
-        } else {
-            gradeMarker.style.transform = 'translateX(-50%)';
+        // 등급별 위치 매핑 (왼쪽부터 오른쪽으로)
+        const gradePositions = {
+            'A+': '0%',
+            'A': '20%',
+            'B': '40%',
+            'C': '60%',
+            'D': '80%',
+            'F': '95%'  // 완전히 오른쪽 끝
+        };
+        
+        // 등급별 색상 매핑
+        const gradeColors = {
+            'A+': '#00ffbb',
+            'A': '#00ff00',
+            'B': '#ffff00',
+            'C': '#ffa500',
+            'D': '#ff6b00',
+            'F': '#ff0000'
+        };
+        
+        // 마커 위치와 색상 설정
+        if (gradeMarker) {
+            gradeMarker.style.left = gradePositions[grade];
+            gradeMarker.style.color = gradeColors[grade];
+            
+            // 마커가 양 끝에 있을 때 화면 밖으로 나가지 않도록 조정
+            if (grade === 'A+') {
+                gradeMarker.style.transform = 'translateX(-20%)';
+            } else if (grade === 'F') {
+                gradeMarker.style.transform = 'translateX(-80%)';
+            } else {
+                gradeMarker.style.transform = 'translateX(-50%)';
+            }
         }
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+    const gradeCircle = document.querySelector('.grade-circle');
+    const grade = "{{ grade }}";
+    
+    // 등급에 따른 클래스 추가
+    if (grade === 'A+') {
+        gradeCircle.classList.add('grade-A-plus');
+    } else {
+        gradeCircle.classList.add(`grade-${grade}`);
     }
-// 예시 데이터 생성 (파이썬에서 만든 데이터와 유사하게)
-const existingData = Array.from({length: 25000}, () => d3.randomNormal(0.7,0.05)()); // 0.3은 평균, 0.3은 표준편차
+});
+    // 예시 데이터 생성 (파이썬에서 만든 데이터와 유사하게)
+    const existingData = Array.from({length: 25000}, () => d3.randomNormal(0.7,0.05)()); // 0.3은 평균, 0.3은 표준편차
+    
+    // 새로운 URL 데이터
+    const newUrlData = 0.65;
+    
+    // SVG 크기 설정
+    const svg = d3.select("svg");
+    const margin = {top: 20, right: 20, bottom: 30, left: 40};
+    const width = +svg.attr("width") - margin.left - margin.right;
+    const height = +svg.attr("height") - margin.top - margin.bottom;
+    const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+    
+    // X축 및 Y축 범위 설정
+    const x = d3.scaleLinear()
+        .domain([d3.min(existingData), d3.max(existingData)])
+        .rangeRound([0, width]);
+    
+    const bins = d3.histogram()
+        .domain(x.domain())
+        .thresholds(x.ticks(50))
+        (existingData);
+    
+    const y = d3.scaleLinear()
+        .domain([0, d3.max(bins, d => d.length)])
+        .range([height, 0]);
+    
+    // X축
+    g.append("g")
+        .attr("class", "axis axis--x")
+        .attr("transform", `translate(0,${height})`)
+        .call(d3.axisBottom(x));
+    
+    // Y축
+    g.append("g")
+        .attr("class", "axis axis--y")
+        .call(d3.axisLeft(y));
+    
+    // 히스토그램 막대 추가
+    g.selectAll(".bar")
+        .data(bins)
+        .enter().append("rect")
+        .attr("class", "bar")
+        .attr("x", d => x(d.x0))
+        .attr("y", d => y(d.length))
+        .attr("width", d => x(d.x1) - x(d.x0) - 1)
+        .attr("height", d => height - y(d.length))
+        .attr("fill", "#2349bd"); // 파란색
+    
+    // 새로운 URL 데이터를 선으로 표시
+    g.append("line")
+        .attr("x1", x(newUrlData))
+        .attr("x2", x(newUrlData))
+        .attr("y1", 0)
+        .attr("y2", height)
+        .attr("stroke", "red")
+        .attr("stroke-width", 2)
+        .attr("stroke-dasharray", "4,4");
+    
+    
+    // 멀티라인 그래프 생성
+    const multilineSvg = d3.select("#multiline");
+    const multilineMargin = {top: 40, right: 80, bottom: 50, left: 60};
+    const multilineWidth = +multilineSvg.attr("width") - multilineMargin.left - multilineMargin.right;
+    const multilineHeight = +multilineSvg.attr("height") - multilineMargin.top - multilineMargin.bottom;
+    
+    const multilineG = multilineSvg.append("g")
+        .attr("transform", `translate(${multilineMargin.left},${multilineMargin.top})`);
+    
+    // 24시간 데이터 생성
+    const hours = Array.from({length: 24}, (_, i) => i);
+    const generateHourlyData = () => {
+        return hours.map(hour => {
+            // 시간대별 가중치 설정
+            let weight = 1;
+            if (hour >= 9 && hour <= 18) {  // 업무 시간
+                weight = 1.5 + Math.random() * 0.5;
+            } else if (hour >= 1 && hour <= 5) {  // 새벽
+                weight = 0.3 + Math.random() * 0.2;
+            }
+            return Math.random() * weight;
+        });
+    };
 
-// 새로운 URL 데이터
-const newUrlData = 0.65;
+    const carbonLevels = generateHourlyData();
+    const avgLevels = generateHourlyData().map(v => v * 0.8);  // 평균은 약간 낮게
+    const lowCarbonAvg = generateHourlyData().map(v => v * 0.5);  // 저탄소는 더 낮게
 
-// SVG 크기 설정
-const svg = d3.select("svg");
-const margin = {top: 20, right: 20, bottom: 30, left: 40};
-const width = +svg.attr("width") - margin.left - margin.right;
-const height = +svg.attr("height") - margin.top - margin.bottom;
-const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+    // 가상의 데이터 생성 (실제 데이터로 교체 필요)
+    const institutions = Array.from({length: 100}, (_, i) => i);
+    const guidelineCount = institutions.map(() => 0.67); // 
+    const highlightIndex = 42; // 현재 분석 중인 URL의 인덱스
+    
+   
+    // x축 스케일을 시간으로 변경
+    const multilineX = d3.scaleLinear()
+        .domain([0, 23])
+        .range([0, multilineWidth]);
 
-// X축 및 Y축 범위 설정
-const x = d3.scaleLinear()
-    .domain([d3.min(existingData), d3.max(existingData)])
-    .rangeRound([0, width]);
+    // y축 스케일
+    const multilineY = d3.scaleLinear()
+        .domain([0, d3.max([...carbonLevels, ...avgLevels, ...lowCarbonAvg]) * 1.2])
+        .range([multilineHeight, 0]);
 
-const bins = d3.histogram()
-    .domain(x.domain())
-    .thresholds(x.ticks(50))
-    (existingData);
-
-const y = d3.scaleLinear()
-    .domain([0, d3.max(bins, d => d.length)])
-    .range([height, 0]);
-
-// X축
-g.append("g")
-    .attr("class", "axis axis--x")
-    .attr("transform", `translate(0,${height})`)
-    .call(d3.axisBottom(x));
-
-// Y축
-g.append("g")
-    .attr("class", "axis axis--y")
-    .call(d3.axisLeft(y));
-
-// 히스토그램 막대 추가
-g.selectAll(".bar")
-    .data(bins)
-    .enter().append("rect")
-    .attr("class", "bar")
-    .attr("x", d => x(d.x0))
-    .attr("y", d => y(d.length))
-    .attr("width", d => x(d.x1) - x(d.x0) - 1)
-    .attr("height", d => height - y(d.length))
-    .attr("fill", "steelblue");
-
-// 새로운 URL 데이터를 선으로 표시
-g.append("line")
-    .attr("x1", x(newUrlData))
-    .attr("x2", x(newUrlData))
-    .attr("y1", 0)
-    .attr("y2", height)
-    .attr("stroke", "red")
-    .attr("stroke-width", 2)
-    .attr("stroke-dasharray", "4,4");
-
-
-// 멀티라인 그래프 생성
-const multilineSvg = d3.select("#multiline");
-const multilineMargin = {top: 40, right: 80, bottom: 50, left: 60};
-const multilineWidth = +multilineSvg.attr("width") - multilineMargin.left - multilineMargin.right;
-const multilineHeight = +multilineSvg.attr("height") - multilineMargin.top - multilineMargin.bottom;
-
-const multilineG = multilineSvg.append("g")
-    .attr("transform", `translate(${multilineMargin.left},${multilineMargin.top})`);
-
-// 가상의 데이터 생성 (실제 데이터로 교체 필요)
-const institutions = Array.from({length: 100}, (_, i) => i);
-const carbonLevels = institutions.map(() => Math.random() * 3 +0.3); // 
-const guidelineCount = institutions.map(() => 0.67); // 
-const lowCarbonAvg = institutions.map(() => 0.5); // 저탄소 평균은 0.5 정도
-const highlightIndex = 42; // 현재 분석 중인 URL의 인덱스
-
-// 스케일 설정
-const multilineX = d3.scaleLinear()
-    .domain([0, institutions.length - 1])
-    .range([0, multilineWidth]);
-
-const multilineY = d3.scaleLinear()
-    .domain([0, d3.max([...carbonLevels, ...lowCarbonAvg]) * 1.2]) // 1.2는 축 범위를 조절하는 상수
-    .range([multilineHeight, 0]);
-
-// 라인 생성기
-const line = d3.line()
-    .x((d, i) => multilineX(i))
-    .y(d => multilineY(d))
-    .curve(d3.curveNatural);
-
-// 각 라인 그리기
-multilineG.append("path")
-    .datum(carbonLevels)
-    .attr("class", "line")
-    .style("stroke", "#ff0000")
-    .style("fill", "none")
-    .style("stroke-width", 2)
-    .attr("d", line);
-
-multilineG.append("path")
-    .datum(guidelineCount)
-    .attr("class", "line")
-    .style("stroke", "#0000ff")
-    .style("fill", "none")
-    .style("stroke-width", 2)
-    .attr("d", line);
-
-multilineG.append("path")
-    .datum(lowCarbonAvg)
-    .attr("class", "line")
-    .style("stroke", "#00ff00")
-    .style("fill", "none")
-    .style("stroke-width", 2)
-    .attr("d", line);
-
-// 하이라이트 포인트
-multilineG.append("circle")
-    .attr("cx", multilineX(highlightIndex))
-    .attr("cy", multilineY(carbonLevels[highlightIndex]))
-    .attr("r", 6)
-    .style("fill", "#037747");
-
-// 축 추가
+        // x축 눈금을 시간 형식으로 표시
 multilineG.append("g")
     .attr("transform", `translate(0,${multilineHeight})`)
-    .call(d3.axisBottom(multilineX).ticks(10))
+    .call(d3.axisBottom(multilineX)
+        .ticks(24)
+        .tickFormat(d => `${d}시`))
     .append("text")
     .attr("x", multilineWidth / 2)
     .attr("y", 40)
-    .attr("fill", "black")
-    .text("공공기관");
-
-multilineG.append("g")
-    .call(d3.axisLeft(multilineY))
-    .append("text")
-    .attr("transform", "rotate(-90)")
-    .attr("y", -50)
-    .attr("x", -multilineHeight / 2)
-    .attr("fill", "black")
-    .attr("text-anchor", "middle")
-    .text("탄소배출량");
-
-// 범례 추가
-const legend = multilineG.append("g")
-    .attr("font-family", "sans-serif")
-    .attr("font-size", 10)
-    .attr("text-anchor", "start")
-    .attr("transform", `translate(${multilineWidth + 10},0)`);
-
-const legendItems = [
-    {color: "#ff0000", text: "탄소량"},
-    {color: "#0000ff", text: "공기관 평균"},
-    {color: "#00ff00", text: "저탄소 평균"}
-];
-
-legendItems.forEach((item, i) => {
-    const legendRow = legend.append("g")
-        .attr("transform", `translate(0,${i * 20})`);
-        
-    legendRow.append("rect")
-        .attr("width", 15)
-        .attr("height", 2)
-        .attr("fill", item.color);
-        
-    legendRow.append("text")
-        .attr("x", 20)
-        .attr("y", 5)
-        .text(item.text);
-});
-
-
-
-// D3.js로 KDE 그래프 그리기
-async function drawKDEPlot(kb_weight) {
-    // JSON 데이터 로드
-    const current_mb = kb_weight / 1024;
-
-    const data = await d3.json('/static/js/distribution_data.json');
+        .attr("fill", "black")
+        .text("시간");
     
-    // 그래프 크기 설정
-    const margin = {top: 40, right: 40, bottom: 40, left: 60};
-    const width = 800 - margin.left - margin.right;
-    const height = 400 - margin.top - margin.bottom;
-    
-    // SVG 생성
-    const svg = d3.select("#kde-plot")
-        .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-        .append("g")
-        .attr("transform", `translate(${margin.left},${margin.top})`);
-    
-    // 스케일 설정
-    const x = d3.scaleLinear()
-        .domain([0, 20])
-        .range([0, width]);
-        
-    const y = d3.scaleLinear()
-        .domain([0, d3.max(data.kde_points, d => d.y)])
-        .range([height, 0]);
-    
-    // KDE 곡선 그리기
+    // 라인 생성기
     const line = d3.line()
-        .x(d => x(d.x))
-        .y(d => y(d.y));
-        
-    svg.append("path")
-        .datum(data.kde_points)
-        .attr("fill", "none")
-        .attr("stroke", "red")
-        .attr("stroke-width", 2)
+        .x((d, i) => multilineX(i))
+        .y(d => multilineY(d))
+        .curve(d3.curveNatural);
+    
+    // 각 라인 그리기
+    multilineG.append("path")
+        .datum(carbonLevels)
+        .attr("class", "line")
+        .style("stroke", "#ff0000")
+        .style("fill", "none")
+        .style("stroke-width", 2)
         .attr("d", line);
     
-    // 한국 평균선 그리기
-    svg.append("line")
-        .attr("x1", x(4.7))
-        .attr("x2", x(4.7))
-        .attr("y1", 0)
-        .attr("y2", height)
-        .attr("stroke", "green")
-        .attr("stroke-dasharray", "5,5");
-
-        // 세계 평균선 (2.4MB)
-    svg.append("line")
-        .attr("x1", x(2.4))
-        .attr("x2", x(2.4))
-        .attr("y1", 0)
-        .attr("y2", height)
-        .attr("stroke", "blue")
-        .attr("stroke-dasharray", "5,5");
-
-    // 현재 사이트 배출량
-    svg.append("line")
-        .attr("x1", x(current_mb))
-        .attr("x2", x(current_mb))
-        .attr("y1", 0)
-        .attr("y2", height)
-        .attr("stroke", "red")
-        .attr("stroke-width", 2);
-    // 축 그리기
-    svg.append("g")
-        .attr("transform", `translate(0,${height})`)
-        .call(d3.axisBottom(x));
-        
-    svg.append("g")
-        .call(d3.axisLeft(y));
+    multilineG.append("path")
+        .datum(guidelineCount)
+        .attr("class", "line")
+        .style("stroke", "#0000ff")
+        .style("fill", "none")
+        .style("stroke-width", 2)
+        .attr("d", line);
+    
+    multilineG.append("path")
+        .datum(lowCarbonAvg)
+        .attr("class", "line")
+        .style("stroke", "#00ff00")
+        .style("fill", "none")
+        .style("stroke-width", 2)
+        .attr("d", line);
+    
+    // 하이라이트 포인트
+    multilineG.append("circle")
+        .attr("cx", multilineX(highlightIndex))
+        .attr("cy", multilineY(carbonLevels[highlightIndex]))
+        .attr("r", 6)
+        .style("fill", "#037747");
+    
+    // 축 추가
+    multilineG.append("g")
+        .attr("transform", `translate(0,${multilineHeight})`)
+        .call(d3.axisBottom(multilineX).ticks(10))
+        .append("text")
+        .attr("x", multilineWidth / 2)
+        .attr("y", 40)
+        .attr("fill", "black")
+        .text("공공기관");
+    
+    multilineG.append("g")
+        .call(d3.axisLeft(multilineY))
+        .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -50)
+        .attr("x", -multilineHeight / 2)
+        .attr("fill", "black")
+        .attr("text-anchor", "middle")
+        .text("탄소배출량");
     
     // 범례 추가
+    const legend = multilineG.append("g")
+        .attr("font-family", "sans-serif")
+        .attr("font-size", 10)
+        .attr("text-anchor", "start")
+        .attr("transform", `translate(${multilineWidth + 10},0)`);
+    
+    // 범례 텍스트 수정
     const legendItems = [
-            {color: "red", text: "현재 사이트", dash: "0"},
-            {color: "green", text: "한국 평균 (4.7MB)", dash: "5,5"},
-        {color: "blue", text: "세계 평균 (2.4MB)", dash: "5,5"}
+        {color: "#ff0000", text: "현재 사이트"},
+        {color: "#0000ff", text: "공공기관 평균"},
+        {color: "#00ff00", text: "저탄소 사이트 평균"}
     ];
-
-
-    const legend = svg.append("g")
-            .attr("transform", `translate(${width - 150}, 20)`);
-
-        legendItems.forEach((item, i) => {
-            const g = legend.append("g")
-                .attr("transform", `translate(0, ${i * 20})`);
-                
-            g.append("line")
-                .attr("x1", 0)
-                .attr("x2", 20)
-                .attr("y1", 0)
-                .attr("y2", 0)
-                .attr("stroke", item.color)
-                .attr("stroke-width", 2)
-                .attr("stroke-dasharray", item.dash);
-                
-            g.append("text")
-                .attr("x", 25)
-                .attr("y", 5)
-                .text(item.text);
-        });
-}
-
-drawKDEPlot({{kb_weight|round(2)}});
-
-document.addEventListener('DOMContentLoaded', function() {
-        const currentKB = {{kb_weight|round(2)}};
-        const currentMB = currentKB / 1024;
-        const institutionType = "{{institution_type}}";  // Flask에서 전달받은 기관 타입
-        drawInstitutionChart(currentMB, institutionType);
+    
+    legendItems.forEach((item, i) => {
+        const legendRow = legend.append("g")
+            .attr("transform", `translate(0,${i * 20})`);
+            
+        legendRow.append("rect")
+            .attr("width", 15)
+            .attr("height", 2)
+            .attr("fill", item.color);
+            
+        legendRow.append("text")
+            .attr("x", 20)
+            .attr("y", 5)
+            .text(item.text);
     });
-    </script>
+    
+    
+    
+    // D3.js로 KDE 그래프 그리기
+    async function drawKDEPlot(kb_weight) {
+        // JSON 데이터 로드
+        const current_mb = kb_weight / 1024;
+    
+        const data = await d3.json('/static/js/distribution_data.json');
+        
+        // 그래프 크기 설정
+        const margin = {top: 40, right: 40, bottom: 40, left: 60};
+        const width = 1500 - margin.left - margin.right;
+        const height = 400 - margin.top - margin.bottom;
+        
+        // SVG 생성
+        const svg = d3.select("#kde-plot")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+        
+        // 스케일 설정
+        const x = d3.scaleLinear()
+            .domain([0, 20])
+            .range([0, width]);
+            
+        const y = d3.scaleLinear()
+            .domain([0, d3.max(data.kde_points, d => d.y)])
+            .range([height, 0]);
+        
+        // KDE 곡선 그리기
+        const line = d3.line()
+            .x(d => x(d.x))
+            .y(d => y(d.y));
+            
+        svg.append("path")
+            .datum(data.kde_points)
+            .attr("fill", "none")
+            .attr("stroke", "red")
+            .attr("stroke-width", 2)
+            .attr("d", line);
+        
+        // 한국 평균선 그리기
+        svg.append("line")
+            .attr("x1", x(4.7))
+            .attr("x2", x(4.7))
+            .attr("y1", 0)
+            .attr("y2", height)
+            .attr("stroke", "green")
+            .attr("stroke-dasharray", "5,5");
+    
+            // 세계 평균선 (2.4MB)
+        svg.append("line")
+            .attr("x1", x(2.4))
+            .attr("x2", x(2.4))
+            .attr("y1", 0)
+            .attr("y2", height)
+            .attr("stroke", "blue")
+            .attr("stroke-dasharray", "5,5");
+    
+        // 현재 사이트 배출량
+        svg.append("line")
+            .attr("x1", x(current_mb))
+            .attr("x2", x(current_mb))
+            .attr("y1", 0)
+            .attr("y2", height)
+            .attr("stroke", "red")
+            .attr("stroke-width", 2);
+        // 축 그리기
+        svg.append("g")
+            .attr("transform", `translate(0,${height})`)
+            .call(d3.axisBottom(x));
+            
+        svg.append("g")
+            .call(d3.axisLeft(y));
+        
+        // 범례 추가
+        const legendItems = [
+                {color: "red", text: "현재 사이트", dash: "0"},
+                {color: "green", text: "한국 평균 (4.7MB)", dash: "5,5"},
+            {color: "blue", text: "세계 평균 (2.4MB)", dash: "5,5"}
+        ];
+    
+    
+        const legend = svg.append("g")
+                .attr("transform", `translate(${width - 150}, 20)`);
+    
+            legendItems.forEach((item, i) => {
+                const g = legend.append("g")
+                    .attr("transform", `translate(0, ${i * 20})`);
+                    
+                g.append("line")
+                    .attr("x1", 0)
+                    .attr("x2", 20)
+                    .attr("y1", 0)
+                    .attr("y2", 0)
+                    .attr("stroke", item.color)
+                    .attr("stroke-width", 2)
+                    .attr("stroke-dasharray", item.dash);
+                    
+                g.append("text")
+                    .attr("x", 25)
+                    .attr("y", 5)
+                    .text(item.text);
+            });
+    }
+    
+    drawKDEPlot({{kb_weight|round(2)}});
+    
+    document.addEventListener('DOMContentLoaded', function() {
+            const currentKB = {{kb_weight|round(2)}};
+            const currentMB = currentKB / 1024;
+            const institutionType = "{{institution_type}}";  // Flask에서 전달받은 기관 타입
+            drawInstitutionChart(currentMB, institutionType);
+        });
+        </script>
     <script src="{{ url_for('static', filename='js/institution_chart.js') }}"></script>
+
+
+    <!-- 도넛 차트 -->
+<!-- 기존 스크립트에 아래 코드 추가 -->
+<script>
+    // 도넛 차트 생성 함수
+    function createDonutChart(data) {
+        // 차트 크기 설정
+        const width = 700;
+        const height = 300;
+        const radius = Math.min(width, height) / 2;
+    
+        // SVG 생성
+        const svg = d3.select("#resource-donut")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .append("g")
+            .attr("transform", `translate(${width / 4},${height / 2})`);  // width/2를 width/3으로 수정하여 왼쪽으로 이동
+    
+        // 색상 스케일 설정
+        const color = d3.scaleOrdinal()
+    .domain(data.map(d => d.name))
+    .range([
+        '#FF8B5C',  // 주황색
+        '#9B6B9E',  // 보라색
+        '#FFD5C2',  // 살구색
+        '#7AC7A3'   // 연두색
+    ]);
+        // 파이 생성기 설정
+        const pie = d3.pie()
+            .value(d => d.value)
+            .sort(null);
+    
+        // 아크 생성기 설정
+        const arc = d3.arc()
+            .innerRadius(radius * 0.6) // 도넛 차트의 내부 반지름
+            .outerRadius(radius * 0.8); // 도넛 차트의 외부 반지름
+    
+        // 데이터 바인딩 및 패스 생성
+        const path = svg.selectAll("path")
+            .data(pie(data))
+            .join("path")
+            .attr("d", arc)
+            .attr("fill", d => color(d.data.name))
+            .attr("stroke", "white")
+            .style("stroke-width", "2px");
+    
+        // 중앙 텍스트
+        svg.append("text")
+            .attr("text-anchor", "middle")
+            .attr("dy", "0em")
+            .style("font-size", "29px")
+            .text("페이지 리소스");
+    
+        // 범례 생성
+        const legend_donut = svg.append("g")
+            .attr("transform", `translate(${radius + 30},-${radius/2})`);
+    
+        data.forEach((d, i) => {
+            const legendRow = legend_donut.append("g")
+                .attr("transform", `translate(0, ${i * 25})`);
+    
+            legendRow.append("rect")
+                .attr("width", 18)
+                .attr("height", 18)
+                .attr("fill", color(d.name));
+    
+            legendRow.append("text")
+                .attr("x", 24)
+                .attr("y", 9)
+                .attr("dy", "0.35em")
+                .text(`${d.name} (${(d.value/1024).toFixed(2)}KB)`);
+        });
+    }
+
+    // 도넛 차트 데이터 준비 및 생성
+    const resourceData = [
+        { name: "폰트", value: {{view_data.font_total_bytes}} },
+        { name: "스크립트", value: {{view_data.script_total_bytes}} },
+        { name: "HTML", value: {{view_data.html_total_bytes}} },
+        { name: "CSS", value: {{view_data.css_total_bytes}} },
+        { name: "기타", value: {{view_data.other_total_bytes}} },
+        { name: "미디어", value: {{view_data.media_total_bytes}} },
+        { name: "서드파티", value: {{view_data.third_party_total_bytes}} }
+    ];
+    
+    createDonutChart(resourceData);
+    </script>
+    <!-- /도넛 차트 -->
 
 </body>
 </html>

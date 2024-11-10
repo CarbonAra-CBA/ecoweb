@@ -22,9 +22,20 @@ def process_report(url, collection_resource, collection_traffic):
             report = json.load(file)
         
         # MongoDB에 저장할 데이터 추출
-        network_requests = report['audits']['network-requests']['details']['items']
+        # 만약, details가 없는 경우, 빈 리스트를 사용(get 메서드 사용)
+        network_requests = report['audits']['network-requests'].get('details', {}).get('items', [])
+
+        # 총 리소스 용량, 이미지 총 용량, 스크립트 총 용량, HTML +CSS 용량 , 기타 용량
         resource_summary = report['audits']['resource-summary']['details']['items']
-        
+        total_resource_bytes = resource_summary[0]['transferSize']
+        font_total_bytes = resource_summary[1]['transferSize']
+        script_total_bytes = resource_summary[2]['transferSize']
+        html_total_bytes = resource_summary[3]['transferSize']
+        css_total_bytes = resource_summary[4]['transferSize']
+        other_total_bytes = resource_summary[5]['transferSize']
+        media_total_bytes = resource_summary[6]['transferSize']
+        third_party_total_bytes = resource_summary[7]['transferSize']
+
         traffic_data = {
             'url': url,
             'resource_summary': [{'resourceType': item['resourceType'], 'transferSize': item['transferSize']} for item in resource_summary],
@@ -34,34 +45,29 @@ def process_report(url, collection_resource, collection_traffic):
             'url': url,
             'network_requests': [],
         }
+        
         # resourcetype이 없는 경우(mimeType이 '' 인 경우) resourceSize도 0인 경우, resource_data에 넣지 않아야함. 
         for item in network_requests:
             if item['resourceSize'] != 0 or item['mimeType'] != '':
                 resource_data['network_requests'].append({'url': item['url'], 'resourceType': item['resourceType'], 'resourceSize': item['resourceSize']})
+        
         print('traffic_data on lighthouse.py: ', traffic_data)
         print("resource_data on lighthouse.py: ", resource_data)
         # MongoDB에 저장
         collection_traffic.insert_one(traffic_data)
         collection_resource.insert_one(resource_data)
-        
-        # unusedBytes, resourceBytes 합산
-        # script_treemap_data = safe_get_audit_value(report, ['script-treemap-data', 'details', 'nodes'], [])
-        # total_unused_bytes = 0
-        # total_resource_bytes = 0
-        # for node in script_treemap_data:
-        #     total_unused_bytes += node['unusedBytes']
-        #     total_resource_bytes += node['resourceBytes']
+
         script_treemap_data = safe_get_audit_value(report, ['script-treemap-data', 'details', 'nodes'], [])
-        total_unused_bytes = sum(node.get('unusedBytes', 0) for node in script_treemap_data)
-        total_resource_bytes = sum(node.get('resourceBytes', 0) for node in script_treemap_data)
+        total_unused_bytes_script = sum(node.get('unusedBytes', 0) for node in script_treemap_data)
+        total_resource_bytes_script = sum(node.get('resourceBytes', 0) for node in script_treemap_data)
         
         # 뷰에 전달할 데이터 준비
         view_data = {
             'third_party_summary_wasted_bytes': safe_get_audit_value(
                 report, ['third-party-summary', 'details', 'summary', 'wastedBytes']
             ),
-            'total_unused_bytes': total_unused_bytes,
-            'total_resource_bytes': total_resource_bytes,
+            'total_unused_bytes_script': total_unused_bytes_script,
+            'total_resource_bytes_script': total_resource_bytes_script,
             'total_byte_weight': safe_get_audit_value(
                 report, ['total-byte-weight', 'numericValue']
             ),
@@ -80,6 +86,13 @@ def process_report(url, collection_resource, collection_traffic):
             'duplicated_javascript': safe_get_audit_value(
                 report, ['duplicated-javascript', 'numericValue']
             ),
+            'font_total_bytes': font_total_bytes,
+            'script_total_bytes': script_total_bytes,
+            'html_total_bytes': html_total_bytes,
+            'css_total_bytes': css_total_bytes,
+            'other_total_bytes': other_total_bytes,
+            'media_total_bytes': media_total_bytes,
+            'third_party_total_bytes': third_party_total_bytes,
         }
 
         return view_data
@@ -87,18 +100,24 @@ def process_report(url, collection_resource, collection_traffic):
     # 좀 더 세밀한 예외처리 필요
     except Exception as e:
         print(f"Error in process_report: {url}, {str(e)}")
-        print("view_data on lighthouse.py: ", view_data)
         # 기본 view_data 반환
         return {
             'total_byte_weight': 0,
             'third_party_summary_wasted_bytes': 0,
-            'total_unused_bytes': 0,
-            'total_resource_bytes': 0,
+            'total_unused_bytes_script': 0,
+            'total_resource_bytes_script': 0,
             'can_optimize_css_bytes': 0,
             'can_optimize_js_bytes': 0,
             'modern_image_formats_bytes': 0,
             'efficient_animated_content': 0,
-            'duplicated_javascript': 0
+            'duplicated_javascript': 0,
+            'font_total_bytes': 0,
+            'script_total_bytes': 0,
+            'html_total_bytes': 0,
+            'css_total_bytes': 0,
+            'other_total_bytes': 0,
+            'media_total_bytes': 0,
+            'third_party_total_bytes': 0,
         }
 
 # 공공기관 url 각각에 대해 Lighthouse 평가 결과 MongoDB에 저장 

@@ -255,3 +255,7 @@ def init_routes(app):
     @app.route('/error')
     def error():
         return render_template('error.html')
+
+    # @app.route('/newresult')
+    # def newresult():
+    #     return render_template('newresult.html')

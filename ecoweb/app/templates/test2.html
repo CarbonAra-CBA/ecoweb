@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+            width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .metric {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="chart-container">
+        <h2>리소스 타입별 용량 분포</h2>
+        <canvas id="resourceDonut"></canvas>
+    </div>
+
+    <div class="chart-container">
+        <h2>탄소 배출량 정규분포</h2>
+        <canvas id="normalDist"></canvas>
+    </div>
+
+    <div class="chart-container">
+        <h2>시간대별 탄소배출량 추이</h2>
+        <canvas id="timelineChart"></canvas>
+    </div>
+
+<script>
+// 임시 데이터 생성
+const resourceData = {
+    labels: ['이미지', 'JavaScript', 'CSS', '폰트', 'HTML'],
+    datasets: [{
+        data: [45, 25, 15, 10, 5],
+        backgroundColor: [
+            '#FF6384',
+            '#36A2EB',
+            '#FFCE56',
+            '#4BC0C0',
+            '#9966FF'
+        ]
+    }]
+};
+
+// 정규분포 데이터 생성
+function generateNormalDistData() {
+    const mean = 500;
+    const stdDev = 100;
+    const points = 100;
+    const labels = [];
+    const data = [];
+    
+    for (let i = 0; i < points; i++) {
+        const x = mean - 3*stdDev + (6*stdDev * i/points);
+        const y = (1/(stdDev * Math.sqrt(2 * Math.PI))) * 
+                 Math.exp(-0.5 * Math.pow((x - mean)/stdDev, 2));
+        labels.push(x.toFixed(0));
+        data.push(y * 1000); // 스케일 조정
+    }
+    
+    return { labels, data };
+}
+
+const normalDistData = generateNormalDistData();
+
+// 시간대별 데이터 생성
+function generateTimelineData() {
+    const hours = Array.from({length: 24}, (_, i) => `${i}:00`);
+    const currentSite = Array.from({length: 24}, () => Math.random() * 100 + 400);
+    const avgSite = Array.from({length: 24}, () => Math.random() * 50 + 450);
+    
+    return {
+        labels: hours,
+        currentSite,
+        avgSite
+    };
+}
+
+const timelineData = generateTimelineData();
+
+// 도넛 차트 생성
+new Chart(document.getElementById('resourceDonut'), {
+    type: 'doughnut',
+    data: resourceData,
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'right',
+            },
+            title: {
+                display: true,
+                text: '리소스 타입별 용량 분포 (%)'
+            }
+        }
+    }
+});
+
+// 정규분포 차트 생성
+new Chart(document.getElementById('normalDist'), {
+    type: 'line',
+    data: {
+        labels: normalDistData.labels,
+        datasets: [{
+            label: '탄소 배출량 분포',
+            data: normalDistData.data,
+            fill: true,
+            borderColor: 'rgb(75, 192, 192)',
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            tension: 0.4
+        }, {
+            label: '현재 사이트',
+            data: Array(normalDistData.labels.length).fill(null),
+            pointBackgroundColor: 'red',
+            pointRadius: 8,
+            showLine: false
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            title: {
+                display: true,
+                text: '전체 공공기관 대비 현재 사이트 위치'
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+// 시간대별 차트 생성
+new Chart(document.getElementById('timelineChart'), {
+    type: 'line',
+    data: {
+        labels: timelineData.labels,
+        datasets: [{
+            label: '현재 사이트',
+            data: timelineData.currentSite,
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.4
+        }, {
+            label: '평균',
+            data: timelineData.avgSite,
+            borderColor: 'rgb(255, 99, 132)',
+            tension: 0.4
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            title: {
+                display: true,
+                text: '시간대별 탄소배출량 (g CO2)'
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+</body>
+</html>
