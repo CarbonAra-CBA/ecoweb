@@ -9,16 +9,15 @@
 > **정부/ 공공기관 웹사이트 저전력 웹페이지 구축 서비스** <br/> **개발기간: 2024.09 ~ 2024.11**
 
 ## 배포주소
-> **개발 버전** : [http://ecoweb.cs.skku.edu/](http://ecoweb.cs.skku.edu/) <br>
-> **프론트 서버** : [http://ecoweb.cs.skku.edu:33307/](http://ecoweb.cs.skku.edu:33307/)<br>
-> **백엔드 서버** : [http://ecoweb.cs.skku.edu:2223/](http://ecoweb.cs.skku.edu:2223/)<br>
+> **개발 버전** : [http://3.34.51.113:5000/) <br>
+
 
 ## Team Info
 
-|      고병수       |          허세진         |       한동규         | 이희수                                                                                                               
-| :---------------: | :----------------------: | :------------------: | :---------------------------------------------------------------------: | 
-| <img width="160px" src="https://avatars.githubusercontent.com/u/107296751?v=4" /> | <img width="160px" src="" /> | <img width="160px" src=""/> | <img width="160px" src="" /> |
-| [@eclipse1228](https://github.com/eclipse1228) | [@jelly1500](https://github.com/jelly1500) | [@dongkyu20](https://github.com/dongkyu20) | [@magatia3113](https://github.com/magatia3113) |
+|      고병수       |          허세진         |       한동규         | 이희수|                                                                                                               
+| :------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | 
+|   <img width="160px"  src="https://avatars.githubusercontent.com/u/107296751?v=4" />    |                      <img width="160px" src="https://avatars.githubusercontent.com/u/58739539?v=4" />    |                   <img width="160px" src="https://avatars.githubusercontent.com/u/79791066?v=4"/>   | <img width="160px" src="https://avatars.githubusercontent.com/u/116639627?v=4"/> |
+|   [@eclipse1228](https://github.com/eclipse1228)   |    [@jelly1500](https://github.com/jelly1500)  | [@dongkyu20](https://github.com/dongkyu20)  | [@magatia3113](https://github.com/magatia3113) |
 | 동아대학교 컴퓨터공학과 3학년 | 동아대학교 컴퓨터공학과 3학년 | 동아대학교 컴퓨터공학과 3학년 | 동아대학교 컴퓨터공학과 4학년 |
 
 ## 프로젝트 소개 
