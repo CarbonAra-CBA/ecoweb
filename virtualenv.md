@@ -20,7 +20,6 @@ pip install -r requirements.txt
 
 (나중에 라이브러리 추가했을 경우에만 :requirements.txt 업데이트하기(만들기))
 pip freeze > requirements.txt
-
 ```
 
 
