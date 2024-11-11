@@ -3,7 +3,7 @@ import requests
 from urllib.parse import urlparse
 from datetime import datetime
 import logging
-from ecoweb.app.ProjectMaker.ThirdPartyDetect import ThirdPartyIgnore
+from app.ProjectMaker.ThirdPartyDetect import ThirdPartyIgnore
 
 # 로깅 설정
 logging.basicConfig(filename='download_errors.log', level=logging.ERROR,

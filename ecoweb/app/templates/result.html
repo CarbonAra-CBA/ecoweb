@@ -39,7 +39,7 @@
         justify-content: space-between;
         align-items: center;
         padding: 0;  /* 패딩 제거 */
-        max-width: 100%;  /* 최대 너비를 100%로 설정 */
+        max-width: 96%;  /* 최대 너비를 100%로 설정 */
         margin: 0;  /* 마진 제거 */
     }
 
@@ -560,7 +560,7 @@
                             <p class="result-text">해당 웹페이지는 탄소 배출 {{grade}} 등급입니다.</p>
                             <div class="result-details">
                                 <p>전 세계 평균보다 {{global_avg_diff}}MB 더 배출</p>
-                                <p>대한민국 평균보다 {% if korea_avg_diff > 0 %}{{korea_avg_diff}}MB 더 배출{% else %}{{-korea_avg_diff}}MB 덜 배출{% endif %}</p>
+                                <p>대한민국 평균보다 {{korea_avg_diff|abs}}MB {% if korea_avg_diff > 0 %}더{% else %}덜{% endif %} 배출</p>
                                 <p>메인페이지 용량: {{kb_weight/1024|round(2)}}MB</p>
                                 <p>탄소 배출량: {{carbon_emission}}g</p>
                             </div>
@@ -606,7 +606,7 @@
                 <div class="metric-card">
                     <div class="metric-icon">☕</div>
                     <div class="metric-content">
-                        <h4>커피 소비량</h4>
+                        <h4>커피 끓이는 잔의 수</h4>
                         <p class="metric-value">{{(carbon_emission /1000 * 10000 * 12 / 0.01)|round}}잔</p>
                         <p class="metric-desc">커피 1잔 = 0.01g CO₂</p>
                     </div>
@@ -716,7 +716,7 @@
         <div class="content-card">
             <!-- 지속가능한 웹개발 가이드라인 -->
             <section class="mt-5">
-                <h4>지속가능한 웹개발 가이드라인 준수 현황</h4>
+                <h4 style="margin-left: 31px;">W3c 지속가능한 웹개발 가이드라인 준수 현황 (llama3.2 RAG 모델 사용)</h4>
                 <table class="table">
                     <thead>
                         <tr>
@@ -806,7 +806,7 @@
 
         <!-- 최적화 제안 카드 -->
         <div class="content-card">
-            <h3>최적화 가능 항목</h3>
+            <h3 style="margin-left: 11px;">최적화 가능 항목</h3>
             <!-- Google Lighthouse 상세 보고서 -->
             <div class="container mt-5" style="font-size: 21px;">
                 <h4>Google Lighthouse 상세 분석 결과</h4>
@@ -894,31 +894,7 @@
 {% endif %}
 </div>
 
-<div class="content-card">
-<div class="badge-section">
-    <h4>탄소 배출 증명 배지</h4>
-    <p class="badge-description">
-        배지는 웹사이트 헤더나 푸터에 추가하여 각 페이지의 탄소 배출량을 자동으로 계산하고 표시할 수 있습니다.
-    </p>
 
-    <div class="eco-badge light">
-        <span class="carbon-amount">{{carbon_emission}}g of CO2/view</span>
-        <span class="badge-text">Eco-Web</span>
-    </div>
-
-    <div class="mt-4">
-        <h5>오픈 소스 API</h5>
-        <p>
-            웹사이트 탄소 계산을 다른 도구와 워크플로우에 통합하는 데 사용할 수 있는 웹사이트 탄소 API를 제공합니다!
-        </p>
-    </div>
-
-    <a href="/badge" class="btn get-badge-btn">
-        배지 설치하기
-    </a>
-        </div>
-    </div>
-</div>
 
 <div class="content-card">
     <h3>최적화 전/후 비교</h3>
@@ -926,7 +902,7 @@
         <div class="col-md-6">
                             <h5>Before</h5>
                             <img src="../static/screenshots/before.png" alt="Before" class="comparison-image" style="width: 87%;">
-                            <h2>총 리소스: {{view_data.total_byte_weight/1024/1024|round(2)}}MB</h2>
+                            <h2>총 리소스: {{(view_data.total_byte_weight/1024/1024)|round(2)}}MB</h2>
                         </div>
                         <div class="col-md-6">
             <h5>After</h5>
@@ -935,12 +911,81 @@
         </div>
     </div>
 </div>
-                <div class="text-center mt-4">
+{% set optimization_carbon = total_optimization/1024 /68 * 0.01 %}                
+<div class="text-center mt-4">
+                    <h2>{{(total_optimization/1024/1024)|round(2)}}MB은 월 1만회의 방문자일 때, </h2>
+                    <div class="content-card" >
+                        <h3 style="font-weight: bold;">연간 탄소 배출량 환산</h3>
+                        <p class="metrics-subtitle">월 10,000명 방문 기준 ({{ optimization_carbon/1000 * 10000 * 12|round}} CO₂/kg)</p>
+                        
+                        <div class="carbon-metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-icon">☕</div>
+                                <div class="metric-content">
+                                    <h4>커피 끓이는 잔의 수</h4>
+                                    <p class="metric-value">{{( optimization_carbon/1000 * 10000 * 12 / 0.01)|round}}잔</p>
+                                    <p class="metric-desc">커피 1잔 = 0.01g CO₂</p>
+                                </div>
+                            </div>
+            
+                            <div class="metric-card">
+                                <div class="metric-icon">🚗</div>
+                                <div class="metric-content">
+                                    <h4>전기차 주행거리</h4>
+                                    <p class="metric-value">{{( optimization_carbon/1000 * 10000 * 12 / 0.16 * 2)|round}}km</p>
+                                    <p class="metric-desc">2km 주행 = 0.16kg CO₂</p>
+                                </div>
+                            </div>
+            
+                            <div class="metric-card">
+                                <div class="metric-icon">📱</div>
+                                <div class="metric-content">
+                                    <h4>스마트폰 충전</h4>
+                                    <p class="metric-value">{{( optimization_carbon/1000 * 10000 * 12 / 0.02 * 3)|round}}회</p>
+                                    <p class="metric-desc">3회 충전 = 0.02g CO₂</p>
+                                </div>
+                            </div>
+            
+                            <div class="metric-card">
+                                <div class="metric-icon">🌳</div>
+                                <div class="metric-content">
+                                    <h4>나무 흡수량</h4>
+                                    <p class="metric-value">{{( optimization_carbon/1000 * 10000 * 12 / 0.02)|round}}그루</p>
+                                    <p class="metric-desc">1그루 = 0.02kg CO₂/년</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <a href="/" class="btn btn-secondary">다시 측정하기</a>
                 </div>
             </div>
         </div>
     </div>
+    <div class="content-card">
+        <div class="badge-section">
+            <h2>탄소 배출 증명 배지</h2>
+            <p class="badge-description">
+                <h5>배지는 웹사이트 헤더나 푸터에 추가하여 각 페이지의 탄소 배출량을 자동으로 계산하고 표시할 수 있습니다.</h5>
+            </p>
+        
+            <div class="eco-badge light">
+                <span class="carbon-amount">{{carbon_emission}}g of CO2/view</span>
+                <span class="badge-text">Eco-Web</span>
+            </div>
+        
+            <div class="mt-4">
+                <h4>오픈 소스 API</h5>
+                <p>
+                    <h5>웹사이트 탄소 계산을 다른 도구와 워크플로우에 통합하는 데 사용할 수 있는 웹사이트 탄소 API를 제공합니다!</h5>
+                </p>
+            </div>
+        
+            <a href="/badge" class="btn get-badge-btn">
+                배지 설치하기
+            </a>
+                </div>
+            </div>
+        </div>
     <footer>
         <div class="footer-content">
             <p class="footer-text">ECO-WEB, DONGA-UNIVERSITY</p>
