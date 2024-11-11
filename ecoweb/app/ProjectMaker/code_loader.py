@@ -2,6 +2,16 @@ import os
 from typing import List, Dict
 import re
 
+def patternNameMerge(pattern, name):
+    ret = []
+    for i in range(len(pattern)):
+        new_item = {
+            "name" : name[i],
+            "pattern" : pattern[i]
+        }
+        ret.append(new_item)
+    return ret
+
 def find_with_pattern_labels(pattern: str, text: str) -> List[str]:
     """
     주어진 정규 표현식 패턴과 문자열에서 매치된 텍스트를 원본 문자열 형식 그대로 반환하는 함수.
@@ -83,20 +93,8 @@ def html_analize(html_code: str, elements):
         class_pattern_matches = find_with_pattern_labels(r'(?<=\s|\n)\.([a-zA-Z0-9_-]+)', style)
 
         # name과 pattern을 합치기
-        id_list = []
-        for iter in range(len(id_matches)):
-            ids = {
-                "name" : id_matches[iter],
-                "pattern" : id_pattern_matches[iter]
-            }
-            id_list.append(ids)
-        class_list = []
-        for iter in range(len(class_matches)):
-            classes = {
-                "name" : class_matches[iter],
-                "pattern" : class_pattern_matches[iter]
-            }
-            class_list.append(classes)
+        id_list = patternNameMerge(name=id_matches, pattern=id_pattern_matches)
+        class_list = patternNameMerge(name=class_matches, pattern=class_pattern_matches)
 
         for match in id_list:
             if len(match) > 2:  # 길이가 2바이트 초과인 경우에만 추가
@@ -141,7 +139,7 @@ def html_analize(html_code: str, elements):
     for script in script_content:
         # 변수명 추출 (var, let, const 뒤에 오는 변수 이름)
         variable_matches = re.findall(r'\b(?:var|let|const)\s+([a-zA-Z_$][a-zA-Z0-9_$]*)', script)
-
+        variable_pattern_matches = find_with_pattern_labels(r'\b(?:var|let|const)\s+([a-zA-Z_$][a-zA-Z0-9_$]*)', script)
         # 함수명 추출 (함수 선언, 함수 표현식, 화살표 함수)
         function_matches = re.findall(
             r'\bfunction\s+([a-zA-Z_$][a-zA-Z0-9_$]*)|'  # 함수 선언
@@ -149,9 +147,19 @@ def html_analize(html_code: str, elements):
             r'([a-zA-Z_$][a-zA-Z0-9_$]*)\s*=\s*\(.*?\)\s*=>'  # 화살표 함수
             , script
         )
+        function_pattern_matches = find_with_pattern_labels(
+            r'\bfunction\s+([a-zA-Z_$][a-zA-Z0-9_$]*)|'  # 함수 선언
+            r'([a-zA-Z_$][a-zA-Z0-9_$]*)\s*=\s*function\b|'  # 함수 표현식
+            r'([a-zA-Z_$][a-zA-Z0-9_$]*)\s*=\s*\(.*?\)\s*=>'  # 화살표 함수
+            , script
+        )
+
+        variables_list = patternNameMerge(name=variable_matches, pattern=variable_pattern_matches)
+        functions_list = patternNameMerge(name=function_matches, pattern=function_pattern_matches)
 
         # id와 class 추출
         script_id_matches = re.findall(r'\bgetElementById\(["\']([a-zA-Z0-9_-]+)["\']\)', script)
+
         script_class_matches = re.findall(r'\bgetElementsByClassName\(["\']([a-zA-Z0-9_\s-]+)["\']\)', script)
 
         # 추가 조건: (#idName) 및 (.className) 패턴을 추출
