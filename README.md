@@ -9,7 +9,7 @@
 > **정부/ 공공기관 웹사이트 저전력 웹페이지 구축 서비스** <br/> **개발기간: 2024.09 ~ 2024.11**
 
 ## 배포주소
-> **개발 버전** : [http://3.34.51.113:5000/) <br>
+> **개발 버전** : [http://carbonara.kr:5000) <br>
 
 
 ## Team Info
@@ -21,7 +21,8 @@
 | 동아대학교 컴퓨터공학과 3학년 | 동아대학교 컴퓨터공학과 3학년 | 동아대학교 컴퓨터공학과 3학년 | 동아대학교 컴퓨터공학과 4학년 |
 
 ## 프로젝트 소개 
-**본 프로젝트는 웹사이트의 탄소 배출량을 측정하여 사용자에게 시각적으로 제공하며, 지속 가능한 웹 환경을 지향하는 친환경적인 사이트입니다.**
+웹사이트의 탄소 배출량을 측정하고 평가하여 필요시 탄소저감 솔루션을 제공하는 서비스입니다.
+ 현재 공공기관과 정부를 대상으로 서비스를 제공할 예정이며, LLM과 ML 기술을 통해 코드와 이미지를 각각 최적화하여 제공합니다. 
 
 ## 시작 가이드
 ### Requirements
@@ -29,6 +30,8 @@ For building and running the application you need:
 
 - [Python 3.10.12](https://www.python.org/downloads/release/python-31012/)
 - [Lighthouse 9.1.1](https://github.com/GoogleChrome/lighthouse/releases/tag/v9.1.1)
+- other libraries in [requirements.txt](requirements.txt)
+
 ### Installation
 ``` bash
 $ git clone https://github.com/CarbonAra-CBA/ecoweb.git
@@ -53,22 +56,31 @@ $ python run.py
 ![venv](https://img.shields.io/badge/venv-007ACC?style=for-the-badge&logo=venv&logoColor=white)        
 
 ### Development
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=white)
 ![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=Flask&logoColor=white)
 ![Lighthouse](https://img.shields.io/badge/Lighthouse-000000?style=for-the-badge&logo=Lighthouse&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white)
 ![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=Pandas&logoColor=white)
 ![Tensorflow](https://img.shields.io/badge/Tensorflow-FF6F00?style=for-the-badge&logo=Tensorflow&logoColor=white)
+![llama3](https://img.shields.io/badge/llama3-000000?style=for-the-badge&logo=llama3&logoColor=white)
+![langchain](https://img.shields.io/badge/langchain-000000?style=for-the-badge&logo=langchain&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=MongoDB&logoColor=white)
+![Atlas](https://img.shields.io/badge/Atlas-000000?style=for-the-badge&logo=MongoDB%20Atlas&logoColor=white)
+![CNN](https://img.shields.io/badge/CNN-000000?style=for-the-badge&logo=CNN&logoColor=white)
+
+### Cloud
+![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=Amazon%20AWS&logoColor=white)
+![EC2](https://img.shields.io/badge/EC2-FF9900?style=for-the-badge&logo=Amazon%20EC2&logoColor=white)
+
 ### Communication
 ![Notion](https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white)
 ![GoogleMeet](https://img.shields.io/badge/GoogleMeet-00897B?style=for-the-badge&logo=Google%20Meet&logoColor=white)
 
+
 ## 화면 구성
-| 메인 페이지  |  소개 페이지   |
+| 메인 페이지  |  결과페이지   |
 | :-------------------------------------------: | :------------: |
-|  <img width="329" src="https://github.com/magatia3113/edit-eco/blob/main/%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98%20%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%9D%B4%EB%AF%B8%EC%A7%80/%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%A1%B1.png?raw=true"/> |  <img width="329" src="" alt="제작중"/>|  
-| 강좌 소개 페이지   |  강의 영상 페이지   |  
-| <img width="329" src=""/>   |  <img width="329" src=""/>     |
+|  <img width="329" src="https://raw.githubusercontent.com/eclipse1228/Githun-User-Content/main/main_ecoweb.png"/> |  <img width="329" src="https://raw.githubusercontent.com/eclipse1228/Githun-User-Content/main/result_ecoweb.png"/>|  
+| 배지 제공 페이지   |  강의 영상 페이지   |  
+| <img width="329" src="https://raw.githubusercontent.com/eclipse1228/Githun-User-Content/main/badge_pages.png"/>   
 
 ---
 
