@@ -20,6 +20,13 @@ from app.ProjectMaker.DirectoryMaker import directory_maker
 from app.ProjectMaker.guideline_report import create_guideline_report, guideline_summarize
 from dotenv import load_dotenv
 
+import re
+from app.Image_Classification import model_test
+from app.lighthouse import process_urls as proc_url
+import urllib.request
+import os
+
+
 load_dotenv()
 # 가이드라인 분석 결과를 임시 저장할 딕셔너리
 guideline_results = {}
@@ -149,6 +156,45 @@ def init_routes(app):
             thread = Thread(target=perform_async_guideline_analize, args=(task_id, url_s, collection_traffic, collection_resource))
             thread.start()
 
+            # 이미지 분류
+            Image_paths = proc_url.get_report_imagepath()
+
+            image_dir_path = 'images'
+            if not os.path.exists(image_dir_path):
+                os.mkdir(image_dir_path)
+
+            files = []
+            for imageurl in Image_paths:
+                try:
+                    spliturl = re.split(r':|\/|\.', imageurl)
+                    filename = spliturl[-2] + '.' + spliturl[-1]
+                    destination = os.path.join(image_dir_path, filename)
+                    urllib.request.urlretrieve(imageurl, destination)
+                    files.append(model_test.predict_image(destination, filename, 'images/results'))
+                except Exception as e:
+                    print(f"download error : {e}")
+
+            category = {
+                'iconfile': [],
+                'logofile': [],
+                'others': []
+            }
+            svgfiles = []
+            count = 0
+            totalsize = 0
+            for file in files:
+                if file['class_name'] == 'jpg_svg' or file['class_name'] == 'jpg_logo':
+                    svgfiles.append(file)
+                    count += 1
+                    totalsize += file['size']
+                    if "ico" in file['name']:
+                        category['iconfile'].append(file)
+                    elif "logo" in file['name']:
+                        category['logofile'].append(file)
+                    else:
+                        category['others'].append(file)
+
+
             return render_template('result.html',
                                    url=url_s,
                                    grade=grade_s,
@@ -159,7 +205,12 @@ def init_routes(app):
                                    korea_avg_diff=korea_avg_diff,
                                    institution_type=institution_type,
                                    guideline_list=guideline_results,
-                                   task_id=task_id)
+                                   task_id=task_id,
+                                   files=svgfiles,
+                                   category=category,
+                                   filecount=count,
+                                   totalsize=totalsize
+                                   )
 
         except Exception as e:
             print(f"Error in result route: {str(e)}")
