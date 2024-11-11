@@ -14,11 +14,12 @@ from langchain.chains.retrieval import create_retrieval_chain
 from langchain.text_splitter import CharacterTextSplitter
 from typing import List
 
+from concurrent.futures.thread import ThreadPoolExecutor
+
 import htmlmin
 import rcssmin
 import rjsmin
 
-from concurrent.futures import ThreadPoolExecutor
 
 # 현재 컴퓨터 환경에서의 절대 경로로 수정 필요!
 load_dotenv("C:/Users/windowadmin1.WIN-TAQQ3RO5V1L.000/Desktop/ecoweb/ecoweb/app/.env")
@@ -199,6 +200,7 @@ def create_guideline_report(project_root_path):
     print("start processing")
     start_time = time.time()
     answer_list = []
+
     with ThreadPoolExecutor() as executor:
         futures = {executor.submit(process_file, path, query): path for path in path_list}
         for future in futures:
@@ -265,7 +267,9 @@ def guideline_summarize(answer_list):
             )
         print(g["number"])
 
-    return guideline_info_list
+    sorted_guideline_info_list = sorted(guideline_info_list, key=lambda x: int(x['number']))
+
+    return sorted_guideline_info_list
 
 
 if __name__ == '__main__':

@@ -1,5 +1,8 @@
+from threading import Thread
+import uuid
+
 from flask import render_template, request, redirect, url_for
-from utils.grade import grade_point
+from app.utils.grade import grade_point
 from app.services.screenshot import capture_screenshot
 from app.services.lighthouse import run_lighthouse
 from app.services.lighthouse import process_report
@@ -11,13 +14,29 @@ from app import db
 from werkzeug.security import generate_password_hash, check_password_hash  # check_password_hash 추가
 from datetime import datetime
 from flask import jsonify
+from flask import g
 
 from app.ProjectMaker.DirectoryMaker import directory_maker
 from app.ProjectMaker.guideline_report import create_guideline_report, guideline_summarize
 from dotenv import load_dotenv
 
 load_dotenv()
+# 가이드라인 분석 결과를 임시 저장할 딕셔너리
+guideline_results = {}
 
+def perform_async_guideline_analize(task_id, url_s, collection_traffic, collection_resource):
+    # 디렉토리 생성 및 가이드라인 분석 수행
+    root_path = directory_maker(url=url_s, collection_traffic=collection_traffic,
+                                        collection_resource=collection_resource)
+    print("directory make success. root path:", root_path)
+
+    # 가이드라인 분석 결과 생성
+    answer_list = create_guideline_report(project_root_path=root_path)
+    guideline_list = guideline_summarize(answer_list=answer_list)
+
+
+    # 결과를 async_results에 저장
+    guideline_results[task_id] = guideline_list
 
 def init_routes(app):
     @app.route('/', methods=['GET', 'POST'])
@@ -87,6 +106,7 @@ def init_routes(app):
         if request.method == 'GET':
             return render_template('main.html')
 
+
     @app.route('/result')
     def result():
         url = request.args.get('url')
@@ -97,49 +117,37 @@ def init_routes(app):
 
         collection_traffic = db.db.lighthouse_traffic
         collection_resource = db.db.lighthouse_resource
+
         try:
-            # view_data가 URL 파라미터로 전달된 경우
+            # view_data 처리
             if view_data_str:
                 view_data = json.loads(view_data_str)
                 print("view_data_on url:")
-            # view_data가 세션에 있는 경우
             elif session.get('view_data'):
                 view_data = json.loads(session.get('view_data'))
                 print("view_data_on session:")
-            # 둘 다 없는 경우
             else:
                 return redirect(url_for('/'))
 
-            # 탄소 배출량 계산
+            # 탄소 배출량 및 기타 정보 계산
             kb_weight = view_data['total_byte_weight'] / 1024  # bytes to KB
-            carbon_emission = (kb_weight * 0.04) / 272.51
-            carbon_emission = round(carbon_emission, 3)
-
-            # MB 단위로 변환하여 평균과 비교
+            carbon_emission = round((kb_weight * 0.04) / 272.51, 3)
             mb_weight = kb_weight / 1024
             global_avg_diff = round(mb_weight - 2.4, 2)
             korea_avg_diff = round(mb_weight - 4.7, 2)
 
-            # 성공적으로 데이터를 가져왔으면 세션에 저장
+            # 세션에 view_data 저장
             session['view_data'] = json.dumps(view_data)
 
-            # institution_type 조회 및 예외 처리
+            # institution_type 조회
             traffic_doc = db.db.lighthouse_traffic.find_one({'url': url})
-            if traffic_doc and 'institution_type' in traffic_doc:
-                institution_type = traffic_doc['institution_type']
-            else:
-                institution_type = "공공기관"  # 기본값 설정
-                print(f"Institution type not found for URL: {url}")
+            institution_type = traffic_doc.get('institution_type', '공공기관') if traffic_doc else '공공기관'
             session['institution_type'] = institution_type
 
-            # 가이드라인 분석
-            # root_path = directory_maker(url=url_s, collection_traffic=collection_traffic,
-            #                             collection_resource=collection_resource)
-            # print("directory make success. root path : ", root_path)
-            # answer_list = create_guideline_report(project_root_path=root_path)
-            # guideline_list = guideline_summarize(answer_list=answer_list)
-            # print(guideline_list)
-            guideline_list = []
+            # 비동기 작업(가이드라인 분석)
+            task_id = str(uuid.uuid4())
+            thread = Thread(target=perform_async_guideline_analize, args=(task_id, url_s, collection_traffic, collection_resource))
+            thread.start()
 
             return render_template('result.html',
                                    url=url_s,
@@ -150,11 +158,24 @@ def init_routes(app):
                                    global_avg_diff=global_avg_diff,
                                    korea_avg_diff=korea_avg_diff,
                                    institution_type=institution_type,
-                                   guideline_list=guideline_list)
+                                   guideline_list=guideline_results,
+                                   task_id=task_id)
 
         except Exception as e:
             print(f"Error in result route: {str(e)}")
             return redirect(url_for('/'))
+
+    @app.route('/check_async/<task_id>', methods=['GET'])
+    def check_async(task_id):
+        """
+        비동기 작업의 상태를 확인하는 엔드포인트.
+        """
+        if task_id in guideline_results:
+            result = guideline_results.pop(task_id)  # 결과 가져오고 제거
+            return jsonify({'status': 'completed', 'result': result})
+        else:
+            # 비동기 작업이 아직 완료되지 않았음
+            return jsonify({'status': 'pending'}), 202  # 202 Accepted
 
     @app.route('/login', methods=['GET', 'POST'])  # methods=['GET', 'POST'] 추가 필요
     def login():
