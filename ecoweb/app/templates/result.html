@@ -673,6 +673,45 @@
                 </div>
         </div>
 
+        <style>
+            /* 프로그래스 바 스타일 */
+        .progress-container {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto; /* 상하 20px 간격, 좌우 중앙 정렬 */
+            display: none; /* 초기에는 숨김 */
+            align-items: center;
+            justify-content: center;
+            position: relative; /* 위치 조정을 위해 relative 설정 */
+        }
+
+        .spinner {
+            width: 150px;
+            height: 150px;
+            border: 16px solid rgba(144, 238, 144, 0.3); /* 파스텔 초록색 투명한 테두리 */
+            border-top: 16px solid rgba(144, 238, 144, 1); /* 파스텔 초록색 불투명 테두리 */
+            border-radius: 50%;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* 오버레이 스타일 */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            display: none; /* 초기에는 숨김 */
+            z-index: 1; /* 프로그래스 바 위에 표시 */
+            border-radius: 50%; /* 오버레이를 원형으로 */
+        }
+        </style>
         <!-- 가이드라인 준수 현황 카드 -->
         <div class="content-card">
             <!-- 지속가능한 웹개발 가이드라인 -->
@@ -686,55 +725,84 @@
                             <th scope="col">준수여부</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>파일 전송 권한 확인</td>
-                            <td>✅</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>동적 리소스 로딩 사용</td>
-                            <td>❌</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>이미지 alt 속성 제공</td>
-                            <td>✅</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>함수 단일 책임 원칙 준수</td>
-                            <td>❌</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>HTML5 시맨틱 태그 사용</td>
-                            <td>✅</td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>중복 ID/클래스 제거</td>
-                            <td>❌</td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>클라이언트 양식 검증</td>
-                            <td>✅</td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td>Web APIs 활용</td>
-                            <td>❌</td>
-                        </tr>
-                        <tr>
-                            <td>9</td>
-                            <td>Page Visibility API 활용</td>
-                            <td>✅</td>
-                        </tr>
+                    <tbody id="guideline-section">
                     </tbody>
                 </table>
             </section>
+
+            <div id="progress-overlay"></div>
+            <div id="progress-bar" class="progress-container">
+                <div class="spinner"></div>
+            </div>
+
+            <script>
+                const taskId = "{{ task_id }}";
+
+                // 비동기 작업 결과를 확인하는 함수
+                function checkAsyncResult() {
+                    fetch(`/check_async/${taskId}`)
+                        .then(response => {
+                            if (response.status === 200) {
+                                return response.json();
+                            } else if (response.status === 202) {
+                                return { status: 'pending' };
+                            } else {
+                                throw new Error('알 수 없는 상태');
+                            }
+                        })
+                        .then(data => {
+                            if (data.status === 'completed') {
+                                const guideline = document.getElementById('guideline-section');
+
+                                // 기존의 "비동기 작업 진행 중..." 메시지를 제거
+                                guideline.innerHTML = '';
+
+                                // 비동기 프로그래스 바와 오버레이 숨기기
+                                document.getElementById('progress-overlay').style.display = 'none';
+                                document.getElementById('progress-bar').style.display = 'none';
+
+                                // data.result는 [{number: , title: , isFellow: }, {}, ..., {}] 형태의 12개 객체 배열
+                                data.result.forEach(item => {
+                                    // 새로운 테이블 행 생성
+                                    const tr = document.createElement('tr');
+
+                                    // Number 열 생성 및 값 설정
+                                    const tdNumber = document.createElement('td');
+                                    tdNumber.textContent = item.number;
+                                    tr.appendChild(tdNumber);
+
+                                    // Title 열 생성 및 값 설정
+                                    const tdTitle = document.createElement('td');
+                                    tdTitle.textContent = item.title;
+                                    tr.appendChild(tdTitle);
+
+                                    // isFellow 열 생성 및 조건에 따라 ✅ 또는 ❌ 설정
+                                    const tdIsFellow = document.createElement('td');
+                                    tdIsFellow.textContent = item.isFellow === "True" ? "✅" : "❌";
+                                    tr.appendChild(tdIsFellow);
+
+                                    // 생성된 행을 tbody에 추가
+                                    guideline.appendChild(tr);
+                                });
+
+                                clearInterval(intervalId);  // 폴링 중지
+                            } else {
+                                console.log('비동기 작업 진행 중...');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('오류:', error);
+                        });
+                }
+
+                // 페이지 로드 시 비동기 작업 상태 확인 시작
+                window.onload = function() {
+                    document.getElementById('progress-overlay').style.display = 'block';
+                    document.getElementById('progress-bar').style.display = 'flex';
+                    // 5초마다 비동기 작업 상태 확인
+                    window.intervalId = setInterval(checkAsyncResult, 5000);
+                };
+        </script>
 
         <!-- 최적화 제안 카드 -->
         <div class="content-card">
@@ -768,7 +836,7 @@
                         미사용: {{ (view_data.total_unused_bytes_script / 1024 / 1024)|round(2) }}MB<br>
                         전체: {{ (view_data.total_resource_bytes_script / 1024 / 1024)|round(2) }}MB
                     </td>
-                    <td>전체 JavaScript 중 미사용 코드 비율: 
+                    <td>전체 JavaScript 중 미사용 코드 비율:
                         {{ ((view_data.total_unused_bytes_script / view_data.total_resource_bytes_script) * 100)|round(1) }}%
                     </td>
                 </tr>
@@ -812,15 +880,15 @@
     </div>
 
     <!-- 총 최적화 가능 용량 계산 및 표시 -->
-    {% set total_optimization = view_data.can_optimize_css_bytes + 
-        view_data.can_optimize_js_bytes + 
-        view_data.modern_image_formats_bytes + 
-        view_data.efficient_animated_content + 
+    {% set total_optimization = view_data.can_optimize_css_bytes +
+        view_data.can_optimize_js_bytes +
+        view_data.modern_image_formats_bytes +
+        view_data.efficient_animated_content +
         view_data.duplicated_javascript %}
 {% if total_optimization > 0 %}
 <div class="alert alert-info mt-3">
-<strong>총 최적화 가능 용량:</strong> 
-{{ (total_optimization / 1024 / 1024)|round(2) }}MB 
+<strong>총 최적화 가능 용량:</strong>
+{{ (total_optimization / 1024 / 1024)|round(2) }}MB
 (현재 용량의 {{ ((total_optimization / view_data.total_byte_weight) * 100)|round(1) }}%)
 </div>
 {% endif %}
@@ -832,19 +900,19 @@
     <p class="badge-description">
         배지는 웹사이트 헤더나 푸터에 추가하여 각 페이지의 탄소 배출량을 자동으로 계산하고 표시할 수 있습니다.
     </p>
-    
+
     <div class="eco-badge light">
         <span class="carbon-amount">{{carbon_emission}}g of CO2/view</span>
         <span class="badge-text">Eco-Web</span>
     </div>
-    
+
     <div class="mt-4">
         <h5>오픈 소스 API</h5>
         <p>
             웹사이트 탄소 계산을 다른 도구와 워크플로우에 통합하는 데 사용할 수 있는 웹사이트 탄소 API를 제공합니다!
         </p>
     </div>
-    
+
     <a href="/badge" class="btn get-badge-btn">
         배지 설치하기
     </a>
@@ -873,7 +941,7 @@
             </div>
         </div>
     </div>
-    <footer>    
+    <footer>
         <div class="footer-content">
             <p class="footer-text">ECO-WEB, DONGA-UNIVERSITY</p>
             <p class="footer-text">Address: 37, Nakdong-daero 550beon-gil, Saha-gu, Busan, Republic of Korea.</p>
@@ -886,7 +954,7 @@
         // 등급에 따른 위치 설정
         const grade = "{{ grade }}";
         const gradeMarker = document.querySelector('.grade-marker');
-        
+
         // 등급별 위치 매핑 (왼쪽부터 오른쪽으로)
         const gradePositions = {
             'A+': '0%',
@@ -896,7 +964,7 @@
             'D': '80%',
             'F': '95%'  // 완전히 오른쪽 끝
         };
-        
+
         // 등급별 색상 매핑
         const gradeColors = {
             'A+': '#00ffbb',
@@ -906,12 +974,12 @@
             'D': '#ff6b00',
             'F': '#ff0000'
         };
-        
+
         // 마커 위치와 색상 설정
         if (gradeMarker) {
             gradeMarker.style.left = gradePositions[grade];
             gradeMarker.style.color = gradeColors[grade];
-            
+
             // 마커가 양 끝에 있을 때 화면 밖으로 나가지 않도록 조정
             if (grade === 'A+') {
                 gradeMarker.style.transform = 'translateX(-20%)';
@@ -926,7 +994,7 @@
         document.addEventListener('DOMContentLoaded', function() {
     const gradeCircle = document.querySelector('.grade-circle');
     const grade = "{{ grade }}";
-    
+
     // 등급에 따른 클래스 추가
     if (grade === 'A+') {
         gradeCircle.classList.add('grade-A-plus');
@@ -936,42 +1004,42 @@
 });
     // 예시 데이터 생성 (파이썬에서 만든 데이터와 유사하게)
     const existingData = Array.from({length: 25000}, () => d3.randomNormal(0.7,0.05)()); // 0.3은 평균, 0.3은 표준편차
-    
+
     // 새로운 URL 데이터
     const newUrlData = 0.65;
-    
+
     // SVG 크기 설정
     const svg = d3.select("svg");
     const margin = {top: 20, right: 20, bottom: 30, left: 40};
     const width = +svg.attr("width") - margin.left - margin.right;
     const height = +svg.attr("height") - margin.top - margin.bottom;
     const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
-    
+
     // X축 및 Y축 범위 설정
     const x = d3.scaleLinear()
         .domain([d3.min(existingData), d3.max(existingData)])
         .rangeRound([0, width]);
-    
+
     const bins = d3.histogram()
         .domain(x.domain())
         .thresholds(x.ticks(50))
         (existingData);
-    
+
     const y = d3.scaleLinear()
         .domain([0, d3.max(bins, d => d.length)])
         .range([height, 0]);
-    
+
     // X축
     g.append("g")
         .attr("class", "axis axis--x")
         .attr("transform", `translate(0,${height})`)
         .call(d3.axisBottom(x));
-    
+
     // Y축
     g.append("g")
         .attr("class", "axis axis--y")
         .call(d3.axisLeft(y));
-    
+
     // 히스토그램 막대 추가
     g.selectAll(".bar")
         .data(bins)
@@ -982,7 +1050,7 @@
         .attr("width", d => x(d.x1) - x(d.x0) - 1)
         .attr("height", d => height - y(d.length))
         .attr("fill", "#2349bd"); // 파란색
-    
+
     // 새로운 URL 데이터를 선으로 표시
     g.append("line")
         .attr("x1", x(newUrlData))
@@ -992,17 +1060,17 @@
         .attr("stroke", "red")
         .attr("stroke-width", 2)
         .attr("stroke-dasharray", "4,4");
-    
-    
+
+
     // 멀티라인 그래프 생성
     const multilineSvg = d3.select("#multiline");
     const multilineMargin = {top: 40, right: 80, bottom: 50, left: 60};
     const multilineWidth = +multilineSvg.attr("width") - multilineMargin.left - multilineMargin.right;
     const multilineHeight = +multilineSvg.attr("height") - multilineMargin.top - multilineMargin.bottom;
-    
+
     const multilineG = multilineSvg.append("g")
         .attr("transform", `translate(${multilineMargin.left},${multilineMargin.top})`);
-    
+
     // 24시간 데이터 생성
     const hours = Array.from({length: 24}, (_, i) => i);
     const generateHourlyData = () => {
@@ -1024,10 +1092,10 @@
 
     // 가상의 데이터 생성 (실제 데이터로 교체 필요)
     const institutions = Array.from({length: 100}, (_, i) => i);
-    const guidelineCount = institutions.map(() => 0.67); // 
+    const guidelineCount = institutions.map(() => 0.67); //
     const highlightIndex = 42; // 현재 분석 중인 URL의 인덱스
-    
-   
+
+
     // x축 스케일을 시간으로 변경
     const multilineX = d3.scaleLinear()
         .domain([0, 23])
@@ -1049,13 +1117,13 @@ multilineG.append("g")
     .attr("y", 40)
         .attr("fill", "black")
         .text("시간");
-    
+
     // 라인 생성기
     const line = d3.line()
         .x((d, i) => multilineX(i))
         .y(d => multilineY(d))
         .curve(d3.curveNatural);
-    
+
     // 각 라인 그리기
     multilineG.append("path")
         .datum(carbonLevels)
@@ -1064,7 +1132,7 @@ multilineG.append("g")
         .style("fill", "none")
         .style("stroke-width", 2)
         .attr("d", line);
-    
+
     multilineG.append("path")
         .datum(guidelineCount)
         .attr("class", "line")
@@ -1072,7 +1140,7 @@ multilineG.append("g")
         .style("fill", "none")
         .style("stroke-width", 2)
         .attr("d", line);
-    
+
     multilineG.append("path")
         .datum(lowCarbonAvg)
         .attr("class", "line")
@@ -1080,14 +1148,14 @@ multilineG.append("g")
         .style("fill", "none")
         .style("stroke-width", 2)
         .attr("d", line);
-    
+
     // 하이라이트 포인트
     multilineG.append("circle")
         .attr("cx", multilineX(highlightIndex))
         .attr("cy", multilineY(carbonLevels[highlightIndex]))
         .attr("r", 6)
         .style("fill", "#037747");
-    
+
     // 축 추가
     multilineG.append("g")
         .attr("transform", `translate(0,${multilineHeight})`)
@@ -1097,7 +1165,7 @@ multilineG.append("g")
         .attr("y", 40)
         .attr("fill", "black")
         .text("공공기관");
-    
+
     multilineG.append("g")
         .call(d3.axisLeft(multilineY))
         .append("text")
@@ -1107,50 +1175,50 @@ multilineG.append("g")
         .attr("fill", "black")
         .attr("text-anchor", "middle")
         .text("탄소배출량");
-    
+
     // 범례 추가
     const legend = multilineG.append("g")
         .attr("font-family", "sans-serif")
         .attr("font-size", 10)
         .attr("text-anchor", "start")
         .attr("transform", `translate(${multilineWidth + 10},0)`);
-    
+
     // 범례 텍스트 수정
     const legendItems = [
         {color: "#ff0000", text: "현재 사이트"},
         {color: "#0000ff", text: "공공기관 평균"},
         {color: "#00ff00", text: "저탄소 사이트 평균"}
     ];
-    
+
     legendItems.forEach((item, i) => {
         const legendRow = legend.append("g")
             .attr("transform", `translate(0,${i * 20})`);
-            
+
         legendRow.append("rect")
             .attr("width", 15)
             .attr("height", 2)
             .attr("fill", item.color);
-            
+
         legendRow.append("text")
             .attr("x", 20)
             .attr("y", 5)
             .text(item.text);
     });
-    
-    
-    
+
+
+
     // D3.js로 KDE 그래프 그리기
     async function drawKDEPlot(kb_weight) {
         // JSON 데이터 로드
         const current_mb = kb_weight / 1024;
-    
+
         const data = await d3.json('/static/js/distribution_data.json');
-        
+
         // 그래프 크기 설정
         const margin = {top: 40, right: 40, bottom: 40, left: 60};
         const width = 1500 - margin.left - margin.right;
         const height = 400 - margin.top - margin.bottom;
-        
+
         // SVG 생성
         const svg = d3.select("#kde-plot")
             .append("svg")
@@ -1158,28 +1226,28 @@ multilineG.append("g")
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
             .attr("transform", `translate(${margin.left},${margin.top})`);
-        
+
         // 스케일 설정
         const x = d3.scaleLinear()
             .domain([0, 20])
             .range([0, width]);
-            
+
         const y = d3.scaleLinear()
             .domain([0, d3.max(data.kde_points, d => d.y)])
             .range([height, 0]);
-        
+
         // KDE 곡선 그리기
         const line = d3.line()
             .x(d => x(d.x))
             .y(d => y(d.y));
-            
+
         svg.append("path")
             .datum(data.kde_points)
             .attr("fill", "none")
             .attr("stroke", "red")
             .attr("stroke-width", 2)
             .attr("d", line);
-        
+
         // 한국 평균선 그리기
         svg.append("line")
             .attr("x1", x(4.7))
@@ -1188,7 +1256,7 @@ multilineG.append("g")
             .attr("y2", height)
             .attr("stroke", "green")
             .attr("stroke-dasharray", "5,5");
-    
+
             // 세계 평균선 (2.4MB)
         svg.append("line")
             .attr("x1", x(2.4))
@@ -1197,7 +1265,7 @@ multilineG.append("g")
             .attr("y2", height)
             .attr("stroke", "blue")
             .attr("stroke-dasharray", "5,5");
-    
+
         // 현재 사이트 배출량
         svg.append("line")
             .attr("x1", x(current_mb))
@@ -1210,25 +1278,25 @@ multilineG.append("g")
         svg.append("g")
             .attr("transform", `translate(0,${height})`)
             .call(d3.axisBottom(x));
-            
+
         svg.append("g")
             .call(d3.axisLeft(y));
-        
+
         // 범례 추가
         const legendItems = [
                 {color: "red", text: "현재 사이트", dash: "0"},
                 {color: "green", text: "한국 평균 (4.7MB)", dash: "5,5"},
             {color: "blue", text: "세계 평균 (2.4MB)", dash: "5,5"}
         ];
-    
-    
+
+
         const legend = svg.append("g")
                 .attr("transform", `translate(${width - 150}, 20)`);
-    
+
             legendItems.forEach((item, i) => {
                 const g = legend.append("g")
                     .attr("transform", `translate(0, ${i * 20})`);
-                    
+
                 g.append("line")
                     .attr("x1", 0)
                     .attr("x2", 20)
@@ -1237,16 +1305,16 @@ multilineG.append("g")
                     .attr("stroke", item.color)
                     .attr("stroke-width", 2)
                     .attr("stroke-dasharray", item.dash);
-                    
+
                 g.append("text")
                     .attr("x", 25)
                     .attr("y", 5)
                     .text(item.text);
             });
     }
-    
+
     drawKDEPlot({{kb_weight|round(2)}});
-    
+
     document.addEventListener('DOMContentLoaded', function() {
             const currentKB = {{kb_weight|round(2)}};
             const currentMB = currentKB / 1024;
@@ -1254,6 +1322,7 @@ multilineG.append("g")
             drawInstitutionChart(currentMB, institutionType);
         });
         </script>
+
     <script src="{{ url_for('static', filename='js/institution_chart.js') }}"></script>
 
 
