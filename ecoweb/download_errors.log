@@ -503,3 +503,27 @@
 2024-11-11 22:07:51,977 INFO:127.0.0.1 - - [11/Nov/2024 22:07:51] "[35m[1mGET /check_async/871cacfb-4eed-4dd8-9ab2-983455221123 HTTP/1.1[0m" 202 -
 2024-11-11 22:07:56,675 INFO:127.0.0.1 - - [11/Nov/2024 22:07:56] "[35m[1mGET /check_async/871cacfb-4eed-4dd8-9ab2-983455221123 HTTP/1.1[0m" 202 -
 2024-11-11 22:07:59,563 INFO:127.0.0.1 - - [11/Nov/2024 22:07:59] "GET / HTTP/1.1" 200 -
+2024-11-11 22:19:24,731 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-11-11 22:19:24,731 INFO:[33mPress CTRL+C to quit[0m
+2024-11-11 22:19:24,733 INFO: * Restarting with stat
+2024-11-11 22:19:36,607 WARNING: * Debugger is active!
+2024-11-11 22:19:36,612 INFO: * Debugger PIN: 179-909-972
+2024-11-11 22:19:36,983 INFO:127.0.0.1 - - [11/Nov/2024 22:19:36] "GET / HTTP/1.1" 200 -
+2024-11-11 22:20:15,870 INFO:127.0.0.1 - - [11/Nov/2024 22:20:15] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-11-11 22:20:15,909 INFO:127.0.0.1 - - [11/Nov/2024 22:20:15] "GET /result?url=https://me.go.kr&grade=F&view_data={"third_party_summary_wasted_bytes":+528907,+"total_unused_bytes_script":+436367,+"total_resource_bytes_script":+666302,+"total_byte_weight":+3131366,+"can_optimize_css_bytes":+195996,+"can_optimize_js_bytes":+396909,+"modern_image_formats_bytes":+285544.24999999994,+"efficient_animated_content":+0,+"duplicated_javascript":+0,+"font_total_bytes":+942535,+"script_total_bytes":+842353,+"html_total_bytes":+773565,+"css_total_bytes":+320955,+"other_total_bytes":+250583,+"media_total_bytes":+1375,+"third_party_total_bytes":+0} HTTP/1.1" 200 -
+2024-11-11 22:20:16,906 INFO:127.0.0.1 - - [11/Nov/2024 22:20:16] "GET /static/screenshots/before.png HTTP/1.1" 200 -
+2024-11-11 22:20:16,937 INFO:127.0.0.1 - - [11/Nov/2024 22:20:16] "[36mGET /static/js/distribution_data.json HTTP/1.1[0m" 304 -
+2024-11-11 22:20:17,060 INFO:127.0.0.1 - - [11/Nov/2024 22:20:17] "[36mGET /static/js/institution_chart.js HTTP/1.1[0m" 304 -
+2024-11-11 22:20:17,151 INFO:127.0.0.1 - - [11/Nov/2024 22:20:17] "[36mGET /static/js/institution_data.json HTTP/1.1[0m" 304 -
+2024-11-11 22:20:23,041 INFO:127.0.0.1 - - [11/Nov/2024 22:20:23] "[35m[1mGET /check_async/4d4d9619-4327-457c-94f5-66f6dc812228 HTTP/1.1[0m" 202 -
+2024-11-11 22:20:27,736 INFO:127.0.0.1 - - [11/Nov/2024 22:20:27] "[35m[1mGET /check_async/4d4d9619-4327-457c-94f5-66f6dc812228 HTTP/1.1[0m" 202 -
+2024-11-11 22:20:33,062 INFO:127.0.0.1 - - [11/Nov/2024 22:20:33] "[35m[1mGET /check_async/4d4d9619-4327-457c-94f5-66f6dc812228 HTTP/1.1[0m" 202 -
+2024-11-11 22:20:37,233 INFO:127.0.0.1 - - [11/Nov/2024 22:20:37] "[35m[1mGET /check_async/4d4d9619-4327-457c-94f5-66f6dc812228 HTTP/1.1[0m" 202 -
+2024-11-11 22:20:42,545 INFO:127.0.0.1 - - [11/Nov/2024 22:20:42] "[35m[1mGET /check_async/4d4d9619-4327-457c-94f5-66f6dc812228 HTTP/1.1[0m" 202 -
+2024-11-11 22:20:47,230 INFO:127.0.0.1 - - [11/Nov/2024 22:20:47] "[35m[1mGET /check_async/4d4d9619-4327-457c-94f5-66f6dc812228 HTTP/1.1[0m" 202 -
+2024-11-11 22:20:52,544 INFO:127.0.0.1 - - [11/Nov/2024 22:20:52] "[35m[1mGET /check_async/4d4d9619-4327-457c-94f5-66f6dc812228 HTTP/1.1[0m" 202 -
+2024-11-11 22:20:57,229 INFO:127.0.0.1 - - [11/Nov/2024 22:20:57] "[35m[1mGET /check_async/4d4d9619-4327-457c-94f5-66f6dc812228 HTTP/1.1[0m" 202 -
+2024-11-11 22:21:02,537 INFO:127.0.0.1 - - [11/Nov/2024 22:21:02] "[35m[1mGET /check_async/4d4d9619-4327-457c-94f5-66f6dc812228 HTTP/1.1[0m" 202 -
+2024-11-11 22:21:07,227 INFO:127.0.0.1 - - [11/Nov/2024 22:21:07] "[35m[1mGET /check_async/4d4d9619-4327-457c-94f5-66f6dc812228 HTTP/1.1[0m" 202 -
+2024-11-11 22:21:10,729 INFO:127.0.0.1 - - [11/Nov/2024 22:21:10] "GET /badge HTTP/1.1" 200 -
