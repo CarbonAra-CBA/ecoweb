@@ -12,6 +12,28 @@ def patternNameMerge(pattern, name):
         ret.append(new_item)
     return ret
 
+def elementsUpdate(elements, item_list, item):
+    for match in item_list:
+        if len(match) > 2:  # 길이가 2바이트 초과인 경우에만 추가
+            existing_item = next((item for item in elements[item] if item["name"] == match["name"]), None)
+            if existing_item:
+                existing_pattern = next(
+                    (pattern for pattern in existing_item["pattern"] if pattern == match["pattern"]), None)
+                existing_item["account"] += 1
+                if not existing_pattern:
+                    existing_item["pattern"].append(match["pattern"])
+            else:
+                new_item = {
+                    "pattern": [],
+                    "name": match["name"],
+                    "account": 1,
+                    "replace": "",
+                    "replace_pattern": []
+                }
+                new_item["pattern"].append(match["pattern"])
+                elements[item].append(new_item)
+    return elements
+
 def find_with_pattern_labels(pattern: str, text: str) -> List[str]:
     """
     주어진 정규 표현식 패턴과 문자열에서 매치된 텍스트를 원본 문자열 형식 그대로 반환하는 함수.
@@ -94,45 +116,9 @@ def html_analize(html_code: str, elements):
 
         # name과 pattern을 합치기
         id_list = patternNameMerge(name=id_matches, pattern=id_pattern_matches)
+        elements = elementsUpdate(elements=elements, item_list=id_list, item="ids")
         class_list = patternNameMerge(name=class_matches, pattern=class_pattern_matches)
-
-        for match in id_list:
-            if len(match) > 2:  # 길이가 2바이트 초과인 경우에만 추가
-                existing_item = next((item for item in elements["ids"] if item["name"] == match["name"]), None)
-                if existing_item:
-                    existing_pattern = next((pattern for pattern in existing_item["pattern"] if pattern == match["pattern"]), None)
-                    existing_item["account"] += 1
-                    if not existing_pattern:
-                        existing_item["pattern"].append(match["pattern"])
-                else:
-                    newId = {
-                        "pattern" : [],
-                        "name" : match["name"],
-                        "account" : 1,
-                        "replace" : "",
-                        "replace_pattern" : []
-                    }
-                    newId["pattern"].append(match["pattern"])
-                    elements["ids"].append(newId)
-
-        for match in class_list:
-            if len(match) > 2:  # 길이가 2바이트 초과인 경우에만 추가
-                existing_item = next((item for item in elements["classes"] if item["name"] == match["name"]), None)
-                if existing_item:
-                    existing_pattern = next((pattern for pattern in existing_item["pattern"] if pattern == match["pattern"]), None)
-                    existing_item["account"] += 1
-                    if not existing_pattern:
-                        existing_item["pattern"].append(match["pattern"])
-                else:
-                    newId = {
-                        "pattern": [],
-                        "name": match["name"],
-                        "account": 1,
-                        "replace": "",
-                        "replace_pattern": []
-                    }
-                    newId["pattern"].append(match["pattern"])
-                    elements["classes"].append(newId)
+        elements = elementsUpdate(elements=elements, item_list=class_list, item="classes")
 
     # <script> 태그 내의 내용에서 변수명, 함수명, id, class 추출
     script_content = re.findall(r'<script.*?>(.*?)</script>', html_code, re.DOTALL)
@@ -155,64 +141,41 @@ def html_analize(html_code: str, elements):
         )
 
         variables_list = patternNameMerge(name=variable_matches, pattern=variable_pattern_matches)
+        elements = elementsUpdate(elements=elements, item_list=variables_list, item="variables")
         functions_list = patternNameMerge(name=function_matches, pattern=function_pattern_matches)
+        elements = elementsUpdate(elements=elements, item_list=functions_list, item="functions")
 
         # id와 class 추출
         script_id_matches = re.findall(r'\bgetElementById\(["\']([a-zA-Z0-9_-]+)["\']\)', script)
+        script_id_pattern_matches = find_with_pattern_labels(r'\bgetElementById\(["\']([a-zA-Z0-9_-]+)["\']\)', script)
+        script_id_list = patternNameMerge(name=script_id_matches, pattern=script_id_pattern_matches)
+        elements = elementsUpdate(elements=elements, item_list=script_id_list, item="ids")
 
         script_class_matches = re.findall(r'\bgetElementsByClassName\(["\']([a-zA-Z0-9_\s-]+)["\']\)', script)
+        script_class_pattern_matches = find_with_pattern_labels(r'\bgetElementsByClassName\(["\']([a-zA-Z0-9_\s-]+)["\']\)', script)
+        script_class_list = patternNameMerge(name=script_class_matches, pattern=script_class_pattern_matches)
+        elements = elementsUpdate(elements=elements, item_list=script_class_list, item="classes")
 
-        # 추가 조건: (#idName) 및 (.className) 패턴을 추출
-        additional_id_matches = re.findall(r'\(#([a-zA-Z0-9_-]+)\)', script)
-        additional_class_matches = re.findall(r'\(\.([a-zA-Z0-9_-]+)\)', script)
+        # ID 패턴: $("#idName
+        id_pattern1 = r'\$\("#([a-zA-Z0-9_-]+)'
+        # ID 패턴:  #idName,
+        id_pattern2 = r'\s+#([a-zA-Z0-9_-]+),'
 
-        # 변수명 추가
-        for match in variable_matches:
-            if len(match) > 2:  # 길이가 2바이트 초과인 경우에만 추가
-                existing_item = next((item for item in elements if item["name"] == match), None)
-                if existing_item:
-                    existing_item["account"] += 1
-                else:
-                    elements.append({"name": match, "account": 1})
+        # Class 패턴: $(".className
+        class_pattern1 = r'\$\("\.([a-zA-Z0-9_-]+)'
+        # Class 패턴:  .className,
+        class_pattern2 = r'\s+\.([a-zA-Z0-9_-]+),'
 
-        # 함수명 추가
-        for func_tuple in function_matches:
-            func_name = next(name for name in func_tuple if name)
-            if len(func_name) > 2:  # 길이가 2바이트 초과인 경우에만 추가
-                existing_item = next((item for item in elements if item["name"] == func_name), None)
-                if existing_item:
-                    existing_item["account"] += 1
-                else:
-                    elements.append({"name": func_name, "account": 1})
+        # 정규 표현식을 사용하여 모든 매칭되는 패턴을 추출합니다.
+        id_matches = re.findall(id_pattern1, script) + re.findall(id_pattern2, script)
+        id_pattern_matches = find_with_pattern_labels(id_pattern1, script) + find_with_pattern_labels(id_pattern2, script)
+        id_list = patternNameMerge(pattern=id_pattern_matches, name=id_matches)
+        elements=elementsUpdate(elements=elements, item_list=id_list, item="ids")
 
-        # script 내 id 요소 추가
-        for match in script_id_matches + additional_id_matches:
-            if len(match) > 2:  # 길이가 2바이트 초과인 경우에만 추가
-                existing_item = next((item for item in elements if item["name"] == match), None)
-                if existing_item:
-                    existing_item["account"] += 1
-                else:
-                    elements.append({"name": match, "account": 1})
-
-        # script 내 class 요소 추가 (클래스는 공백으로 분리될 수 있음)
-        for match in script_class_matches:
-            classes = match.split()
-            for cls in classes:
-                if len(cls) > 2:  # 길이가 2바이트 초과인 경우에만 추가
-                    existing_item = next((item for item in elements if item["name"] == cls), None)
-                    if existing_item:
-                        existing_item["account"] += 1
-                    else:
-                        elements.append({"name": cls, "account": 1})
-
-        # 추가 조건에서 추출한 class 요소 추가
-        for cls in additional_class_matches:
-            if len(cls) > 2:  # 길이가 2바이트 초과인 경우에만 추가
-                existing_item = next((item for item in elements if item["name"] == cls), None)
-                if existing_item:
-                    existing_item["account"] += 1
-                else:
-                    elements.append({"name": cls, "account": 1})
+        class_matches = re.findall(class_pattern1, script) + re.findall(class_pattern2, script)
+        class_pattern_matches = find_with_pattern_labels(class_pattern1, script) + find_with_pattern_labels(class_pattern2, script)
+        class_list = patternNameMerge(pattern=class_pattern_matches, name=class_matches)
+        elements=elementsUpdate(elements=elements, item_list=class_list, item="classes")
 
     # <body> 태그 내의 내용에서 id와 class, 인라인 이벤트 및 href 속성에서 함수명 추출
     body_content = re.search(r'<body.*?>(.*?)</body>', html_code, re.DOTALL)
@@ -221,27 +184,15 @@ def html_analize(html_code: str, elements):
 
         # id와 class 속성 추출
         id_matches = re.findall(r'\bid=["\']([a-zA-Z0-9_-]+)["\']', body_content)
+        id_pattern_matches = find_with_pattern_labels(pattern=r'\bid=["\']([a-zA-Z0-9_-]+)["\']', text=body_content)
+        id_list = patternNameMerge(pattern=id_pattern_matches, name=id_matches)
+        elements=elementsUpdate(elements=elements, item_list=id_list, item="ids")
+
         class_matches = re.findall(r'\bclass=["\']([a-zA-Z0-9_\s-]+)["\']', body_content)
+        class_pattern_matches = find_with_pattern_labels(pattern=r'\bclass=["\']([a-zA-Z0-9_\s-]+)["\']', text=body_content)
+        class_list = patternNameMerge(pattern=class_pattern_matches, name=class_matches)
+        elements=elementsUpdate(elements=elements, item_list=class_list, item="classses")
 
-        # id 요소 추가
-        for match in id_matches:
-            if len(match) > 2:  # 길이가 2바이트 초과인 경우에만 추가
-                existing_item = next((item for item in elements if item["name"] == match), None)
-                if existing_item:
-                    existing_item["account"] += 1
-                else:
-                    elements.append({"name": match, "account": 1})
-
-        # class 요소 추가 (클래스는 공백으로 분리될 수 있음)
-        for match in class_matches:
-            classes = match.split()
-            for cls in classes:
-                if len(cls) > 2:  # 길이가 2바이트 초과인 경우에만 추가
-                    existing_item = next((item for item in elements if item["name"] == cls), None)
-                    if existing_item:
-                        existing_item["account"] += 1
-                    else:
-                        elements.append({"name": cls, "account": 1})
 
         # 인라인 이벤트 속성에서 함수명 추출 (예: onclick="functionName(...)")
         event_function_matches = re.findall(r'\bon\w+="([a-zA-Z_$][a-zA-Z0-9_$]*)\(', body_content)

@@ -1,0 +1,538 @@
+2024-11-11 05:26:02,087 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-11-11 05:26:02,088 INFO:[33mPress CTRL+C to quit[0m
+2024-11-11 05:26:02,095 INFO: * Restarting with stat
+2024-11-11 05:26:12,291 WARNING: * Debugger is active!
+2024-11-11 05:26:12,325 INFO: * Debugger PIN: 926-622-750
+2024-11-11 05:26:13,211 INFO:127.0.0.1 - - [11/Nov/2024 05:26:13] "GET / HTTP/1.1" 200 -
+2024-11-11 05:26:34,129 INFO:127.0.0.1 - - [11/Nov/2024 05:26:34] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-11-11 05:26:34,228 INFO:127.0.0.1 - - [11/Nov/2024 05:26:34] "GET /result?url=https://me.go.kr/&grade=F&view_data={"third_party_summary_wasted_bytes":+4108299,+"total_unused_bytes_script":+2467602,+"total_resource_bytes_script":+5394394,+"total_byte_weight":+4826752,+"can_optimize_css_bytes":+58191,+"can_optimize_js_bytes":+601779,+"modern_image_formats_bytes":+1271356.45,+"efficient_animated_content":+0,+"duplicated_javascript":+0,+"font_total_bytes":+2915764,+"script_total_bytes":+1289968,+"html_total_bytes":+388510,+"css_total_bytes":+81442,+"other_total_bytes":+76005,+"media_total_bytes":+75063,+"third_party_total_bytes":+0} HTTP/1.1" 200 -
+2024-11-11 05:26:34,604 INFO:127.0.0.1 - - [11/Nov/2024 05:26:34] "GET /static/screenshots/before.png HTTP/1.1" 200 -
+2024-11-11 05:26:34,606 INFO:127.0.0.1 - - [11/Nov/2024 05:26:34] "GET /static/js/institution_chart.js HTTP/1.1" 200 -
+2024-11-11 05:26:34,654 INFO:127.0.0.1 - - [11/Nov/2024 05:26:34] "GET /static/js/institution_data.json HTTP/1.1" 200 -
+2024-11-11 05:26:34,657 INFO:127.0.0.1 - - [11/Nov/2024 05:26:34] "GET /static/js/distribution_data.json HTTP/1.1" 200 -
+2024-11-11 05:32:02,423 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-11-11 05:32:02,424 INFO:[33mPress CTRL+C to quit[0m
+2024-11-11 05:32:02,431 INFO: * Restarting with stat
+2024-11-11 05:32:13,257 WARNING: * Debugger is active!
+2024-11-11 05:32:13,293 INFO: * Debugger PIN: 926-622-750
+2024-11-11 05:32:14,214 INFO:127.0.0.1 - - [11/Nov/2024 05:32:14] "GET / HTTP/1.1" 200 -
+2024-11-11 05:32:36,613 INFO:127.0.0.1 - - [11/Nov/2024 05:32:36] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-11-11 05:42:57,310 INFO:127.0.0.1 - - [11/Nov/2024 05:42:57] "GET /result?url=https://me.go.kr/&grade=F&view_data={"third_party_summary_wasted_bytes":+4108299,+"total_unused_bytes_script":+2467602,+"total_resource_bytes_script":+5394394,+"total_byte_weight":+4826752,+"can_optimize_css_bytes":+58191,+"can_optimize_js_bytes":+601779,+"modern_image_formats_bytes":+1271356.45,+"efficient_animated_content":+0,+"duplicated_javascript":+0,+"font_total_bytes":+2915764,+"script_total_bytes":+1289968,+"html_total_bytes":+388510,+"css_total_bytes":+81442,+"other_total_bytes":+76005,+"media_total_bytes":+75063,+"third_party_total_bytes":+0} HTTP/1.1" 200 -
+2024-11-11 05:42:57,700 INFO:127.0.0.1 - - [11/Nov/2024 05:42:57] "[36mGET /static/js/institution_chart.js HTTP/1.1[0m" 304 -
+2024-11-11 05:42:57,703 INFO:127.0.0.1 - - [11/Nov/2024 05:42:57] "GET /static/screenshots/before.png HTTP/1.1" 200 -
+2024-11-11 05:42:57,718 INFO:127.0.0.1 - - [11/Nov/2024 05:42:57] "[36mGET /static/js/institution_data.json HTTP/1.1[0m" 304 -
+2024-11-11 05:42:57,754 INFO:127.0.0.1 - - [11/Nov/2024 05:42:57] "[36mGET /static/js/distribution_data.json HTTP/1.1[0m" 304 -
+2024-11-11 05:44:32,722 INFO: * Detected change in 'C:\\Users\\windowadmin1.WIN-TAQQ3RO5V1L.000\\Desktop\\Github\\ecoweb\\ecoweb\\app\\ProjectMaker\\guideline_report.py', reloading
+2024-11-11 05:44:33,367 INFO: * Restarting with stat
+2024-11-11 05:44:43,113 WARNING: * Debugger is active!
+2024-11-11 05:44:43,145 INFO: * Debugger PIN: 926-622-750
+2024-11-11 05:46:36,097 INFO: * Detected change in 'C:\\Users\\windowadmin1.WIN-TAQQ3RO5V1L.000\\Desktop\\Github\\ecoweb\\ecoweb\\app\\ProjectMaker\\guideline_report.py', reloading
+2024-11-11 05:46:37,128 INFO: * Restarting with stat
+2024-11-11 05:46:46,909 WARNING: * Debugger is active!
+2024-11-11 05:46:46,926 INFO: * Debugger PIN: 926-622-750
+2024-11-11 05:47:44,592 INFO:127.0.0.1 - - [11/Nov/2024 05:47:44] "GET / HTTP/1.1" 200 -
+2024-11-11 05:48:17,988 INFO:127.0.0.1 - - [11/Nov/2024 05:48:17] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-11-11 05:58:08,532 INFO:127.0.0.1 - - [11/Nov/2024 05:58:08] "GET /result?url=https://me.go.kr/&grade=F&view_data={"third_party_summary_wasted_bytes":+4108299,+"total_unused_bytes_script":+2467602,+"total_resource_bytes_script":+5394394,+"total_byte_weight":+4826752,+"can_optimize_css_bytes":+58191,+"can_optimize_js_bytes":+601779,+"modern_image_formats_bytes":+1271356.45,+"efficient_animated_content":+0,+"duplicated_javascript":+0,+"font_total_bytes":+2915764,+"script_total_bytes":+1289968,+"html_total_bytes":+388510,+"css_total_bytes":+81442,+"other_total_bytes":+76005,+"media_total_bytes":+75063,+"third_party_total_bytes":+0} HTTP/1.1" 200 -
+2024-11-11 05:58:08,900 INFO:127.0.0.1 - - [11/Nov/2024 05:58:08] "GET /static/screenshots/before.png HTTP/1.1" 200 -
+2024-11-11 05:58:08,903 INFO:127.0.0.1 - - [11/Nov/2024 05:58:08] "[36mGET /static/js/institution_chart.js HTTP/1.1[0m" 304 -
+2024-11-11 05:58:08,921 INFO:127.0.0.1 - - [11/Nov/2024 05:58:08] "[36mGET /static/js/institution_data.json HTTP/1.1[0m" 304 -
+2024-11-11 05:58:08,992 INFO:127.0.0.1 - - [11/Nov/2024 05:58:08] "[36mGET /static/js/distribution_data.json HTTP/1.1[0m" 304 -
+2024-11-11 06:01:51,111 INFO: * Detected change in 'C:\\Users\\windowadmin1.WIN-TAQQ3RO5V1L.000\\Desktop\\Github\\ecoweb\\ecoweb\\app\\ProjectMaker\\guideline_report.py', reloading
+2024-11-11 06:01:52,186 INFO: * Restarting with stat
+2024-11-11 06:02:02,967 WARNING: * Debugger is active!
+2024-11-11 06:02:02,986 INFO: * Debugger PIN: 926-622-750
+2024-11-11 06:02:11,357 INFO: * Detected change in 'C:\\Users\\windowadmin1.WIN-TAQQ3RO5V1L.000\\Desktop\\Github\\ecoweb\\ecoweb\\app\\ProjectMaker\\guideline_report.py', reloading
+2024-11-11 06:02:12,190 INFO: * Restarting with stat
+2024-11-11 06:02:21,162 WARNING: * Debugger is active!
+2024-11-11 06:02:21,179 INFO: * Debugger PIN: 926-622-750
+2024-11-11 06:02:26,364 INFO: * Detected change in 'C:\\Users\\windowadmin1.WIN-TAQQ3RO5V1L.000\\Desktop\\Github\\ecoweb\\ecoweb\\app\\ProjectMaker\\guideline_report.py', reloading
+2024-11-11 06:02:27,047 INFO: * Restarting with stat
+2024-11-11 06:02:36,089 WARNING: * Debugger is active!
+2024-11-11 06:02:36,116 INFO: * Debugger PIN: 926-622-750
+2024-11-11 06:02:42,698 INFO: * Detected change in 'C:\\Users\\windowadmin1.WIN-TAQQ3RO5V1L.000\\Desktop\\Github\\ecoweb\\ecoweb\\app\\ProjectMaker\\guideline_report.py', reloading
+2024-11-11 06:02:43,364 INFO: * Restarting with stat
+2024-11-11 06:02:52,378 WARNING: * Debugger is active!
+2024-11-11 06:02:52,394 INFO: * Debugger PIN: 926-622-750
+2024-11-11 06:07:48,587 INFO:127.0.0.1 - - [11/Nov/2024 06:07:48] "GET / HTTP/1.1" 200 -
+2024-11-11 06:08:08,844 INFO:127.0.0.1 - - [11/Nov/2024 06:08:08] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-11-11 06:09:42,844 INFO:127.0.0.1 - - [11/Nov/2024 06:09:42] "GET /result?url=https://me.go.kr/&grade=F&view_data={"third_party_summary_wasted_bytes":+4108299,+"total_unused_bytes_script":+2467602,+"total_resource_bytes_script":+5394394,+"total_byte_weight":+4826752,+"can_optimize_css_bytes":+58191,+"can_optimize_js_bytes":+601779,+"modern_image_formats_bytes":+1271356.45,+"efficient_animated_content":+0,+"duplicated_javascript":+0,+"font_total_bytes":+2915764,+"script_total_bytes":+1289968,+"html_total_bytes":+388510,+"css_total_bytes":+81442,+"other_total_bytes":+76005,+"media_total_bytes":+75063,+"third_party_total_bytes":+0} HTTP/1.1" 200 -
+2024-11-11 06:09:43,159 INFO:127.0.0.1 - - [11/Nov/2024 06:09:43] "[36mGET /static/js/institution_chart.js HTTP/1.1[0m" 304 -
+2024-11-11 06:09:43,178 INFO:127.0.0.1 - - [11/Nov/2024 06:09:43] "GET /static/screenshots/before.png HTTP/1.1" 200 -
+2024-11-11 06:09:43,262 INFO:127.0.0.1 - - [11/Nov/2024 06:09:43] "[36mGET /static/js/distribution_data.json HTTP/1.1[0m" 304 -
+2024-11-11 06:09:43,272 INFO:127.0.0.1 - - [11/Nov/2024 06:09:43] "[36mGET /static/js/institution_data.json HTTP/1.1[0m" 304 -
+2024-11-11 06:11:29,708 INFO: * Detected change in 'C:\\Users\\windowadmin1.WIN-TAQQ3RO5V1L.000\\Desktop\\Github\\ecoweb\\ecoweb\\app\\ProjectMaker\\guideline_report.py', reloading
+2024-11-11 06:11:30,756 INFO: * Restarting with stat
+2024-11-11 06:11:38,159 WARNING: * Debugger is active!
+2024-11-11 06:11:38,174 INFO: * Debugger PIN: 926-622-750
+2024-11-11 08:56:53,530 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-11-11 08:56:53,530 INFO:[33mPress CTRL+C to quit[0m
+2024-11-11 08:56:53,537 INFO: * Restarting with stat
+2024-11-11 08:57:03,003 WARNING: * Debugger is active!
+2024-11-11 08:57:03,027 INFO: * Debugger PIN: 926-622-750
+2024-11-11 08:57:24,110 INFO:127.0.0.1 - - [11/Nov/2024 08:57:24] "GET / HTTP/1.1" 200 -
+2024-11-11 08:57:45,464 INFO:127.0.0.1 - - [11/Nov/2024 08:57:45] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-11-11 08:57:45,575 INFO:127.0.0.1 - - [11/Nov/2024 08:57:45] "GET /result?url=https://me.go.kr/&grade=F&view_data={"third_party_summary_wasted_bytes":+4108299,+"total_unused_bytes_script":+2467602,+"total_resource_bytes_script":+5394394,+"total_byte_weight":+4826752,+"can_optimize_css_bytes":+58191,+"can_optimize_js_bytes":+601779,+"modern_image_formats_bytes":+1271356.45,+"efficient_animated_content":+0,+"duplicated_javascript":+0,+"font_total_bytes":+2915764,+"script_total_bytes":+1289968,+"html_total_bytes":+388510,+"css_total_bytes":+81442,+"other_total_bytes":+76005,+"media_total_bytes":+75063,+"third_party_total_bytes":+0} HTTP/1.1" 200 -
+2024-11-11 08:57:45,994 INFO:127.0.0.1 - - [11/Nov/2024 08:57:45] "GET /static/js/institution_chart.js HTTP/1.1" 200 -
+2024-11-11 08:57:45,997 INFO:127.0.0.1 - - [11/Nov/2024 08:57:45] "GET /static/screenshots/before.png HTTP/1.1" 200 -
+2024-11-11 08:57:46,217 INFO:127.0.0.1 - - [11/Nov/2024 08:57:46] "GET /static/js/distribution_data.json HTTP/1.1" 200 -
+2024-11-11 08:57:46,294 INFO:127.0.0.1 - - [11/Nov/2024 08:57:46] "GET /static/js/institution_data.json HTTP/1.1" 200 -
+2024-11-11 09:15:26,929 INFO: * Detected change in 'C:\\Users\\windowadmin1.WIN-TAQQ3RO5V1L.000\\Desktop\\Github\\ecoweb\\ecoweb\\app\\ProjectMaker\\code_loader.py', reloading
+2024-11-11 09:15:27,929 INFO: * Restarting with stat
+2024-11-11 09:15:37,456 WARNING: * Debugger is active!
+2024-11-11 09:15:37,492 INFO: * Debugger PIN: 926-622-750
+2024-11-11 09:15:58,089 INFO: * Detected change in 'C:\\Users\\windowadmin1.WIN-TAQQ3RO5V1L.000\\Desktop\\Github\\ecoweb\\ecoweb\\app\\ProjectMaker\\code_loader.py', reloading
+2024-11-11 09:15:58,748 INFO: * Restarting with stat
+2024-11-11 09:16:08,066 WARNING: * Debugger is active!
+2024-11-11 09:16:08,088 INFO: * Debugger PIN: 926-622-750
+2024-11-11 09:22:53,536 INFO: * Detected change in 'C:\\Users\\windowadmin1.WIN-TAQQ3RO5V1L.000\\Desktop\\Github\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-11 09:22:54,367 INFO: * Restarting with stat
+2024-11-11 09:23:04,208 WARNING: * Debugger is active!
+2024-11-11 09:23:04,227 INFO: * Debugger PIN: 926-622-750
+2024-11-11 09:23:12,383 INFO: * Detected change in 'C:\\Users\\windowadmin1.WIN-TAQQ3RO5V1L.000\\Desktop\\Github\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-11 09:23:13,200 INFO: * Restarting with stat
+2024-11-11 09:28:47,946 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-11-11 09:28:47,947 INFO:[33mPress CTRL+C to quit[0m
+2024-11-11 09:28:47,954 INFO: * Restarting with stat
+2024-11-11 09:28:58,111 WARNING: * Debugger is active!
+2024-11-11 09:28:58,144 INFO: * Debugger PIN: 926-622-750
+2024-11-11 09:28:59,013 INFO:127.0.0.1 - - [11/Nov/2024 09:28:59] "GET / HTTP/1.1" 200 -
+2024-11-11 09:29:22,035 INFO:127.0.0.1 - - [11/Nov/2024 09:29:22] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-11-11 09:32:40,090 INFO:127.0.0.1 - - [11/Nov/2024 09:32:40] "GET /result?url=https://me.go.kr/&grade=F&view_data={"third_party_summary_wasted_bytes":+4108299,+"total_unused_bytes_script":+2467602,+"total_resource_bytes_script":+5394394,+"total_byte_weight":+4826752,+"can_optimize_css_bytes":+58191,+"can_optimize_js_bytes":+601779,+"modern_image_formats_bytes":+1271356.45,+"efficient_animated_content":+0,+"duplicated_javascript":+0,+"font_total_bytes":+2915764,+"script_total_bytes":+1289968,+"html_total_bytes":+388510,+"css_total_bytes":+81442,+"other_total_bytes":+76005,+"media_total_bytes":+75063,+"third_party_total_bytes":+0} HTTP/1.1" 200 -
+2024-11-11 09:33:55,612 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-11-11 09:33:55,612 INFO:[33mPress CTRL+C to quit[0m
+2024-11-11 09:33:55,620 INFO: * Restarting with stat
+2024-11-11 09:34:05,929 WARNING: * Debugger is active!
+2024-11-11 09:34:05,961 INFO: * Debugger PIN: 926-622-750
+2024-11-11 09:34:06,838 INFO:127.0.0.1 - - [11/Nov/2024 09:34:06] "GET / HTTP/1.1" 200 -
+2024-11-11 09:34:27,680 INFO:127.0.0.1 - - [11/Nov/2024 09:34:27] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-11-11 09:34:27,783 INFO:127.0.0.1 - - [11/Nov/2024 09:34:27] "GET /result?url=https://me.go.kr/&grade=F&view_data={"third_party_summary_wasted_bytes":+4108299,+"total_unused_bytes_script":+2467602,+"total_resource_bytes_script":+5394394,+"total_byte_weight":+4826752,+"can_optimize_css_bytes":+58191,+"can_optimize_js_bytes":+601779,+"modern_image_formats_bytes":+1271356.45,+"efficient_animated_content":+0,+"duplicated_javascript":+0,+"font_total_bytes":+2915764,+"script_total_bytes":+1289968,+"html_total_bytes":+388510,+"css_total_bytes":+81442,+"other_total_bytes":+76005,+"media_total_bytes":+75063,+"third_party_total_bytes":+0} HTTP/1.1" 200 -
+2024-11-11 09:34:28,155 INFO:127.0.0.1 - - [11/Nov/2024 09:34:28] "GET /static/screenshots/before.png HTTP/1.1" 200 -
+2024-11-11 09:34:28,158 INFO:127.0.0.1 - - [11/Nov/2024 09:34:28] "[36mGET /static/js/institution_chart.js HTTP/1.1[0m" 304 -
+2024-11-11 09:34:28,174 INFO:127.0.0.1 - - [11/Nov/2024 09:34:28] "[36mGET /static/js/institution_data.json HTTP/1.1[0m" 304 -
+2024-11-11 09:34:28,184 INFO:127.0.0.1 - - [11/Nov/2024 09:34:28] "[36mGET /static/js/distribution_data.json HTTP/1.1[0m" 304 -
+2024-11-11 10:07:21,610 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-11-11 10:07:21,610 INFO:[33mPress CTRL+C to quit[0m
+2024-11-11 10:07:21,617 INFO: * Restarting with stat
+2024-11-11 10:07:32,696 WARNING: * Debugger is active!
+2024-11-11 10:07:32,727 INFO: * Debugger PIN: 926-622-750
+2024-11-11 10:07:33,622 INFO:127.0.0.1 - - [11/Nov/2024 10:07:33] "GET / HTTP/1.1" 200 -
+2024-11-11 10:07:53,862 INFO:127.0.0.1 - - [11/Nov/2024 10:07:53] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-11-11 10:07:53,974 INFO:127.0.0.1 - - [11/Nov/2024 10:07:53] "GET /result?url=https://me.go.kr/&grade=F&view_data={"third_party_summary_wasted_bytes":+4108299,+"total_unused_bytes_script":+2467602,+"total_resource_bytes_script":+5394394,+"total_byte_weight":+4826752,+"can_optimize_css_bytes":+58191,+"can_optimize_js_bytes":+601779,+"modern_image_formats_bytes":+1271356.45,+"efficient_animated_content":+0,+"duplicated_javascript":+0,+"font_total_bytes":+2915764,+"script_total_bytes":+1289968,+"html_total_bytes":+388510,+"css_total_bytes":+81442,+"other_total_bytes":+76005,+"media_total_bytes":+75063,+"third_party_total_bytes":+0} HTTP/1.1" 200 -
+2024-11-11 10:07:54,366 INFO:127.0.0.1 - - [11/Nov/2024 10:07:54] "[36mGET /static/js/institution_chart.js HTTP/1.1[0m" 304 -
+2024-11-11 10:07:54,369 INFO:127.0.0.1 - - [11/Nov/2024 10:07:54] "GET /static/screenshots/before.png HTTP/1.1" 200 -
+2024-11-11 10:07:54,419 INFO:127.0.0.1 - - [11/Nov/2024 10:07:54] "[36mGET /static/js/institution_data.json HTTP/1.1[0m" 304 -
+2024-11-11 10:07:54,429 INFO:127.0.0.1 - - [11/Nov/2024 10:07:54] "[36mGET /static/js/distribution_data.json HTTP/1.1[0m" 304 -
+2024-11-11 11:49:15,524 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-11-11 11:49:15,525 INFO:[33mPress CTRL+C to quit[0m
+2024-11-11 11:49:15,532 INFO: * Restarting with stat
+2024-11-11 11:49:24,817 WARNING: * Debugger is active!
+2024-11-11 11:49:24,836 INFO: * Debugger PIN: 926-622-750
+2024-11-11 11:49:29,410 INFO:127.0.0.1 - - [11/Nov/2024 11:49:29] "GET / HTTP/1.1" 200 -
+2024-11-11 11:49:52,774 INFO:127.0.0.1 - - [11/Nov/2024 11:49:52] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-11-11 11:49:52,882 INFO:127.0.0.1 - - [11/Nov/2024 11:49:52] "GET /result?url=https://me.go.kr/&grade=F&view_data={"third_party_summary_wasted_bytes":+4108299,+"total_unused_bytes_script":+2467602,+"total_resource_bytes_script":+5394394,+"total_byte_weight":+4826752,+"can_optimize_css_bytes":+58191,+"can_optimize_js_bytes":+601779,+"modern_image_formats_bytes":+1271356.45,+"efficient_animated_content":+0,+"duplicated_javascript":+0,+"font_total_bytes":+2915764,+"script_total_bytes":+1289968,+"html_total_bytes":+388510,+"css_total_bytes":+81442,+"other_total_bytes":+76005,+"media_total_bytes":+75063,+"third_party_total_bytes":+0} HTTP/1.1" 200 -
+2024-11-11 11:49:53,283 INFO:127.0.0.1 - - [11/Nov/2024 11:49:53] "GET /static/screenshots/before.png HTTP/1.1" 200 -
+2024-11-11 11:49:53,286 INFO:127.0.0.1 - - [11/Nov/2024 11:49:53] "[36mGET /static/js/institution_chart.js HTTP/1.1[0m" 304 -
+2024-11-11 11:49:53,304 INFO:127.0.0.1 - - [11/Nov/2024 11:49:53] "[36mGET /static/js/institution_data.json HTTP/1.1[0m" 304 -
+2024-11-11 11:49:53,348 INFO:127.0.0.1 - - [11/Nov/2024 11:49:53] "[36mGET /static/js/distribution_data.json HTTP/1.1[0m" 304 -
+2024-11-11 11:49:58,555 INFO:127.0.0.1 - - [11/Nov/2024 11:49:58] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:50:03,666 INFO:127.0.0.1 - - [11/Nov/2024 11:50:03] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:50:08,553 INFO:127.0.0.1 - - [11/Nov/2024 11:50:08] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:50:13,551 INFO:127.0.0.1 - - [11/Nov/2024 11:50:13] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:50:18,554 INFO:127.0.0.1 - - [11/Nov/2024 11:50:18] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:50:23,552 INFO:127.0.0.1 - - [11/Nov/2024 11:50:23] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:50:28,553 INFO:127.0.0.1 - - [11/Nov/2024 11:50:28] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:50:33,569 INFO:127.0.0.1 - - [11/Nov/2024 11:50:33] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:50:38,561 INFO:127.0.0.1 - - [11/Nov/2024 11:50:38] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:50:43,953 INFO:127.0.0.1 - - [11/Nov/2024 11:50:43] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:50:48,953 INFO:127.0.0.1 - - [11/Nov/2024 11:50:48] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:50:53,954 INFO:127.0.0.1 - - [11/Nov/2024 11:50:53] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:50:58,953 INFO:127.0.0.1 - - [11/Nov/2024 11:50:58] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:51:03,954 INFO:127.0.0.1 - - [11/Nov/2024 11:51:03] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:51:08,958 INFO:127.0.0.1 - - [11/Nov/2024 11:51:08] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:51:13,957 INFO:127.0.0.1 - - [11/Nov/2024 11:51:13] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:51:18,954 INFO:127.0.0.1 - - [11/Nov/2024 11:51:18] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:51:23,953 INFO:127.0.0.1 - - [11/Nov/2024 11:51:23] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:51:28,954 INFO:127.0.0.1 - - [11/Nov/2024 11:51:28] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:51:33,953 INFO:127.0.0.1 - - [11/Nov/2024 11:51:33] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:51:38,953 INFO:127.0.0.1 - - [11/Nov/2024 11:51:38] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:51:43,953 INFO:127.0.0.1 - - [11/Nov/2024 11:51:43] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:51:48,954 INFO:127.0.0.1 - - [11/Nov/2024 11:51:48] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:51:53,953 INFO:127.0.0.1 - - [11/Nov/2024 11:51:53] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:52:17,954 INFO:127.0.0.1 - - [11/Nov/2024 11:52:17] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:53:17,953 INFO:127.0.0.1 - - [11/Nov/2024 11:53:17] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:53:23,025 INFO:127.0.0.1 - - [11/Nov/2024 11:53:23] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:53:23,555 INFO:127.0.0.1 - - [11/Nov/2024 11:53:23] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:53:28,953 INFO:127.0.0.1 - - [11/Nov/2024 11:53:28] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:53:33,953 INFO:127.0.0.1 - - [11/Nov/2024 11:53:33] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:53:38,953 INFO:127.0.0.1 - - [11/Nov/2024 11:53:38] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:53:43,953 INFO:127.0.0.1 - - [11/Nov/2024 11:53:43] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:53:48,954 INFO:127.0.0.1 - - [11/Nov/2024 11:53:48] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:53:53,960 INFO:127.0.0.1 - - [11/Nov/2024 11:53:53] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:53:58,954 INFO:127.0.0.1 - - [11/Nov/2024 11:53:58] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:54:03,953 INFO:127.0.0.1 - - [11/Nov/2024 11:54:03] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:54:08,955 INFO:127.0.0.1 - - [11/Nov/2024 11:54:08] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:54:13,954 INFO:127.0.0.1 - - [11/Nov/2024 11:54:13] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:54:18,956 INFO:127.0.0.1 - - [11/Nov/2024 11:54:18] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:54:23,956 INFO:127.0.0.1 - - [11/Nov/2024 11:54:23] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:55:17,956 INFO:127.0.0.1 - - [11/Nov/2024 11:55:17] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:56:17,957 INFO:127.0.0.1 - - [11/Nov/2024 11:56:17] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:57:17,958 INFO:127.0.0.1 - - [11/Nov/2024 11:57:17] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:58:17,958 INFO:127.0.0.1 - - [11/Nov/2024 11:58:17] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 11:59:17,958 INFO:127.0.0.1 - - [11/Nov/2024 11:59:17] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:00:14,363 INFO:127.0.0.1 - - [11/Nov/2024 12:00:14] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:00:18,957 INFO:127.0.0.1 - - [11/Nov/2024 12:00:18] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:00:23,958 INFO:127.0.0.1 - - [11/Nov/2024 12:00:23] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:00:28,558 INFO:127.0.0.1 - - [11/Nov/2024 12:00:28] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:00:33,600 INFO:127.0.0.1 - - [11/Nov/2024 12:00:33] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:00:39,186 INFO:127.0.0.1 - - [11/Nov/2024 12:00:39] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:00:43,559 INFO:127.0.0.1 - - [11/Nov/2024 12:00:43] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:00:48,559 INFO:127.0.0.1 - - [11/Nov/2024 12:00:48] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:00:53,558 INFO:127.0.0.1 - - [11/Nov/2024 12:00:53] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:00:58,559 INFO:127.0.0.1 - - [11/Nov/2024 12:00:58] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:01:03,559 INFO:127.0.0.1 - - [11/Nov/2024 12:01:03] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:01:08,560 INFO:127.0.0.1 - - [11/Nov/2024 12:01:08] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:01:13,559 INFO:127.0.0.1 - - [11/Nov/2024 12:01:13] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:01:18,558 INFO:127.0.0.1 - - [11/Nov/2024 12:01:18] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:01:23,561 INFO:127.0.0.1 - - [11/Nov/2024 12:01:23] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:01:28,562 INFO:127.0.0.1 - - [11/Nov/2024 12:01:28] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:01:33,560 INFO:127.0.0.1 - - [11/Nov/2024 12:01:33] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:01:38,560 INFO:127.0.0.1 - - [11/Nov/2024 12:01:38] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:01:43,562 INFO:127.0.0.1 - - [11/Nov/2024 12:01:43] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:01:48,560 INFO:127.0.0.1 - - [11/Nov/2024 12:01:48] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:01:53,560 INFO:127.0.0.1 - - [11/Nov/2024 12:01:53] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:01:58,561 INFO:127.0.0.1 - - [11/Nov/2024 12:01:58] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:02:03,561 INFO:127.0.0.1 - - [11/Nov/2024 12:02:03] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:02:08,562 INFO:127.0.0.1 - - [11/Nov/2024 12:02:08] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:02:13,561 INFO:127.0.0.1 - - [11/Nov/2024 12:02:13] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:02:18,560 INFO:127.0.0.1 - - [11/Nov/2024 12:02:18] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:02:23,561 INFO:127.0.0.1 - - [11/Nov/2024 12:02:23] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:02:28,561 INFO:127.0.0.1 - - [11/Nov/2024 12:02:28] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:02:33,562 INFO:127.0.0.1 - - [11/Nov/2024 12:02:33] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:02:38,561 INFO:127.0.0.1 - - [11/Nov/2024 12:02:38] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:02:43,561 INFO:127.0.0.1 - - [11/Nov/2024 12:02:43] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:02:48,562 INFO:127.0.0.1 - - [11/Nov/2024 12:02:48] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:02:53,561 INFO:127.0.0.1 - - [11/Nov/2024 12:02:53] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:02:58,561 INFO:127.0.0.1 - - [11/Nov/2024 12:02:58] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:03:03,561 INFO:127.0.0.1 - - [11/Nov/2024 12:03:03] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:03:08,561 INFO:127.0.0.1 - - [11/Nov/2024 12:03:08] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:03:13,561 INFO:127.0.0.1 - - [11/Nov/2024 12:03:13] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:03:18,562 INFO:127.0.0.1 - - [11/Nov/2024 12:03:18] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:03:23,961 INFO:127.0.0.1 - - [11/Nov/2024 12:03:23] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:03:28,962 INFO:127.0.0.1 - - [11/Nov/2024 12:03:28] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:03:33,561 INFO:127.0.0.1 - - [11/Nov/2024 12:03:33] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:03:38,960 INFO:127.0.0.1 - - [11/Nov/2024 12:03:38] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:03:43,960 INFO:127.0.0.1 - - [11/Nov/2024 12:03:43] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:03:48,960 INFO:127.0.0.1 - - [11/Nov/2024 12:03:48] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:03:53,561 INFO:127.0.0.1 - - [11/Nov/2024 12:03:53] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:03:58,562 INFO:127.0.0.1 - - [11/Nov/2024 12:03:58] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:04:03,562 INFO:127.0.0.1 - - [11/Nov/2024 12:04:03] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:04:08,563 INFO:127.0.0.1 - - [11/Nov/2024 12:04:08] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:04:13,562 INFO:127.0.0.1 - - [11/Nov/2024 12:04:13] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:04:18,961 INFO:127.0.0.1 - - [11/Nov/2024 12:04:18] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:04:23,962 INFO:127.0.0.1 - - [11/Nov/2024 12:04:23] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:04:28,961 INFO:127.0.0.1 - - [11/Nov/2024 12:04:28] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:04:33,961 INFO:127.0.0.1 - - [11/Nov/2024 12:04:33] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:04:38,961 INFO:127.0.0.1 - - [11/Nov/2024 12:04:38] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:04:43,962 INFO:127.0.0.1 - - [11/Nov/2024 12:04:43] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:04:48,965 INFO:127.0.0.1 - - [11/Nov/2024 12:04:48] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:04:53,962 INFO:127.0.0.1 - - [11/Nov/2024 12:04:53] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:04:58,962 INFO:127.0.0.1 - - [11/Nov/2024 12:04:58] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:05:03,962 INFO:127.0.0.1 - - [11/Nov/2024 12:05:03] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:05:08,961 INFO:127.0.0.1 - - [11/Nov/2024 12:05:08] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:05:13,962 INFO:127.0.0.1 - - [11/Nov/2024 12:05:13] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:05:18,962 INFO:127.0.0.1 - - [11/Nov/2024 12:05:18] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:05:23,960 INFO:127.0.0.1 - - [11/Nov/2024 12:05:23] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:05:28,963 INFO:127.0.0.1 - - [11/Nov/2024 12:05:28] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:05:33,562 INFO:127.0.0.1 - - [11/Nov/2024 12:05:33] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:05:38,562 INFO:127.0.0.1 - - [11/Nov/2024 12:05:38] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:05:43,563 INFO:127.0.0.1 - - [11/Nov/2024 12:05:43] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:05:48,562 INFO:127.0.0.1 - - [11/Nov/2024 12:05:48] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:05:53,962 INFO:127.0.0.1 - - [11/Nov/2024 12:05:53] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:05:58,589 INFO:127.0.0.1 - - [11/Nov/2024 12:05:58] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:06:03,562 INFO:127.0.0.1 - - [11/Nov/2024 12:06:03] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:06:08,963 INFO:127.0.0.1 - - [11/Nov/2024 12:06:08] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:06:13,961 INFO:127.0.0.1 - - [11/Nov/2024 12:06:13] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:06:18,961 INFO:127.0.0.1 - - [11/Nov/2024 12:06:18] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:06:23,961 INFO:127.0.0.1 - - [11/Nov/2024 12:06:23] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:06:28,962 INFO:127.0.0.1 - - [11/Nov/2024 12:06:28] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:06:33,961 INFO:127.0.0.1 - - [11/Nov/2024 12:06:33] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:06:38,962 INFO:127.0.0.1 - - [11/Nov/2024 12:06:38] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:06:43,962 INFO:127.0.0.1 - - [11/Nov/2024 12:06:43] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:06:48,963 INFO:127.0.0.1 - - [11/Nov/2024 12:06:48] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:06:53,962 INFO:127.0.0.1 - - [11/Nov/2024 12:06:53] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:06:58,962 INFO:127.0.0.1 - - [11/Nov/2024 12:06:58] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:07:03,961 INFO:127.0.0.1 - - [11/Nov/2024 12:07:03] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:07:17,963 INFO:127.0.0.1 - - [11/Nov/2024 12:07:17] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:08:17,963 INFO:127.0.0.1 - - [11/Nov/2024 12:08:17] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:09:17,962 INFO:127.0.0.1 - - [11/Nov/2024 12:09:17] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:09:29,367 INFO:127.0.0.1 - - [11/Nov/2024 12:09:29] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:09:33,564 INFO:127.0.0.1 - - [11/Nov/2024 12:09:33] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:09:38,963 INFO:127.0.0.1 - - [11/Nov/2024 12:09:38] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:09:43,563 INFO:127.0.0.1 - - [11/Nov/2024 12:09:43] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:09:48,963 INFO:127.0.0.1 - - [11/Nov/2024 12:09:48] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:09:53,963 INFO:127.0.0.1 - - [11/Nov/2024 12:09:53] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:09:58,963 INFO:127.0.0.1 - - [11/Nov/2024 12:09:58] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:10:03,964 INFO:127.0.0.1 - - [11/Nov/2024 12:10:03] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:10:08,564 INFO:127.0.0.1 - - [11/Nov/2024 12:10:08] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:10:13,564 INFO:127.0.0.1 - - [11/Nov/2024 12:10:13] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:10:18,963 INFO:127.0.0.1 - - [11/Nov/2024 12:10:18] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:10:23,963 INFO:127.0.0.1 - - [11/Nov/2024 12:10:23] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:10:28,964 INFO:127.0.0.1 - - [11/Nov/2024 12:10:28] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:10:33,965 INFO:127.0.0.1 - - [11/Nov/2024 12:10:33] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:10:38,963 INFO:127.0.0.1 - - [11/Nov/2024 12:10:38] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:10:43,964 INFO:127.0.0.1 - - [11/Nov/2024 12:10:43] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:10:48,964 INFO:127.0.0.1 - - [11/Nov/2024 12:10:48] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:10:53,963 INFO:127.0.0.1 - - [11/Nov/2024 12:10:53] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:10:58,964 INFO:127.0.0.1 - - [11/Nov/2024 12:10:58] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:11:03,965 INFO:127.0.0.1 - - [11/Nov/2024 12:11:03] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:11:08,963 INFO:127.0.0.1 - - [11/Nov/2024 12:11:08] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:11:13,963 INFO:127.0.0.1 - - [11/Nov/2024 12:11:13] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:12:05,060 INFO: * Detected change in 'C:\\Users\\windowadmin1.WIN-TAQQ3RO5V1L.000\\Desktop\\Github\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-11 12:12:06,155 INFO: * Restarting with stat
+2024-11-11 12:12:15,282 WARNING: * Debugger is active!
+2024-11-11 12:12:15,310 INFO: * Debugger PIN: 926-622-750
+2024-11-11 12:12:16,280 INFO:127.0.0.1 - - [11/Nov/2024 12:12:16] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:13:15,964 INFO:127.0.0.1 - - [11/Nov/2024 12:13:15] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:13:29,941 INFO:127.0.0.1 - - [11/Nov/2024 12:13:29] "[33mGET /check_async/ HTTP/1.1[0m" 404 -
+2024-11-11 12:13:30,929 INFO:127.0.0.1 - - [11/Nov/2024 12:13:30] "GET / HTTP/1.1" 200 -
+2024-11-11 12:13:54,683 INFO:127.0.0.1 - - [11/Nov/2024 12:13:54] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-11-11 12:13:54,792 INFO:127.0.0.1 - - [11/Nov/2024 12:13:54] "GET /result?url=https://me.go.kr/&grade=F&view_data={"third_party_summary_wasted_bytes":+4108299,+"total_unused_bytes_script":+2467602,+"total_resource_bytes_script":+5394394,+"total_byte_weight":+4826752,+"can_optimize_css_bytes":+58191,+"can_optimize_js_bytes":+601779,+"modern_image_formats_bytes":+1271356.45,+"efficient_animated_content":+0,+"duplicated_javascript":+0,+"font_total_bytes":+2915764,+"script_total_bytes":+1289968,+"html_total_bytes":+388510,+"css_total_bytes":+81442,+"other_total_bytes":+76005,+"media_total_bytes":+75063,+"third_party_total_bytes":+0} HTTP/1.1" 200 -
+2024-11-11 12:13:55,173 INFO:127.0.0.1 - - [11/Nov/2024 12:13:55] "[36mGET /static/js/institution_chart.js HTTP/1.1[0m" 304 -
+2024-11-11 12:13:55,173 INFO:127.0.0.1 - - [11/Nov/2024 12:13:55] "GET /static/screenshots/before.png HTTP/1.1" 200 -
+2024-11-11 12:13:55,239 INFO:127.0.0.1 - - [11/Nov/2024 12:13:55] "[36mGET /static/js/distribution_data.json HTTP/1.1[0m" 304 -
+2024-11-11 12:13:55,246 INFO:127.0.0.1 - - [11/Nov/2024 12:13:55] "[36mGET /static/js/institution_data.json HTTP/1.1[0m" 304 -
+2024-11-11 12:14:00,243 INFO:127.0.0.1 - - [11/Nov/2024 12:14:00] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:14:05,311 INFO:127.0.0.1 - - [11/Nov/2024 12:14:05] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:14:10,243 INFO:127.0.0.1 - - [11/Nov/2024 12:14:10] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:14:15,245 INFO:127.0.0.1 - - [11/Nov/2024 12:14:15] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:14:20,287 INFO:127.0.0.1 - - [11/Nov/2024 12:14:20] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:14:25,244 INFO:127.0.0.1 - - [11/Nov/2024 12:14:25] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:14:30,244 INFO:127.0.0.1 - - [11/Nov/2024 12:14:30] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:14:35,965 INFO:127.0.0.1 - - [11/Nov/2024 12:14:35] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:14:40,966 INFO:127.0.0.1 - - [11/Nov/2024 12:14:40] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:14:45,965 INFO:127.0.0.1 - - [11/Nov/2024 12:14:45] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:14:50,977 INFO:127.0.0.1 - - [11/Nov/2024 12:14:50] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:14:55,964 INFO:127.0.0.1 - - [11/Nov/2024 12:14:55] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:15:00,966 INFO:127.0.0.1 - - [11/Nov/2024 12:15:00] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:15:05,967 INFO:127.0.0.1 - - [11/Nov/2024 12:15:05] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:15:10,965 INFO:127.0.0.1 - - [11/Nov/2024 12:15:10] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:15:15,966 INFO:127.0.0.1 - - [11/Nov/2024 12:15:15] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:15:20,966 INFO:127.0.0.1 - - [11/Nov/2024 12:15:20] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:15:25,966 INFO:127.0.0.1 - - [11/Nov/2024 12:15:25] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:16:17,967 INFO:127.0.0.1 - - [11/Nov/2024 12:16:17] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:16:33,224 INFO:127.0.0.1 - - [11/Nov/2024 12:16:33] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:16:35,244 INFO:127.0.0.1 - - [11/Nov/2024 12:16:35] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:16:40,966 INFO:127.0.0.1 - - [11/Nov/2024 12:16:40] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:16:45,965 INFO:127.0.0.1 - - [11/Nov/2024 12:16:45] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:16:50,966 INFO:127.0.0.1 - - [11/Nov/2024 12:16:50] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:16:55,973 INFO:127.0.0.1 - - [11/Nov/2024 12:16:55] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:17:00,966 INFO:127.0.0.1 - - [11/Nov/2024 12:17:00] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:17:05,967 INFO:127.0.0.1 - - [11/Nov/2024 12:17:05] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:17:10,966 INFO:127.0.0.1 - - [11/Nov/2024 12:17:10] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:17:15,967 INFO:127.0.0.1 - - [11/Nov/2024 12:17:15] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:17:20,966 INFO:127.0.0.1 - - [11/Nov/2024 12:17:20] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:17:25,967 INFO:127.0.0.1 - - [11/Nov/2024 12:17:25] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:17:30,966 INFO:127.0.0.1 - - [11/Nov/2024 12:17:30] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:17:35,968 INFO:127.0.0.1 - - [11/Nov/2024 12:17:35] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:18:17,966 INFO:127.0.0.1 - - [11/Nov/2024 12:18:17] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:19:17,969 INFO:127.0.0.1 - - [11/Nov/2024 12:19:17] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:20:17,969 INFO:127.0.0.1 - - [11/Nov/2024 12:20:17] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:21:17,969 INFO:127.0.0.1 - - [11/Nov/2024 12:21:17] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:22:17,970 INFO:127.0.0.1 - - [11/Nov/2024 12:22:17] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:23:17,970 INFO:127.0.0.1 - - [11/Nov/2024 12:23:17] "[35m[1mGET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1[0m" 202 -
+2024-11-11 12:24:17,972 INFO:127.0.0.1 - - [11/Nov/2024 12:24:17] "GET /check_async/42c52aa1-40a5-4973-80b2-6ee844b872a6 HTTP/1.1" 200 -
+2024-11-11 15:44:16,238 INFO:127.0.0.1 - - [11/Nov/2024 15:44:16] "GET / HTTP/1.1" 200 -
+2024-11-11 15:44:38,841 INFO:127.0.0.1 - - [11/Nov/2024 15:44:38] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-11-11 15:44:38,953 INFO:127.0.0.1 - - [11/Nov/2024 15:44:38] "GET /result?url=https://me.go.kr/&grade=F&view_data={"third_party_summary_wasted_bytes":+4108299,+"total_unused_bytes_script":+2467602,+"total_resource_bytes_script":+5394394,+"total_byte_weight":+4826752,+"can_optimize_css_bytes":+58191,+"can_optimize_js_bytes":+601779,+"modern_image_formats_bytes":+1271356.45,+"efficient_animated_content":+0,+"duplicated_javascript":+0,+"font_total_bytes":+2915764,+"script_total_bytes":+1289968,+"html_total_bytes":+388510,+"css_total_bytes":+81442,+"other_total_bytes":+76005,+"media_total_bytes":+75063,+"third_party_total_bytes":+0} HTTP/1.1" 200 -
+2024-11-11 15:44:38,982 INFO:127.0.0.1 - - [11/Nov/2024 15:44:38] "GET /static/screenshots/before.png HTTP/1.1" 200 -
+2024-11-11 15:44:38,984 INFO:127.0.0.1 - - [11/Nov/2024 15:44:38] "[36mGET /static/js/institution_chart.js HTTP/1.1[0m" 304 -
+2024-11-11 15:44:39,222 INFO:127.0.0.1 - - [11/Nov/2024 15:44:39] "[36mGET /static/js/distribution_data.json HTTP/1.1[0m" 304 -
+2024-11-11 15:44:39,497 INFO:127.0.0.1 - - [11/Nov/2024 15:44:39] "[36mGET /static/js/institution_data.json HTTP/1.1[0m" 304 -
+2024-11-11 15:44:44,499 INFO:127.0.0.1 - - [11/Nov/2024 15:44:44] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:44:49,499 INFO:127.0.0.1 - - [11/Nov/2024 15:44:49] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:44:54,496 INFO:127.0.0.1 - - [11/Nov/2024 15:44:54] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:44:59,499 INFO:127.0.0.1 - - [11/Nov/2024 15:44:59] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:45:04,498 INFO:127.0.0.1 - - [11/Nov/2024 15:45:04] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:45:09,498 INFO:127.0.0.1 - - [11/Nov/2024 15:45:09] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:45:14,504 INFO:127.0.0.1 - - [11/Nov/2024 15:45:14] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:45:19,501 INFO:127.0.0.1 - - [11/Nov/2024 15:45:19] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:45:24,501 INFO:127.0.0.1 - - [11/Nov/2024 15:45:24] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:45:29,500 INFO:127.0.0.1 - - [11/Nov/2024 15:45:29] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:45:34,499 INFO:127.0.0.1 - - [11/Nov/2024 15:45:34] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:45:39,499 INFO:127.0.0.1 - - [11/Nov/2024 15:45:39] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:45:44,499 INFO:127.0.0.1 - - [11/Nov/2024 15:45:44] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:45:49,498 INFO:127.0.0.1 - - [11/Nov/2024 15:45:49] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:45:54,499 INFO:127.0.0.1 - - [11/Nov/2024 15:45:54] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:45:59,498 INFO:127.0.0.1 - - [11/Nov/2024 15:45:59] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:46:04,506 INFO:127.0.0.1 - - [11/Nov/2024 15:46:04] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:46:09,498 INFO:127.0.0.1 - - [11/Nov/2024 15:46:09] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:46:14,500 INFO:127.0.0.1 - - [11/Nov/2024 15:46:14] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:46:19,499 INFO:127.0.0.1 - - [11/Nov/2024 15:46:19] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:46:24,498 INFO:127.0.0.1 - - [11/Nov/2024 15:46:24] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:46:29,500 INFO:127.0.0.1 - - [11/Nov/2024 15:46:29] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:46:34,498 INFO:127.0.0.1 - - [11/Nov/2024 15:46:34] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:46:39,499 INFO:127.0.0.1 - - [11/Nov/2024 15:46:39] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:46:44,514 INFO:127.0.0.1 - - [11/Nov/2024 15:46:44] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:46:49,509 INFO:127.0.0.1 - - [11/Nov/2024 15:46:49] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:46:54,499 INFO:127.0.0.1 - - [11/Nov/2024 15:46:54] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:46:59,500 INFO:127.0.0.1 - - [11/Nov/2024 15:46:59] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:47:04,499 INFO:127.0.0.1 - - [11/Nov/2024 15:47:04] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:47:09,500 INFO:127.0.0.1 - - [11/Nov/2024 15:47:09] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:47:14,499 INFO:127.0.0.1 - - [11/Nov/2024 15:47:14] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:47:19,517 INFO:127.0.0.1 - - [11/Nov/2024 15:47:19] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:47:24,500 INFO:127.0.0.1 - - [11/Nov/2024 15:47:24] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:47:29,499 INFO:127.0.0.1 - - [11/Nov/2024 15:47:29] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:47:34,500 INFO:127.0.0.1 - - [11/Nov/2024 15:47:34] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:47:39,498 INFO:127.0.0.1 - - [11/Nov/2024 15:47:39] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:47:44,500 INFO:127.0.0.1 - - [11/Nov/2024 15:47:44] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:47:49,501 INFO:127.0.0.1 - - [11/Nov/2024 15:47:49] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:47:54,499 INFO:127.0.0.1 - - [11/Nov/2024 15:47:54] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:47:59,499 INFO:127.0.0.1 - - [11/Nov/2024 15:47:59] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:48:04,500 INFO:127.0.0.1 - - [11/Nov/2024 15:48:04] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:48:09,501 INFO:127.0.0.1 - - [11/Nov/2024 15:48:09] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:48:14,500 INFO:127.0.0.1 - - [11/Nov/2024 15:48:14] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:48:19,503 INFO:127.0.0.1 - - [11/Nov/2024 15:48:19] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:48:24,499 INFO:127.0.0.1 - - [11/Nov/2024 15:48:24] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:48:29,500 INFO:127.0.0.1 - - [11/Nov/2024 15:48:29] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:48:34,500 INFO:127.0.0.1 - - [11/Nov/2024 15:48:34] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:48:39,499 INFO:127.0.0.1 - - [11/Nov/2024 15:48:39] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:48:44,502 INFO:127.0.0.1 - - [11/Nov/2024 15:48:44] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:48:49,500 INFO:127.0.0.1 - - [11/Nov/2024 15:48:49] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:48:54,500 INFO:127.0.0.1 - - [11/Nov/2024 15:48:54] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:48:59,501 INFO:127.0.0.1 - - [11/Nov/2024 15:48:59] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:49:04,499 INFO:127.0.0.1 - - [11/Nov/2024 15:49:04] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:49:09,500 INFO:127.0.0.1 - - [11/Nov/2024 15:49:09] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:49:14,500 INFO:127.0.0.1 - - [11/Nov/2024 15:49:14] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:49:19,500 INFO:127.0.0.1 - - [11/Nov/2024 15:49:19] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:49:24,500 INFO:127.0.0.1 - - [11/Nov/2024 15:49:24] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:49:29,500 INFO:127.0.0.1 - - [11/Nov/2024 15:49:29] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:49:34,501 INFO:127.0.0.1 - - [11/Nov/2024 15:49:34] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:49:39,500 INFO:127.0.0.1 - - [11/Nov/2024 15:49:39] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:49:44,500 INFO:127.0.0.1 - - [11/Nov/2024 15:49:44] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:49:49,502 INFO:127.0.0.1 - - [11/Nov/2024 15:49:49] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:49:54,501 INFO:127.0.0.1 - - [11/Nov/2024 15:49:54] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:49:59,500 INFO:127.0.0.1 - - [11/Nov/2024 15:49:59] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:50:04,501 INFO:127.0.0.1 - - [11/Nov/2024 15:50:04] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:50:09,502 INFO:127.0.0.1 - - [11/Nov/2024 15:50:09] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:50:14,500 INFO:127.0.0.1 - - [11/Nov/2024 15:50:14] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:50:19,501 INFO:127.0.0.1 - - [11/Nov/2024 15:50:19] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:50:24,502 INFO:127.0.0.1 - - [11/Nov/2024 15:50:24] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:50:29,500 INFO:127.0.0.1 - - [11/Nov/2024 15:50:29] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:50:34,503 INFO:127.0.0.1 - - [11/Nov/2024 15:50:34] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:50:39,505 INFO:127.0.0.1 - - [11/Nov/2024 15:50:39] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:50:44,510 INFO:127.0.0.1 - - [11/Nov/2024 15:50:44] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:50:49,502 INFO:127.0.0.1 - - [11/Nov/2024 15:50:49] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:50:54,502 INFO:127.0.0.1 - - [11/Nov/2024 15:50:54] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:50:59,501 INFO:127.0.0.1 - - [11/Nov/2024 15:50:59] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:51:04,501 INFO:127.0.0.1 - - [11/Nov/2024 15:51:04] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:51:09,501 INFO:127.0.0.1 - - [11/Nov/2024 15:51:09] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:51:14,501 INFO:127.0.0.1 - - [11/Nov/2024 15:51:14] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:51:19,503 INFO:127.0.0.1 - - [11/Nov/2024 15:51:19] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:51:24,503 INFO:127.0.0.1 - - [11/Nov/2024 15:51:24] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:51:29,517 INFO:127.0.0.1 - - [11/Nov/2024 15:51:29] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:51:34,501 INFO:127.0.0.1 - - [11/Nov/2024 15:51:34] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:51:39,501 INFO:127.0.0.1 - - [11/Nov/2024 15:51:39] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:51:44,502 INFO:127.0.0.1 - - [11/Nov/2024 15:51:44] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:51:49,500 INFO:127.0.0.1 - - [11/Nov/2024 15:51:49] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:51:54,503 INFO:127.0.0.1 - - [11/Nov/2024 15:51:54] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:51:59,504 INFO:127.0.0.1 - - [11/Nov/2024 15:51:59] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:52:04,502 INFO:127.0.0.1 - - [11/Nov/2024 15:52:04] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:52:09,503 INFO:127.0.0.1 - - [11/Nov/2024 15:52:09] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:52:14,502 INFO:127.0.0.1 - - [11/Nov/2024 15:52:14] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:52:19,501 INFO:127.0.0.1 - - [11/Nov/2024 15:52:19] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:52:24,503 INFO:127.0.0.1 - - [11/Nov/2024 15:52:24] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:52:29,502 INFO:127.0.0.1 - - [11/Nov/2024 15:52:29] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:52:34,501 INFO:127.0.0.1 - - [11/Nov/2024 15:52:34] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:52:39,502 INFO:127.0.0.1 - - [11/Nov/2024 15:52:39] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:52:44,501 INFO:127.0.0.1 - - [11/Nov/2024 15:52:44] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:52:49,502 INFO:127.0.0.1 - - [11/Nov/2024 15:52:49] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:52:54,502 INFO:127.0.0.1 - - [11/Nov/2024 15:52:54] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:52:59,511 INFO:127.0.0.1 - - [11/Nov/2024 15:52:59] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:53:04,503 INFO:127.0.0.1 - - [11/Nov/2024 15:53:04] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:53:09,504 INFO:127.0.0.1 - - [11/Nov/2024 15:53:09] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:53:14,504 INFO:127.0.0.1 - - [11/Nov/2024 15:53:14] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:53:19,502 INFO:127.0.0.1 - - [11/Nov/2024 15:53:19] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:53:24,503 INFO:127.0.0.1 - - [11/Nov/2024 15:53:24] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:53:29,503 INFO:127.0.0.1 - - [11/Nov/2024 15:53:29] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:53:34,503 INFO:127.0.0.1 - - [11/Nov/2024 15:53:34] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:53:39,502 INFO:127.0.0.1 - - [11/Nov/2024 15:53:39] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:53:44,503 INFO:127.0.0.1 - - [11/Nov/2024 15:53:44] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:53:49,503 INFO:127.0.0.1 - - [11/Nov/2024 15:53:49] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:53:54,502 INFO:127.0.0.1 - - [11/Nov/2024 15:53:54] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:53:59,503 INFO:127.0.0.1 - - [11/Nov/2024 15:53:59] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:54:04,502 INFO:127.0.0.1 - - [11/Nov/2024 15:54:04] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:54:09,503 INFO:127.0.0.1 - - [11/Nov/2024 15:54:09] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:54:14,503 INFO:127.0.0.1 - - [11/Nov/2024 15:54:14] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:54:19,503 INFO:127.0.0.1 - - [11/Nov/2024 15:54:19] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:54:24,504 INFO:127.0.0.1 - - [11/Nov/2024 15:54:24] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:54:29,503 INFO:127.0.0.1 - - [11/Nov/2024 15:54:29] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:54:34,503 INFO:127.0.0.1 - - [11/Nov/2024 15:54:34] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:54:39,503 INFO:127.0.0.1 - - [11/Nov/2024 15:54:39] "[35m[1mGET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1[0m" 202 -
+2024-11-11 15:54:44,503 INFO:127.0.0.1 - - [11/Nov/2024 15:54:44] "GET /check_async/89de0837-7907-4009-9d10-359ec9349233 HTTP/1.1" 200 -
+2024-11-11 16:39:13,624 INFO:127.0.0.1 - - [11/Nov/2024 16:39:13] "GET / HTTP/1.1" 200 -
+2024-11-11 16:39:47,953 INFO:127.0.0.1 - - [11/Nov/2024 16:39:47] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-11-11 16:39:48,067 INFO:127.0.0.1 - - [11/Nov/2024 16:39:48] "GET /result?url=https://me.go.kr/&grade=F&view_data={"third_party_summary_wasted_bytes":+4108299,+"total_unused_bytes_script":+2467602,+"total_resource_bytes_script":+5394394,+"total_byte_weight":+4826752,+"can_optimize_css_bytes":+58191,+"can_optimize_js_bytes":+601779,+"modern_image_formats_bytes":+1271356.45,+"efficient_animated_content":+0,+"duplicated_javascript":+0,+"font_total_bytes":+2915764,+"script_total_bytes":+1289968,+"html_total_bytes":+388510,+"css_total_bytes":+81442,+"other_total_bytes":+76005,+"media_total_bytes":+75063,+"third_party_total_bytes":+0} HTTP/1.1" 200 -
+2024-11-11 16:39:48,099 INFO:127.0.0.1 - - [11/Nov/2024 16:39:48] "[36mGET /static/js/institution_chart.js HTTP/1.1[0m" 304 -
+2024-11-11 16:39:48,100 INFO:127.0.0.1 - - [11/Nov/2024 16:39:48] "GET /static/screenshots/before.png HTTP/1.1" 200 -
+2024-11-11 16:39:48,189 INFO:127.0.0.1 - - [11/Nov/2024 16:39:48] "[36mGET /static/js/distribution_data.json HTTP/1.1[0m" 304 -
+2024-11-11 16:39:48,470 INFO:127.0.0.1 - - [11/Nov/2024 16:39:48] "[36mGET /static/js/institution_data.json HTTP/1.1[0m" 304 -
+2024-11-11 16:39:53,471 INFO:127.0.0.1 - - [11/Nov/2024 16:39:53] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:39:58,471 INFO:127.0.0.1 - - [11/Nov/2024 16:39:58] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:40:04,117 INFO:127.0.0.1 - - [11/Nov/2024 16:40:04] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:40:09,118 INFO:127.0.0.1 - - [11/Nov/2024 16:40:09] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:40:14,118 INFO:127.0.0.1 - - [11/Nov/2024 16:40:14] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:40:19,117 INFO:127.0.0.1 - - [11/Nov/2024 16:40:19] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:40:24,117 INFO:127.0.0.1 - - [11/Nov/2024 16:40:24] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:40:29,117 INFO:127.0.0.1 - - [11/Nov/2024 16:40:29] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:40:34,119 INFO:127.0.0.1 - - [11/Nov/2024 16:40:34] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:40:39,117 INFO:127.0.0.1 - - [11/Nov/2024 16:40:39] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:40:44,118 INFO:127.0.0.1 - - [11/Nov/2024 16:40:44] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:40:49,119 INFO:127.0.0.1 - - [11/Nov/2024 16:40:49] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:40:53,471 INFO:127.0.0.1 - - [11/Nov/2024 16:40:53] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:40:58,470 INFO:127.0.0.1 - - [11/Nov/2024 16:40:58] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:41:04,134 INFO:127.0.0.1 - - [11/Nov/2024 16:41:04] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:41:09,118 INFO:127.0.0.1 - - [11/Nov/2024 16:41:09] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:41:14,118 INFO:127.0.0.1 - - [11/Nov/2024 16:41:14] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:41:19,118 INFO:127.0.0.1 - - [11/Nov/2024 16:41:19] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:41:24,118 INFO:127.0.0.1 - - [11/Nov/2024 16:41:24] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:41:29,118 INFO:127.0.0.1 - - [11/Nov/2024 16:41:29] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:41:34,118 INFO:127.0.0.1 - - [11/Nov/2024 16:41:34] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:41:39,117 INFO:127.0.0.1 - - [11/Nov/2024 16:41:39] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:41:44,119 INFO:127.0.0.1 - - [11/Nov/2024 16:41:44] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:41:49,119 INFO:127.0.0.1 - - [11/Nov/2024 16:41:49] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:41:54,119 INFO:127.0.0.1 - - [11/Nov/2024 16:41:54] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:42:18,075 INFO:127.0.0.1 - - [11/Nov/2024 16:42:18] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:42:18,474 INFO:127.0.0.1 - - [11/Nov/2024 16:42:18] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:42:23,475 INFO:127.0.0.1 - - [11/Nov/2024 16:42:23] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:42:29,119 INFO:127.0.0.1 - - [11/Nov/2024 16:42:29] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:42:34,118 INFO:127.0.0.1 - - [11/Nov/2024 16:42:34] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:42:39,119 INFO:127.0.0.1 - - [11/Nov/2024 16:42:39] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:42:43,472 INFO:127.0.0.1 - - [11/Nov/2024 16:42:43] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:42:48,472 INFO:127.0.0.1 - - [11/Nov/2024 16:42:48] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:42:54,122 INFO:127.0.0.1 - - [11/Nov/2024 16:42:54] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:42:59,119 INFO:127.0.0.1 - - [11/Nov/2024 16:42:59] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:43:04,118 INFO:127.0.0.1 - - [11/Nov/2024 16:43:04] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:43:09,119 INFO:127.0.0.1 - - [11/Nov/2024 16:43:09] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:43:14,124 INFO:127.0.0.1 - - [11/Nov/2024 16:43:14] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:43:19,119 INFO:127.0.0.1 - - [11/Nov/2024 16:43:19] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:43:24,119 INFO:127.0.0.1 - - [11/Nov/2024 16:43:24] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:43:29,120 INFO:127.0.0.1 - - [11/Nov/2024 16:43:29] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:43:34,119 INFO:127.0.0.1 - - [11/Nov/2024 16:43:34] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:43:39,119 INFO:127.0.0.1 - - [11/Nov/2024 16:43:39] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:43:44,118 INFO:127.0.0.1 - - [11/Nov/2024 16:43:44] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:44:18,120 INFO:127.0.0.1 - - [11/Nov/2024 16:44:18] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:45:18,120 INFO:127.0.0.1 - - [11/Nov/2024 16:45:18] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:46:18,122 INFO:127.0.0.1 - - [11/Nov/2024 16:46:18] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:47:18,120 INFO:127.0.0.1 - - [11/Nov/2024 16:47:18] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:48:18,122 INFO:127.0.0.1 - - [11/Nov/2024 16:48:18] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:49:18,121 INFO:127.0.0.1 - - [11/Nov/2024 16:49:18] "[35m[1mGET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1[0m" 202 -
+2024-11-11 16:50:18,124 INFO:127.0.0.1 - - [11/Nov/2024 16:50:18] "GET /check_async/458dd439-35f3-4d37-929b-23f0e7342928 HTTP/1.1" 200 -
+2024-11-11 17:07:33,461 INFO: * Detected change in 'C:\\Users\\windowadmin1.WIN-TAQQ3RO5V1L.000\\Desktop\\Github\\ecoweb\\ecoweb\\app\\ProjectMaker\\code_loader.py', reloading
+2024-11-11 17:07:34,325 INFO: * Restarting with stat
