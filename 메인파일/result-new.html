@@ -1,0 +1,1981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>result-new</title>
+    <link rel="stylesheet" href="result-new.css">
+</head>
+
+
+<style>
+
+
+</style>
+
+
+<body id="" class="report inherited-styles-for-exported-element">
+    
+  <header>
+    <div class="header-content">
+        <div class="logo-container">
+            <a href="/" class="logo" style="text-decoration: none;">ECO-WEB</a>
+        </div>
+        <div class="auth-buttons">
+            {% if session.get('username') %}
+            <div class="user-info">
+                <div class="user-details">
+                    <span class="user-institution">{{ session.get('institution') }}</span>
+                    <span class="user-department">{{ session.get('department') }} 부서</span>
+                    <span class="user-name">{{ session.get('username') }} 님</span>
+                </div>
+                <a href="{{ url_for('logout') }}" class="auth-btn logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    로그아웃
+                </a>
+            </div>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="auth-btn login-btn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    로그인
+                </a>
+                <a href="{{ url_for('signup') }}" class="auth-btn signup-btn">
+                    <i class="fas fa-user-plus"></i>
+                    회원가입
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</header>
+    
+
+
+
+
+    <section>
+      <article>
+        <div id="share" tabindex="0" >
+          
+          
+          
+            <div class="share-content">
+            <div class="share-close">
+              <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 21.21 21.21" enable-background="new 0 0 21.21 21.21" xml:space="preserve">
+                <line id="Line_39" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="20.21" y1="1" x2="1" y2="20.21"></line>
+                <line id="Line_40" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="20.21" y1="20.21" x2="1" y2="1"></line>
+              </svg>
+            </div>
+            <h2>Share your score</h2>
+            <p>Copy the link below to share your report.</p>
+            <div class="share-url">
+              
+                <input type="text" class="copy-url" id="copy-url" value="https://ecograder.com/report" tab-index="0">
+              <button class="copy-link">Copy link</button>
+            </div>
+            <div class="socialmedia">
+              <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://ecograder.com/report"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 26.92 26.93" enable-background="new 0 0 26.92 26.93" xml:space="preserve">
+                  <path id="Path_118" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7.23,1H19.7
+      c3.44,0,6.23,2.79,6.23,6.22l0,0V19.7c0,3.44-2.79,6.23-6.23,6.23l0,0H7.22C3.79,25.92,1,23.14,1,19.7c0,0,0,0,0,0V7.23
+      C1,3.79,3.79,1,7.23,1C7.23,1,7.23,1,7.23,1z"></path>
+                  <line id="Line_34" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="12.22" y1="14.71" x2="19.69" y2="14.71"></line>
+                  <path id="Path_119" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M19.69,8.48
+      h-1.31c-2.03,0-3.68,1.65-3.68,3.68v13.77"></path>
+                </svg></a>
+             
+                <a target="_blank" href=#
+                
+                
+                
+                
+                ><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 26.92 23.2" enable-background="new 0 0 26.92 23.2" xml:space="preserve">
+                  <path id="Path_120" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M23.43,7.25
+      c0,8.72-4.99,14.95-13.71,14.95c-4.99,0-6.98-2.6-8.72-4.99 M1,17.22c0.04-0.01,3.74-1.25,3.74-1.25c-4.04-4-4.57-10.34-1.25-14.95
+      c1.56,2.99,4.25,5.24,7.48,6.23c-0.09-3.35,2.55-6.14,5.9-6.23c0.11,0,0.22,0,0.33,0c1.99-0.15,3.91,0.81,4.99,2.49h3.74l-2.49,3.74
+      "></path>
+                </svg></a>
+              <a target="_blank" href="#"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 26.92 26.92" enable-background="new 0 0 26.92 26.92" xml:space="preserve">
+                  <path id="Path_121" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7.23,1H19.7
+      c3.44,0,6.23,2.79,6.23,6.22l0,0V19.7c0,3.44-2.79,6.23-6.23,6.23l0,0H7.22C3.79,25.92,1,23.14,1,19.7c0,0,0,0,0,0V7.23
+      C1,3.79,3.79,1,7.23,1C7.23,1,7.23,1,7.23,1z"></path>
+                  <line id="Line_35" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="8.09" y1="12.22" x2="8.09" y2="19.69"></line>
+                  <path id="Path_122" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M13.07,19.69
+      v-4.36c0-1.72,1.39-3.12,3.12-3.12s3.12,1.39,3.12,3.12v4.36"></path>
+                  <path id="Path_123" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8.09,7.7
+      c-0.17,0-0.31,0.14-0.31,0.31s0.14,0.31,0.31,0.31c0.17,0,0.31-0.14,0.31-0.31C8.4,7.84,8.26,7.7,8.09,7.7
+      C8.09,7.7,8.09,7.7,8.09,7.7"></path>
+                </svg>
+              </a>
+              <a target="_blank" href=#
+              
+
+              
+              
+              >
+                
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 33.15 26.92" enable-background="new 0 0 33.15 26.92" xml:space="preserve">
+                  <path id="Path_124" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M30.33,2.83
+      l-9.86,9.86c-2.15,2.15-5.64,2.15-7.79,0L2.83,2.83"></path>
+                  <line id="Line_36" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="12.68" y1="12.68" x2="2.12" y2="23.24"></line>
+                  <line id="Line_37" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="20.47" y1="12.68" x2="31.03" y2="23.24"></line>
+                  <path fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M27.65,1H5.5
+      C3.01,1,1,3.01,1,5.5v15.92c0,2.49,2.01,4.5,4.5,4.5h22.15c2.49,0,4.5-2.01,4.5-4.5V5.5C32.15,3.01,30.14,1,27.65,1z"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <style>
+          #app>.row {
+            margin-top: 1em;
+            margin-bottom: 1em;
+          }
+        </style>
+        <div id="report">
+          
+            <div id="app" data-page="">
+           
+           
+                <div class="container" id="main-container">
+                      <!--^ 메인타이틀 콘테이너 -->
+              <div class="header row main-title1" id="main-title-container">
+                <div class="col main-title1">
+                  <!-- <h1 class="main-title1" id="main-title1" >당신의 등급은</h1> -->
+
+                </div>
+                <div class="col scan-info main-title2">
+                  <div class="main-title1" >
+                    <p class="main-title1"id="main-title2">아래 링크에 대한 결과입니다. <br> https://music.youtube.com/playlist</p>
+                  </div>
+                </div>
+
+
+              
+              </div>
+
+
+
+
+
+              <div class="scores row svelte-5o59mq">
+                <h2 class="svelte-5o59mq"  id="impact1">성능에 미치는 영향
+                </h2>
+                <div class="scorecard svelte-5o59mq">
+                  <div class="col svelte-5o59mq">
+                    <h3 class="svelte-5o59mq">에코 스코어</h3>
+                    <p class="eco-score svelte-5o59mq">60</p>
+                    <p class="svelte-5o59mq">Out of 100 <span class="tooltip-icon" data-tip="0"><svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <g clip-path="url(https://ecograder.com/report/#clip0_453_68)">
+                            <path d="M10.5 6.4519C10.36 6.4519 10.25 6.5619 10.25 6.7019C10.25 6.8419 10.36 6.9519 10.5 6.9519C10.64 6.9519 10.75 6.8419 10.75 6.7019C10.75 6.5619 10.64 6.4519 10.5 6.4519Z" stroke="#002421" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M19.5 10.4519C19.5 5.48134 15.4706 1.4519 10.5 1.4519C5.52944 1.4519 1.5 5.48134 1.5 10.4519C1.5 15.4225 5.52944 19.4519 10.5 19.4519C15.4706 19.4519 19.5 15.4225 19.5 10.4519Z" stroke="#002421" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M10.5 10.4519V15.4519" stroke="#002421" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_453_68">
+                              <rect width="19.5" height="19.5" fill="white" transform="translate(0.75 0.701904)"></rect>
+                            </clipPath>
+                          </defs>
+                        </svg>
+                      </span></p>
+                  </div>
+                  <div class="col svelte-5o59mq">
+                    <h3 class="svelte-5o59mq">페이지당 배출량</h3>
+                    <p class="emiss-score svelte-5o59mq">1.13</p>
+                    <p class="svelte-5o59mq">이산화탄소 그램 배출량 <span class="tooltip-icon" data-tip="1"><svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <g clip-path="url(https://ecograder.com/report/#clip0_453_68)">
+                            <path d="M10.5 6.4519C10.36 6.4519 10.25 6.5619 10.25 6.7019C10.25 6.8419 10.36 6.9519 10.5 6.9519C10.64 6.9519 10.75 6.8419 10.75 6.7019C10.75 6.5619 10.64 6.4519 10.5 6.4519Z" stroke="#002421" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M19.5 10.4519C19.5 5.48134 15.4706 1.4519 10.5 1.4519C5.52944 1.4519 1.5 5.48134 1.5 10.4519C1.5 15.4225 5.52944 19.4519 10.5 19.4519C15.4706 19.4519 19.5 15.4225 19.5 10.4519Z" stroke="#002421" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M10.5 10.4519V15.4519" stroke="#002421" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_453_68">
+                              <rect width="19.5" height="19.5" fill="white" transform="translate(0.75 0.701904)"></rect>
+                            </clipPath>
+                          </defs>
+                        </svg>
+                      </span></p>
+                  </div>
+                  <div class="col percentile-display svelte-5o59mq">
+                    <p class="percentage-visual svelte-5o59mq"><span class="marker svelte-5o59mq" style="left: 27%;"></span><span class="percent-bar svelte-5o59mq"></span></p>
+                    <p class="svelte-5o59mq">이 페이지는 Eco-Web이 분석한 모든 URL 중 73%보다 낮은 점수를 받았습니다.</p>
+                  </div>
+                </div>
+                <div class="category-scores svelte-5o59mq">
+                  <p class="info-text" style="margin-top: 0px;" id="description1">
+                    
+                    ECO-WEB은 성능, 효율성, 사용자 경험 요소뿐만 아니라 배출량 추정치와 재생 가능 에너지로 구동되는 친환경 호스팅을 바탕으로 페이지를 평가합니다.</p>
+                  <ul class="category-scores svelte-5o59mq" id="category-name">
+                    <li class="svelte-5o59mq">
+                      <h6 class="svelte-5o59mq">페이지 크기 </h6> <span class="category-score svelte-5o59mq">48</span> <span class="category-scorebar svelte-5o59mq"><span class="inner-scorebar svelte-5o59mq" id="inner-scorebar-0" style="background-color: rgb(247, 96, 48); width: 48%;"></span></span>
+                    </li>
+                    <li class="svelte-5o59mq">
+                      <h6 class="svelte-5o59mq">UX 디자인 </h6> <span class="category-score svelte-5o59mq">58</span> <span class="category-scorebar svelte-5o59mq"><span class="inner-scorebar svelte-5o59mq" id="inner-scorebar-1" style="background-color: rgb(251, 197, 0); width: 58%;"></span></span>
+                    </li>
+                    <li class="svelte-5o59mq">
+                      <h6 class="svelte-5o59mq">그린 호스팅 </h6> <span class="category-score svelte-5o59mq">100</span> <span class="category-scorebar svelte-5o59mq"><span class="inner-scorebar svelte-5o59mq" id="inner-scorebar-2" style="background-color: rgb(129, 202, 36); width: 100%;"></span></span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <!-- <div class="divider"></div>
+              
+              <div class="row main-title1">
+                <h2 class="main-title1">Climate Impact</h2>
+              </div> -->
+
+<!-- 
+
+              <div class="row panels svelte-l7mmzn">
+                <div class="info-panel svelte-l7mmzn">
+                  <h5 class="svelte-l7mmzn">Digital Carbon Rating <span class="tooltip-icon svelte-l7mmzn" data-tip="5"><svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(https://ecograder.com/report/#clip0_453_68)">
+                          <path d="M10.5 6.4519C10.36 6.4519 10.25 6.5619 10.25 6.7019C10.25 6.8419 10.36 6.9519 10.5 6.9519C10.64 6.9519 10.75 6.8419 10.75 6.7019C10.75 6.5619 10.64 6.4519 10.5 6.4519Z" stroke="#002421" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path d="M19.5 10.4519C19.5 5.48134 15.4706 1.4519 10.5 1.4519C5.52944 1.4519 1.5 5.48134 1.5 10.4519C1.5 15.4225 5.52944 19.4519 10.5 19.4519C15.4706 19.4519 19.5 15.4225 19.5 10.4519Z" stroke="#002421" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path d="M10.5 10.4519V15.4519" stroke="#002421" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_453_68">
+                            <rect width="19.5" height="19.5" fill="white" transform="translate(0.75 0.701904)"></rect>
+                          </clipPath>
+                        </defs>
+                      </svg>
+                    </span></h5>
+                  <div class="rating svelte-l7mmzn">
+                    <div class="letter-score svelte-l7mmzn" style="--content: 'E';"></div>
+                    <div class="graph-score svelte-l7mmzn">
+                      <div class="graph-score-bar svelte-l7mmzn" style="--content: 'E';">
+                        <div id="score_a_plus" class="graph-score-bar_part part--a_plus  svelte-l7mmzn">A+</div>
+                        <div id="score_a" class="graph-score-bar_part part--a  svelte-l7mmzn">A</div>
+                        <div id="score_b" class="graph-score-bar_part part--b  svelte-l7mmzn">B</div>
+                        <div id="score_c" class="graph-score-bar_part part--c  svelte-l7mmzn">C</div>
+                        <div id="score_d" class="graph-score-bar_part part--d  svelte-l7mmzn">D</div>
+                        <div id="score_e" class="graph-score-bar_part part--e active svelte-l7mmzn">E</div>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="svelte-l7mmzn">Ecograder's digital carbon rating system gives this URL an “E” on a scale of A to E.</p>
+                </div>
+                <div class="info-panel svelte-l7mmzn">
+                  <h5 class="svelte-l7mmzn">Page Emissions <span class="tooltip-icon svelte-l7mmzn" data-tip="3"><svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(https://ecograder.com/report/#clip0_453_68)">
+                          <path d="M10.5 6.4519C10.36 6.4519 10.25 6.5619 10.25 6.7019C10.25 6.8419 10.36 6.9519 10.5 6.9519C10.64 6.9519 10.75 6.8419 10.75 6.7019C10.75 6.5619 10.64 6.4519 10.5 6.4519Z" stroke="#002421" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path d="M19.5 10.4519C19.5 5.48134 15.4706 1.4519 10.5 1.4519C5.52944 1.4519 1.5 5.48134 1.5 10.4519C1.5 15.4225 5.52944 19.4519 10.5 19.4519C15.4706 19.4519 19.5 15.4225 19.5 10.4519Z" stroke="#002421" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path d="M10.5 10.4519V15.4519" stroke="#002421" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_453_68">
+                            <rect width="19.5" height="19.5" fill="white" transform="translate(0.75 0.701904)"></rect>
+                          </clipPath>
+                        </defs>
+                      </svg>
+                    </span></h5>
+                  <p class="emiss svelte-l7mmzn">1.13 g</p>
+                  <p class="svelte-l7mmzn">Assuming your page gets <span class="input-wrapper svelte-l7mmzn"></span> <span class="traffic-input  svelte-l7mmzn"><input type="number" pattern="[0-9.]+" placeholder="Visits" id="enterTraffic" class="svelte-l7mmzn"></span> pageviews, you’re emitting <strong>1130.00 grams</strong> of carbon dioxide.</p>
+                </div>
+                <div class="info-panel svelte-l7mmzn">
+                  <h5 class="svelte-l7mmzn">Page Weight <span class="tooltip-icon svelte-l7mmzn" data-tip="4"><svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(https://ecograder.com/report/#clip0_453_68)">
+                          <path d="M10.5 6.4519C10.36 6.4519 10.25 6.5619 10.25 6.7019C10.25 6.8419 10.36 6.9519 10.5 6.9519C10.64 6.9519 10.75 6.8419 10.75 6.7019C10.75 6.5619 10.64 6.4519 10.5 6.4519Z" stroke="#002421" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path d="M19.5 10.4519C19.5 5.48134 15.4706 1.4519 10.5 1.4519C5.52944 1.4519 1.5 5.48134 1.5 10.4519C1.5 15.4225 5.52944 19.4519 10.5 19.4519C15.4706 19.4519 19.5 15.4225 19.5 10.4519Z" stroke="#002421" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path d="M10.5 10.4519V15.4519" stroke="#002421" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_453_68">
+                            <rect width="19.5" height="19.5" fill="white" transform="translate(0.75 0.701904)"></rect>
+                          </clipPath>
+                        </defs>
+                      </svg>
+                    </span></h5>
+                  <p class="pageweight svelte-l7mmzn">2.89 MB</p>
+                  <p class="svelte-l7mmzn">This page is 27.05% larger than the average web page.</p>
+                </div>
+              </div>
+              <div class="row main-title1">
+                <div class="col graph svelte-1xcqwq"><svg width="480" height="480" viewBox="-260 -260 520 520" class="svelte-1xcqwq">
+                    <path fill="#EB8258" d="M0.608,-239.999A240,240,0,0,1,238.541,-26.422L164.97,-18.462A166,166,0,0,0,0.608,-165.999Z" stroke="none" stroke-width="0" stroke-linejoin="round"></path>
+                    <g text-anchor="middle" transform="translate(136.10988440637956,-151.63191275876588)"><text font-size="0">
+                        <tspan font-weight="bold">Images</tspan>
+                        <tspan x="0" dy="1.1em">23.28</tspan>
+                      </text></g>
+                    <path fill="#A67DB8" d="M238.672,-25.214A240,240,0,1,1,-180.696,-157.952L-125.105,-109.109A166,166,0,1,0,165.101,-17.253Z" stroke="none" stroke-width="0" stroke-linejoin="round"></path>
+                    <g text-anchor="middle" transform="translate(-61.487499114907784,194.26122889705556)"><text font-size="0">
+                        <tspan font-weight="bold">Scripts</tspan>
+                        <tspan x="0" dy="1.1em">63.29</tspan>
+                      </text></g>
+                    <path fill="#FFCAB1" d="M-179.894,-158.865A240,240,0,0,1,-80.338,-226.154L-55.744,-156.361A166,166,0,0,0,-124.302,-110.022Z" stroke="none" stroke-width="0" stroke-linejoin="round"></path>
+                    <g text-anchor="middle" transform="translate(-114.10171293595924,-168.81628092420456)"><text font-size="0">
+                        <tspan font-weight="bold">HTML/CSS</tspan>
+                        <tspan x="0" dy="1.1em">8.09</tspan>
+                      </text></g>
+                    <path fill="#56E39F" d="M-79.191,-226.558A240,240,0,0,1,-0.608,-239.999L-0.608,-165.999A166,166,0,0,0,-54.597,-156.765Z" stroke="none" stroke-width="0" stroke-linejoin="round"></path>
+                    <g text-anchor="middle" transform="translate(-34.35197128175506,-200.84342077612968)"><text font-size="0">
+                        <tspan font-weight="bold">Other</tspan>
+                        <tspan x="0" dy="1.1em">5.34</tspan>
+                      </text></g>
+                  </svg> <span class="graph-text svelte-1xcqwq">2.89 MB <span class="smaller svelte-1xcqwq">Page Assets</span></span></div>
+                <div class="col legend svelte-19i7cd9">
+                  <p class="svelte-19i7cd9">Scripts and media assets contribute to your page's emissions estimate but they aren't the only factor. The chart below breaks down estimated emissions impact per page view of individual asset types at this URL.</p>
+                  <ul class="svelte-19i7cd9">
+                    <li class="svelte-19i7cd9"><span class="icon svelte-19i7cd9" style="background-color: rgb(235, 130, 88);"></span> <span><strong>Images:</strong> 672.32 KB, 0.2624 g of CO2e</span> </li>
+                    <li class="svelte-19i7cd9"><span class="icon svelte-19i7cd9" style="background-color: rgb(166, 125, 184);"></span> <span><strong>Scripts:</strong> 1.83 MB, 0.7133 g of CO2e</span> </li>
+                    <li class="svelte-19i7cd9"><span class="icon svelte-19i7cd9" style="background-color: rgb(255, 202, 177);"></span> <span><strong>HTML/CSS:</strong> 233.65 KB, 0.0912 g of CO2e</span> </li>
+                    <li class="svelte-19i7cd9"><span class="icon svelte-19i7cd9" style="background-color: rgb(86, 227, 159);"></span> <span><strong>Other:</strong> 154.15 KB, 0.0602 g of CO2e</span> </li>
+                  </ul>
+                </div>
+              </div> -->
+
+
+
+
+              <div class="divider"></div>
+            </div>
+
+
+            
+            <div class="container">
+              <div class="upgrade row svelte-clifu0">
+                <div class="col svelte-clifu0">
+                  <h2 class="svelte-clifu0">지속가능한 웹 디자인을 실천하는 방법</h2>
+                </div>
+                <div class="col text-center svelte-clifu0"><a href="https://ecograder.com/how-it-works" class="btn btn-primary svelte-clifu0">작동방식</a></div>
+                <div class="col text-center svelte-clifu0"><button class="btn btn-cta share-button svelte-clifu0">결과 공유하기</button></div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <p class="info-text upgrade svelte-clifu0">다음 목록을 활용하여 웹사이트의 성능, 사용자 경험, 친환경 호스팅의 세 가지 주요 분야에서 개선하고 배출량을 줄이세요.</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col categories">
+                  <div class="category">
+                    <div class="category-row">
+                      <div class="pie-container red">
+                        <div class="pie" style="--p: 48;"><em>48</em> out of 100</div>
+                      </div>
+                      <div class="category-details">
+                        <h2 class="detail-container">페이지 크기
+                        </h2>
+                        <p class="detail-container">이미지 파일 크기를 압축하고 페이지에서 사용하지 않는 항목을 제거하면 배출량을 줄일 뿐만 아니라 페이지 로딩 속도도 빨라져 사용자 만족도가 높아집니다. 아래는 페이지 크기를 줄이기 위해 할 수 있는 몇 가지 방법입니다.</p>
+                      </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="metrics">
+                      <div class="metric">
+                        <div class="metric-row" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+                          <div class="metric-summary">
+                            <div class="metric-svg"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30.01 30.01" enable-background="new 0 0 30.01 30.01" xml:space="preserve">
+                                <line id="Line_13" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="29.01" y1="22.75" x2="14.99" y2="29.01"></line>
+                                <line id="Line_14" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="14.99" y1="29.01" x2="1" y2="22.75"></line>
+                                <line id="Line_15" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="29.01" y1="15.01" x2="14.99" y2="21.27"></line>
+                                <line id="Line_16" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="14.99" y1="21.27" x2="1" y2="15.01"></line>
+                                <path id="Path_73" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M1,7.26
+      l13.99,6.26l14.03-6.26L15.03,1L1,7.26z"></path>
+                              </svg></div>
+                            <h3 class="svelte-ihdwqk">미디어 최적화</h3>
+                          </div>
+                          <div class="metric-stats">
+                            <div class="bar-container yellow svelte-ihdwqk">
+                              <div class="bar-label"><em class="svelte-ihdwqk">73</em> out of 100</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="metric-details">
+                          <p>Images, video, and animation are often the largest media assets on a page. By optimizing these files, you can decrease load time and reduce emissions.</p>
+                          <div class="action-text">
+                            <div class="at green">
+                              <h6>Efficient Animated Content<span class="submetric_score">100 / 100</span></h6>
+                              <p>This page scored <span class="var">100</span> out of 100 for its use of efficient animated content. Keep up the great work!</p>
+                            </div>
+                            <div class="at red">
+                              <h6>Modern Image Formats<span class="submetric_score">19 / 100</span></h6>
+                              <p>However, this page scored <span class="var">19</span> out of 100 for its use of modern image formats like AVIF or WebP. Modern image formats have smaller file sizes which allow them to download and display faster for users.</p>
+                              <p>There is significant room to improve performance and reduce emissions related to this page by converting images to modern formats, which have smaller file sizes that download and ster for users. Of the <span class="var">16</span> images on this page, there are <span class="var">13</span> opportunities to improve page load time by up to <span class="var">10 ms</span>.</p>
+                            </div>
+                            <div class="at green">
+                              <h6>Uses Optimized Images<span class="submetric_score">100 / 100</span></h6>
+                              <p>Nicely done! All the images on this page are optimized to speed up download times, improve page performance, and reduce emissions.</p>
+                            </div>
+                          </div>
+                          <div class="col details">
+                            <h4 class="svelte-uraht9">Modern Image Formats: Opportunities for Improvement</h4>
+                            <table class="details_table columncount3">
+                              <thead>
+                                <tr>
+                                  <th>URL</th>
+                                  <th>Resource Size</th>
+                                  <th>Potential Savings</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>https://www.youtube.com/img/music/tastebuilder/shelf_thumbnail/v6/US_992_X_304.png</td>
+                                  <td>354675</td>
+                                  <td>318293.35</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/QxTkZTLWdo4/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3lk4MCrjy_XZuUz6oenajSYJn2QtQ</td>
+                                  <td>35902</td>
+                                  <td>16350.95</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/At8v_Yc044Y/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3mVdYFhab5z1joAgnjQUzaAe9NAuQ</td>
+                                  <td>30864</td>
+                                  <td>14494.55</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/-V-sywKOCwQ/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3nyVTvZNHTIR3Ibx5tPlbPWBtm0ig</td>
+                                  <td>29165</td>
+                                  <td>13704.4</td>
+                                </tr>
+                                <tr>
+                                  <td>https://lh3.googleusercontent.com/g9lup2u8M2TMJh2ef3Ty3D_eMe0e9O-lInUnEBVteBg04KsAGcpiq8rllqF0xTPUnoLPSaejp9hKUQ=w1500-h844-l90-rj</td>
+                                  <td>24241</td>
+                                  <td>13639.4</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/ekr2nIex040/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3nKJesvy-pU5Gkc5boD5_1756r9mA</td>
+                                  <td>27699</td>
+                                  <td>13461.85</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/_ymicn0_GYc/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3kqKJDz8JqMLoi7aSmiRuzScXtQmg</td>
+                                  <td>27277</td>
+                                  <td>13059.3</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/Oa_RSwwpPaA/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3kj7weGvq5NImArbJVbVuJPyh8z1A</td>
+                                  <td>25285</td>
+                                  <td>12576.1</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/rtOvBOTyX00/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3lFpULmmpM-MeXObTKC_b6jVOnZeA</td>
+                                  <td>25505</td>
+                                  <td>12569.85</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/4QIZE708gJ4/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3kSMeVj6pCCifQKIpPHijGvtkSbVw</td>
+                                  <td>24822</td>
+                                  <td>12177.5</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/Qer3lwd5hyA/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3mekDfs6iT-x1wtxUqxRJs1XnQdpA</td>
+                                  <td>23775</td>
+                                  <td>11479.55</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/HPR-VwzbDRg/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3mTLWpgy8YUiqgDsaNDA4_Qc1VaTQ</td>
+                                  <td>16559</td>
+                                  <td>8672.1</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/yKNxeF4KMsY/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3kr6AQ0rsLVhCMbaywIpJLpP-Uy8Q</td>
+                                  <td>15002</td>
+                                  <td>8231.35</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="col">
+                            <h4>Additional Resources</h4>
+                            <p><a href="https://sustainablewebdesign.org/has-the-design-used-imagery-efficiently/">Learn how to use imagery efficiently</a></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="metric">
+                        <div class="metric-row" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+                          <div class="metric-summary">
+                            <div class="metric-svg"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 25 25" enable-background="new 0 0 25 25" xml:space="preserve">
+                                <line id="Line_17" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="24" y1="19" x2="24" y2="24"></line>
+                                <line id="Line_18" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="17" y1="14" x2="17" y2="24"></line>
+                                <line id="Line_19" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="9" y1="8" x2="9" y2="24"></line>
+                                <line id="Line_20" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="1" y1="1" x2="1" y2="24"></line>
+                              </svg></div>
+                            <h3 class="svelte-ihdwqk">전반적인 페이지 용량 줄이기 </h3>
+                          </div>
+                          <div class="metric-stats">
+                            <div class="bar-container red svelte-ihdwqk">
+                              <div class="bar-label"><em class="svelte-ihdwqk">40</em> out of 100</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="metric-details">
+                          <p>Webpages that use unnecessary scripts, media, or other elements can slow down page performance, frustrate users, and increase both download times and emissions.
+  
+                            Make sure you serve fast, lightweight pages to users by removing any unnecessary elements.
+  
+                            Learn more about how to do this in the recommendations below.</p>
+                          <div class="action-text">
+                            <div class="at red">
+                              <h6>Unused Javascript<span class="submetric_score">0 / 100</span></h6>
+                              <p>There is unused JavaScript associated with this page. According to Ecograder's calculations, <span class="var">4</span> scripts could potentially be removed. This might shave off <span class="var">974.65 kb</span> from your page, speeding up download time by <span class="var">760 ms</span>.</p>
+                            </div>
+                            <div class="at green">
+                              <h6>Unused CSS Rules<span class="submetric_score">100 / 100</span></h6>
+                              <p>Well done! There are no unused CSS Rules on this page.</p>
+                            </div>
+                            <div class="at red">
+                              <h6>Total Byte Weight<span class="submetric_score">28 / 100</span></h6>
+                              <p>Whoa! This page is <span class="var">2821.23 kb</span>. It scored <span class="var">29</span> out of 100 for page weight. You can significantly improve performance by optimizing <span class="var">10</span> items on this page.</p>
+                            </div>
+                          </div>
+                          <div class="col details">
+                            <h4 class="svelte-uraht9">Total Byte Weight: Scanned Items</h4>
+                            <table class="details_table columncount2">
+                              <thead>
+                                <tr>
+                                  <th>URL</th>
+                                  <th>Transfer Size</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>https://music.youtube.com/s/191aa39e/music_polymer_inlined_html.js</td>
+                                  <td>982200</td>
+                                </tr>
+                                <tr>
+                                  <td>https://music.youtube.com/s/player/4e23410d/player_ias.vflset/en_US/base.js</td>
+                                  <td>627764</td>
+                                </tr>
+                                <tr>
+                                  <td>https://www.youtube.com/img/music/tastebuilder/shelf_thumbnail/v6/US_992_X_304.png</td>
+                                  <td>355333</td>
+                                </tr>
+                                <tr>
+                                  <td>https://www.googletagmanager.com/gtm.js?id=GTM-NQNFS9</td>
+                                  <td>112545</td>
+                                </tr>
+                                <tr>
+                                  <td>https://music.youtube.com/s/_/ytmusicweb/_/ss/k=ytmusicweb.yt_music_web.VOh6TLBD2kM.L.B1.O/am=AEAJ/d=0/br=1/rs=ADGLRXLk8bKDb5jnxwGff55sjlyRkWBJ4g</td>
+                                  <td>107824</td>
+                                </tr>
+                                <tr>
+                                  <td>https://music.youtube.com/s/player/4e23410d/www-player.css</td>
+                                  <td>49915</td>
+                                </tr>
+                                <tr>
+                                  <td>https://jnn-pa.googleapis.com/$rpc/google.internal.waa.v1.Waa/Create</td>
+                                  <td>43941</td>
+                                </tr>
+                                <tr>
+                                  <td>https://music.youtube.com/playlist</td>
+                                  <td>39436</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/QxTkZTLWdo4/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3lk4MCrjy_XZuUz6oenajSYJn2QtQ</td>
+                                  <td>36533</td>
+                                </tr>
+                                <tr>
+                                  <td>https://music.youtube.com/s/player/4e23410d/player_ias.vflset/en_US/offline.js</td>
+                                  <td>34427</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <h4 class="svelte-uraht9">Unused CSS Rules: Opportunities for Improvement</h4>
+                            <table class="details_table columncount3">
+                              <thead>
+                                <tr>
+                                  <th>URL</th>
+                                  <th>Transfer Size</th>
+                                  <th>Potential Savings</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>https://music.youtube.com/s/_/ytmusicweb/_/ss/k=ytmusicweb.yt_music_web.VOh6TLBD2kM.L.B1.O/am=AEAJ/d=0/br=1/rs=ADGLRXLk8bKDb5jnxwGff55sjlyRkWBJ4g</td>
+                                  <td>106902</td>
+                                  <td>99014</td>
+                                </tr>
+                                <tr>
+                                  <td>https://music.youtube.com/s/player/4e23410d/www-player.css</td>
+                                  <td>49167</td>
+                                  <td>49167</td>
+                                </tr>
+                                <tr>
+                                  <td>https://fonts.googleapis.com/css?family=YouTube+Sans:500,700</td>
+                                  <td>27371</td>
+                                  <td>27371</td>
+                                </tr>
+                                <tr>
+                                  <td>html:not(.style-scope) {
+                                    --primary-text-color: var(--light-theme-text-color);
+                                    --primary-backgro…</td>
+                                  <td>18088</td>
+                                  <td>15561</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <h4 class="svelte-uraht9">Unused Javascript: Opportunities for Improvement</h4>
+                            <table class="details_table columncount3">
+                              <thead>
+                                <tr>
+                                  <th>URL</th>
+                                  <th>Transfer Size</th>
+                                  <th>Potential Savings</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>https://music.youtube.com/s/player/4e23410d/player_ias.vflset/en_US/base.js</td>
+                                  <td>627013</td>
+                                  <td>470429</td>
+                                </tr>
+                                <tr>
+                                  <td>https://music.youtube.com/s/191aa39e/music_polymer_inlined_html.js</td>
+                                  <td>981274</td>
+                                  <td>452264</td>
+                                </tr>
+                                <tr>
+                                  <td>https://www.googletagmanager.com/gtm.js?id=GTM-NQNFS9</td>
+                                  <td>111425</td>
+                                  <td>47288</td>
+                                </tr>
+                                <tr>
+                                  <td>https://music.youtube.com/s/player/4e23410d/player_ias.vflset/en_US/offline.js</td>
+                                  <td>33684</td>
+                                  <td>28065</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="col">
+                            <h4>Additional Resources</h4>
+                            <p><a href="https://sustainablewebdesign.org/has-the-design-team-set-a-page-weight-budget/">Learn how page weight budgets can help you reach sustainability goals</a></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="metric">
+                        <div class="metric-row" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+                          <div class="metric-summary">
+                            <div class="metric-svg"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 27 30.43" enable-background="new 0 0 27 30.43" xml:space="preserve">
+                                <path id="Path_74" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15.25,1
+      h-4.06c-1.12,0-2.03,0.91-2.03,2.03l0,0v4.06h8.12V3.03C17.28,1.91,16.37,1,15.25,1C15.25,1,15.25,1,15.25,1z"></path>
+                                <line id="Line_21" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="26" y1="7.21" x2="1" y2="7.21"></line>
+                                <path id="Path_75" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M23.37,7.09
+      l-1.86,20.49c-0.1,1.05-0.97,1.85-2.02,1.85H6.95c-1.05,0-1.93-0.8-2.02-1.85L3.06,7.09"></path>
+                              </svg></div>
+                            <h3 class="svelte-ihdwqk">사용되지않는 코드 삭제</h3>
+                          </div>
+                          <div class="metric-stats">
+                            <div class="bar-container red svelte-ihdwqk">
+                              <div class="bar-label"><em class="svelte-ihdwqk">50</em> out of 100</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="metric-details">
+                          <p>Plugins, widgets, and third-party frameworks often introduce unnecessary code snippets into your page which can adversely impact download speed and performance.</p>
+                          <div class="action-text">
+                            <div class="at green">
+                              <h6>Unminified CSS<span class="submetric_score">100 / 100</span></h6>
+                              <p>Well done! All the CSS associated with this page has been optimized. Minifying scripts removes extra characters, improving page download speeds and reducing both data usage and emissions.</p>
+                            </div>
+                            <div class="at green">
+                              <h6>Unused CSS Rules<span class="submetric_score">100 / 100</span></h6>
+                              <p>We did not detect any unused CSS Rules on this page.</p>
+                            </div>
+                            <div class="at green">
+                              <h6>Unminified Javascript<span class="submetric_score">100 / 100</span></h6>
+                              <p>Well done! All JavaScript associated with this page has been minified.
+                              </p>
+                              <p>Minifying scripts removes extra characters, improving page download speeds and reducing both data usage and emissions.</p>
+                            </div>
+                            <div class="at green">
+                              <h6>Duplicated Javascript<span class="submetric_score">100 / 100</span></h6>
+                              <p>We did not detect any duplicated JavaScript on this page.</p>
+                            </div>
+                            <div class="at red">
+                              <h6>Unused Javascript<span class="submetric_score">0 / 100</span></h6>
+                              <p>There is unused JavaScript associated with this page. According to Ecograder's calculations, <span class="var">4</span> scripts could potentially be removed. This might shave off <span class="var">974.65 kb</span> from your page, speeding up download time by <span class="var">760 ms</span>.</p>
+                            </div>
+                            <div class="at red">
+                              <h6>Legacy Javascript<span class="submetric_score">50 / 100</span></h6>
+                              <p>There is outdated JavaScript associated with this page. Legacy scripts can slow down pages and cause potential security risks. You should fix this.</p>
+                            </div>
+                            <div class="at green">
+                              <h6>Uses Text Compression<span class="submetric_score">100 / 100</span></h6>
+                              <p>It appears as though this page uses compression to deliver text-based resources. Good work.</p>
+                            </div>
+                            <p></p>
+                          </div>
+                          <div class="col details">
+                            <h4 class="svelte-uraht9">Unused CSS Rules: Opportunities for Improvement</h4>
+                            <table class="details_table columncount3">
+                              <thead>
+                                <tr>
+                                  <th>URL</th>
+                                  <th>Transfer Size</th>
+                                  <th>Potential Savings</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>https://music.youtube.com/s/_/ytmusicweb/_/ss/k=ytmusicweb.yt_music_web.VOh6TLBD2kM.L.B1.O/am=AEAJ/d=0/br=1/rs=ADGLRXLk8bKDb5jnxwGff55sjlyRkWBJ4g</td>
+                                  <td>106902</td>
+                                  <td>99014</td>
+                                </tr>
+                                <tr>
+                                  <td>https://music.youtube.com/s/player/4e23410d/www-player.css</td>
+                                  <td>49167</td>
+                                  <td>49167</td>
+                                </tr>
+                                <tr>
+                                  <td>https://fonts.googleapis.com/css?family=YouTube+Sans:500,700</td>
+                                  <td>27371</td>
+                                  <td>27371</td>
+                                </tr>
+                                <tr>
+                                  <td>html:not(.style-scope) {
+                                    --primary-text-color: var(--light-theme-text-color);
+                                    --primary-backgro…</td>
+                                  <td>18088</td>
+                                  <td>15561</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <h4 class="svelte-uraht9">Unused Javascript: Opportunities for Improvement</h4>
+                            <table class="details_table columncount3">
+                              <thead>
+                                <tr>
+                                  <th>URL</th>
+                                  <th>Transfer Size</th>
+                                  <th>Potential Savings</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>https://music.youtube.com/s/player/4e23410d/player_ias.vflset/en_US/base.js</td>
+                                  <td>627013</td>
+                                  <td>470429</td>
+                                </tr>
+                                <tr>
+                                  <td>https://music.youtube.com/s/191aa39e/music_polymer_inlined_html.js</td>
+                                  <td>981274</td>
+                                  <td>452264</td>
+                                </tr>
+                                <tr>
+                                  <td>https://www.googletagmanager.com/gtm.js?id=GTM-NQNFS9</td>
+                                  <td>111425</td>
+                                  <td>47288</td>
+                                </tr>
+                                <tr>
+                                  <td>https://music.youtube.com/s/player/4e23410d/player_ias.vflset/en_US/offline.js</td>
+                                  <td>33684</td>
+                                  <td>28065</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="col">
+                            <h4>Additional Resources</h4>
+                            <p><a href="https://www.upbuild.io/blog/find-remove-unused-css-javascript/">Read more about how to find and remove unused scripts and code</a></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="metric">
+                        <div class="metric-row" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+                          <div class="metric-summary">
+                            <div class="metric-svg"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 25.68 25.68" style="enable-background:new 0 0 25.68 25.68;" xml:space="preserve">
+                                <style type="text/css">
+                                  .st0 {
+                                    fill: none;
+                                    stroke: #000000;
+                                    stroke-width: 2;
+                                    stroke-linecap: round;
+                                    stroke-linejoin: round;
+                                  }
+                                </style>
+                                <path class="st0" d="M24.25,24.09c-0.09,0-0.16,0.07-0.16,0.16c0,0.09,0.07,0.16,0.16,0.16c0.09,0,0.16-0.07,0.16-0.16
+      C24.41,24.16,24.34,24.09,24.25,24.09z"></path>
+                                <circle id="Ellipse_35" class="st0" cx="24.25" cy="12.84" r="0.16"></circle>
+                                <circle id="Ellipse_36" class="st0" cx="24.25" cy="18.54" r="0.16"></circle>
+                                <circle id="Ellipse_37" class="st0" cx="24.25" cy="7.13" r="0.16"></circle>
+                                <path class="st0" d="M18.54,24.09c-0.09,0-0.16,0.07-0.16,0.16c0,0.09,0.07,0.16,0.16,0.16c0.09,0,0.16-0.07,0.16-0.16
+      C18.7,24.16,18.63,24.09,18.54,24.09z"></path>
+                                <circle id="Ellipse_39" class="st0" cx="1.43" cy="1.43" r="0.16"></circle>
+                                <circle id="Ellipse_40" class="st0" cx="24.25" cy="1.43" r="0.16"></circle>
+                                <circle id="Ellipse_41" class="st0" cx="12.84" cy="1.43" r="0.16"></circle>
+                                <circle id="Ellipse_42" class="st0" cx="7.13" cy="1.43" r="0.16"></circle>
+                                <circle id="Ellipse_43" class="st0" cx="18.54" cy="1.43" r="0.16"></circle>
+                                <circle id="Ellipse_44" class="st0" cx="1.43" cy="7.13" r="0.16"></circle>
+                                <path class="st0" d="M11.03,12.84h-7.8c-1,0-1.81,0.81-1.81,1.81v7.8c0,1,0.81,1.81,1.81,1.81h7.8c1,0,1.81-0.81,1.81-1.81v-7.8
+      C12.84,13.65,12.03,12.84,11.03,12.84z"></path>
+                                <line id="Line_57" class="st0" x1="12.31" y1="13.37" x2="17.91" y2="7.77"></line>
+                                <line id="Line_58" class="st0" x1="17.91" y1="12.84" x2="17.91" y2="7.77"></line>
+                                <line id="Line_59" class="st0" x1="12.84" y1="7.77" x2="17.91" y2="7.77"></line>
+                              </svg></div>
+                            <h3 class="svelte-ihdwqk">적정 크기 이미지 사용</h3>
+                          </div>
+                          <div class="metric-stats">
+                            <div class="bar-container red svelte-ihdwqk">
+                              <div class="bar-label"><em class="svelte-ihdwqk">19</em> out of 100</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="metric-details">
+                          <p>Serve images that are appropriately-sized to save cellular data and improve load time.</p>
+                          <div class="action-text">
+                            <div class="at red">
+                              <h6>Responsive images<span class="submetric_score">19 / 100</span></h6>
+                              <p>Whoa! This page could save <span class="var">10</span> ms because images are larger than what is actually served to website visitors. It scored <span class="var">19</span> out of 100 for properly sized images. You can improve performance by optimizing images on this page for a total savings of <span class="var">541445</span> bytes.</p>
+                            </div>
+                          </div>
+                          <div class="col details">
+                            <h4 class="svelte-uraht9">Responsive images: Opportunities for Improvement</h4>
+                            <table class="details_table columncount3">
+                              <thead>
+                                <tr>
+                                  <th>URL</th>
+                                  <th>Resource Size</th>
+                                  <th>Potential Savings</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>https://www.youtube.com/img/music/tastebuilder/shelf_thumbnail/v6/US_992_X_304.png</td>
+                                  <td>354675</td>
+                                  <td>281801</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/QxTkZTLWdo4/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3lk4MCrjy_XZuUz6oenajSYJn2QtQ</td>
+                                  <td>35902</td>
+                                  <td>34983</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/At8v_Yc044Y/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3mVdYFhab5z1joAgnjQUzaAe9NAuQ</td>
+                                  <td>30864</td>
+                                  <td>30074</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/-V-sywKOCwQ/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3nyVTvZNHTIR3Ibx5tPlbPWBtm0ig</td>
+                                  <td>29165</td>
+                                  <td>28418</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/ekr2nIex040/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3nKJesvy-pU5Gkc5boD5_1756r9mA</td>
+                                  <td>27699</td>
+                                  <td>26990</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/_ymicn0_GYc/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3kqKJDz8JqMLoi7aSmiRuzScXtQmg</td>
+                                  <td>27277</td>
+                                  <td>26579</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/Oa_RSwwpPaA/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3kj7weGvq5NImArbJVbVuJPyh8z1A</td>
+                                  <td>25285</td>
+                                  <td>24638</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/4QIZE708gJ4/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3kSMeVj6pCCifQKIpPHijGvtkSbVw</td>
+                                  <td>24822</td>
+                                  <td>24187</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/Qer3lwd5hyA/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3mekDfs6iT-x1wtxUqxRJs1XnQdpA</td>
+                                  <td>23775</td>
+                                  <td>23166</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/rtOvBOTyX00/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3lFpULmmpM-MeXObTKC_b6jVOnZeA</td>
+                                  <td>25505</td>
+                                  <td>12582</td>
+                                </tr>
+                                <tr>
+                                  <td>https://lh3.googleusercontent.com/g9lup2u8M2TMJh2ef3Ty3D_eMe0e9O-lInUnEBVteBg04KsAGcpiq8rllqF0xTPUnoLPSaejp9hKUQ=w1500-h844-l90-rj</td>
+                                  <td>24241</td>
+                                  <td>12457</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/HPR-VwzbDRg/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3mTLWpgy8YUiqgDsaNDA4_Qc1VaTQ</td>
+                                  <td>16559</td>
+                                  <td>8169</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/yKNxeF4KMsY/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3kr6AQ0rsLVhCMbaywIpJLpP-Uy8Q</td>
+                                  <td>15002</td>
+                                  <td>7401</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="col">
+                            <h4>Additional Resources</h4>
+                            <p><a href="https://www.mightybytes.com/blog/how-to-optimize-images/">Learn more about why properly sized images are important</a></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="metric">
+                        <div class="metric-row" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+                          <div class="metric-summary">
+                            <div class="metric-svg"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 25.38 25.05" style="enable-background:new 0 0 25.38 25.05;" xml:space="preserve">
+                                <style type="text/css">
+                                  .st0 {
+                                    fill: none;
+                                    stroke: #F0F3F3;
+                                    stroke-width: 2;
+                                    stroke-linecap: round;
+                                    stroke-linejoin: round;
+                                  }
+                                </style>
+                                <path class="st0" d="M5,1H2C1.45,1,1,1.45,1,2v3c0,0.55,0.45,1,1,1h3c0.55,0,1-0.45,1-1V2C6,1.45,5.55,1,5,1z"></path>
+                                <path class="st0" d="M6.5,11.42H3.57c-0.55,0-1,0.45-1,1v2.94c0,0.55,0.45,1,1,1H6.5c0.55,0,1-0.45,1-1v-2.94
+      C7.5,11.86,7.06,11.42,6.5,11.42z"></path>
+                                <path class="st0" d="M15,5h-3c-0.55,0-1,0.45-1,1v3c0,0.55,0.45,1,1,1h3c0.55,0,1-0.45,1-1V6C16,5.45,15.55,5,15,5z"></path>
+                                <path class="st0" d="M23.1,8.65h-2.57c-0.71,0-1.28,0.57-1.28,1.28v3.85H15.4c-0.71,0-1.28,0.57-1.28,1.28v3.85l-3.85,0
+      c-0.71,0-1.28,0.57-1.28,1.28v2.57c0,0.71,0.58,1.28,1.28,1.28H23.1c0.71,0,1.28-0.57,1.28-1.28V9.94
+      C24.38,9.23,23.81,8.65,23.1,8.65z"></path>
+                              </svg></div>
+                            <h3 class="svelte-ihdwqk">JavaScript 번들에서 중복 모듈 제거                            </h3>
+                          </div>
+                          <div class="metric-stats">
+                            <div class="bar-container green svelte-ihdwqk">
+                              <div class="bar-label"><em class="svelte-ihdwqk">100</em> out of 100</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="metric-details">
+                          <p>Remove large, duplicate JavaScript modules from bundles to reduce unnecessary bytes consumed by network activity.</p>
+                          <div class="action-text">
+                            <div class="at green">
+                              <h6>Duplicated Javascript<span class="submetric_score">100 / 100</span></h6>
+                              <p>Nice job! We didn’t detect any duplicate modules in JavaScript bundles, which means your visitors are receiving an optimized page experience.</p>
+                            </div>
+                          </div>
+                          <div class="col details"></div>
+                          <div class="col">
+                            <h4>Additional Resources</h4>
+                            <p><a href="https://www.wholegraindigital.com/blog/website-energy-efficiency/">Read why removing javascript makes your website more efficient</a></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="metric">
+                        <div class="metric-row" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+                          <div class="metric-summary">
+                            <div class="metric-svg"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30 30" style="enable-background:new 0 0 30 30;" xml:space="preserve">
+                                <style type="text/css">
+                                  .st0 {
+                                    fill: none;
+                                    stroke: #000000;
+                                    stroke-width: 2;
+                                    stroke-linecap: round;
+                                    stroke-linejoin: round;
+                                  }
+                                </style>
+                                <line id="Line_63" class="st0" x1="22" y1="6" x2="16" y2="6"></line>
+                                <path class="st0" d="M28,3h-5c-0.55,0-1,0.45-1,1v4c0,0.55,0.45,1,1,1h5c0.55,0,1-0.45,1-1V4C29,3.45,28.55,3,28,3z"></path>
+                                <line id="Line_64" class="st0" x1="22" y1="16" x2="16" y2="16"></line>
+                                <path class="st0" d="M28,13h-5c-0.55,0-1,0.45-1,1v4c0,0.55,0.45,1,1,1h5c0.55,0,1-0.45,1-1v-4C29,13.45,28.55,13,28,13z"></path>
+                                <line id="Line_65" class="st0" x1="10" y1="6" x2="16" y2="6"></line>
+                                <path class="st0" d="M8,1H3C1.9,1,1,1.9,1,3v5c0,1.1,0.9,2,2,2h5c1.1,0,2-0.9,2-2V3C10,1.9,9.1,1,8,1z"></path>
+                                <path class="st0" d="M28,23h-5c-0.55,0-1,0.45-1,1v4c0,0.55,0.45,1,1,1h5c0.55,0,1-0.45,1-1v-4C29,23.45,28.55,23,28,23z"></path>
+                                <path id="Path_165" class="st0" d="M21.63,25.96h-4.33c-0.8,0-1.44-0.65-1.44-1.44V5.77"></path>
+                              </svg></div>
+                            <h3 class="svelte-ihdwqk">서드파티 코드의 영향을 줄이기</h3>
+                          </div>
+                          <div class="metric-stats">
+                            <div class="bar-container red svelte-ihdwqk">
+                              <div class="bar-label"><em class="svelte-ihdwqk">0</em> out of 100</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="metric-details">
+                          <p>Third-party code can significantly impact load performance. Limit the number of redundant third-party providers and try to load third-party code after your page has primarily finished loading.</p>
+                          <div class="action-text">
+                            <div class="at red">
+                              <h6>Third party code<span class="submetric_score">0 / 100</span></h6>
+                              <p>This page contains third-party code, which can significantly impact load performance. Limit the number of redundant third-party providers and try to load third-party code after your page has finished loading. Third-party scripts, like social media buttons, ads, analytics, video embeds, etc., often cause slow page speeds. Plus, there are other environmental concerns with third-party scripts as well. For example, a typical digital ad campaign can produce as much as 323 tons of CO2e.
+                              </p>
+                              <p>Review all third-party code on your site. If you need it, keep it but try to load it more efficiently. If you don’t need it, remove it, as unnecessary code weighs down pages.</p>
+                            </div>
+                            <p></p>
+                          </div>
+                          <div class="col details">
+                            <h4 class="svelte-uraht9">Third party code: Scanned Items</h4>
+                            <table class="details_table columncount3">
+                              <thead>
+                                <tr>
+                                  <th>Third-Party</th>
+                                  <th>Transfer Size</th>
+                                  <th>Main-Thread Blocking Time</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>Other Google APIs/SDKs</td>
+                                  <td>96191</td>
+                                  <td>395.92723012447175</td>
+                                </tr>
+                                <tr>
+                                  <td>Google Tag Manager</td>
+                                  <td>114948</td>
+                                  <td>43.84958710484823</td>
+                                </tr>
+                                <tr>
+                                  <td>Google Fonts</td>
+                                  <td>109802</td>
+                                  <td>0</td>
+                                </tr>
+                                <tr>
+                                  <td>Google CDN</td>
+                                  <td>2790</td>
+                                  <td>0</td>
+                                </tr>
+                                <tr>
+                                  <td>Google/Doubleclick Ads</td>
+                                  <td>2427</td>
+                                  <td>0</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="col">
+                            <h4>Additional Resources</h4>
+                            <p><a href="https://www.mightybytes.com/blog/where-do-digital-emissions-come-from/">Learn more about the hidden cost of third-party code</a></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+
+                  <!--^ 2.UX Design -->
+                <!--   <div class="category">
+                    <div class="category-row">
+                      <div class="pie-container red">
+                        <div class="pie" style="--p: 58;"><em>58</em> out of 100</div>
+                      </div>
+                      <div class="category-details">
+                        <h2 class="detail-container">UX Design</h2>
+                        <p class="detail-container">Creating an accessible user experience that is free from barriers or intrusions helps people find what they need and accomplish tasks quickly. This is important because end consumer device use can potentially account for up to 52% of a digital product or service's overall emissions. Here are a few recommendations for providing your users with a better experience.</p>
+                      </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="metrics">
+                      <div class="metric">
+                        <div class="metric-row" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+                          <div class="metric-summary">
+                            <div class="metric-svg"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 27.81 30.85" enable-background="new 0 0 27.81 30.85" xml:space="preserve">
+                                <path id="Path_62" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21.74,9.11
+      c4.74,4.74,4.74,12.43,0,17.18s-12.43,4.74-17.18,0s-4.74-12.43,0-17.18c0,0,0,0,0,0C9.3,4.37,16.99,4.37,21.74,9.11"></path>
+                                <path id="Path_63" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M13.91,17.7
+      c0-0.42-0.34-0.76-0.76-0.76c-0.42,0-0.76,0.34-0.76,0.76c0,0.42,0.34,0.75,0.76,0.76c0.42,0,0.76-0.33,0.76-0.75
+      C13.91,17.71,13.91,17.7,13.91,17.7"></path>
+                                <line id="Line_6" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="13.15" y1="11.63" x2="13.15" y2="17.7"></line>
+                                <line id="Line_7" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="10.11" y1="1" x2="16.18" y2="1"></line>
+                                <path id="Path_64" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M26.81,7.07
+      l-3.04-3.04l1.52,1.52l-3.56,3.56"></path>
+                              </svg></div>
+                            <h3 class="svelte-ihdwqk">Improve Page Rendering</h3>
+                          </div>
+                          <div class="metric-stats">
+                            <div class="bar-container red svelte-ihdwqk">
+                              <div class="bar-label"><em class="svelte-ihdwqk">8</em> out of 100</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="metric-details">
+                          <p>Studies have shown that users leave pages that don't display content quickly. "Above-the-fold" page content should render on a user's device in 2.5 seconds or less. This is especially crucial in low-bandwidth areas and for users with older devices.</p>
+                          <div class="action-text">
+                            <div class="at red">
+                              <h6>Render Blocking Resources<span class="submetric_score">0 / 100</span></h6>
+                              <p>You scored <span class="var">0</span> out of 100 for using scripts or stylesheets that slow down page render time. There is room to improve this by optimizing the URLs listed below.</p>
+                            </div>
+                            <div class="at red">
+                              <h6>Largest Contentful Paint<span class="submetric_score">16 / 100</span></h6>
+                              <p>This page scored <span class="var">16</span> out of 100 based on how quickly this pag content. There is significant room to improve this score by identifying elements that impede page rendering. Based on Ecograder's calculations, there are <span class="var">56</span> on this page that could slow down page renders. It looks like you stand to optimize most of them.</p>
+                            </div>
+                          </div>
+                          <div class="col details">
+                            <h4 class="svelte-uraht9">Render Blocking Resources: Opportunities for Improvement</h4>
+                            <table class="details_table columncount3">
+                              <thead>
+                                <tr>
+                                  <th>URL</th>
+                                  <th>Transfer Size</th>
+                                  <th>Potential Savings</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>https://fonts.googleapis.com/css?family=Roboto:500,300,700,400</td>
+                                  <td>1526</td>
+                                  <td>204</td>
+                                </tr>
+                                <tr>
+                                  <td>https://music.youtube.com/s/_/ytmusicweb/_/ss/k=ytmusicweb.yt_music_web.VOh6TLBD2kM.L.B1.O/am=AEAJ/d=0/br=1/rs=ADGLRXLk8bKDb5jnxwGff55sjlyRkWBJ4g</td>
+                                  <td>107824</td>
+                                  <td>280</td>
+                                </tr>
+                                <tr>
+                                  <td>https://fonts.googleapis.com/css?family=YouTube+Sans:500,700</td>
+                                  <td>28176</td>
+                                  <td>123</td>
+                                </tr>
+                                <tr>
+                                  <td>https://music.youtube.com/s/191aa39e/music_polymer_inlined_html.js</td>
+                                  <td>982200</td>
+                                  <td>960</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="col">
+                            <h4>Additional Resources</h4>
+                            <p><a href="https://www.wholegraindigital.com/blog/core-web-vitals/">Learn more about how Core Web Vitals improves user experience</a></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="metric">
+                        <div class="metric-row" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+                          <div class="metric-summary">
+                            <div class="metric-svg"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30.67 30.67" enable-background="new 0 0 30.67 30.67" xml:space="preserve">
+                                <path id="Path_65" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M24.55,12.77
+      V3.42c0-1.34-1.08-2.42-2.42-2.42c0,0,0,0,0,0H3.42C2.08,1,1,2.08,1,3.42c0,0,0,0,0,0v18.7c0,1.34,1.08,2.42,2.41,2.43
+      c0,0,0.01,0,0.01,0h11.23"></path>
+                                <path id="Path_66" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M28.56,26.84
+      h-3.95l-2.53,2.51c-0.43,0.43-1.13,0.43-1.56,0c-0.21-0.21-0.32-0.49-0.32-0.78V18.48c0-0.61,0.49-1.1,1.1-1.1
+      c0.29,0,0.58,0.12,0.78,0.32l7.25,7.25c0.43,0.43,0.43,1.13,0,1.56C29.14,26.72,28.86,26.84,28.56,26.84z"></path>
+                                <line id="Line_8" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="19.45" y1="12.77" x2="12.27" y2="12.77"></line>
+                                <path id="Path_67" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6.87,12.53
+      c0.13,0.13,0.13,0.35,0,0.48s-0.35,0.13-0.48,0c-0.13-0.13-0.13-0.35,0-0.48c0,0,0,0,0,0C6.52,12.4,6.74,12.4,6.87,12.53
+      C6.87,12.53,6.87,12.53,6.87,12.53"></path>
+                                <line id="Line_9" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="19.45" y1="6.63" x2="12.27" y2="6.63"></line>
+                                <path id="Path_68" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6.87,6.39
+      c0.13,0.13,0.13,0.35,0,0.48c-0.13,0.13-0.35,0.13-0.48,0c-0.13-0.13-0.13-0.35,0-0.48c0,0,0,0,0,0C6.52,6.26,6.74,6.26,6.87,6.39
+      C6.87,6.39,6.87,6.39,6.87,6.39"></path>
+                                <line id="Line_10" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="14.65" y1="18.92" x2="12.39" y2="18.92"></line>
+                                <path id="Path_69" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7,18.68
+      c0.13,0.13,0.13,0.35,0,0.48s-0.35,0.13-0.48,0s-0.13-0.35,0-0.48c0,0,0,0,0,0C6.65,18.55,6.86,18.55,7,18.68
+      C7,18.68,7,18.68,7,18.68"></path>
+                              </svg></div>
+                            <h3 class="svelte-ihdwqk">Page Interactions</h3>
+                          </div>
+                          <div class="metric-stats">
+                            <div class="bar-container yellow svelte-ihdwqk">
+                              <div class="bar-label"><em class="svelte-ihdwqk">67</em> out of 100</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="metric-details">
+                          <p>Pages that respond slowly or don't respond as expected to user interactions—like button clicks, taps, key presses, form inputs, and so on—use more energy and frustrate users. This can be attributed to a number of things, some of which are outlined here.</p>
+                          <div class="action-text">
+                            <div class="at green">
+                              <h6>Cumulative Layout Shift<span class="submetric_score">100 / 100</span></h6>
+                              <p>Nice work. This page scored 100 for no detectable page layout shifts. Page elements that shift while a user interacts with them are not only annoying but can potentially waste energy too. This is especially true if a user must redo tasks because of shift-induced mistakes they made.</p>
+                            </div>
+                            <div class="at green">
+                              <h6>Offscreen Images<span class="submetric_score">100 / 100</span></h6>
+                              <p>Great work. All the images on this page have been lazy loaded.</p>
+                            </div>
+                            <div class="at red">
+                              <h6>Max Potential First Input Delay<span class="submetric_score">0 / 100</span></h6>
+                              <p>This page scored <span class="var">0</span> out of 100 based on how quickly users can interact with content. There is significant room to improve this score by identifying page elements that impede speedy interactivity. Based on Ecograder's calculations, page rendering is delayed by <span class="var">1078 millisecond</span>.</p>
+                            </div>
+                          </div>
+                          <div class="col details"></div>
+                          <div class="col">
+                            <h4>Additional Resources</h4>
+                            <p><a href="https://ecoping.earth/blog/core-web-vitals-and-sustainability">Learn how Google's Core Web Vitals and sustainability go hand-in-hand</a></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="metric">
+                        <div class="metric-row" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+                          <div class="metric-summary">
+                            <div class="metric-svg"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 27.12 27.36" enable-background="new 0 0 27.12 27.36" xml:space="preserve">
+                                <circle id="Ellipse_3" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" cx="10.37" cy="10.37" r="9.37"></circle>
+                                <line id="Line_11" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="16.94" y1="17.06" x2="26.12" y2="26.36"></line>
+                              </svg></div>
+                            <h3 class="svelte-ihdwqk">Optimize Content for Search</h3>
+                          </div>
+                          <div class="metric-stats">
+                            <div class="bar-container green svelte-ihdwqk">
+                              <div class="bar-label"><em class="svelte-ihdwqk">83</em> out of 100</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="metric-details">
+                          <p>Pages that employ SEO best practices help people more quickly find content, reducing energy used while searching. Search-optimized pages also tend to be more accessible and work across a wider array of devices and platforms. This reduces the amount of energy (and frustration) users expend when barriers exist.</p>
+                          <div class="action-text">
+                            <div class="at green">
+                              <h6>SEO Score<span class="submetric_score">83 / 100</span></h6>
+                              <p>Since search is contextual, it is difficult to estimate precisely how much good SEO practices reduce page-based emissions. Google says a single search can power a lightbulb for 17 seconds. However, given the global volume of daily searches, anything you can do to reduce energy expended by helping people more quickly find content is useful.</p>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <h4>Additional Resources</h4>
+                            <p><a href="https://sustainablewebdesign.org/is-the-content-easy-to-find/">More information on SEO and sustainability</a></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="metric">
+                        <div class="metric-row" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+                          <div class="metric-summary">
+                            <div class="metric-svg"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29.61 33.66" enable-background="new 0 0 29.61 33.66" xml:space="preserve">
+                                <path id="Path_70" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M28.61,10.16
+      c-7.62,2.31-19.99,2.31-27.61,0"></path>
+                                <path id="Path_71" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M11,11.78
+      c0,7.45,0,16.41-1.73,20.88"></path>
+                                <path id="Path_72" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M18.6,11.78
+      c0,11.53,0,13.96,1.73,20.88"></path>
+                                <circle id="Ellipse_4" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" cx="14.8" cy="4.16" r="3.16"></circle>
+                                <line id="Line_12" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="11" y1="22.48" x2="18.6" y2="22.48"></line>
+                              </svg></div>
+                            <h3 class="svelte-ihdwqk">Accessibility</h3>
+                          </div>
+                          <div class="metric-stats">
+                            <div class="bar-container green svelte-ihdwqk">
+                              <div class="bar-label"><em class="svelte-ihdwqk">82</em> out of 100</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="metric-details">
+                          <p>Accessible pages tend to work across a wider array of devices and platforms, including assistive technologies used by people with disabilities. Prioritizing accessibility reduces the amount of energy (and frustration) users expend when barriers exist. Plus, it's just the right thing to do.</p>
+                          <div class="action-text">
+                            <div class="at green">
+                              <h6>Accessibility Score<span class="submetric_score">82 / 100</span></h6>
+                              <p>An automated crawler like Ecograder can only catch about one-third of total possible accessibility issues on any given page. Plus, emissions estimates related to the ecological impact of accessible content are difficult to quantify. However, truly sustainable solutions are good for people and planet. Because of this, we include web accessibility in Ecograder's scoring algorithm.</p>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <h4>Additional Resources</h4>
+                            <p><a href="https://www.mightybytes.com/blog/digital-accessibility-web-sustainability/">Read more about web content, accessibility, and sustainability</a></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="metric">
+                        <div class="metric-row" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+                          <div class="metric-summary">
+                            <div class="metric-svg"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 33 33" style="enable-background:new 0 0 33 33;" xml:space="preserve">
+                                <style type="text/css">
+                                  .st0 {
+                                    fill: none;
+                                    stroke: #F0F3F3;
+                                    stroke-width: 2;
+                                    stroke-linecap: round;
+                                    stroke-linejoin: round;
+                                  }
+                                </style>
+                                <path id="Path_132" class="st0" d="M6.9,28.34C6.48,28,6.09,27.65,5.71,27.28C-0.15,21.42-0.16,11.91,5.7,6.05
+      c3.65-3.66,8.93-5.18,13.97-4.02"></path>
+                                <path id="Path_134" class="st0" d="M25.77,5c0.41,0.33,0.81,0.69,1.18,1.06c5.87,5.86,5.87,15.36,0.01,21.23
+      c-3.65,3.66-8.93,5.18-13.97,4.02"></path>
+                                <path id="Path_135" class="st0" d="M29.68,5h-4.17v4.17"></path>
+                                <path id="Path_133" class="st0" d="M2.98,28.34h4.17v-4.17"></path>
+                                <path class="st0" d="M22.77,15.63l-5.41-5.41c-0.57-0.57-1.49-0.57-2.06,0L9.9,15.63c-0.57,0.57-0.57,1.49,0,2.06l5.41,5.41
+      c0.57,0.57,1.49,0.57,2.06,0l5.41-5.41C23.34,17.13,23.34,16.2,22.77,15.63z"></path>
+                              </svg></div>
+                            <h3 class="svelte-ihdwqk">Serve static assets with an efficient cache policy</h3>
+                          </div>
+                          <div class="metric-stats">
+                            <div class="bar-container red svelte-ihdwqk">
+                              <div class="bar-label"><em class="svelte-ihdwqk">50</em> out of 100</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="metric-details">
+                          <p>A long cache lifetime can speed up repeat visits to your page.</p>
+                          <div class="action-text">
+                            <div class="at red">
+                              <h6>Long cache<span class="submetric_score">50 / 100</span></h6>
+                              <p>It looks like your page has <span class="var">13</span> static resources that aren't cached, which results in longer load times. Caching HTTP speeds up page load time for repeat visitors and this page could save <span class="var">227153.67</span> bytes, so consider caching static resources where possible.</p>
+                            </div>
+                          </div>
+                          <div class="col details">
+                            <h4 class="svelte-uraht9">Long cache: Scanned Items</h4>
+                            <table class="details_table columncount3">
+                              <thead>
+                                <tr>
+                                  <th>URL</th>
+                                  <th>Cache TTL</th>
+                                  <th>Transfer Size</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>https://static.doubleclick.net/instream/ad_status.js</td>
+                                  <td>900000</td>
+                                  <td>749</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/QxTkZTLWdo4/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3lk4MCrjy_XZuUz6oenajSYJn2QtQ</td>
+                                  <td>7200000</td>
+                                  <td>36533</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/At8v_Yc044Y/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3mVdYFhab5z1joAgnjQUzaAe9NAuQ</td>
+                                  <td>7200000</td>
+                                  <td>31495</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/-V-sywKOCwQ/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3nyVTvZNHTIR3Ibx5tPlbPWBtm0ig</td>
+                                  <td>7200000</td>
+                                  <td>29796</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/ekr2nIex040/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3nKJesvy-pU5Gkc5boD5_1756r9mA</td>
+                                  <td>7200000</td>
+                                  <td>28330</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/_ymicn0_GYc/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3kqKJDz8JqMLoi7aSmiRuzScXtQmg</td>
+                                  <td>7200000</td>
+                                  <td>27900</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/rtOvBOTyX00/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3lFpULmmpM-MeXObTKC_b6jVOnZeA</td>
+                                  <td>7200000</td>
+                                  <td>26127</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/Oa_RSwwpPaA/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3kj7weGvq5NImArbJVbVuJPyh8z1A</td>
+                                  <td>7200000</td>
+                                  <td>25916</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/4QIZE708gJ4/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3kSMeVj6pCCifQKIpPHijGvtkSbVw</td>
+                                  <td>7200000</td>
+                                  <td>25453</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/Qer3lwd5hyA/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3mekDfs6iT-x1wtxUqxRJs1XnQdpA</td>
+                                  <td>7200000</td>
+                                  <td>24406</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/HPR-VwzbDRg/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3mTLWpgy8YUiqgDsaNDA4_Qc1VaTQ</td>
+                                  <td>7200000</td>
+                                  <td>17190</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/yKNxeF4KMsY/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3kr6AQ0rsLVhCMbaywIpJLpP-Uy8Q</td>
+                                  <td>7200000</td>
+                                  <td>15633</td>
+                                </tr>
+                                <tr>
+                                  <td>https://lh3.googleusercontent.com/g9lup2u8M2TMJh2ef3Ty3D_eMe0e9O-lInUnEBVteBg04KsAGcpiq8rllqF0xTPUnoLPSaejp9hKUQ=w1500-h844-l90-rj</td>
+                                  <td>86400000</td>
+                                  <td>24750</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="col">
+                            <h4>Additional Resources</h4>
+                            <p><a href="https://sustainablewebdesign.org/is-server-side-caching-or-static-technology-in-place-to-minimize-server-load/">Learn more about an efficient cache policy</a></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="metric">
+                        <div class="metric-row" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+                          <div class="metric-summary">
+                            <div class="metric-svg"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 27 27" style="enable-background:new 0 0 27 27;" xml:space="preserve">
+                                <style type="text/css">
+                                  .st0 {
+                                    clip-path: url(https://ecograder.com/report/#SVGID_00000022562805838848282430000005082421216664944259_);
+                                  }
+  
+                                  .st1 {
+                                    fill: none;
+                                    stroke: #F0F3F3;
+                                    stroke-width: 2;
+                                    stroke-linecap: round;
+                                    stroke-linejoin: round;
+                                  }
+                                </style>
+                                <g id="Group_172" transform="translate(0 0)">
+                                  <g>
+                                    <defs>
+                                      <rect id="SVGID_1_" width="27" height="27"></rect>
+                                    </defs>
+                                    <clipPath id="SVGID_00000095340850356617219920000003764292749914741917_">
+                                      <use xlink:href="#SVGID_1_" style="overflow:visible;"></use>
+                                    </clipPath>
+  
+                                    <g id="Group_171" transform="translate(0 0)" style="clip-path:url(#SVGID_00000095340850356617219920000003764292749914741917_);">
+                                      <path id="Path_136" class="st1" d="M5.76,20.72c-0.28,0-0.52,0.23-0.51,0.52c0,0.28,0.23,0.52,0.52,0.51
+                  c0.28,0,0.51-0.23,0.51-0.52C6.28,20.95,6.04,20.72,5.76,20.72C5.76,20.72,5.76,20.72,5.76,20.72"></path>
+                                      <path id="Path_137" class="st1" d="M5.93,25.88L5.93,25.88c-2.66,0-4.82-2.16-4.82-4.82c0,0,0,0,0,0V3.87
+                  c0-1.52,1.23-2.75,2.75-2.75c0,0,0,0,0,0H8c1.52,0,2.75,1.23,2.75,2.75c0,0,0,0,0,0v17.2C10.75,23.73,8.59,25.88,5.93,25.88z"></path>
+                                      <path id="Path_138" class="st1" d="M9.34,24.47L22.7,11.11c1.07-1.07,1.07-2.82,0-3.89L19.78,4.3c-1.07-1.07-2.82-1.07-3.89,0
+                  l-5.14,5.14"></path>
+                                      <path id="Path_139" class="st1" d="M17.56,16.25h5.57c1.52,0,2.75,1.23,2.75,2.75l0,0v4.13c0,1.52-1.23,2.75-2.75,2.75H5.93"></path>
+                                    </g>
+                                  </g>
+                                </g>
+                              </svg></div>
+                            <h3 class="svelte-ihdwqk">Image elements do not have explicit width and height</h3>
+                          </div>
+                          <div class="metric-stats">
+                            <div class="bar-container red svelte-ihdwqk">
+                              <div class="bar-label"><em class="svelte-ihdwqk">50</em> out of 100</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="metric-details">
+                          <p>Set an explicit width and height on image elements to reduce layout shifts and improve CLS.</p>
+                          <div class="action-text">
+                            <div class="at red">
+                              <h6>Unsized images<span class="submetric_score">50 / 100</span></h6>
+                              <p><span class="var">2</span> images on your web page do not have width and height attributes set. Setting an explicit height and width on image elements helps prevent cumulative layout shift, which can impact user experience and search rankings.</p>
+                            </div>
+                          </div>
+                          <div class="col details">
+                            <h4 class="svelte-uraht9">Unsized images: Scanned Items</h4>
+                            <table class="details_table columncount1">
+                              <thead>
+                                <tr>
+                                  <th>URL</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>https://www.youtube.com/img/music/tastebuilder/shelf_thumbnail/v6/US_992_X_304.png</td>
+                                </tr>
+                                <tr>
+                                  <td>https://music.youtube.com/img/ringo2/on_platform_logo_dark.svg</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="col">
+                            <h4>Additional Resources</h4>
+                            <p><a href="https://www.smashingmagazine.com/2020/03/setting-height-width-images-important-again/">Read why setting width and height on images benefits your users</a></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="metric">
+                        <div class="metric-row" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+                          <div class="metric-summary">
+                            <div class="metric-svg"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 27 32" style="enable-background:new 0 0 27 32;" xml:space="preserve">
+                                <style type="text/css">
+                                  .st0 {
+                                    fill: none;
+                                    stroke: #F0F3F3;
+                                    stroke-width: 2;
+                                    stroke-linecap: round;
+                                    stroke-linejoin: round;
+                                  }
+  
+                                  .st1 {
+                                    clip-path: url(https://ecograder.com/report/#SVGID_00000053543231613112214770000010342768293729731002_);
+                                  }
+                                </style>
+                                <g id="Group_180" transform="translate(0 0.037)">
+                                  <line id="Line_46" class="st0" x1="13.73" y1="17.77" x2="13.73" y2="12.93"></line>
+                                  <g id="Group_179" transform="translate(0 -0.037)">
+                                    <g>
+                                      <defs>
+                                        <rect id="SVGID_1_" width="27" height="32"></rect>
+                                      </defs>
+                                      <clipPath id="SVGID_00000026151135947184363400000004390900541528640675_">
+                                        <use xlink:href="#SVGID_1_" style="overflow:visible;"></use>
+                                      </clipPath>
+                                      <g id="Group_178" style="clip-path:url(#SVGID_00000026151135947184363400000004390900541528640675_);">
+                                        <line id="Line_47" class="st0" x1="13.73" y1="4.88" x2="13.73" y2="1.65"></line>
+                                        <path id="Path_150" class="st0" d="M4.85,4.88h17.26c0.47,0,0.91,0.2,1.22,0.55l2.13,2.44c0.53,0.6,0.53,1.5,0,2.1l-2.13,2.44
+                      c-0.31,0.35-0.75,0.55-1.22,0.55H4.85c-0.89,0-1.62-0.72-1.62-1.62c0,0,0,0,0,0V6.5C3.23,5.61,3.95,4.88,4.85,4.88L4.85,4.88z"></path>
+                                        <path id="Path_151" class="st0" d="M22.62,25.89H5.35c-0.47,0-0.91-0.2-1.22-0.55L2.01,22.9c-0.53-0.6-0.53-1.5,0-2.1l2.13-2.44
+                      c0.31-0.35,0.75-0.55,1.22-0.55h17.26c0.89,0,1.62,0.72,1.62,1.62v4.85C24.23,25.16,23.51,25.89,22.62,25.89z"></path>
+                                        <line id="Line_48" class="st0" x1="13.73" y1="30.73" x2="13.73" y2="25.89"></line>
+                                      </g>
+                                    </g>
+                                  </g>
+                                </g>
+                              </svg></div>
+                            <h3 class="svelte-ihdwqk">Avoid multiple page redirects</h3>
+                          </div>
+                          <div class="metric-stats">
+                            <div class="bar-container green svelte-ihdwqk">
+                              <div class="bar-label"><em class="svelte-ihdwqk">100</em> out of 100</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="metric-details">
+                          <p>Page redirects cause slower page speeds. Pages are flagged if they have two or more redirects.
+  
+                            To prevent this, look at the list of redirects and update links to point directly to each resource’s actual location. This will cut out unnecessary redirecting and reduce load times.</p>
+                          <div class="action-text">
+                            <div class="at green">
+                              <h6>Page redirects<span class="submetric_score">100 / 100</span></h6>
+                              <p>Great job. Your page doesn't contain two or more redirects and is optimized for load time based on pointing your resources directly to the actual location.</p>
+                            </div>
+                          </div>
+                          <div class="col details"></div>
+                          <div class="col">
+                            <h4>Additional Resources</h4>
+                            <p><a href="https://www.matthewedgar.net/do-redirects-add-to-website-speed/">Read more about how redirects impact page speed</a></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="metric">
+                        <div class="metric-row" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+                          <div class="metric-summary">
+                            <div class="metric-svg"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 32" style="enable-background:new 0 0 24 32;" xml:space="preserve">
+                                <style type="text/css">
+                                  .st0 {
+                                    clip-path: url(https://ecograder.com/report/#SVGID_00000171690699498012069810000010075718988276177041_);
+                                  }
+  
+                                  .st1 {
+                                    fill: none;
+                                    stroke: #F0F3F3;
+                                    stroke-width: 2;
+                                    stroke-linecap: round;
+                                    stroke-linejoin: round;
+                                  }
+                                </style>
+                                <g>
+                                  <defs>
+                                    <rect id="SVGID_1_" width="24" height="32"></rect>
+                                  </defs>
+  
+                                  <g id="Group_183" style="clip-path:url(#SVGID_00000041974564577875323730000014959594720699807619_);">
+                                    <path id="Path_154" class="st1" d="M6.36,17.48v-5.56c0-3.07,2.49-5.56,5.56-5.56c3.07,0,5.56,2.49,5.56,5.56v0.8"></path>
+                                    <path id="Path_155" class="st1" d="M6.36,14.31h2.99c1.86,0,3.37,1.51,3.37,3.37c0,0.89-0.36,1.75-0.99,2.38l-2.19,2.19"></path>
+                                    <path id="Path_156" class="st1" d="M1.59,12.72v11.24c0,3.45,2.8,6.25,6.25,6.25c2.87,0,5.36-1.95,6.06-4.73
+              c0.26-1.05,0.87-1.99,1.72-2.67l2.91-2.33c2.35-1.88,3.72-4.73,3.72-7.75v-0.8c0-5.71-4.63-10.33-10.33-10.33
+              S1.59,6.21,1.59,11.92V12.72z"></path>
+                                  </g>
+                                </g>
+                              </svg></div>
+                            <h3 class="svelte-ihdwqk">Use passive listeners to improve scrolling performance</h3>
+                          </div>
+                          <div class="metric-stats">
+                            <div class="bar-container green svelte-ihdwqk">
+                              <div class="bar-label"><em class="svelte-ihdwqk">100</em> out of 100</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="metric-details">
+                          <p>Consider marking your touch and wheel event listeners as ‘passive’ to improve your page’s scroll performance.</p>
+                          <div class="action-text">
+                            <div class="at green">
+                              <h6>Passive event listeners<span class="submetric_score">100 / 100</span></h6>
+                              <p>Great job! Your page does not use "active" touch and wheel event listeners, which can hurt your page's scroll performance.</p>
+                            </div>
+                          </div>
+                          <div class="col details"></div>
+                          <div class="col">
+                            <h4>Additional Resources</h4>
+                            <p><a href="https://youtu.be/J06Uz7m-Jn8">Learn more about passive listeners</a></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="metric">
+                        <div class="metric-row" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+                          <div class="metric-summary">
+                            <div class="metric-svg"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36 36" style="enable-background:new 0 0 36 36;" xml:space="preserve">
+                                <style type="text/css">
+                                  .st0 {
+                                    clip-path: url(https://ecograder.com/report/#SVGID_00000150788887130241321790000013771868994270791345_);
+                                  }
+  
+                                  .st1 {
+                                    fill: none;
+                                    stroke: #F0F3F3;
+                                    stroke-width: 2;
+                                    stroke-linecap: round;
+                                    stroke-linejoin: round;
+                                  }
+                                </style>
+                                <g>
+                                  <defs>
+                                    <rect id="SVGID_1_" width="36" height="36"></rect>
+                                  </defs>
+  
+                                  <g id="Group_185" style="clip-path:url(#SVGID_00000139292432855714887190000009996772595131937462_);">
+                                    <path id="Path_157" class="st1" d="M6.42,10.04H1.61V5.22"></path>
+                                    <path id="Path_158" class="st1" d="M8.78,28.78c1.47,0.85,3.08,1.44,4.75,1.73"></path>
+                                    <path id="Path_159" class="st1" d="M2.38,21.16c0.58,1.6,1.43,3.08,2.52,4.38"></path>
+                                    <path id="Path_160" class="st1" d="M18.59,30.51c1.67-0.29,3.28-0.88,4.75-1.73"></path>
+                                    <path id="Path_161" class="st1" d="M27.22,25.54c1.09-1.3,1.94-2.79,2.52-4.38"></path>
+                                    <path id="Path_162" class="st1" d="M30.51,16.06C30.52,8.08,24.06,1.61,16.08,1.6c-5.65,0-10.79,3.29-13.14,8.43"></path>
+                                    <path id="Path_163" class="st1" d="M19.47,12.65c1.88,1.88,1.88,4.93,0,6.81c-1.88,1.88-4.93,1.88-6.81,0
+              c-1.88-1.88-1.88-4.93,0-6.81C14.53,10.77,17.58,10.77,19.47,12.65C19.46,12.65,19.47,12.65,19.47,12.65"></path>
+                                    <line id="Line_49" class="st1" x1="16" y1="11" x2="16" y2="10"></line>
+                                    <line id="Line_50" class="st1" x1="16" y1="21" x2="16" y2="22"></line>
+                                    <line id="Line_51" class="st1" x1="21" y1="16" x2="22" y2="16"></line>
+                                    <line id="Line_52" class="st1" x1="11" y1="16" x2="10" y2="16"></line>
+                                    <line id="Line_53" class="st1" x1="19.46" y1="12.66" x2="20.6" y2="11.52"></line>
+                                    <line id="Line_54" class="st1" x1="12.66" y1="19.46" x2="11.52" y2="20.6"></line>
+                                    <line id="Line_55" class="st1" x1="19.46" y1="19.46" x2="20.6" y2="20.6"></line>
+                                    <line id="Line_56" class="st1" x1="12.66" y1="12.66" x2="11.52" y2="11.52"></line>
+                                  </g>
+                                </g>
+                              </svg></div>
+                            <h3 class="svelte-ihdwqk">Preconnect to required origins</h3>
+                          </div>
+                          <div class="metric-stats">
+                            <div class="bar-container green svelte-ihdwqk">
+                              <div class="bar-label"><em class="svelte-ihdwqk">100</em> out of 100</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="metric-details">
+                          <p>Consider adding ‘preconnect’ or ‘dns-prefetch’ resource hints to establish early connections to important third-party origins.</p>
+                          <div class="action-text">
+                            <div class="at green">
+                              <h6>Preconnect to required origins<span class="submetric_score">100 / 100</span></h6>
+                              <p>Sweet! You scored <span class="var">100</span> out of 100. Your page is set up to establish early connections to important third-party origins, which optimizes your page load speed.</p>
+                            </div>
+                          </div>
+                          <div class="col details"></div>
+                          <div class="col">
+                            <h4>Additional Resources</h4>
+                            <p><a href="https://feedthecuriosity.com/web-development/preconnect-to-required-origins-what-is-relpreconnect/">Learn more about establishing early connections to third-party origins</a></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="metric">
+                        <div class="metric-row" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+                          <div class="metric-summary">
+                            <div class="metric-svg"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29.9 29.9" enable-background="new 0 0 29.9 29.9" xml:space="preserve">
+                                <path id="Path_80" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M25.8,28.9
+      L25.8,28.9c-1.71,0-3.1-1.39-3.1-3.1s1.39-3.1,3.1-3.1c1.71,0,3.1,1.39,3.1,3.1S27.51,28.9,25.8,28.9L25.8,28.9z"></path>
+                                <line id="Line_23" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="15.45" y1="13.45" x2="15.45" y2="22.45"></line>
+                                <path id="Path_81" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14.95,28.9
+      L14.95,28.9c-1.71,0-3.1-1.39-3.1-3.1s1.39-3.1,3.1-3.1c1.71,0,3.1,1.39,3.1,3.1S16.66,28.9,14.95,28.9L14.95,28.9z"></path>
+                                <path id="Path_82" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4.1,28.9
+      L4.1,28.9c-1.71,0-3.1-1.39-3.1-3.1c0-1.71,1.39-3.1,3.1-3.1s3.1,1.39,3.1,3.1S5.81,28.9,4.1,28.9L4.1,28.9z"></path>
+                                <path id="Path_83" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4.1,22.7
+      v-3.1c0-0.86,0.69-1.55,1.55-1.55h18.6c0.86,0,1.55,0.69,1.55,1.55v3.1"></path>
+                                <path id="Path_84" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M22.7,1H7.2
+      C3.78,1,1,3.77,1,7.2c0,3.42,2.77,6.2,6.2,6.2c0,0,0,0,0,0h15.5c3.42,0,6.2-2.78,6.2-6.2C28.9,3.78,26.12,1,22.7,1z"></path>
+                                <line id="Line_24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="13.45" y1="7.45" x2="22.45" y2="7.45"></line>
+                                <path id="Path_85" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7.25,7.15
+      c0.03,0.03,0.03,0.08,0,0.11c0,0,0,0,0,0C7.22,7.28,7.17,7.28,7.14,7.25c-0.03-0.03-0.03-0.07,0-0.1C7.17,7.12,7.22,7.12,7.25,7.15
+      C7.25,7.15,7.25,7.15,7.25,7.15"></path>
+                              </svg></div>
+                            <h3 class="svelte-ihdwqk">Reduce Server Requests</h3>
+                          </div>
+                          <div class="metric-stats">
+                            <div class="bar-container red svelte-ihdwqk">
+                              <div class="bar-label"><em class="svelte-ihdwqk">29</em> out of 100</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="metric-details">
+                          <p>Every time your page makes a server request, energy is required to transfer and display data. Reducing the number of requests your pages make can improve performance and reduce emissions.</p>
+                          <div class="action-text">
+                            <div class="at red">
+                              <h6>Total Byte Weight<span class="submetric_score">28 / 100</span></h6>
+                              <p>This page scored <span class="var">29</span> out of 100 possible points for the <span class="var">10</span> requests it makes to the server. Try reducing the number of server requests on this page to improve your score.</p>
+                            </div>
+                          </div>
+                          <div class="col details">
+                            <h4 class="svelte-uraht9">Total Byte Weight: Scanned Items</h4>
+                            <table class="details_table columncount2">
+                              <thead>
+                                <tr>
+                                  <th>URL</th>
+                                  <th>Transfer Size</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>https://music.youtube.com/s/191aa39e/music_polymer_inlined_html.js</td>
+                                  <td>982200</td>
+                                </tr>
+                                <tr>
+                                  <td>https://music.youtube.com/s/player/4e23410d/player_ias.vflset/en_US/base.js</td>
+                                  <td>627764</td>
+                                </tr>
+                                <tr>
+                                  <td>https://www.youtube.com/img/music/tastebuilder/shelf_thumbnail/v6/US_992_X_304.png</td>
+                                  <td>355333</td>
+                                </tr>
+                                <tr>
+                                  <td>https://www.googletagmanager.com/gtm.js?id=GTM-NQNFS9</td>
+                                  <td>112545</td>
+                                </tr>
+                                <tr>
+                                  <td>https://music.youtube.com/s/_/ytmusicweb/_/ss/k=ytmusicweb.yt_music_web.VOh6TLBD2kM.L.B1.O/am=AEAJ/d=0/br=1/rs=ADGLRXLk8bKDb5jnxwGff55sjlyRkWBJ4g</td>
+                                  <td>107824</td>
+                                </tr>
+                                <tr>
+                                  <td>https://music.youtube.com/s/player/4e23410d/www-player.css</td>
+                                  <td>49915</td>
+                                </tr>
+                                <tr>
+                                  <td>https://jnn-pa.googleapis.com/$rpc/google.internal.waa.v1.Waa/Create</td>
+                                  <td>43941</td>
+                                </tr>
+                                <tr>
+                                  <td>https://music.youtube.com/playlist</td>
+                                  <td>39436</td>
+                                </tr>
+                                <tr>
+                                  <td>https://i.ytimg.com/vi/QxTkZTLWdo4/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&amp;rs=AMzJL3lk4MCrjy_XZuUz6oenajSYJn2QtQ</td>
+                                  <td>36533</td>
+                                </tr>
+                                <tr>
+                                  <td>https://music.youtube.com/s/player/4e23410d/player_ias.vflset/en_US/offline.js</td>
+                                  <td>34427</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="col">
+                            <h4>Additional Resources</h4>
+                            <p><a href="https://blog.hubspot.com/marketing/reduce-http-requests">Learn more about HTTP requests</a></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div> -->
+
+                  <!-- 그린호스팅 -->
+
+
+                  <div class="category">
+                    <div class="category-row">
+                      <div class="pie-container green">
+                        <div class="pie" style="--p: 100;"><em>100</em> out of 100</div>
+                      </div>
+                      
+                      
+                      <div class="category-details">
+                        <h2 class="detail-container">그린 호스팅</h2>
+                        <p class="detail-container">서버를 재생 가능 에너지로 구동하는 웹 호스트를 선택하면 디지털 제품이나 서비스의 환경 영향을 약 15% 줄일 수 있습니다. 하지만 모든 재생 가능 에너지가 동일한 것은 아닙니다. 가능하다면, 상쇄 크레딧이나 분리된 재생 가능 에너지 인증서(RECs)를 구매하는 호스트보다 데이터 센터에 직접 재생 가능 에너지를 사용하는 호스팅 파트너를 선택하는 것이 좋습니다.</p>
+                      </div>
+
+
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="metrics">
+                      <div class="metric">
+                        <div class="metric-row" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+                          <div class="metric-summary">
+
+
+                            <!-- 그린호스팅-svg -->
+                            <div class="metric-svg"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30.01 29.16" enable-background="new 0 0 30.01 29.16" xml:space="preserve">
+                                <path id="Path_86" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M10.07,12.33
+      c1.25,0,2.26,1.01,2.26,2.26s-1.01,2.26-2.26,2.26s-2.26-1.01-2.26-2.26C7.81,13.34,8.82,12.33,10.07,12.33"></path>
+                                <path id="Path_87" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M20.9,8.57
+      c0,1.25-1.01,2.26-2.26,2.26c-1.25,0-2.26-1.01-2.26-2.26c0-1.25,1.01-2.26,2.26-2.26c0,0,0,0,0,0C19.89,6.3,20.9,7.32,20.9,8.57"></path>
+                                <path id="Path_88" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M29.01,20.62
+      c0,1.25-1.01,2.26-2.26,2.26s-2.26-1.01-2.26-2.26c0-1.25,1.01-2.26,2.26-2.26c0,0,0,0,0,0C28,18.36,29.01,19.37,29.01,20.62"></path>
+                                <line id="Line_25" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="28.15" y1="14.59" x2="12.33" y2="14.59"></line>
+                                <line id="Line_26" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="7.81" y1="14.59" x2="1.02" y2="14.59"></line>
+                                <line id="Line_27" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="24.49" y1="20.62" x2="2.43" y2="20.62"></line>
+                                <line id="Line_28" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="16.38" y1="8.57" x2="2.43" y2="8.57"></line>
+                                <line id="Line_29" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="26.75" y1="8.57" x2="20.9" y2="8.57"></line>
+                                <path id="Path_89" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M18.93,10.81
+      c0.12,1.2,0.18,2.47,0.18,3.78c0,7.49-2.02,13.56-4.52,13.56c-2.24,0-4.1-4.89-4.46-11.3"></path>
+                                <path id="Path_90" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M18.18,6.35
+      c-0.83-3.24-2.13-5.32-3.59-5.32c-2.24,0-4.1,4.89-4.46,11.3"></path>
+                                <path id="Path_91" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M27.58,18.51
+      c2.17-7.18-1.89-14.76-9.06-16.93S3.76,3.47,1.59,10.65s1.89,14.76,9.06,16.93c5.54,1.68,11.52-0.34,14.92-5.02"></path>
+                              </svg></div>
+
+
+
+                            <h3 class="svelte-ihdwqk">그린호스팅</h3>
+                          </div>
+                          <div class="metric-stats">
+                            <div class="bar-container green svelte-ihdwqk">
+                              <div class="bar-label"><em class="svelte-ihdwqk">100</em> out of 100</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="metric-details">
+                          <p>Powering servers with renewable energy is an important choice to measurably reduce your product or service's environmental impact.</p>
+                          <div class="action-text">
+                            <div class="at green">
+                              <h6>Green Hosting<span class="submetric_score">100 / 100</span></h6>
+                              <p>Excellent! It looks like this page uses a web host that powers its servers with renewable energy.</p>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <h4>Additional Resources</h4>
+                            <p>Find a green web host in <a href="https://www.thegreenwebfoundation.org/directory/">The Green Web Foundation's hosting directory</a></p>
+                            <p>More information on the <a href="https://www.mightybytes.com/blog/web-hosting-renewable-energy/">difference between RECs and renewable energy</a></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <!-- 그린호스팅EOF-->
+                  
+
+
+
+
+
+                </div>
+              </div>
+            </div>
+
+
+                <!-- 임시 -->
+
+
+            <!-- <div class="container">
+              <div class="divider"></div>
+              <div class="row">
+                <div class="col">
+                  <h2 class="svelte-160wg5m">Why Should You Care?</h2>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <p class="info-text svelte-160wg5m">In addition to helping you reduce emissions and learn more about your website's environmental impact, the information in this report will also improve your website in the following ways.</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="score-panel col svelte-160wg5m">
+                  <h4 class="svelte-160wg5m"><span class="metric-icon svelte-160wg5m"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 25 25" enable-background="new 0 0 25 25" xml:space="preserve">
+                        <line id="Line_17" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="24" y1="19" x2="24" y2="24"></line>
+                        <line id="Line_18" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="17" y1="14" x2="17" y2="24"></line>
+                        <line id="Line_19" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="9" y1="8" x2="9" y2="24"></line>
+                        <line id="Line_20" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="1" y1="1" x2="1" y2="24"></line>
+                      </svg></span> Page Weight</h4>
+                  <p class="svelte-160wg5m">
+                    <span class="red svelte-160wg5m">48</span> out of 100</p>
+                  <p class="svelte-160wg5m" id="description-container">Poor-performing websites frustrate users, increase emissions, cost more money, and can influence important marketing metrics, like search engine performance and page conversions.</p>
+                </div>
+                <div class="score-panel col svelte-160wg5m">
+                  <h4 class="svelte-160wg5m"><span class="metric-icon svelte-160wg5m"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30.67 30.67" enable-background="new 0 0 30.67 30.67" xml:space="preserve">
+                        <path id="Path_65" fill="#000000" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M24.55,12.77
+      V3.42c0-1.34-1.08-2.42-2.42-2.42c0,0,0,0,0,0H3.42C2.08,1,1,2.08,1,3.42c0,0,0,0,0,0v18.7c0,1.34,1.08,2.42,2.41,2.43
+      c0,0,0.01,0,0.01,0h11.23"></path>
+                        <path id="Path_66" fill="#000000" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M28.56,26.84
+      h-3.95l-2.53,2.51c-0.43,0.43-1.13,0.43-1.56,0c-0.21-0.21-0.32-0.49-0.32-0.78V18.48c0-0.61,0.49-1.1,1.1-1.1
+      c0.29,0,0.58,0.12,0.78,0.32l7.25,7.25c0.43,0.43,0.43,1.13,0,1.56C29.14,26.72,28.86,26.84,28.56,26.84z"></path>
+                        <line id="Line_8" fill="#000000" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="19.45" y1="12.77" x2="12.27" y2="12.77"></line>
+                        <path id="Path_67" fill="#000000" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6.87,12.53
+      c0.13,0.13,0.13,0.35,0,0.48s-0.35,0.13-0.48,0c-0.13-0.13-0.13-0.35,0-0.48c0,0,0,0,0,0C6.52,12.4,6.74,12.4,6.87,12.53
+      C6.87,12.53,6.87,12.53,6.87,12.53"></path>
+                        <line id="Line_9" fill="#000000" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="19.45" y1="6.63" x2="12.27" y2="6.63"></line>
+                        <path id="Path_68" fill="#000000" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6.87,6.39
+      c0.13,0.13,0.13,0.35,0,0.48c-0.13,0.13-0.35,0.13-0.48,0c-0.13-0.13-0.13-0.35,0-0.48c0,0,0,0,0,0C6.52,6.26,6.74,6.26,6.87,6.39
+      C6.87,6.39,6.87,6.39,6.87,6.39"></path>
+                        <line id="Line_10" fill="#000000" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="14.65" y1="18.92" x2="12.39" y2="18.92"></line>
+                        <path id="Path_69" fill="#000000" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7,18.68
+      c0.13,0.13,0.13,0.35,0,0.48s-0.35,0.13-0.48,0s-0.13-0.35,0-0.48c0,0,0,0,0,0C6.65,18.55,6.86,18.55,7,18.68
+      C7,18.68,7,18.68,7,18.68"></path>
+                      </svg></span>UX Design</h4>
+                  <p class="svelte-160wg5m"><span class="yellow svelte-160wg5m">58</span> out of 100</p>
+                  <p class="svelte-160wg5m" id="description-container">End-user devices significantly contribute to the internet's environmental impact. Good UX design practices reduce energy, improve accessibility, and help users accomplish tasks quickly and easily.</p>
+                </div>
+                <div class="score-panel col svelte-160wg5m">
+                  <h4 class="svelte-160wg5m"><span class="metric-icon svelte-160wg5m"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30.01 29.16" enable-background="new 0 0 30.01 29.16" xml:space="preserve">
+                        <path id="Path_86" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M10.07,12.33
+      c1.25,0,2.26,1.01,2.26,2.26s-1.01,2.26-2.26,2.26s-2.26-1.01-2.26-2.26C7.81,13.34,8.82,12.33,10.07,12.33"></path>
+                        <path id="Path_87" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M20.9,8.57
+      c0,1.25-1.01,2.26-2.26,2.26c-1.25,0-2.26-1.01-2.26-2.26c0-1.25,1.01-2.26,2.26-2.26c0,0,0,0,0,0C19.89,6.3,20.9,7.32,20.9,8.57"></path>
+                        <path id="Path_88" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M29.01,20.62
+      c0,1.25-1.01,2.26-2.26,2.26s-2.26-1.01-2.26-2.26c0-1.25,1.01-2.26,2.26-2.26c0,0,0,0,0,0C28,18.36,29.01,19.37,29.01,20.62"></path>
+                        <line id="Line_25" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="28.15" y1="14.59" x2="12.33" y2="14.59"></line>
+                        <line id="Line_26" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="7.81" y1="14.59" x2="1.02" y2="14.59"></line>
+                        <line id="Line_27" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="24.49" y1="20.62" x2="2.43" y2="20.62"></line>
+                        <line id="Line_28" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="16.38" y1="8.57" x2="2.43" y2="8.57"></line>
+                        <line id="Line_29" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="26.75" y1="8.57" x2="20.9" y2="8.57"></line>
+                        <path id="Path_89" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M18.93,10.81
+      c0.12,1.2,0.18,2.47,0.18,3.78c0,7.49-2.02,13.56-4.52,13.56c-2.24,0-4.1-4.89-4.46-11.3"></path>
+                        <path id="Path_90" fill="none" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M18.18,6.35
+      c-0.83-3.24-2.13-5.32-3.59-5.32c-2.24,0-4.1,4.89-4.46,11.3"></path>
+                        <path id="Path_91" fill="#000000" stroke="#F0F3F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M27.58,18.51
+      c2.17-7.18-1.89-14.76-9.06-16.93S3.76,3.47,1.59,10.65s1.89,14.76,9.06,16.93c5.54,1.68,11.52-0.34,14.92-5.02"></path>
+                      </svg></span>Green Hosting</h4>
+                  <p class="svelte-160wg5m"><span class="green svelte-160wg5m">100</span> out of 100</p>
+                  <p class="svelte-160wg5m" id="description-container">Where you host your data matters. Find a web host or cloud provider that powers their data centers with 100% renewable energy. This could potentially reduce emissions by up to 30%.</p>
+                </div>
+              </div>
+              <div class="row nextsteps-header svelte-160wg5m">
+                <div class="col">
+                  <h2 class="svelte-160wg5m">Next Steps</h2>
+                </div>
+              </div>
+              <div class="nextsteps row svelte-160wg5m">
+                <div class="col svelte-160wg5m">
+                  <p class="info-text svelte-160wg5m">This Ecograder report provides high-level information to start improving your website's environmental impact. To take more meaningful action, consider one of these options.</p>
+                </div>
+                <div class="col svelte-160wg5m">
+                  <div class="link-option svelte-160wg5m">
+                    <h5 class="svelte-160wg5m">Share</h5>
+                    <p class="svelte-160wg5m">Share this report with a colleague via email or to a social media feed.</p> <button class="btn btn-primary share-button">Share</button>
+                  </div>
+                  <div class="link-option svelte-160wg5m">
+                    <h5 class="svelte-160wg5m">Learn</h5>
+                    <p class="svelte-160wg5m">Check out the Sustainable Web Design site to learn more about this topic.</p>
+                    <div><a href="https://sustainablewebdesign.org" target="_blank" class="btn btn-primary" rel="noreferrer">View Site</a></div>
+                  </div>
+                  <div class="link-option svelte-160wg5m">
+                    <h5 class="svelte-160wg5m">Assess</h5>
+                    <p class="svelte-160wg5m">Run a full digital life cycle assessment (DLCA) to get the complete picture.</p>
+                    <div><a href="https://mightybytes.com/blog/digital-life-cycle-assessment" target="_blank" rel="noreferrer" class="btn btn-primary">Get Started</a></div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+
+
+            
+          </div>
+        </div>
+      </article>
+    </section>
+  
+
+
+    <div class="header__container"></div>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+   
+    
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+   
+
+    <!-- <script defer="" src="https://ecograder.com/js/app.js"></script> -->
+    <script defer="" src="https://ecograder.com/js/result_v2.js"></script>
+    <script defer="" src="https://ecograder.com/js/svelteapp.js"></script>
+  
+
+
+    
+  
+  </body>
+</html>
+
+

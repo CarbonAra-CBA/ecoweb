@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>트래픽 등급 결과</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        .eco-badge {
+            display: inline-flex;
+            align-items: center;
+            background: #1e1e1e;  /* 다크 테마 배경 */
+            border-radius: 4px;
+            padding: 8px;
+            color: white;
+            font-family: Arial, sans-serif;
+            gap: 8px;  /* 요소들 사이 간격 */
+        }
+
+        .eco-badge .carbon-amount {
+            background: #00ff9d;  /* 민트색 배경 */
+            color: #1e1e1e;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .eco-badge .badge-text {
+            font-weight: 500;
+        }
+
+        .badge-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .badge-subtitle {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 8px;
+        }
+        .carbon-metric {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .carbon-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .navbar .container {
+            display: flex;
+            justify-content: center;
+            max-width: 800px;  /* 컨테이너 폭 제한 */
+        }
+
+    .result-card {
+        background-color: #00824c; 
+        border-radius: 30px;
+        padding: 40px;
+        margin-top: 50px;
+    }
+    .grade-circle {
+        width: 120px;
+        height: 120px;
+        background-color: #ff0000;  /* F 등급은 빨간색 */
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 60px;
+        color: white;
+        margin-bottom: 20px;
+    }
+    .grade-bar {
+        height: 30px;
+        background: linear-gradient(to right, 
+            #00ffbb,  /* A+ */
+            #00ff00,  /* A */
+            #ffff00,  /* B */
+            #ffa500,  /* C */
+            #ff6b00,  /* D */
+            #ff0000   /* F */
+        );
+        border-radius: 15px;
+        position: relative;
+        margin: 30px 0;
+    }
+    .global-average {
+        position: absolute;
+        top: -20px;
+        left: 63%;
+        color: #00ffbb;
+    }
+    .earth-icon {
+        position: absolute;
+        top: -4px;
+        left: 60%;
+        font-size: 24px;
+    }
+    .grade-marker {
+        position: absolute;
+        right: 0;
+        top: -5px;
+        width: 38px;
+        height: 38px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ff0000;
+        font-weight: bold;
+    }
+    .copy-url-btn {
+        background-color: #00ffbb;
+        color: #0a0054;
+        border: none;
+        border-radius: 10px;
+        padding: 10px 20px;
+        float: right;
+        cursor: pointer;
+    }
+        .comparison-image {
+        max-width: 100%;
+        height: auto;
+        width: 400px;  /* 원하는 크기로 조절 가능 */
+    }
+
+    .eco-badge.light {
+        background: white;
+        border: 1px solid #ddd;
+        color: #1e1e1e;
+    }
+
+    .badge-section {
+        text-align: center;
+        background: #f8f9fa;
+        padding: 40px 20px;
+        border-radius: 12px;
+        margin: 40px 0;
+    }
+
+    .badge-section h4 {
+        color: #333;
+        margin-bottom: 20px;
+        font-weight: 500;
+    }
+
+    .badge-description {
+        color: #666;
+        margin-bottom: 25px;
+        font-size: 1.1em;
+    }
+
+    .eco-badge {
+        display: inline-flex;
+        align-items: center;
+        background: #1e1e1e;
+        border-radius: 6px;
+        padding: 10px 15px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .eco-badge .carbon-amount {
+        background: #00ff9d;
+        color: #1e1e1e;
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 0.95em;
+        letter-spacing: 0.3px;
+    }
+
+    .eco-badge .badge-text {
+        color: black;
+        font-weight: 500;
+        margin-left: 12px;
+        font-size: 0.95em;
+        letter-spacing: 0.5px;
+    }
+
+    .badge-subtitle {
+        color: #666;
+        font-size: 0.9em;
+        margin-top: 12px;
+        font-weight: 500;
+    }
+
+    .get-badge-btn {
+        background-color: #00ffbb;
+        color: #1e1e1e;
+        border: none;
+        border-radius: 6px;
+        padding: 12px 24px;
+        font-weight: 600;
+        margin-top: 20px;
+        transition: all 0.3s ease;
+    }
+
+    .get-badge-btn:hover {
+        background-color: #00e6a8;
+        transform: translateY(-1px);
+    }
+
+
+/* ".inherited-styles-for-exported-element" is a generated class for the inherited styles of the exported element, feel free to rename it. */
+
+@keyframes header-container-in {
+  0% {
+    opacity: 0;
+    transform: translate(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+.inherited-styles-for-exported-element {
+  box-sizing: border-box;
+  font-family: interui, "system-ui", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.header {
+  background-color: #fff;
+  color: #000;
+}
+
+.header__logo {
+  display: block;
+  font-weight: 700;
+  line-height: 1.16;
+  max-width: 6em;
+  width: auto;
+}
+
+@media (min-width: 48em) {
+  .header__logo {
+    font-size: 19.2px;
+    max-width: none;
+  }
+}
+
+.header__container {
+  animation: header-container-in .3s ease-in 0ms forwards;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1260px;
+  opacity: 0;
+  width: 100%;
+  animation-range-end: normal;
+  animation-range-start: normal;
+  animation-timeline: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media (min-width: 48em) {
+  .header__container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (min-width: 62em) {
+  .header__container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+.header__container::after {
+  border-bottom: 2px solid #000;
+  content: "";
+  display: block;
+  max-width: 1260px;
+  position: relative;
+  width: 100%;
+}
+
+.header__inner {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+@media (min-width: 36em) {
+  .header__inner {
+    align-items: flex-end;
+  }
+}
+
+@media (min-width: 48em) {
+  .header__inner {
+    align-items: baseline;
+    padding-bottom: 30px;
+    padding-top: 60px;
+  }
+}
+
+.header a {
+  text-decoration: none;
+}
+
+.header a:hover {
+  text-decoration: underline;
+}
+
+.header__navigation ul {
+  list-style: none;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-left: 0;
+}
+
+.header__navigation li {
+  position: relative;
+}
+
+.header__navigation a {
+  display: block;
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+@media (min-width: 62em) {
+  .header__navigation a {
+    font-size: 20px;
+    line-height: 1.25;
+  }
+}
+
+.header__navigation>ul>li:last-child {
+  margin-right: 0;
+}
+
+.header__navigation .main-menu {
+  display: grid;
+}
+
+@media (min-width: 27.5em) {
+  .header__navigation .main-menu {
+    grid-template-columns: auto auto;
+  }
+}
+
+@media (max-width: 35.99em) {
+  .header__navigation .main-menu {
+    column-gap: .5rem;
+  }
+}
+
+@media (min-width: 36em) {
+  .header__navigation .main-menu {
+    display: flex;
+  }
+}
+
+.header__navigation .main-menu li {
+  margin: .3rem 0 .3rem 4rem;
+}
+
+a {
+  background-color: transparent;
+  color: inherit;
+}
+
+*, ::after, ::before {
+  box-sizing: inherit;
+}
+
+[id] {
+  scroll-margin-top: 80px;
+}
+
+::selection {
+  background-color: #eeee07;
+  color: #050500;
+  text-shadow: none;
+}
+
+::placeholder {
+  color: #0a7a76;
+  opacity: .7;
+}
+
+a:active, a:hover {
+  color: inherit;
+}
+
+a:active, a:focus {
+  text-decoration: none;
+}
+
+a:focus {
+  color: inherit;
+}
+
+
+
+
+</style>
+    
+</head>
+<body>
+    <!-- 새로운 네비게이션 바 추가 -->
+    <!-- <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/">Eco-Website</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/faq">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/others">Others</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav> -->
+
+    <!--^ 헤더시작 -->
+    <header class="header">
+
+
+        <div class="header__container">
+          
+          
+          <div class="header__inner">  <!--& 파란줄 안 헤더 -->
+            <a class="header__logo" href="https://www.websitecarbon.com/" style="z-index:2; " >
+              ECO-WEB </a>
+    
+    
+    
+    
+              
+    
+    
+    
+    
+    
+    
+    
+    
+            <!--^  헤더-헤더글자 -->
+            <nav class="header__navigation">
+    
+                    <!--& 헤더 오른쪽 -->
+              <ul id="main-menu" class="main-menu">
+                <!-- <li id="menu-item-9157" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9157"><a href="https://www.websitecarbon.com/how-does-it-work/">How does it work?</a></li> -->
+                <li id="menu-item-87714" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-87714"><a href="/GuideLine.html">GuideLine</a></li>
+                <li id="menu-item-58109" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-58109"><a href="https://www.websitecarbon.com/badge/">Info</a></li>
+                <li id="menu-item-280297" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-280297"><a href="https://www.websitecarbon.com/api/">API</a></li>
+                <li id="menu-item-308561" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-308561"><a href="https://www.wholegraindigital.com/digital-sustainability/">Report</a></li>
+              </ul>
+            </nav>
+          </div>
+    
+    
+    
+    
+        </div>
+    
+      </header>     <!--^ 헤더eof -->
+    
+    
+
+
+
+
+
+
+
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-8">
+                
+                <div class="result-card" style="color: white;">
+                    <p style="font-size: 14px;">측정한 웹사이트: www.yourwebsiteisgood</p>
+                    
+                    <div class="result-header" style="display: flex; align-items: flex-start; gap: 30px;">
+                        <div class="grade-circle">F</div>
+                        <div class="result-info">
+                            <p style="font-size: 24px; font-weight: bold;">해당 웹페이지는 탄소 배출 F 등급입니다.</p>
+                            <p style="font-size: 20px;">전 세계 평균보다 44% 더 배출</p>
+                            <p style="font-size: 20px;">대한민국 평균보다 61% 더 배출</p>
+                            <p style="font-size: 20px;">메인페이지 배출량 4.2g</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grade-bar">
+                        <span class="global-average" style="font-size: 16px;">전 세계 평균</span>
+                        <span class="earth-icon">🌍</span>
+                        <span class="grade-marker">F</span>
+                    </div>
+                    
+                    <p style="font-size: 16px;">마지막 측정일: 2024-10-11 <a href="#" style="color: white;">다시 측정하기</a></p>
+                </div>
+
+                <!-- 탄소 배출량 시각화 -->
+                <div class="row mt-5" style="width:1000px;">
+                   
+                   
+                    <div class="col-md-3 carbon-metric " style="width:200px;">
+                        <div class="carbon-icon">☕</div>
+                        <p>커피 2잔 분량의<br>탄소 배출량</p>
+                    </div>
+
+
+                    <div class="col-md-3 carbon-metric"  style="width:200px;">
+                        <div class="carbon-icon">🚗</div>
+                        <p>자동차 2km 주행<br>배출량과 동일</p>
+                    </div>
+
+
+                    <div class="col-md-3 carbon-metric"  style="width:200px;">
+                        <div class="carbon-icon">📱</div>
+                        <p>스마트폰 4시간<br>충전량과 동일</p>
+                    </div>
+
+
+                    <div class="col-md-3 carbon-metric" style="width:200px;">
+                        <div class="carbon-icon">🌳</div>
+                        <p>나무 1그루의<br>2일 흡수량</p>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <!-- 기존 탄소 배출량 시각화 SVG 부분을 수정 -->
+                <div class="mt-5">
+                    <h4>탄소 배출량 분포</h4>
+                    <svg id="histogram" width="800" height="300"></svg>
+                </div>
+
+                <!-- 새로운 멀티라인 그래프 추가 -->
+                <div class="mt-5">
+                    <h4>공공기관 탄소배출량 추이</h4>
+                    <svg id="multiline" width="800" height="400"></svg>
+                </div>
+
+
+                <!-- 지속가능한 웹개발 가이드라인 -->
+                <section class="mt-5" >
+                    <h4>지속가능한 웹개발 가이드라인 준수 현황</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">번호</th>
+                                <th scope="col">항목</th>
+                                <th scope="col">준수여부</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>파일 전송 권한 확인</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>동적 리소스 로딩 사용</td>
+                                <td>❌</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>이미지 alt 속성 제공</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>함수 단일 책임 원칙 준수</td>
+                                <td>❌</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>HTML5 시맨틱 태그 사용</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>중복 ID/클래스 제거</td>
+                                <td>❌</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>클라이언트 양식 검증</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Web APIs 활용</td>
+                                <td>❌</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Page Visibility API 활용</td>
+                                <td>✅</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+<!-- Google Lighthouse 상세 보고서 -->
+<div class="container mt-5">
+    <h4>Google Lighthouse 상세 분석 결과</h4>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>분석 항목</th>
+                    <th>절감 가능 용량</th>
+                    <th>상세 내용</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>네트워크 요청</td>
+                    <td>1.2MB</td>
+                    <td>총 45개 요청 중 불필요한 요청 최적화</td>
+                </tr>
+                <tr>
+                    <td>리소스 요약</td>
+                    <td>2.5MB</td>
+                    <td>Document: 0.2MB, Script: 1.2MB, Style: 0.3MB, Image: 0.8MB</td>
+                </tr>
+                <tr>
+                    <td>서드파티 스크립트</td>
+                    <td>0.8MB</td>
+                    <td>Google Analytics, Facebook SDK 등 외부 스크립트 최적화</td>
+                </tr>
+                <tr>
+                    <td>JavaScript 트리맵</td>
+                    <td>1.5MB</td>
+                    <td>번들 크기: 1.2MB, 미사용 코드: 0.3MB</td>
+                </tr>
+                <tr>
+                    <td>총 바이트 용량</td>
+                    <td>3.5MB</td>
+                    <td>전체 페이지 리소스 크기</td>
+                </tr>
+                <tr>
+                    <td>미사용 CSS</td>
+                    <td>0.3MB</td>
+                    <td>사용되지 않는 CSS 규칙 제거로 최적화</td>
+                </tr>
+                <tr>
+                    <td>미사용 JavaScript</td>
+                    <td>0.7MB</td>
+                    <td>지연 로딩 및 미사용 코드 제거로 최적화</td>
+                </tr>
+                <tr>
+                    <td>이미지 최적화</td>
+                    <td>0.6MB</td>
+                    <td>WebP/AVIF 포맷 변환으로 절감</td>
+                </tr>
+                <tr>
+                    <td>애니메이션 최적화</td>
+                    <td>0.4MB</td>
+                    <td>GIF를 MP4/WebM으로 변환</td>
+                </tr>
+                <tr>
+                    <td>중복 JavaScript</td>
+                    <td>0.3MB</td>
+                    <td>jQuery(2.2), Lodash(4.1) 등 중복 모듈 통합</td>
+                </tr>
+                <tr>
+                    <td>JavaScript 라이브러리</td>
+                    <td>0.9MB</td>
+                    <td>jQuery, React, Lodash 등 사용 중</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+                <!-- 에코웹 뱃지 -->
+                 <!-- 탄소뱃지를 얻으세요!  -->
+                <div class="badge-section">
+                    <h4>웹사이트 탄소 배지</h4>
+                    <p class="badge-description">
+                        당신의 웹사이트가 환경에 미치는 영향을 보여주세요
+                    </p>
+                    <div class="eco-badge light">
+                        <span class="carbon-amount">4.2g of CO2/view</span>
+                        <span class="badge-text">Eco-Web</span>
+                    </div>
+                    <div class="badge-subtitle">
+                        테스트 된 페이지중 하위 1% 이하
+                    </div>
+                    <a href="/get-badge" class="btn get-badge-btn">
+                        배지 얻기
+                    </a>
+                </div>
+
+                <!-- 리소스 절감 현황 -->
+                <div class="mt-5">
+                    <h4>최적화 전/후 비교</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Before</h5>
+                            <img src="../static/screenshots/before.png" alt="Before" class="comparison-image">
+                            <p>총 리소스: 3.3MB</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>After</h5>
+                            <img src="../static/screenshots/before.png" alt="Before" class="comparison-image">
+                            <p>총 리소스: 1.1MB</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 인증마크 받기 -->
+                <div class="text-center mt-4">
+                    <a href="/" class="btn btn-secondary">다시 측정하기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 기존 등급 표시 스크립트
+        // const grade = "{{ grade }}";
+        // const grades = ['A', 'B', 'C', 'D', 'E', 'F'];
+        // const gradeBar = document.getElementById('gradeBar');
+        // gradeBar.style.width = (grades.indexOf(grade) + 1) * 16.66 + '%';
+        // gradeBar.textContent = grade;
+
+        // switch (grade) {
+        //     case 'A': gradeBar.classList.add('bg-success'); break;
+        //     case 'B': gradeBar.classList.add('bg-info'); break;
+        //     case 'C': gradeBar.classList.add('bg-primary'); break;
+        //     case 'D': gradeBar.classList.add('bg-warning'); break;
+        //     case 'E': gradeBar.classList.add('bg-orange'); break;
+        //     case 'F': gradeBar.classList.add('bg-danger'); break;
+        // }
+
+// 예시 데이터 생성 (파이썬에서 만든 데이터와 유사하게)
+const existingData = Array.from({length: 25000}, () => d3.randomNormal(0.7,0.05)()); // 0.3은 평균, 0.3은 표준편차
+
+// 새로운 URL 데이터
+const newUrlData = 0.65;
+
+// SVG 크기 설정
+const svg = d3.select("svg");
+const margin = {top: 20, right: 20, bottom: 30, left: 40};
+const width = +svg.attr("width") - margin.left - margin.right;
+const height = +svg.attr("height") - margin.top - margin.bottom;
+const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+
+// X축 및 Y축 범위 설정
+const x = d3.scaleLinear()
+    .domain([d3.min(existingData), d3.max(existingData)])
+    .rangeRound([0, width]);
+
+const bins = d3.histogram()
+    .domain(x.domain())
+    .thresholds(x.ticks(50))
+    (existingData);
+
+const y = d3.scaleLinear()
+    .domain([0, d3.max(bins, d => d.length)])
+    .range([height, 0]);
+
+// X축
+g.append("g")
+    .attr("class", "axis axis--x")
+    .attr("transform", `translate(0,${height})`)
+    .call(d3.axisBottom(x));
+
+// Y축
+g.append("g")
+    .attr("class", "axis axis--y")
+    .call(d3.axisLeft(y));
+
+// 히스토그램 막대 추가
+g.selectAll(".bar")
+    .data(bins)
+    .enter().append("rect")
+    .attr("class", "bar")
+    .attr("x", d => x(d.x0))
+    .attr("y", d => y(d.length))
+    .attr("width", d => x(d.x1) - x(d.x0) - 1)
+    .attr("height", d => height - y(d.length))
+    .attr("fill", "steelblue");
+
+// 새로운 URL 데이터를 선으로 표시
+g.append("line")
+    .attr("x1", x(newUrlData))
+    .attr("x2", x(newUrlData))
+    .attr("y1", 0)
+    .attr("y2", height)
+    .attr("stroke", "red")
+    .attr("stroke-width", 2)
+    .attr("stroke-dasharray", "4,4");
+
+
+// 멀티라인 그래프 생성
+const multilineSvg = d3.select("#multiline");
+const multilineMargin = {top: 40, right: 80, bottom: 50, left: 60};
+const multilineWidth = +multilineSvg.attr("width") - multilineMargin.left - multilineMargin.right;
+const multilineHeight = +multilineSvg.attr("height") - multilineMargin.top - multilineMargin.bottom;
+
+const multilineG = multilineSvg.append("g")
+    .attr("transform", `translate(${multilineMargin.left},${multilineMargin.top})`);
+
+// 가상의 데이터 생성 (실제 데이터로 교체 필요)
+const institutions = Array.from({length: 100}, (_, i) => i);
+const carbonLevels = institutions.map(() => Math.random() * 3 +0.3); // 
+const guidelineCount = institutions.map(() => 0.67); // 
+const lowCarbonAvg = institutions.map(() => 0.5); // 저탄소 평균은 0.5 정도
+const highlightIndex = 42; // 현재 분석 중인 URL의 인덱스
+
+// 스케일 설정
+const multilineX = d3.scaleLinear()
+    .domain([0, institutions.length - 1])
+    .range([0, multilineWidth]);
+
+const multilineY = d3.scaleLinear()
+    .domain([0, d3.max([...carbonLevels, ...lowCarbonAvg]) * 1.2]) // 1.2는 축 범위를 조절하는 상수
+    .range([multilineHeight, 0]);
+
+// 라인 생성기
+const line = d3.line()
+    .x((d, i) => multilineX(i))
+    .y(d => multilineY(d))
+    .curve(d3.curveNatural);
+
+// 각 라인 그리기
+multilineG.append("path")
+    .datum(carbonLevels)
+    .attr("class", "line")
+    .style("stroke", "#ff0000")
+    .style("fill", "none")
+    .style("stroke-width", 2)
+    .attr("d", line);
+
+multilineG.append("path")
+    .datum(guidelineCount)
+    .attr("class", "line")
+    .style("stroke", "#0000ff")
+    .style("fill", "none")
+    .style("stroke-width", 2)
+    .attr("d", line);
+
+multilineG.append("path")
+    .datum(lowCarbonAvg)
+    .attr("class", "line")
+    .style("stroke", "#00ff00")
+    .style("fill", "none")
+    .style("stroke-width", 2)
+    .attr("d", line);
+
+// 하이라이트 포인트
+multilineG.append("circle")
+    .attr("cx", multilineX(highlightIndex))
+    .attr("cy", multilineY(carbonLevels[highlightIndex]))
+    .attr("r", 6)
+    .style("fill", "#037747");
+
+// 축 추가
+multilineG.append("g")
+    .attr("transform", `translate(0,${multilineHeight})`)
+    .call(d3.axisBottom(multilineX).ticks(10))
+    .append("text")
+    .attr("x", multilineWidth / 2)
+    .attr("y", 40)
+    .attr("fill", "black")
+    .text("공공기관");
+
+multilineG.append("g")
+    .call(d3.axisLeft(multilineY))
+    .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", -50)
+    .attr("x", -multilineHeight / 2)
+    .attr("fill", "black")
+    .attr("text-anchor", "middle")
+    .text("탄소배출량");
+
+// 범례 추가
+const legend = multilineG.append("g")
+    .attr("font-family", "sans-serif")
+    .attr("font-size", 10)
+    .attr("text-anchor", "start")
+    .attr("transform", `translate(${multilineWidth + 10},0)`);
+
+const legendItems = [
+    {color: "#ff0000", text: "탄소량"},
+    {color: "#0000ff", text: "공기관 평균"},
+    {color: "#00ff00", text: "저탄소 평균"}
+];
+
+legendItems.forEach((item, i) => {
+    const legendRow = legend.append("g")
+        .attr("transform", `translate(0,${i * 20})`);
+        
+    legendRow.append("rect")
+        .attr("width", 15)
+        .attr("height", 2)
+        .attr("fill", item.color);
+        
+    legendRow.append("text")
+        .attr("x", 20)
+        .attr("y", 5)
+        .text(item.text);
+});
+    </script>
+</body>
+</html>
