@@ -143,10 +143,8 @@
 
                 </div>
                 <div class="col scan-info main-title2">
-                  <div class="main-title1" >
-                    <p class="main-title1"id="main-title2">아래 링크에 대한 결과입니다. <br> https://music.youtube.com/playlist</p>
-                  </div>
-                </div>
+                  <p class="main-title1"id="main-title2">측정한 웹사이트: {{url}}</p>                  </div>
+                  
 
 
               
@@ -157,9 +155,13 @@
 
 
               <div class="scores row svelte-5o59mq">
-                <h2 class="svelte-5o59mq"  id="impact1">성능에 미치는 영향
+                <h2 class="svelte-5o59mq"  id="impact1">웹 사이트 분석 결과
                 </h2>
-                <div class="scorecard svelte-5o59mq">
+
+
+
+
+                <div class="scorecard svelte-5o59mq" style="margin-top:-80px;">
                   <div class="col svelte-5o59mq">
                     <h3 class="svelte-5o59mq">에코 스코어</h3>
                     <p class="eco-score svelte-5o59mq">60</p>
@@ -180,42 +182,101 @@
                   <div class="col svelte-5o59mq">
                     <h3 class="svelte-5o59mq">페이지당 배출량</h3>
                     <p class="emiss-score svelte-5o59mq">1.13</p>
-                    <p class="svelte-5o59mq">이산화탄소 그램 배출량 <span class="tooltip-icon" data-tip="1"><svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <p class="svelte-5o59mq">이산화탄소 그램 배출량 <span class="tooltip-icon" data-tip="1">
+                      
+                      <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <g clip-path="url(https://ecograder.com/report/#clip0_453_68)">
                             <path d="M10.5 6.4519C10.36 6.4519 10.25 6.5619 10.25 6.7019C10.25 6.8419 10.36 6.9519 10.5 6.9519C10.64 6.9519 10.75 6.8419 10.75 6.7019C10.75 6.5619 10.64 6.4519 10.5 6.4519Z" stroke="#002421" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                             <path d="M19.5 10.4519C19.5 5.48134 15.4706 1.4519 10.5 1.4519C5.52944 1.4519 1.5 5.48134 1.5 10.4519C1.5 15.4225 5.52944 19.4519 10.5 19.4519C15.4706 19.4519 19.5 15.4225 19.5 10.4519Z" stroke="#002421" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                             <path d="M10.5 10.4519V15.4519" stroke="#002421" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                           </g>
-                          <defs>
+
+                          <!-- <defs>
                             <clipPath id="clip0_453_68">
                               <rect width="19.5" height="19.5" fill="white" transform="translate(0.75 0.701904)"></rect>
                             </clipPath>
-                          </defs>
+                          </defs> -->
                         </svg>
                       </span></p>
                   </div>
+
+
                   <div class="col percentile-display svelte-5o59mq">
                     <p class="percentage-visual svelte-5o59mq"><span class="marker svelte-5o59mq" style="left: 27%;"></span><span class="percent-bar svelte-5o59mq"></span></p>
                     <p class="svelte-5o59mq">이 페이지는 Eco-Web이 분석한 모든 URL 중 73%보다 낮은 점수를 받았습니다.</p>
                   </div>
                 </div>
+
+
+
                 <div class="category-scores svelte-5o59mq">
-                  <p class="info-text" style="margin-top: 0px;" id="description1">
+                  <p class="info-text" style="margin-top: -50px;" id="description1">
                     
                     ECO-WEB은 성능, 효율성, 사용자 경험 요소뿐만 아니라 배출량 추정치와 재생 가능 에너지로 구동되는 친환경 호스팅을 바탕으로 페이지를 평가합니다.</p>
                   <ul class="category-scores svelte-5o59mq" id="category-name">
                     <li class="svelte-5o59mq">
-                      <h6 class="svelte-5o59mq">페이지 크기 </h6> <span class="category-score svelte-5o59mq">48</span> <span class="category-scorebar svelte-5o59mq"><span class="inner-scorebar svelte-5o59mq" id="inner-scorebar-0" style="background-color: rgb(247, 96, 48); width: 48%;"></span></span>
+                      <h6 class="svelte-5o59mq">페이지 크기 </h6> <span class="category-score svelte-5o59mq">48</span> <span class="category-scorebar svelte-5o59mq"><span class="inner-scorebar svelte-5o59mq" id="inner-scorebar-0" 
+                        style="background-color:#dbd70c; width: 48%;"></span></span>
                     </li>
                     <li class="svelte-5o59mq">
-                      <h6 class="svelte-5o59mq">UX 디자인 </h6> <span class="category-score svelte-5o59mq">58</span> <span class="category-scorebar svelte-5o59mq"><span class="inner-scorebar svelte-5o59mq" id="inner-scorebar-1" style="background-color: rgb(251, 197, 0); width: 58%;"></span></span>
+                      <h6 class="svelte-5o59mq">UX 디자인 </h6> <span class="category-score svelte-5o59mq">58</span> <span class="category-scorebar svelte-5o59mq"><span class="inner-scorebar svelte-5o59mq" id="inner-scorebar-1" 
+                        style="background-color: #dbd70c; width: 58%;"></span></span>
                     </li>
                     <li class="svelte-5o59mq">
-                      <h6 class="svelte-5o59mq">그린 호스팅 </h6> <span class="category-score svelte-5o59mq">100</span> <span class="category-scorebar svelte-5o59mq"><span class="inner-scorebar svelte-5o59mq" id="inner-scorebar-2" style="background-color: rgb(129, 202, 36); width: 100%;"></span></span>
+                      <h6 class="svelte-5o59mq">그린 호스팅 </h6> <span class="category-score svelte-5o59mq">100</span> <span class="category-scorebar svelte-5o59mq"><span class="inner-scorebar svelte-5o59mq" id="inner-scorebar-2" 
+                        style="background-color: #5fe60b; width: 100%;"></span></span>
                     </li>
                   </ul>
                 </div>
               </div>
+
+
+
+              <div class="content-card" >
+                <h3  id="impact2">연간 탄소 배출량 환산</h3>
+                <p class="metrics-subtitle">월 10,000명 방문 기준 ({{ optimization_carbon/1000 * 10000 * 12|round}} CO₂/kg)</p>
+                
+                <div class="carbon-metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-icon">☕</div>
+                        <div class="metric-content">
+                            <h4>커피 끓이는 잔의 수</h4>
+                            <p class="metric-value"id="black1">{{( optimization_carbon/1000 * 10000 * 12 / 0.01)|round}}잔</p>
+                            <p class="metric-desc"id="black1">커피 1잔 = 0.01g CO₂</p>
+                        </div>
+                    </div>
+    
+                    <div class="metric-card">
+                        <div class="metric-icon">🚗</div>
+                        <div class="metric-content" >
+                            <h4>전기차 주행거리</h4>
+                            <p class="metric-value" id="black1">{{( optimization_carbon/1000 * 10000 * 12 / 0.16 * 2)|round}}km</p>
+                            <p class="metric-desc" id="black1">2km 주행 = 0.16kg CO₂</p>
+                        </div>
+                    </div>
+    
+                    <div class="metric-card">
+                        <div class="metric-icon">📱</div>
+                        <div class="metric-content">
+                            <h4>스마트폰 충전</h4>
+                            <p class="metric-value"id="black1">{{( optimization_carbon/1000 * 10000 * 12 / 0.02 * 3)|round}}회</p>
+                            <p class="metric-desc"id="black1">3회 충전 = 0.02g CO₂</p>
+                        </div>
+                    </div>
+    
+                    <div class="metric-card">
+                        <div class="metric-icon">🌳</div>
+                        <div class="metric-content">
+                            <h4>나무 흡수량</h4>
+                            <p class="metric-value"id="black1">{{( optimization_carbon/1000 * 10000 * 12 / 0.02)|round}}그루</p>
+                            <p class="metric-desc"id="black1">1그루 = 0.02kg CO₂/년</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
               <!-- <div class="divider"></div>
               
               <div class="row main-title1">
@@ -334,7 +395,7 @@
             <div class="container">
               <div class="upgrade row svelte-clifu0">
                 <div class="col svelte-clifu0">
-                  <h2 class="svelte-clifu0">지속가능한 웹 디자인을 실천하는 방법</h2>
+                  <h2 class="svelte-clifu0" id="impact3">지속가능한 웹 디자인을 실천하는 방법</h2>
                 </div>
                 <div class="col text-center svelte-clifu0"><a href="https://ecograder.com/how-it-works" class="btn btn-primary svelte-clifu0">작동방식</a></div>
                 <div class="col text-center svelte-clifu0"><button class="btn btn-cta share-button svelte-clifu0">결과 공유하기</button></div>
@@ -349,27 +410,75 @@
                   <div class="category">
                     <div class="category-row">
                       <div class="pie-container red">
+                        
+                        <!--^파이컨테이너 -->
                         <div class="pie" style="--p: 48;"><em>48</em> out of 100</div>
                       </div>
+
+
+
                       <div class="category-details">
                         <h2 class="detail-container">페이지 크기
                         </h2>
                         <p class="detail-container">이미지 파일 크기를 압축하고 페이지에서 사용하지 않는 항목을 제거하면 배출량을 줄일 뿐만 아니라 페이지 로딩 속도도 빨라져 사용자 만족도가 높아집니다. 아래는 페이지 크기를 줄이기 위해 할 수 있는 몇 가지 방법입니다.</p>
                       </div>
+
+
+
+
                     </div>
                     <div class="clear"></div>
                     <div class="metrics">
                       <div class="metric">
                         <div class="metric-row" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
                           <div class="metric-summary">
-                            <div class="metric-svg"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30.01 30.01" enable-background="new 0 0 30.01 30.01" xml:space="preserve">
+                            <div class="metric-svg">
+                              
+                              <?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+ "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="1280.000000pt" height="688.000000pt" viewBox="0 0 1280.000000 688.000000"
+ preserveAspectRatio="xMidYMid meet">
+
+<g transform="translate(0.000000,688.000000) scale(0.100000,-0.100000)"
+fill="#000000" stroke="none">
+<path d="M1055 6873 c-104 -12 -234 -40 -325 -70 -300 -100 -534 -289 -651
+-528 -81 -167 -74 116 -77 -2795 -2 -1917 0 -2615 8 -2670 65 -424 463 -737
+1020 -800 67 -8 1258 -10 4030 -8 l3935 4 95 21 c199 45 341 103 485 198 160
+106 272 229 346 380 65 134 71 170 78 456 l6 255 525 -409 c289 -225 562 -433
+606 -463 99 -65 181 -103 294 -135 82 -23 97 -24 400 -24 299 0 320 1 405 24
+172 45 315 127 415 238 60 68 126 195 140 272 6 35 10 963 10 2620 0 2826 5
+2618 -61 2742 -88 164 -289 301 -524 355 -69 16 -124 19 -390 19 -298 0 -313
+-1 -395 -24 -192 -55 -216 -70 -915 -589 l-510 -378 -6 260 c-6 275 -11 307
+-63 436 -58 142 -188 294 -339 394 -176 117 -370 185 -617 215 -58 8 -1307 11
+-3990 10 -2148 -1 -3918 -4 -3935 -6z m7948 -902 c70 -29 140 -89 170 -145
+l22 -41 0 -2285 0 -2285 -22 -41 c-30 -56 -100 -116 -170 -145 l-58 -24 -3472
+-3 -3473 -2 0 -21 c0 -20 -4 -21 -54 -15 -120 14 -232 82 -279 170 l-22 41 0
+2305 0 2305 22 41 c41 76 131 139 233 164 19 4 1612 7 3540 7 l3505 -2 58 -24z
+m3037 -48 c0 -43 -5 -607 -10 -1253 -5 -646 -14 -1762 -20 -2480 -6 -717 -12
+-1305 -14 -1307 -7 -7 -320 39 -396 58 l-85 21 -755 617 -755 617 -3 1262 -2
+1262 799 599 c439 330 817 609 840 620 29 15 87 27 203 40 90 10 171 19 181
+20 15 1 17 -9 17 -76z"/>
+</g>
+</svg>
+
+                              <!-- <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30.01 30.01" enable-background="new 0 0 30.01 30.01" xml:space="preserve">
                                 <line id="Line_13" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="29.01" y1="22.75" x2="14.99" y2="29.01"></line>
                                 <line id="Line_14" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="14.99" y1="29.01" x2="1" y2="22.75"></line>
                                 <line id="Line_15" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="29.01" y1="15.01" x2="14.99" y2="21.27"></line>
                                 <line id="Line_16" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="14.99" y1="21.27" x2="1" y2="15.01"></line>
                                 <path id="Path_73" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M1,7.26
-      l13.99,6.26l14.03-6.26L15.03,1L1,7.26z"></path>
-                              </svg></div>
+                                 l13.99,6.26l14.03-6.26L15.03,1L1,7.26z"></path>
+
+                              </svg> -->
+                            
+                            
+                            
+                            
+                            </div>
+
+
                             <h3 class="svelte-ihdwqk">미디어 최적화</h3>
                           </div>
                           <div class="metric-stats">
@@ -483,12 +592,51 @@
                       <div class="metric">
                         <div class="metric-row" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
                           <div class="metric-summary">
-                            <div class="metric-svg"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 25 25" enable-background="new 0 0 25 25" xml:space="preserve">
+                            <div class="metric-svg">
+                              
+                              <?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+ "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="1280.000000pt" height="640.000000pt" viewBox="0 0 1280.000000 640.000000"
+ preserveAspectRatio="xMidYMid meet">
+<metadata>
+Created by potrace 1.15, written by Peter Selinger 2001-2017
+</metadata>
+<g transform="translate(0.000000,640.000000) scale(0.100000,-0.100000)"
+fill="#000000" stroke="none">
+<path d="M3465 6204 c-380 -13 -707 -38 -1165 -89 -326 -37 -983 -117 -988
+-120 -2 -2 -36 -110 -76 -241 -41 -132 -151 -486 -244 -789 -94 -302 -230
+-741 -302 -975 -72 -234 -208 -672 -302 -975 -93 -302 -215 -696 -270 -873
+-55 -178 -102 -331 -105 -339 -5 -12 1 -13 32 -7 31 5 37 4 33 -7 -3 -8 -17
+-53 -32 -102 -15 -48 -30 -95 -33 -104 -5 -14 -1 -15 25 -10 18 4 32 5 32 4 0
+-1 -16 -51 -35 -111 -19 -61 -33 -111 -32 -113 2 -1 27 4 57 12 179 49 667
+134 940 165 343 39 910 52 1256 29 548 -36 1109 -130 1854 -311 104 -25 383
+-99 625 -167 99 -27 279 -77 400 -111 121 -33 247 -69 280 -80 33 -10 200 -60
+370 -110 171 -51 369 -109 440 -131 72 -21 138 -39 147 -39 16 0 17 107 18
+1668 0 917 -2 2033 -6 2480 l-7 813 -66 31 c-782 361 -1438 537 -2191 588
+-172 11 -514 18 -655 14z"/>
+<path d="M8930 6204 c-870 -34 -1600 -213 -2401 -587 l-97 -45 -6 -224 c-3
+-122 -8 -1239 -12 -2482 l-6 -2259 29 6 c15 2 91 24 168 47 447 135 1466 425
+1950 556 366 99 971 223 1355 278 644 93 1351 102 1968 26 253 -31 706 -113
+880 -160 28 -7 32 -6 28 8 -34 109 -66 215 -66 218 0 1 13 -2 30 -7 16 -6 34
+-9 39 -7 5 1 -6 53 -25 113 -19 61 -34 112 -34 114 0 2 16 0 36 -4 31 -5 36
+-4 31 10 -4 8 -34 104 -68 213 -33 108 -100 325 -149 482 -49 157 -166 535
+-260 840 -609 1969 -821 2654 -823 2656 -4 2 -932 114 -1067 129 -558 60
+-1167 92 -1500 79z"/>
+</g>
+</svg>
+
+                              <!-- <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 25 25" enable-background="new 0 0 25 25" xml:space="preserve">
                                 <line id="Line_17" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="24" y1="19" x2="24" y2="24"></line>
                                 <line id="Line_18" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="17" y1="14" x2="17" y2="24"></line>
                                 <line id="Line_19" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="9" y1="8" x2="9" y2="24"></line>
                                 <line id="Line_20" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="1" y1="1" x2="1" y2="24"></line>
-                              </svg></div>
+                              </svg> -->
+                            
+                            
+                            
+                            </div>
                             <h3 class="svelte-ihdwqk">전반적인 페이지 용량 줄이기 </h3>
                           </div>
                           <div class="metric-stats">
@@ -645,13 +793,52 @@
                       <div class="metric">
                         <div class="metric-row" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
                           <div class="metric-summary">
-                            <div class="metric-svg"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 27 30.43" enable-background="new 0 0 27 30.43" xml:space="preserve">
+                            <div class="metric-svg">
+                              
+                              
+                              <?xml version="1.0" standalone="no"?>
+                              <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+                               "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+                              <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                               width="892.000000pt" height="1280.000000pt" viewBox="0 0 892.000000 1280.000000"
+                               preserveAspectRatio="xMidYMid meet">
+                              <metadata>
+                              Created by potrace 1.15, written by Peter Selinger 2001-2017
+                              </metadata>
+                              <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
+                              fill="#000000" stroke="none">
+                              <path d="M3387 12292 l-507 -507 508 -508 507 -507 508 508 507 507 -508 508
+                              -507 507 -508 -508z"/>
+                              <path d="M4282 9913 l-501 -508 503 -502 c277 -277 508 -503 512 -503 5 0 236
+                              227 514 505 l505 505 -505 505 c-278 278 -510 505 -516 505 -5 0 -236 -228
+                              -512 -507z"/>
+                              <path d="M6869 5232 l-756 -3947 -1666 -3 -1667 -2 -5 22 c-3 13 -57 298 -120
+                              633 -146 780 -1182 6302 -1281 6826 -40 218 -74 399 -74 403 0 3 -293 6 -650
+                              6 l-650 0 5 -22 c2 -13 27 -144 54 -293 125 -677 399 -2159 461 -2495 27 -146
+                              81 -436 119 -645 167 -906 295 -1599 341 -1845 27 -146 81 -436 119 -645 39
+                              -209 115 -623 170 -920 146 -792 377 -2041 403 -2183 l22 -122 2751 0 2751 0
+                              97 517 c105 560 336 1789 747 3978 468 2490 576 3068 725 3860 80 429 149 790
+                              152 803 l5 22 -648 0 -649 0 -756 -3948z"/>
+                              <path d="M3687 7543 c-4 -3 -7 -318 -7 -700 l0 -693 700 0 700 0 -2 698 -3
+                              697 -691 3 c-380 1 -694 -1 -697 -5z"/>
+                              </g>
+                              </svg>
+                              
+
+
+
+
+                              <!-- <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 27 30.43" enable-background="new 0 0 27 30.43" xml:space="preserve">
                                 <path id="Path_74" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15.25,1
       h-4.06c-1.12,0-2.03,0.91-2.03,2.03l0,0v4.06h8.12V3.03C17.28,1.91,16.37,1,15.25,1C15.25,1,15.25,1,15.25,1z"></path>
                                 <line id="Line_21" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="26" y1="7.21" x2="1" y2="7.21"></line>
                                 <path id="Path_75" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M23.37,7.09
       l-1.86,20.49c-0.1,1.05-0.97,1.85-2.02,1.85H6.95c-1.05,0-1.93-0.8-2.02-1.85L3.06,7.09"></path>
-                              </svg></div>
+                              </svg> -->
+                            
+                            
+                            
+                            </div>
                             <h3 class="svelte-ihdwqk">사용되지않는 코드 삭제</h3>
                           </div>
                           <div class="metric-stats">
@@ -772,7 +959,55 @@
                       <div class="metric">
                         <div class="metric-row" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
                           <div class="metric-summary">
-                            <div class="metric-svg"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 25.68 25.68" style="enable-background:new 0 0 25.68 25.68;" xml:space="preserve">
+                            <div class="metric-svg">
+                              
+                              
+                              <?xml version="1.0" standalone="no"?>
+                              <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+                               "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+                              <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                               width="1280.000000pt" height="1280.000000pt" viewBox="0 0 1280.000000 1280.000000"
+                               preserveAspectRatio="xMidYMid meet">
+                              <metadata>
+                              Created by potrace 1.15, written by Peter Selinger 2001-2017
+                              </metadata>
+                              <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
+                              fill="#000000" stroke="none">
+                              <path d="M3035 12789 c-144 -13 -390 -55 -540 -94 -1169 -301 -2089 -1221
+                              -2390 -2390 -40 -157 -81 -397 -95 -560 -6 -78 -10 -1256 -10 -3346 0 -3508
+                              -2 -3362 55 -3675 157 -855 646 -1617 1358 -2118 498 -350 1058 -549 1677
+                              -596 214 -16 6632 -9 6750 8 576 82 1009 238 1444 519 193 125 323 230 509
+                              413 320 312 548 637 722 1033 134 302 211 587 267 977 17 118 24 6536 8 6750
+                              -45 585 -225 1118 -541 1595 -503 760 -1282 1276 -2173 1440 -313 57 -163 55
+                              -3695 54 -1785 -1 -3291 -6 -3346 -10z m6705 -1099 c927 -114 1678 -775 1905
+                              -1675 69 -274 65 -29 65 -3620 0 -2856 -2 -3258 -15 -3362 -50 -379 -194 -738
+                              -423 -1047 -96 -130 -328 -362 -458 -458 -309 -229 -668 -373 -1047 -423 -104
+                              -13 -506 -15 -3362 -15 -3591 0 -3346 -4 -3620 65 -903 228 -1571 990 -1675
+                              1914 -8 68 -10 1065 -8 3386 l3 3290 28 138 c162 811 724 1453 1494 1707 132
+                              43 345 91 463 103 91 10 6571 6 6650 -3z"/>
+                              <path d="M9785 10656 c-278 -65 -491 -272 -559 -547 -23 -93 -21 -255 4 -353
+                              110 -432 583 -666 995 -493 111 46 253 160 316 253 175 258 173 598 -6 849
+                              -89 125 -211 215 -362 268 -75 26 -106 30 -208 33 -78 3 -141 -1 -180 -10z"/>
+                              <path d="M6195 9574 c-786 -62 -1494 -384 -2039 -930 -504 -503 -813 -1135
+                              -913 -1864 -24 -177 -24 -596 1 -775 71 -521 231 -950 511 -1370 436 -655
+                              1087 -1123 1837 -1320 470 -123 982 -137 1457 -39 612 126 1160 422 1606 869
+                              507 507 815 1133 912 1855 22 167 25 590 5 750 -94 744 -404 1383 -922 1900
+                              -500 499 -1139 811 -1855 905 -114 16 -494 27 -600 19z m400 -975 c428 -36
+                              853 -207 1195 -479 113 -91 299 -283 386 -400 224 -300 361 -628 421 -1005 24
+                              -154 24 -487 0 -644 -152 -971 -897 -1716 -1868 -1868 -153 -24 -499 -24 -647
+                              0 -732 118 -1341 565 -1662 1220 -332 676 -298 1470 91 2114 177 292 460 575
+                              752 752 399 241 869 350 1332 310z"/>
+                              </g>
+                              </svg>
+                              
+
+
+
+
+
+
+
+                              <!-- <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 25.68 25.68" style="enable-background:new 0 0 25.68 25.68;" xml:space="preserve">
                                 <style type="text/css">
                                   .st0 {
                                     fill: none;
@@ -799,8 +1034,14 @@
       C12.84,13.65,12.03,12.84,11.03,12.84z"></path>
                                 <line id="Line_57" class="st0" x1="12.31" y1="13.37" x2="17.91" y2="7.77"></line>
                                 <line id="Line_58" class="st0" x1="17.91" y1="12.84" x2="17.91" y2="7.77"></line>
-                                <line id="Line_59" class="st0" x1="12.84" y1="7.77" x2="17.91" y2="7.77"></line>
-                              </svg></div>
+                                <line id="Line_59" class="st0" x1="12.84" y1="7.77" x2="17.91" y2="7.77"></line> -->
+                            
+                            
+                            
+                              </svg>
+                            
+                            
+                            </div>
                             <h3 class="svelte-ihdwqk">적정 크기 이미지 사용</h3>
                           </div>
                           <div class="metric-stats">
@@ -905,7 +1146,37 @@
                       <div class="metric">
                         <div class="metric-row" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
                           <div class="metric-summary">
-                            <div class="metric-svg"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 25.38 25.05" style="enable-background:new 0 0 25.38 25.05;" xml:space="preserve">
+                            <div class="metric-svg">
+                              
+                              
+                              <?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+ "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="1151.000000pt" height="1280.000000pt" viewBox="0 0 1151.000000 1280.000000"
+ preserveAspectRatio="xMidYMid meet">
+
+<g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
+fill="#000000" stroke="none">
+<path d="M2592 12785 c-211 -46 -387 -217 -449 -435 -17 -63 -18 -241 -18
+-4940 0 -4699 1 -4877 18 -4940 29 -103 84 -198 157 -271 72 -72 129 -109 229
+-148 l66 -26 4180 -3 c3008 -2 4198 0 4245 8 212 36 377 181 463 407 l22 58 3
+3158 2 3157 -2034 0 c-1430 0 -2051 3 -2088 11 -167 34 -332 164 -406 320 -22
+46 -45 108 -51 137 -8 37 -11 575 -11 1787 l0 1735 -2132 -1 c-1770 0 -2144
+-3 -2196 -14z"/>
+<path d="M7320 11262 c0 -1066 3 -1547 11 -1584 43 -212 231 -404 442 -453 57
+-13 287 -15 1896 -13 l1830 3 -2070 1775 c-1138 976 -2079 1781 -2089 1789
+-20 13 -20 -1 -20 -1517z"/>
+<path d="M464 10765 c-78 -17 -178 -66 -242 -119 -92 -76 -145 -153 -196 -286
+l-21 -55 -3 -4880 c-2 -4435 -1 -4887 13 -4953 50 -225 236 -410 460 -457 105
+-22 8334 -22 8439 0 214 45 392 216 452 435 16 57 18 113 18 455 l1 390 -3705
+5 c-3561 5 -3707 6 -3760 23 -184 62 -321 196 -393 384 l-22 58 -3 4508 -2
+4507 -488 -1 c-363 0 -502 -4 -548 -14z"/>
+</g>
+</svg>
+
+                              
+                              <!-- <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 25.38 25.05" style="enable-background:new 0 0 25.38 25.05;" xml:space="preserve">
                                 <style type="text/css">
                                   .st0 {
                                     fill: none;
@@ -922,7 +1193,10 @@
                                 <path class="st0" d="M23.1,8.65h-2.57c-0.71,0-1.28,0.57-1.28,1.28v3.85H15.4c-0.71,0-1.28,0.57-1.28,1.28v3.85l-3.85,0
       c-0.71,0-1.28,0.57-1.28,1.28v2.57c0,0.71,0.58,1.28,1.28,1.28H23.1c0.71,0,1.28-0.57,1.28-1.28V9.94
       C24.38,9.23,23.81,8.65,23.1,8.65z"></path>
-                              </svg></div>
+                              </svg> -->
+                            
+                            
+                            </div>
                             <h3 class="svelte-ihdwqk">JavaScript 번들에서 중복 모듈 제거                            </h3>
                           </div>
                           <div class="metric-stats">
@@ -931,6 +1205,15 @@
                             </div>
                           </div>
                         </div>
+
+
+
+
+
+
+
+
+
                         <div class="metric-details">
                           <p>Remove large, duplicate JavaScript modules from bundles to reduce unnecessary bytes consumed by network activity.</p>
                           <div class="action-text">
@@ -946,7 +1229,12 @@
                           </div>
                         </div>
                       </div>
-                      <div class="metric">
+
+
+
+
+
+                      <!-- <div class="metric">
                         <div class="metric-row" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
                           <div class="metric-summary">
                             <div class="metric-svg"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30 30" style="enable-background:new 0 0 30 30;" xml:space="preserve">
@@ -1031,7 +1319,13 @@
                             <p><a href="https://www.mightybytes.com/blog/where-do-digital-emissions-come-from/">Learn more about the hidden cost of third-party code</a></p>
                           </div>
                         </div>
-                      </div>
+                      </div> -->
+
+
+
+
+
+
                     </div>
                   </div>
 
@@ -1744,13 +2038,17 @@
 
                     </div>
                     <div class="clear"></div>
-                    <div class="metrics">
+
+
+
+
+                   <!--  <div class="metrics">
                       <div class="metric">
                         <div class="metric-row" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
                           <div class="metric-summary">
 
 
-                            <!-- 그린호스팅-svg -->
+                         
                             <div class="metric-svg"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30.01 29.16" enable-background="new 0 0 30.01 29.16" xml:space="preserve">
                                 <path id="Path_86" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M10.07,12.33
       c1.25,0,2.26,1.01,2.26,2.26s-1.01,2.26-2.26,2.26s-2.26-1.01-2.26-2.26C7.81,13.34,8.82,12.33,10.07,12.33"></path>
@@ -1780,23 +2078,19 @@
                               <div class="bar-label"><em class="svelte-ihdwqk">100</em> out of 100</div>
                             </div>
                           </div>
+
+
+
+
                         </div>
-                        <div class="metric-details">
-                          <p>Powering servers with renewable energy is an important choice to measurably reduce your product or service's environmental impact.</p>
-                          <div class="action-text">
-                            <div class="at green">
-                              <h6>Green Hosting<span class="submetric_score">100 / 100</span></h6>
-                              <p>Excellent! It looks like this page uses a web host that powers its servers with renewable energy.</p>
-                            </div>
-                          </div>
-                          <div class="col">
-                            <h4>Additional Resources</h4>
-                            <p>Find a green web host in <a href="https://www.thegreenwebfoundation.org/directory/">The Green Web Foundation's hosting directory</a></p>
-                            <p>More information on the <a href="https://www.mightybytes.com/blog/web-hosting-renewable-energy/">difference between RECs and renewable energy</a></p>
-                          </div>
-                        </div>
+
+
+
+
+
+
                       </div>
-                    </div>
+                    </div> -->
                   </div>
 
 

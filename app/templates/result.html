@@ -640,6 +640,8 @@
                 </div>
             </div>
         </div>
+
+
         <div class="content-card">
                 <!-- 이곳에 탄소 배출량 분포 동그란 그래프 추가 -->
                 <div class="charts-grid">
@@ -914,6 +916,12 @@
 {% set optimization_carbon = total_optimization/1024 /68 * 0.01 %}                
 <div class="text-center mt-4">
                     <h2>{{(total_optimization/1024/1024)|round(2)}}MB은 월 1만회의 방문자일 때, </h2>
+                   
+                   
+
+
+
+                   
                     <div class="content-card" >
                         <h3 style="font-weight: bold;">연간 탄소 배출량 환산</h3>
                         <p class="metrics-subtitle">월 10,000명 방문 기준 ({{ optimization_carbon/1000 * 10000 * 12|round}} CO₂/kg)</p>
@@ -956,6 +964,12 @@
                             </div>
                         </div>
                     </div>
+
+
+
+
+
+
                     <a href="/" class="btn btn-secondary">다시 측정하기</a>
                 </div>
             </div>
@@ -986,6 +1000,9 @@
                 </div>
             </div>
         </div>
+
+
+
     <footer>
         <div class="footer-content">
             <p class="footer-text">ECO-WEB, DONGA-UNIVERSITY</p>
