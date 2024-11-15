@@ -33,9 +33,15 @@ For building and running the application you need:
 - other libraries in [requirements.txt](requirements.txt)
 
 ### Installation
+#### github repo
 ``` bash
 $ git clone https://github.com/CarbonAra-CBA/ecoweb.git
 $ cd ecoweb
+```
+#### ollama & llm
+install ollama -> https://ollama.com/
+``` bash
+$ ollama pull ollama3.2:latest
 ```
 #### Backend
 ```
