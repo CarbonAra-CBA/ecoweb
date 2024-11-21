@@ -485,6 +485,68 @@
     height: 100%;
 }
 
+        .tree ul {
+    list-style-type: none;
+    padding-left: 20px;
+    position: relative;
+}
+
+/* 파일 구조 표현 */
+
+.tree ul.hidden {
+    display: none;
+}
+
+.tree li {
+    margin: 0;
+    padding: 10px 5px;
+    position: relative;
+}
+
+.folder {
+    background-color: #e0f7fa;
+    color: #00796b;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.file {
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.css-file {
+    background-color: #fff9c4;
+    color: #f57f17;
+}
+
+.js-file {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.toggle {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 20px;
+    vertical-align: middle;
+}
+
+.toggle:hover {
+    background-color: #0056b3;
+}
+        .toggle img {
+    width: 30px;
+    height: 30px;
+}
+
     </style>
     
     <!-- 헤더 수정 -->
@@ -1020,7 +1082,197 @@
 {% endif %}
 </div>
 
+            <div class="content-card">
+                <h3>프로젝트 내 코드 최적화</h3>
+                <section class="file-structure">
+                    <div class="tree">
+                        <h4>프로젝트 폴더 구조</h4>
+                        <ul>
+            <li>
+                <span class="folder">📁 me.go.kr</span>
+                <button class="toggle"><img src="../static/toggle_down.png" alt=""></button>
+                <ul class="hidden">
+                    <li>
+                        <span class="folder">📁 css</span>
+                        <button class="toggle"><img src="../static/toggle_down.png" alt=""></button>
+                        <ul class="hidden">
+                            <li>
+                                <span class="folder">📁 home</span>
+                                <button class="toggle"><img src="../static/toggle_down.png" alt=""></button>
+                                <ul class="hidden">
+                                    <li><span class="file css-file">🎨 new.css</span></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="folder">📁 home2018</span>
+                                <button class="toggle"><img src="../static/toggle_down.png" alt=""></button>
+                                <ul class="hidden">
+                                    <li><span class="file css-file">🎨 base2018.css</span></li>
+                                    <li><span class="file css-file">🎨 common.css</span></li>
+                                    <li><span class="file css-file">🎨 notosanskr.css</span></li>
+                                    <li><span class="file css-file">🎨 style.css</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="folder">📁 cssV4</span>
+                        <button class="toggle"><img src="../static/toggle_down.png" alt=""></button>
+                        <ul class="hidden">
+                            <li><span class="file css-file">🎨 widget_style.css</span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="folder">📁 etc</span>
+                        <button class="toggle"><img src="../static/toggle_down.png" alt=""></button>
+                        <ul class="hidden">
+                            <li><span class="file">📄 news_widget.do</span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="folder">📁 home/web</span>
+                        <button class="toggle"><img src="../static/toggle_down.png" alt=""></button>
+                        <ul class="hidden">
+                            <li><span class="file">📄 main.do</span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="folder">📁 js</span>
+                        <button class="toggle"><img src="../static/toggle_down.png" alt=""></button>
+                        <ul class="hidden">
+                            <li>
+                                <span class="folder">📁 2021</span>
+                                <button class="toggle"><img src="../static/toggle_down.png" alt=""></button>
+                                <ul class="hidden">
+                                    <li><span class="file js-file">📜 common.js</span></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="folder">📁 home</span>
+                                <button class="toggle"><img src="../static/toggle_down.png" alt=""></button>
+                                <ul class="hidden">
+                                    <li><span class="file js-file">📜 design.js</span></li>
+                                    <li><span class="file js-file">📜 UserScriptConf.js</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="folder">📁 search</span>
+                        <button class="toggle"><img src="../static/toggle_down.png" alt=""></button>
+                        <ul class="hidden">
+                            <li>
+                                <span class="folder">📁 totalSearch</span>
+                                <button class="toggle"><img src="../static/toggle_down.png" alt=""></button>
+                                <ul class="hidden">
+                                    <li>
+                                        <span class="folder">📁 ark</span>
+                                        <button class="toggle"><img src="../static/toggle_down.png" alt=""></button>
+                                        <ul class="hidden">
+                                            <li>
+                                                <span class="folder">📁 css</span>
+                                                <button class="toggle"><img src="../static/toggle_down.png" alt=""></button>
+                                                <ul class="hidden">
+                                                    <li><span class="file css-file">🎨 ark_home.css</span></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <span class="folder">📁 js</span>
+                                        <button class="toggle"><img src="../static/toggle_down.png" alt=""></button>
+                                        <ul class="hidden">
+                                            <li><span class="file js-file">📜 ark_home.js</span></li>
+                                            <li><span class="file js-file">📜 search_home.js</span></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><span class="file html-file">🌐 index.html</span></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+                    </div>
+                </section>
+                <section class="element-usage">
+                    <h4>대체 가능한 요소들 식별</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>요소 이름</th>
+                                <th>종류</th>
+                                <th>사용 횟수</th>
+                                <th>대체 문자열 크기 (byte)</th>
+                                <th>절감된 용량 (byte)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>name1</td>
+                                <td>id</td>
+                                <td>31</td>
+                                <td>---</td>
+                                <td>---</td>
+                            </tr>
+                            <tr>
+                                <td>name2</td>
+                                <td>class</td>
+                                <td>45</td>
+                                <td>---</td>
+                                <td>---</td>
+                            </tr>
+                            <tr>
+                                <td>name3</td>
+                                <td>변수명</td>
+                                <td>24</td>
+                                <td>---</td>
+                                <td>---</td>
+                            </tr>
+                            <tr>
+                                <td>name4</td>
+                                <td>함수명</td>
+                                <td>17</td>
+                                <td>---</td>
+                                <td>---</td>
+                            </tr>
+                            <tr>
+                                <td>name5</td>
+                                <td>함수명</td>
+                                <td>12</td>
+                                <td>---</td>
+                                <td>---</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>절감된 용량: <strong>68.7KB</strong></p>
+                </section>
+            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+    // Select all toggle buttons
+    const toggleButtons = document.querySelectorAll('.toggle');
 
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Find the sibling UL (the child list of the folder)
+            const siblingList = button.nextElementSibling;
+
+            if (siblingList && siblingList.tagName === 'UL') {
+                // Toggle visibility
+                if (siblingList.classList.contains('hidden')) {
+                    siblingList.classList.remove('hidden');
+                    button.querySelector('img').src = "../static/toggle_up.png"; // Change button to collapse icon
+                } else {
+                    siblingList.classList.add('hidden');
+                    button.querySelector('img').src = "../static/toggle_down.png"; // Change button to expand icon
+                }
+            }
+        });
+    });
+});
+            </script>
 
 <div class="content-card">
     <h3>최적화 전/후 비교</h3>
@@ -1100,7 +1352,7 @@
             </div>
         
             <div class="mt-4">
-                <h4>오픈 소스 API</h5>
+                <h4>오픈 소스 API</h4>
                 <p>
                     <h5>웹사이트 탄소 계산을 다른 도구와 워크플로우에 통합하는 데 사용할 수 있는 웹사이트 탄소 API를 제공합니다!</h5>
                 </p>
