@@ -16,7 +16,7 @@ from datetime import datetime
 from flask import jsonify
 from flask import g
 
-from app.ProjectMaker.DirectoryMaker import directory_maker
+from app.ProjectMaker.DirectoryMaker import directory_maker, directory_to_json
 from app.ProjectMaker.guideline_report import create_guideline_report, guideline_summarize
 from dotenv import load_dotenv
 
@@ -31,10 +31,9 @@ load_dotenv()
 # 가이드라인 분석 결과를 임시 저장할 딕셔너리
 guideline_results = {}
 
-def perform_async_guideline_analize(task_id, url_s, collection_traffic, collection_resource):
+def perform_async_guideline_analize(task_id, url_s, root_path):
     # 디렉토리 생성 및 가이드라인 분석 수행
-    root_path = directory_maker(url=url_s, collection_traffic=collection_traffic,
-                                        collection_resource=collection_resource)
+
     print("directory make success. root path:", root_path)
 
     # 가이드라인 분석 결과 생성
@@ -151,9 +150,11 @@ def init_routes(app):
             institution_type = traffic_doc.get('institution_type', '공공기관') if traffic_doc else '공공기관'
             session['institution_type'] = institution_type
 
+            root_path = directory_maker(url=url_s, collection_traffic=collection_traffic,
+                                        collection_resource=collection_resource)
             # 비동기 작업(가이드라인 분석)
             task_id = str(uuid.uuid4())
-            thread = Thread(target=perform_async_guideline_analize, args=(task_id, url_s, collection_traffic, collection_resource))
+            thread = Thread(target=perform_async_guideline_analize, args=(task_id, url_s, root_path))
             thread.start()
 
             # 이미지 분류
@@ -194,6 +195,14 @@ def init_routes(app):
                     else:
                         category['others'].append(file)
 
+            # 코드 최적화 결과 수집
+            # 파일 구조를 json으로 표현해서 전달
+            directory_structure = directory_to_json(root_path)
+            print("Directory Structure : ")
+            print(type(directory_structure))
+            print(directory_structure)
+            # 식별된 변수명과 대체 문자열, 절감 가능치를 json으로 표현해서 전달
+            # 각 코드 파일을 압축한 버전을 다운로드할 수 있게 제공하기
 
             return render_template('result.html',
                                    url=url_s,
@@ -209,7 +218,8 @@ def init_routes(app):
                                    files=svgfiles,
                                    category=category,
                                    filecount=count,
-                                   totalsize=totalsize
+                                   totalsize=totalsize,
+                                   directory_structure=directory_structure
                                    )
 
         except Exception as e:

@@ -479,6 +479,20 @@ def code_optimizer(root_path):
     # for path in path_list:
 
 
+def code_loader(root_path):
+    elements = {
+        "ids": [],
+        "classes": [],
+        "variables": [],
+        "functions": []
+    }
+    path_list = collect_project_files(root_path)
+
+    for path in path_list:
+        elements = load_code_objects(path, elements)
+
+    return elements
+
 if __name__ == "__main__":
     """
     elements = 프로젝트 내 모든 파일을 순회하면서 식별한 id, class, 변수명, 함수명을 기록하는 객체
@@ -13490,6 +13504,11 @@ function quickToggle() {
     """
 
     root_path = "C:/Users/windowadmin1.WIN-TAQQ3RO5V1L.000/Desktop/Github/ecoweb/ecoweb/llama/me.go.kr"
-    code_optimizer(root_path)
+    # code_optimizer(root_path)
+    path_list = collect_project_files(root_path)
+
+    for path in path_list:
+        elements = load_code_objects(path, elements)
+
 
 

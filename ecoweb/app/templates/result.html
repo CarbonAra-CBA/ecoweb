@@ -515,6 +515,8 @@
     padding: 5px 10px;
     border-radius: 5px;
     display: inline-block;
+    background-color: #e8f5e9;
+    color: #2e7d32;
 }
 
 .css-file {
@@ -522,13 +524,10 @@
     color: #f57f17;
 }
 
-.js-file {
-    background-color: #e8f5e9;
-    color: #2e7d32;
-}
+
 
 .toggle {
-    background-color: #007bff;
+    background-color: #ffffff;
     color: white;
     border: none;
     border-radius: 5px;
@@ -546,7 +545,20 @@
     width: 30px;
     height: 30px;
 }
+.code-optimizer {
+        display: flex; /* Flexbox를 활성화 */
+    width: 100%;
+        }
 
+        .code-optimizer-item {
+            flex: 1;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .download {
+            width: 30px;
+            height: 30px;
+        }
     </style>
     
     <!-- 헤더 수정 -->
@@ -1081,197 +1093,193 @@
 </div>
 {% endif %}
 </div>
+            <h3>프로젝트 내 코드 최적화</h3>
 
-            <div class="content-card">
-                <h3>프로젝트 내 코드 최적화</h3>
-                <section class="file-structure">
+            <div class="content-card code-optimizer">
+                <section class="file-structure code-optimizer-item">
                     <div class="tree">
-                        <h4>프로젝트 폴더 구조</h4>
-                        <ul>
-            <li>
-                <span class="folder">📁 me.go.kr</span>
-                <button class="toggle"><img src="../static/toggle_down.png" alt=""></button>
-                <ul class="hidden">
-                    <li>
-                        <span class="folder">📁 css</span>
-                        <button class="toggle"><img src="../static/toggle_down.png" alt=""></button>
-                        <ul class="hidden">
-                            <li>
-                                <span class="folder">📁 home</span>
-                                <button class="toggle"><img src="../static/toggle_down.png" alt=""></button>
-                                <ul class="hidden">
-                                    <li><span class="file css-file">🎨 new.css</span></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <span class="folder">📁 home2018</span>
-                                <button class="toggle"><img src="../static/toggle_down.png" alt=""></button>
-                                <ul class="hidden">
-                                    <li><span class="file css-file">🎨 base2018.css</span></li>
-                                    <li><span class="file css-file">🎨 common.css</span></li>
-                                    <li><span class="file css-file">🎨 notosanskr.css</span></li>
-                                    <li><span class="file css-file">🎨 style.css</span></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <span class="folder">📁 cssV4</span>
-                        <button class="toggle"><img src="../static/toggle_down.png" alt=""></button>
-                        <ul class="hidden">
-                            <li><span class="file css-file">🎨 widget_style.css</span></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <span class="folder">📁 etc</span>
-                        <button class="toggle"><img src="../static/toggle_down.png" alt=""></button>
-                        <ul class="hidden">
-                            <li><span class="file">📄 news_widget.do</span></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <span class="folder">📁 home/web</span>
-                        <button class="toggle"><img src="../static/toggle_down.png" alt=""></button>
-                        <ul class="hidden">
-                            <li><span class="file">📄 main.do</span></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <span class="folder">📁 js</span>
-                        <button class="toggle"><img src="../static/toggle_down.png" alt=""></button>
-                        <ul class="hidden">
-                            <li>
-                                <span class="folder">📁 2021</span>
-                                <button class="toggle"><img src="../static/toggle_down.png" alt=""></button>
-                                <ul class="hidden">
-                                    <li><span class="file js-file">📜 common.js</span></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <span class="folder">📁 home</span>
-                                <button class="toggle"><img src="../static/toggle_down.png" alt=""></button>
-                                <ul class="hidden">
-                                    <li><span class="file js-file">📜 design.js</span></li>
-                                    <li><span class="file js-file">📜 UserScriptConf.js</span></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <span class="folder">📁 search</span>
-                        <button class="toggle"><img src="../static/toggle_down.png" alt=""></button>
-                        <ul class="hidden">
-                            <li>
-                                <span class="folder">📁 totalSearch</span>
-                                <button class="toggle"><img src="../static/toggle_down.png" alt=""></button>
-                                <ul class="hidden">
-                                    <li>
-                                        <span class="folder">📁 ark</span>
-                                        <button class="toggle"><img src="../static/toggle_down.png" alt=""></button>
-                                        <ul class="hidden">
-                                            <li>
-                                                <span class="folder">📁 css</span>
-                                                <button class="toggle"><img src="../static/toggle_down.png" alt=""></button>
-                                                <ul class="hidden">
-                                                    <li><span class="file css-file">🎨 ark_home.css</span></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <span class="folder">📁 js</span>
-                                        <button class="toggle"><img src="../static/toggle_down.png" alt=""></button>
-                                        <ul class="hidden">
-                                            <li><span class="file js-file">📜 ark_home.js</span></li>
-                                            <li><span class="file js-file">📜 search_home.js</span></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><span class="file html-file">🌐 index.html</span></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+                        <h4>Dynamic File Structure</h4>
+                        <ul id="file-structure"></ul>
                     </div>
+
                 </section>
-                <section class="element-usage">
-                    <h4>대체 가능한 요소들 식별</h4>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>요소 이름</th>
-                                <th>종류</th>
-                                <th>사용 횟수</th>
-                                <th>대체 문자열 크기 (byte)</th>
-                                <th>절감된 용량 (byte)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>name1</td>
-                                <td>id</td>
-                                <td>31</td>
-                                <td>---</td>
-                                <td>---</td>
-                            </tr>
-                            <tr>
-                                <td>name2</td>
-                                <td>class</td>
-                                <td>45</td>
-                                <td>---</td>
-                                <td>---</td>
-                            </tr>
-                            <tr>
-                                <td>name3</td>
-                                <td>변수명</td>
-                                <td>24</td>
-                                <td>---</td>
-                                <td>---</td>
-                            </tr>
-                            <tr>
-                                <td>name4</td>
-                                <td>함수명</td>
-                                <td>17</td>
-                                <td>---</td>
-                                <td>---</td>
-                            </tr>
-                            <tr>
-                                <td>name5</td>
-                                <td>함수명</td>
-                                <td>12</td>
-                                <td>---</td>
-                                <td>---</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p>절감된 용량: <strong>68.7KB</strong></p>
-                </section>
+                <div class="code-optimizer-item code-optimizer-solution">
+                    <section class="element-usage ">
+                        <h4>대체 가능한 변수명들 식별</h4>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>요소 이름</th>
+                                    <th>종류</th>
+                                    <th>사용 횟수</th>
+                                    <th>대체 문자열 크기 (byte)</th>
+                                    <th>절감된 용량 (byte)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>name1</td>
+                                    <td>id</td>
+                                    <td>31</td>
+                                    <td>---</td>
+                                    <td>---</td>
+                                </tr>
+                                <tr>
+                                    <td>name2</td>
+                                    <td>class</td>
+                                    <td>45</td>
+                                    <td>---</td>
+                                    <td>---</td>
+                                </tr>
+                                <tr>
+                                    <td>name3</td>
+                                    <td>변수명</td>
+                                    <td>24</td>
+                                    <td>---</td>
+                                    <td>---</td>
+                                </tr>
+                                <tr>
+                                    <td>name4</td>
+                                    <td>함수명</td>
+                                    <td>17</td>
+                                    <td>---</td>
+                                    <td>---</td>
+                                </tr>
+                                <tr>
+                                    <td>name5</td>
+                                    <td>함수명</td>
+                                    <td>12</td>
+                                    <td>---</td>
+                                    <td>---</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>절감된 용량: <strong>68.7KB</strong></p>
+                    </section>
+                    <section class="element-usage ">
+                        <h4>최적화된 코드 파일 다운로드 </h4>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>파일명</th>
+                                    <th>종류</th>
+                                    <th>원본 크기</th>
+                                    <th>압축 후 크기</th>
+                                    <th>다운로드</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>new.css</td>
+                                    <td>stylesheet</td>
+                                    <td>69KB</td>
+                                    <td>47KB</td>
+                                    <td><img class="download" src="../static/download.png" alt=""></td>
+                                </tr>
+                                <tr>
+                                    <td>widget_style.css</td>
+                                    <td>stylesheet</td>
+                                    <td>38KB</td>
+                                    <td>31KB</td>
+                                    <td><img class="download" src="../static/download.png" alt=""></td>
+                                </tr>
+                                <tr>
+                                    <td>index.html</td>
+                                    <td>Document</td>
+                                    <td>96KB</td>
+                                    <td>77KB</td>
+                                    <td><img class="download" src="../static/download.png" alt=""></td>
+                                </tr>
+                                <tr>
+                                    <td>common.js</td>
+                                    <td>Script</td>
+                                    <td>74KB</td>
+                                    <td>55KB</td>
+                                    <td><img class="download" src="../static/download.png" alt=""></td>
+                                </tr>
+                                <tr>
+                                    <td>search_home.js</td>
+                                    <td>Script</td>
+                                    <td>24KB</td>
+                                    <td>19KB</td>
+                                    <td><img class="download" src="../static/download.png" alt=""></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+
             </div>
+
             <script>
-                document.addEventListener('DOMContentLoaded', () => {
-    // Select all toggle buttons
-    const toggleButtons = document.querySelectorAll('.toggle');
+                const directoryStructure = {{ directory_structure | tojson }};
+                console.log(directoryStructure);
 
-    toggleButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Find the sibling UL (the child list of the folder)
-            const siblingList = button.nextElementSibling;
+                function createFileStructure(parent, structure) {
+                    for (const key in structure) {
+                        if (key === "__files__") {
+                            // Add files to the parent element
+                            structure[key].forEach(file => {
+                                const fileElement = document.createElement("li");
+                                // Determine the icon based on the file extension
+                                let icon = "📄"; // Default icon
+                                if (file.endsWith(".css")) {
+                                    icon = "🎨";
+                                } else if (file.endsWith(".do")) {
+                                    icon = "📄";
+                                } else if (file.endsWith(".js")) {
+                                    icon = "📜";
+                                } else if (file.endsWith(".html")) {
+                                    icon = "🌐";
+                                }
 
-            if (siblingList && siblingList.tagName === 'UL') {
-                // Toggle visibility
-                if (siblingList.classList.contains('hidden')) {
-                    siblingList.classList.remove('hidden');
-                    button.querySelector('img').src = "../static/toggle_up.png"; // Change button to collapse icon
-                } else {
-                    siblingList.classList.add('hidden');
-                    button.querySelector('img').src = "../static/toggle_down.png"; // Change button to expand icon
+                                // Add the file with the appropriate icon
+                                fileElement.innerHTML = `<span class="file">${icon} ${file}</span>`;
+                                parent.appendChild(fileElement);
+
+                            });
+                        } else {
+                            // Add folder to the parent element
+                            const folderElement = document.createElement("li");
+                            folderElement.innerHTML = `
+                                <span class="folder">📁 ${key}</span>
+                                <button class="toggle">
+                                    <img src="/static/toggle_down.png" alt="Toggle">
+                                </button>
+                            `;
+
+                            const childList = document.createElement("ul");
+                            childList.classList.add("hidden"); // Initially hide subfolders
+                            folderElement.appendChild(childList);
+                            parent.appendChild(folderElement);
+
+                            // Add event listener to toggle visibility
+                            const toggleButton = folderElement.querySelector(".toggle");
+                            toggleButton.addEventListener("click", () => {
+                                childList.classList.toggle("hidden");
+                                const img = toggleButton.querySelector("img");
+                                img.src = childList.classList.contains("hidden")
+                                    ? "/static/toggle_down.png"
+                                    : "/static/toggle_up.png";
+                            });
+
+                            // Recursive call for child directories
+                            createFileStructure(childList, structure[key]);
+                        }
+                    }
                 }
-            }
-        });
-    });
-});
+
+                function initializeFileStructure() {
+                    const rootElement = document.getElementById("file-structure");
+                    try {
+                        createFileStructure(rootElement, directoryStructure);
+                    } catch (error) {
+                        console.error("Error creating file structure:", error);
+                    }
+                }
+
+                // Initialize the file structure
+                initializeFileStructure();
             </script>
 
 <div class="content-card">

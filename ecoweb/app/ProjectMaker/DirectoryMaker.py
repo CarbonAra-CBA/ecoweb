@@ -4,6 +4,7 @@ from urllib.parse import urlparse
 from datetime import datetime
 import logging
 from app.ProjectMaker.ThirdPartyDetect import ThirdPartyIgnore
+import json
 
 # 로깅 설정
 logging.basicConfig(filename='download_errors.log', level=logging.ERROR,
@@ -103,8 +104,46 @@ def directory_maker(url, collection_traffic, collection_resource):
     download_documents(detectedDocs, root_path, url)
     return root_path
 
+def get_directory_structure(root_dir):
+    """
+    Recursively builds a JSON-like dictionary that represents
+    the file and directory structure under the given root directory.
+    """
+    structure = {}
+
+    # Iterate over each item in the root directory
+    for item in os.listdir(root_dir):
+        item_path = os.path.join(root_dir, item)
+        if os.path.isdir(item_path):  # If it's a directory
+            # Recurse into the directory
+            structure[item] = get_directory_structure(item_path)
+        elif os.path.isfile(item_path):  # If it's a file
+            # Add the file name to the list
+            structure.setdefault("__files__", []).append(item)
+
+    return structure
+
+def directory_to_json(root_path):
+    """
+    Converts the directory structure into JSON format and optionally saves it to a file.
+    """
+    if not os.path.isdir(root_path):
+        raise ValueError(f"Provided path '{root_path}' is not a valid directory.")
+
+    # Build the directory structure as a nested dictionary
+    dir_structure = get_directory_structure(root_path)
+
+    # Convert the dictionary to JSON
+    json_data = json.dumps(dir_structure, indent=4)
+    json_data = json.loads(json_data)
+
+    return json_data
 
 if __name__ == "__main__":
     url = "https://me.go.kr/"
-    client, db, collection_traffic, collection_resource = db_connect()
-    directory_maker(url, collection_traffic, collection_resource)
+    # client, db, collection_traffic, collection_resource = db_connect()
+    # directory_maker(url, collection_traffic, collection_resource)
+    root_path = "C:/Users/windowadmin1.WIN-TAQQ3RO5V1L.000/Desktop/Github/ecoweb/ecoweb/llama/me.go.kr"
+    json_data = directory_to_json(root_path)
+    print(type(json_data))
+    print(json_data)
