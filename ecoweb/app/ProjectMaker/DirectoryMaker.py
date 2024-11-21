@@ -92,7 +92,7 @@ def directory_maker(url, collection_traffic, collection_resource):
     site_name = parsed_url.netloc
 
     # 프로젝트 루트 경로 생성
-    root_path = create_project_root('C:/Users/windowadmin1.WIN-TAQQ3RO5V1L.000/Desktop/ecoweb/ecoweb/llama/', site_name)
+    root_path = create_project_root('C:/Users/windowadmin1.WIN-TAQQ3RO5V1L.000/Desktop/Github/ecoweb/ecoweb/llama/', site_name)
 
     # 네트워크 요청과 감지 문서 가져오기
     documents = get_network_requests(collection_resource=collection_resource, url=url)

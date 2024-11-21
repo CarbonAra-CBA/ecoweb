@@ -2,7 +2,7 @@ from threading import Thread
 import uuid
 
 from flask import render_template, request, redirect, url_for
-from app.utils.grade import grade_point
+from app.utils.grade import (grade_point)
 from app.services.screenshot import capture_screenshot
 from app.services.lighthouse import run_lighthouse
 from app.services.lighthouse import process_report
@@ -159,7 +159,7 @@ def init_routes(app):
             # 이미지 분류
             Image_paths = proc_url.get_report_imagepath()
 
-            image_dir_path = 'images'
+            image_dir_path = 'C:/Users/windowadmin1.WIN-TAQQ3RO5V1L.000/Desktop/Github/ecoweb/ecoweb/app/images'
             if not os.path.exists(image_dir_path):
                 os.mkdir(image_dir_path)
 
@@ -170,7 +170,7 @@ def init_routes(app):
                     filename = spliturl[-2] + '.' + spliturl[-1]
                     destination = os.path.join(image_dir_path, filename)
                     urllib.request.urlretrieve(imageurl, destination)
-                    files.append(model_test.predict_image(destination, filename, 'images/results'))
+                    files.append(model_test.predict_image(destination, filename, 'C:/Users/windowadmin1.WIN-TAQQ3RO5V1L.000/Desktop/Github/ecoweb/ecoweb/app/images/results'))
                 except Exception as e:
                     print(f"download error : {e}")
 
