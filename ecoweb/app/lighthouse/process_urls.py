@@ -4,6 +4,7 @@ import subprocess
 import os
 from pymongo import MongoClient
 from bson.json_util import dumps
+import re
 
 client = MongoClient('mongodb://localhost:27017/')
 db = client['ecoweb']
@@ -52,7 +53,7 @@ def process_report(url):
     # return view_data
 
 def get_report_imagepath():  # 라이트하우스가 이미 실행되어 report.json 이 존재한다고 했을때, 이미지 파일들의 path를 리턴
-    json_file = open('../ecoweb/report.json', 'r')
+    json_file = open('C:/Users/windowadmin1.WIN-TAQQ3RO5V1L.000/Desktop/Github/ecoweb/ecoweb/report.json', 'r', encoding='utf-8')
     report = json.load(json_file)
     image_url_list = []
     for item in report['audits']['network-requests']['details']['items']:
