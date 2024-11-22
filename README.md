@@ -49,6 +49,21 @@ $ cd ecoweb/app
 $ python -m venv venv
 $ source venv/bin/activate
 $ pip install -r requirements.txt
+```
+#### Node.js & esprima 설치
+1. Node.js  설치 -> https://nodejs.org/en
+2. esprima 설치
+``` bash
+$ npm install esprima escodegen
+$ browserify -r esprima -r escodegen > esprima_bundle.js
+  
+```
+3. 추가 설정(오류 발생 시 수행)
+```bash
+export PATH=$PATH:/path/to/nodejs(node.js 설치 경로)
+```
+#### 실행 명령어
+```bash
 $ python run.py
 ```
 
