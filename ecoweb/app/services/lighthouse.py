@@ -1,8 +1,12 @@
 import json
 import subprocess
+import os
 
 def run_lighthouse(url):
-    command = f'lighthouse {url} --only-audits=network-requests,resource-summary,third-party-summary,script-treemap-data,total-byte-weight,unused-css-rules,unused-javascript,modern-image-formats,efficient-animated-content,duplicated-javascript,js-libraries --output json --output-path ./report.json --preset=desktop'
+    # 아래는 리눅스 환경에서 동작하지 않아서 폐기예정(정확도가 떨어지지만 어쩔 수 없다. -> 근데 스크린샷 문제는 아직 해결 못함. (터미널에서 어떻게 스크린샷을 찍음..))
+    # command = f'lighthouse {url} --only-audits=network-requests,resource-summary,third-party-summary,script-treemap-data,total-byte-weight,unused-css-rules,unused-javascript,modern-image-formats,efficient-animated-content,duplicated-javascript,js-libraries --output json --output-path ./report.json --preset=desktop'
+    command = f'lighthouse {url} --chrome-flags="--headless --no-sandbox --disable-gpu --disable-dev-shm-usage" --only-audits=network-requests,resource-summary,third-party-summary,script-treemap-data,total-byte-weight,unused-css-rules,,unused-javascript,modern-image-formats,efficient-animated-content,duplicated-javascript,js-libraries --output json --output-path ./report.json --preset=desktop'
+
     subprocess.run(command, shell=True)
 
 def safe_get_audit_value(report, audit_path, default_value=0):
@@ -14,7 +18,71 @@ def safe_get_audit_value(report, audit_path, default_value=0):
         return result
     except (KeyError, TypeError):
         return default_value
-
+    
+# def run_lighthouse(url):
+#     try:
+#         # Chrome 플래그 설정
+#         chrome_flags = [
+#             '--headless',
+#             '--no-sandbox',
+#             '--disable-gpu',
+#             '--disable-dev-shm-usage',
+#             '--disable-software-rasterizer',
+#             '--disable-setuid-sandbox',
+#             '--no-zygote',
+#             '--single-process',
+#             '--remote-debugging-port=9222'
+#         ]
+        
+#         # Lighthouse 명령어 구성
+#         command = [
+#             'lighthouse',
+#             url,
+#             f'--chrome-flags="{" ".join(chrome_flags)}"',
+#             '--only-audits=network-requests,resource-summary,third-party-summary,'
+#             'script-treemap-data,total-byte-weight,unused-css-rules,unused-javascript,'
+#             'modern-image-formats,efficient-animated-content,duplicated-javascript,js-libraries',
+#             '--output=json',
+#             '--output-path=./report.json',
+#             '--preset=desktop',
+#             '--verbose'  # 디버깅을 위한 상세 로그
+#         ]
+        
+#         # 명령어를 문자열로 결합
+#         command_str = ' '.join(command)
+        
+#         # 실행 전 디버그 정보 출력
+#         print(f"Executing Lighthouse command: {command_str}")
+        
+#         # Lighthouse 실행
+#         process = subprocess.run(
+#             command_str,
+#             shell=True,
+#             capture_output=True,
+#             text=True
+#         )
+        
+#         # 실행 결과 확인
+#         if process.returncode != 0:
+#             print("Lighthouse execution failed:")
+#             print(f"Error output: {process.stderr}")
+#             print(f"Standard output: {process.stdout}")
+#             raise Exception(f"Lighthouse failed with return code {process.returncode}")
+            
+#         # 결과 파일 확인
+#         if not os.path.exists('./report.json'):
+#             raise FileNotFoundError("Lighthouse report file was not created")
+            
+#         # 결과 파일 크기 확인
+#         if os.path.getsize('./report.json') == 0:
+#             raise Exception("Lighthouse report file is empty")
+            
+#         print("Lighthouse execution completed successfully")
+#         return True
+        
+#     except Exception as e:
+#         print(f"Error running Lighthouse: {str(e)}")
+#         return False
 
 def process_report(url, collection_resource, collection_traffic):
     try:

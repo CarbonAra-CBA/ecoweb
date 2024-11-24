@@ -1,0 +1,207 @@
+{% extends "common.html" %}
+
+{% block content %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.1.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.1.0"></script>
+
+
+
+<div class="container-fluid">
+    <h2 class="mb-4">탄소 배출량 대시보드</h2>
+    
+    <!-- 첫 번째 row: 주요 분석 차트 -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">웹사이트 트래픽 분포 분석</h5>
+                    <canvas id="kdeChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">월별 탄소 배출량 추이</h5>
+                    <canvas id="monthlyEmissionsChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 두 번째 row: 핵심 지표 -->
+    <div class="row mb-4">
+        <!-- 통계 정보 카드들 -->
+        <div class="col-md-3">
+            <div class="card bg-light h-100">
+                <div class="card-body">
+                    <h6 class="text-muted">총 배출량</h6>
+                    <p class="h3 mb-0" id="totalEmission">-</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-light h-100">
+                <div class="card-body">
+                    <h6 class="text-muted">가장 많은 배출량</h6>
+                    <p class="h5 mb-0" id="maxEmissionInst">-</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-light h-100">
+                <div class="card-body">
+                    <h6 class="text-muted">가장 적은 배출량</h6>
+                    <p class="h5 mb-0" id="minEmissionInst">-</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-light h-100">
+                <div class="card-body">
+                    <h6 class="text-muted">평균 배출량</h6>
+                    <p class="h5 mb-0" id="avgEmission">-</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 세 번째 row: 상세 분석 차트들 -->
+    <div class="row">
+        <div class="col-md-4">
+            <!-- ESG TOP 5 -->
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">11월 공공기관 ESG TOP 5</h5>
+                    <canvas id="esgTop5Chart"></canvas>
+                    <h5 class="card-title">11월 가장 많이 배출한 기관 TOP5</h5>
+                    <canvas id="topEmissionChart"></canvas>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+            <!-- 도넛 차트 -->
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">공공기관 타입별 배출량</h5>
+                    <canvas id="categoryDonutChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <!-- 전체 공공기관 배출량 -->
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">전체 공공기관 배출량</h5>
+                    <canvas id="totalEmissionsChart"></canvas>
+                    <div class="text-muted small mt-2">
+                    </div>
+
+                    <h5 class="card-title">동일 카테고리의 기관 비교</h5>
+                    <canvas id="companyComparisonChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/kde_chart.js') }}"></script>
+<script src="{{ url_for('static', filename='js/monthly_emissions_chart.js')}}"></script>
+<script src="{{ url_for('static', filename='js/esg_top5_chart.js')}}"></script>
+<script src="{{ url_for('static', filename='js/category_donut_chart.js') }}"></script>
+<script src="{{ url_for('static', filename='js/topEmissionChart.js') }}"></script>
+<script src="{{ url_for('static', filename='js/category_comparisonChart.js') }}"></script>
+
+<script>
+    const ChartAnnotation = window['chartjs-plugin-annotation'];
+    Chart.register(ChartAnnotation);
+
+    // 세션으로 가져왔는지 확인하고 싶다.
+    const kbWeight = {{ session.get('kb_weight', 0) }};
+    window.mbWeight = {{ session.get('kb_weight', 0) }} / 1024;
+    console.log("mb_weight: ", mbWeight);
+    createKDEChart(mbWeight);
+
+
+// 기업 비교 차트
+const companyComparisonChart = new Chart(
+    document.getElementById('companyComparisonChart'),
+    {
+        type: 'line',
+        data: {
+            labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+            datasets: [{
+                label: '배출량',
+                data: [150, 200, 400, 350, 380, 320, 280, 200, 300, 350, 300, 200],
+                borderColor: '#198754',
+                tension: 0.4,
+                fill: false
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: '#f0f0f0'
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    }
+                }
+            }
+        }
+    }
+);
+
+// 전체 공공기관 배출량 차트
+const totalEmissionsChart = new Chart(
+    document.getElementById('totalEmissionsChart'),
+    {
+        type: 'line',
+        data: {
+            labels: ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            datasets: [{
+                label: '배출량',
+                data: [50, 200, 250, 300, 450, 300, 400, 250, 350],
+                borderColor: '#198754',
+                tension: 0.4,
+                fill: false
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: '#f0f0f0'
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    }
+                }
+            }
+        }
+    }
+);
+</script>
+{% endblock %}

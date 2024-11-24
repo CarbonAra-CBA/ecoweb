@@ -1,0 +1,27 @@
+[
+  {
+    "siteName": "창원대학교",
+    "institutionCategory": "대학교",
+    "transferSize": 274535.0068359375
+  },
+  {
+    "siteName": "경상북도 포항시 도시재생센터",
+    "institutionCategory": "경상북도",
+    "transferSize": 252955.8916015625
+  },
+  {
+    "siteName": "신나는예술여행",
+    "institutionCategory": "국가공공기관",
+    "transferSize": 227619.50390625
+  },
+  {
+    "siteName": "한국노인복지중앙회",
+    "institutionCategory": "기타",
+    "transferSize": 166012.2568359375
+  },
+  {
+    "siteName": "경기문화재단",
+    "institutionCategory": "기타",
+    "transferSize": 159606.7333984375
+  }
+]
