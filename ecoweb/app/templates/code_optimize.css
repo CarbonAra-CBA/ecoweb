@@ -1,0 +1,59 @@
+.tree ul {
+    list-style-type: none;
+    padding-left: 20px;
+    position: relative;
+}
+
+.tree ul.hidden {
+    display: none;
+}
+
+.tree li {
+    margin: 0;
+    padding: 10px 5px;
+    position: relative;
+}
+
+.folder {
+    background-color: #e0f7fa;
+    color: #00796b;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.file {
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.css-file {
+    background-color: #fff9c4;
+    color: #f57f17;
+}
+
+.js-file {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.toggle {
+    background-color: #ffffff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 20px;
+    vertical-align: middle;
+}
+
+.toggle:hover {
+    background-color: #0056b3;
+}
+
+.hidden {
+    display: none; /* 숨겨진 상태에서 UL을 보이지 않도록 설정 */
+}

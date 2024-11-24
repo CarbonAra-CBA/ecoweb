@@ -9,6 +9,7 @@
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 <body>
@@ -462,8 +463,15 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-
 }
+
+    .file-list { list-style: none; padding: 0; }
+    .file-item { display: flex; align-items: center; margin-bottom: 10px; }
+    .file-size { color: gray; margin-left: 10px; }
+    .hidden { display: none; }
+    .load-more { cursor: pointer; color: gray;text-align:left;}
+    .chart-container { width:100%;height:280px;top:20px;position:sticky;}
+    .parents {display: grid;grid-template-columns: 1fr 1fr;grid-gap: 10px;margin-top:20px;padding: 10px;}
 
 /* 반응형 레이아웃을 위한 미디어 쿼리 */
 @media (max-width: 1200px) {
@@ -478,6 +486,80 @@
     height: 100%;
 }
 
+        .tree ul {
+    list-style-type: none;
+    padding-left: 20px;
+    position: relative;
+}
+
+/* 파일 구조 표현 */
+
+.tree ul.hidden {
+    display: none;
+}
+
+.tree li {
+    margin: 0;
+    padding: 10px 5px;
+    position: relative;
+}
+
+.folder {
+    background-color: #e0f7fa;
+    color: #00796b;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.file {
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.css-file {
+    background-color: #fff9c4;
+    color: #f57f17;
+}
+
+
+
+.toggle {
+    background-color: #ffffff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 20px;
+    vertical-align: middle;
+}
+
+.toggle:hover {
+    background-color: #0056b3;
+}
+        .toggle img {
+    width: 30px;
+    height: 30px;
+}
+.code-optimizer {
+        display: flex; /* Flexbox를 활성화 */
+    width: 100%;
+        }
+
+        .code-optimizer-item {
+            flex: 1;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .download {
+            width: 30px;
+            height: 30px;
+        }
     </style>
     
     <!-- 헤더 수정 -->
@@ -786,9 +868,127 @@
                 };
         </script>
 
+
         <!-- 최적화 제안 카드 -->
         <div class="content-card">
             <h3 style="margin-left: 11px;">최적화 가능 항목</h3>
+
+                       <!-- 이미지 분류 결과물 -->
+<div><h4>형식변환 권장 이미지 목록 <i class="fa-regular fa-folder"></i> <span class="file-size">(총 용량 {{ totalsize }} bytes, 총 {{ filecount }}개 파일)</span></h4>
+    <div class="parents">
+    <div>
+    <ul class="file-list">
+        {% for file in files[:8] %}
+        <li class="file-item">
+        <span class="file-name">{{ file.name }}</span>
+            <span class="file-size">({{ file.size }} bytes)</span>
+        </li>
+        {% endfor %}
+
+    <!-- 나머지 파일들은 숨겨둠 -->
+        {% for file in files[8:] %}
+        <li class="file-item hidden">
+        <span class="file-name">{{ file.name }}</span>
+            <span class="file-size">({{ file.size }} bytes)</span>
+        </li>
+        {% endfor %}
+    </ul>
+    </div>
+    <div class="chart-container" style="position:relative;top:20px">
+        <canvas id="fileChart"></canvas>
+    </div>
+    </div>
+
+     <script>
+        // Flask에서 파일 데이터를 JavaScript 변수로 전달
+        const files = {{ category | tojson }};
+
+        // 범주별 파일 용량 데이터 구성
+        const iconsData = files.iconfile.map(file => file.size);
+        const logosData = files.logofile.map(file => file.size);
+        const othersData = files.others.map(file => file.size);
+
+        // 차트 생성
+        const ctx = document.getElementById('fileChart').getContext('2d');
+        const fileChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: Array.from({length: Math.max(iconsData.length, logosData.length, othersData.length)}, (_, i) => i + 1),
+                datasets: [
+                    {
+                        label: 'Icons',
+                        data: iconsData,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        fill: false,
+                    },
+                    {
+                        label: 'Logos',
+                        data: logosData,
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        fill: false,
+                    },
+                    {
+                        label: 'Others',
+                        data: othersData,
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        fill: false,
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'File Size (bytes)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: false,
+                            text: 'File Index'
+                        },
+                        ticks: {
+                            autoSkip: true,
+                            maxRotation: 0
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+    <div class="load-more" onclick="loadMore()">더보기</div>
+
+    <script>
+        let currentIndex = 8;  // 처음에 표시되는 파일 수
+        const increment = 8;    // 더보기 클릭 시 추가로 표시할 파일 수
+        const fileItems = document.querySelectorAll('.file-item');
+        const loadMoreButton = document.querySelector('.load-more');
+
+        function loadMore() {
+            // 추가로 표시할 파일들을 보여줌
+            for (let i = currentIndex; i < currentIndex + increment; i++) {
+                if (fileItems[i]) {
+                    fileItems[i].classList.remove('hidden');
+                }
+            }
+
+            // 현재 인덱스 업데이트
+            currentIndex += increment;
+
+            // 더 이상 표시할 파일이 없으면 "더보기" 버튼 숨기기
+            if (currentIndex >= fileItems.length) {
+                loadMoreButton.style.display = 'none';
+            }
+        }
+    </script>
+</div>
             <!-- Google Lighthouse 상세 보고서 -->
             <div class="container mt-5" style="font-size: 21px;">
                 <h4>Google Lighthouse 상세 분석 결과</h4>
@@ -875,8 +1075,194 @@
 </div>
 {% endif %}
 </div>
+            <h3>프로젝트 내 코드 최적화</h3>
 
+            <div class="content-card code-optimizer">
+                <section class="file-structure code-optimizer-item">
+                    <div class="tree">
+                        <h4>Dynamic File Structure</h4>
+                        <ul id="file-structure"></ul>
+                    </div>
 
+                </section>
+                <div class="code-optimizer-item code-optimizer-solution">
+                    <section class="element-usage ">
+                        <h4>대체 가능한 변수명들 식별</h4>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>요소 이름</th>
+                                    <th>종류</th>
+                                    <th>사용 횟수</th>
+                                    <th>대체 문자열 크기 (byte)</th>
+                                    <th>절감된 용량 (byte)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>name1</td>
+                                    <td>id</td>
+                                    <td>31</td>
+                                    <td>---</td>
+                                    <td>---</td>
+                                </tr>
+                                <tr>
+                                    <td>name2</td>
+                                    <td>class</td>
+                                    <td>45</td>
+                                    <td>---</td>
+                                    <td>---</td>
+                                </tr>
+                                <tr>
+                                    <td>name3</td>
+                                    <td>변수명</td>
+                                    <td>24</td>
+                                    <td>---</td>
+                                    <td>---</td>
+                                </tr>
+                                <tr>
+                                    <td>name4</td>
+                                    <td>함수명</td>
+                                    <td>17</td>
+                                    <td>---</td>
+                                    <td>---</td>
+                                </tr>
+                                <tr>
+                                    <td>name5</td>
+                                    <td>함수명</td>
+                                    <td>12</td>
+                                    <td>---</td>
+                                    <td>---</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>절감된 용량: <strong>68.7KB</strong></p>
+                    </section>
+                    <section class="element-usage ">
+                        <h4>최적화된 코드 파일 다운로드 </h4>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>파일명</th>
+                                    <th>종류</th>
+                                    <th>원본 크기</th>
+                                    <th>압축 후 크기</th>
+                                    <th>다운로드</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>new.css</td>
+                                    <td>stylesheet</td>
+                                    <td>69KB</td>
+                                    <td>47KB</td>
+                                    <td><img class="download" src="../static/download.png" alt=""></td>
+                                </tr>
+                                <tr>
+                                    <td>widget_style.css</td>
+                                    <td>stylesheet</td>
+                                    <td>38KB</td>
+                                    <td>31KB</td>
+                                    <td><img class="download" src="../static/download.png" alt=""></td>
+                                </tr>
+                                <tr>
+                                    <td>index.html</td>
+                                    <td>Document</td>
+                                    <td>96KB</td>
+                                    <td>77KB</td>
+                                    <td><img class="download" src="../static/download.png" alt=""></td>
+                                </tr>
+                                <tr>
+                                    <td>common.js</td>
+                                    <td>Script</td>
+                                    <td>74KB</td>
+                                    <td>55KB</td>
+                                    <td><img class="download" src="../static/download.png" alt=""></td>
+                                </tr>
+                                <tr>
+                                    <td>search_home.js</td>
+                                    <td>Script</td>
+                                    <td>24KB</td>
+                                    <td>19KB</td>
+                                    <td><img class="download" src="../static/download.png" alt=""></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+
+            </div>
+
+            <script>
+                const directoryStructure = {{ directory_structure | tojson }};
+                console.log(directoryStructure);
+
+                function createFileStructure(parent, structure) {
+                    for (const key in structure) {
+                        if (key === "__files__") {
+                            // Add files to the parent element
+                            structure[key].forEach(file => {
+                                const fileElement = document.createElement("li");
+                                // Determine the icon based on the file extension
+                                let icon = "📄"; // Default icon
+                                if (file.endsWith(".css")) {
+                                    icon = "🎨";
+                                } else if (file.endsWith(".do")) {
+                                    icon = "📄";
+                                } else if (file.endsWith(".js")) {
+                                    icon = "📜";
+                                } else if (file.endsWith(".html")) {
+                                    icon = "🌐";
+                                }
+
+                                // Add the file with the appropriate icon
+                                fileElement.innerHTML = `<span class="file">${icon} ${file}</span>`;
+                                parent.appendChild(fileElement);
+
+                            });
+                        } else {
+                            // Add folder to the parent element
+                            const folderElement = document.createElement("li");
+                            folderElement.innerHTML = `
+                                <span class="folder">📁 ${key}</span>
+                                <button class="toggle">
+                                    <img src="/static/toggle_down.png" alt="Toggle">
+                                </button>
+                            `;
+
+                            const childList = document.createElement("ul");
+                            childList.classList.add("hidden"); // Initially hide subfolders
+                            folderElement.appendChild(childList);
+                            parent.appendChild(folderElement);
+
+                            // Add event listener to toggle visibility
+                            const toggleButton = folderElement.querySelector(".toggle");
+                            toggleButton.addEventListener("click", () => {
+                                childList.classList.toggle("hidden");
+                                const img = toggleButton.querySelector("img");
+                                img.src = childList.classList.contains("hidden")
+                                    ? "/static/toggle_down.png"
+                                    : "/static/toggle_up.png";
+                            });
+
+                            // Recursive call for child directories
+                            createFileStructure(childList, structure[key]);
+                        }
+                    }
+                }
+
+                function initializeFileStructure() {
+                    const rootElement = document.getElementById("file-structure");
+                    try {
+                        createFileStructure(rootElement, directoryStructure);
+                    } catch (error) {
+                        console.error("Error creating file structure:", error);
+                    }
+                }
+
+                // Initialize the file structure
+                initializeFileStructure();
+            </script>
 
 <div class="content-card">
     <h3>최적화 전/후 비교</h3>
@@ -956,7 +1342,7 @@
             </div>
         
             <div class="mt-4">
-                <h4>오픈 소스 API</h5>
+                <h4>오픈 소스 API</h4>
                 <p>
                     <h5>웹사이트 탄소 계산을 다른 도구와 워크플로우에 통합하는 데 사용할 수 있는 웹사이트 탄소 API를 제공합니다!</h5>
                 </p>
