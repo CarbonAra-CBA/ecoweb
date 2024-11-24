@@ -2426,3 +2426,217 @@
 2024-11-24 17:03:16,186 INFO:127.0.0.1 - - [24/Nov/2024 17:03:16] "[36mGET /static/statistics/top5_bad_sites.json HTTP/1.1[0m" 304 -
 2024-11-24 17:03:16,186 INFO:127.0.0.1 - - [24/Nov/2024 17:03:16] "[36mGET /static/statistics/category_total_co2.json HTTP/1.1[0m" 304 -
 2024-11-24 17:03:16,187 INFO:127.0.0.1 - - [24/Nov/2024 17:03:16] "[36mGET /static/js/institution_data.json HTTP/1.1[0m" 304 -
+2024-11-24 17:41:42,583 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-11-24 17:41:42,583 INFO:[33mPress CTRL+C to quit[0m
+2024-11-24 17:41:42,587 INFO: * Restarting with stat
+2024-11-24 17:41:56,517 WARNING: * Debugger is active!
+2024-11-24 17:41:56,527 INFO: * Debugger PIN: 103-966-611
+2024-11-24 17:42:01,881 INFO:127.0.0.1 - - [24/Nov/2024 17:42:01] "[35m[1mGET /test_code_opti HTTP/1.1[0m" 500 -
+2024-11-24 17:42:01,882 INFO:127.0.0.1 - - [24/Nov/2024 17:42:01] "[35m[1mGET /test_code_opti HTTP/1.1[0m" 500 -
+2024-11-24 17:42:02,738 INFO:127.0.0.1 - - [24/Nov/2024 17:42:02] "GET /test_code_opti?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2024-11-24 17:42:02,745 INFO:127.0.0.1 - - [24/Nov/2024 17:42:02] "GET /test_code_opti?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2024-11-24 17:42:04,223 INFO:127.0.0.1 - - [24/Nov/2024 17:42:04] "GET /test_code_opti?__debugger__=yes&cmd=resource&f=console.png&s=SMwBFtjogc6SqQMO8X07 HTTP/1.1" 200 -
+2024-11-24 17:42:06,157 INFO:127.0.0.1 - - [24/Nov/2024 17:42:06] "GET /test_code_opti?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2024-11-24 20:19:02,057 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-24 20:19:02,884 INFO: * Restarting with stat
+2024-11-24 20:19:17,306 WARNING: * Debugger is active!
+2024-11-24 20:19:17,316 INFO: * Debugger PIN: 103-966-611
+2024-11-24 20:21:04,742 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-24 20:21:05,099 INFO: * Restarting with stat
+2024-11-24 20:21:18,093 WARNING: * Debugger is active!
+2024-11-24 20:21:18,104 INFO: * Debugger PIN: 103-966-611
+2024-11-24 20:21:28,242 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-24 20:21:28,618 INFO: * Restarting with stat
+2024-11-24 20:50:50,226 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-11-24 20:50:50,227 INFO:[33mPress CTRL+C to quit[0m
+2024-11-24 20:50:50,229 INFO: * Restarting with stat
+2024-11-24 20:51:03,467 WARNING: * Debugger is active!
+2024-11-24 20:51:03,476 INFO: * Debugger PIN: 103-966-611
+2024-11-24 20:51:39,660 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-24 20:51:40,271 INFO: * Restarting with stat
+2024-11-24 20:51:54,650 WARNING: * Debugger is active!
+2024-11-24 20:51:54,666 INFO: * Debugger PIN: 103-966-611
+2024-11-24 20:51:59,288 INFO:127.0.0.1 - - [24/Nov/2024 20:51:59] "GET / HTTP/1.1" 200 -
+2024-11-24 20:57:13,355 INFO:127.0.0.1 - - [24/Nov/2024 20:57:13] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-11-24 20:57:13,428 INFO:127.0.0.1 - - [24/Nov/2024 20:57:13] "GET /carbon_calculate_emission HTTP/1.1" 200 -
+2024-11-24 20:57:18,332 INFO:127.0.0.1 - - [24/Nov/2024 20:57:18] "[35m[1mGET /code_optimization HTTP/1.1[0m" 500 -
+2024-11-24 20:57:18,938 INFO:127.0.0.1 - - [24/Nov/2024 20:57:18] "GET /code_optimization?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2024-11-24 20:57:18,948 INFO:127.0.0.1 - - [24/Nov/2024 20:57:18] "GET /code_optimization?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2024-11-24 20:57:19,524 INFO:127.0.0.1 - - [24/Nov/2024 20:57:19] "GET /code_optimization?__debugger__=yes&cmd=resource&f=console.png&s=AOVShwUzGkucby2xWSKJ HTTP/1.1" 200 -
+2024-11-24 20:57:19,770 INFO:127.0.0.1 - - [24/Nov/2024 20:57:19] "GET /code_optimization?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2024-11-24 20:58:23,184 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-24 20:58:23,710 INFO: * Restarting with stat
+2024-11-24 20:58:38,317 WARNING: * Debugger is active!
+2024-11-24 20:58:38,329 INFO: * Debugger PIN: 103-966-611
+2024-11-24 20:58:43,498 INFO:127.0.0.1 - - [24/Nov/2024 20:58:43] "GET / HTTP/1.1" 200 -
+2024-11-24 20:58:43,602 INFO:127.0.0.1 - - [24/Nov/2024 20:58:43] "[35m[1mGET /code_optimization HTTP/1.1[0m" 500 -
+2024-11-24 20:59:21,219 INFO:127.0.0.1 - - [24/Nov/2024 20:59:21] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-11-24 20:59:21,253 INFO:127.0.0.1 - - [24/Nov/2024 20:59:21] "GET /carbon_calculate_emission HTTP/1.1" 200 -
+2024-11-24 20:59:24,839 INFO:127.0.0.1 - - [24/Nov/2024 20:59:24] "[35m[1mGET /code_optimization HTTP/1.1[0m" 500 -
+2024-11-24 20:59:25,565 INFO:127.0.0.1 - - [24/Nov/2024 20:59:25] "[36mGET /code_optimization?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2024-11-24 20:59:25,581 INFO:127.0.0.1 - - [24/Nov/2024 20:59:25] "[36mGET /code_optimization?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2024-11-24 20:59:26,051 INFO:127.0.0.1 - - [24/Nov/2024 20:59:26] "GET /code_optimization?__debugger__=yes&cmd=resource&f=console.png&s=auS5qDYYjW8WoFQUkuMU HTTP/1.1" 200 -
+2024-11-24 20:59:26,300 INFO:127.0.0.1 - - [24/Nov/2024 20:59:26] "[36mGET /code_optimization?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-11-24 21:02:05,080 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-24 21:02:05,679 INFO: * Restarting with stat
+2024-11-24 21:02:18,130 WARNING: * Debugger is active!
+2024-11-24 21:02:18,139 INFO: * Debugger PIN: 103-966-611
+2024-11-24 21:02:35,056 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-24 21:02:35,288 INFO: * Restarting with stat
+2024-11-24 21:02:48,186 WARNING: * Debugger is active!
+2024-11-24 21:02:48,195 INFO: * Debugger PIN: 103-966-611
+2024-11-24 21:07:34,403 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-24 21:07:34,715 INFO: * Restarting with stat
+2024-11-24 21:07:48,266 WARNING: * Debugger is active!
+2024-11-24 21:07:48,275 INFO: * Debugger PIN: 103-966-611
+2024-11-24 21:08:00,863 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-24 21:08:01,487 INFO: * Restarting with stat
+2024-11-24 21:08:15,385 WARNING: * Debugger is active!
+2024-11-24 21:08:15,398 INFO: * Debugger PIN: 103-966-611
+2024-11-24 21:08:34,737 INFO:127.0.0.1 - - [24/Nov/2024 21:08:34] "GET / HTTP/1.1" 200 -
+2024-11-24 21:09:08,179 INFO:127.0.0.1 - - [24/Nov/2024 21:09:08] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-11-24 21:09:08,237 INFO:127.0.0.1 - - [24/Nov/2024 21:09:08] "GET /carbon_calculate_emission HTTP/1.1" 200 -
+2024-11-24 21:09:31,881 INFO:127.0.0.1 - - [24/Nov/2024 21:09:31] "[35m[1mGET /code_optimization HTTP/1.1[0m" 500 -
+2024-11-24 21:09:32,984 INFO:127.0.0.1 - - [24/Nov/2024 21:09:32] "[36mGET /code_optimization?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2024-11-24 21:09:32,995 INFO:127.0.0.1 - - [24/Nov/2024 21:09:32] "[36mGET /code_optimization?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2024-11-24 21:09:33,526 INFO:127.0.0.1 - - [24/Nov/2024 21:09:33] "GET /code_optimization?__debugger__=yes&cmd=resource&f=console.png&s=FRiRwBx7L6lDPBzbHzcd HTTP/1.1" 200 -
+2024-11-24 21:11:01,469 INFO:127.0.0.1 - - [24/Nov/2024 21:11:01] "[36mGET /code_optimization?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2024-11-24 21:12:11,820 INFO:127.0.0.1 - - [24/Nov/2024 21:12:11] "GET / HTTP/1.1" 200 -
+2024-11-24 21:12:35,458 INFO:127.0.0.1 - - [24/Nov/2024 21:12:35] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-11-24 21:12:35,480 INFO:127.0.0.1 - - [24/Nov/2024 21:12:35] "GET /carbon_calculate_emission HTTP/1.1" 200 -
+2024-11-24 21:12:43,775 INFO:127.0.0.1 - - [24/Nov/2024 21:12:43] "GET /gov-analysis HTTP/1.1" 200 -
+2024-11-24 21:12:44,070 INFO:127.0.0.1 - - [24/Nov/2024 21:12:44] "GET /static/js/kde_chart.js HTTP/1.1" 200 -
+2024-11-24 21:12:44,084 INFO:127.0.0.1 - - [24/Nov/2024 21:12:44] "GET /static/js/monthly_emissions_chart.js HTTP/1.1" 200 -
+2024-11-24 21:12:44,397 INFO:127.0.0.1 - - [24/Nov/2024 21:12:44] "GET /static/js/esg_top5_chart.js HTTP/1.1" 200 -
+2024-11-24 21:12:44,397 INFO:127.0.0.1 - - [24/Nov/2024 21:12:44] "GET /static/js/category_donut_chart.js HTTP/1.1" 200 -
+2024-11-24 21:12:44,399 INFO:127.0.0.1 - - [24/Nov/2024 21:12:44] "GET /static/js/topEmissionChart.js HTTP/1.1" 200 -
+2024-11-24 21:12:44,406 INFO:127.0.0.1 - - [24/Nov/2024 21:12:44] "GET /static/js/category_comparisonChart.js HTTP/1.1" 200 -
+2024-11-24 21:12:45,566 INFO:127.0.0.1 - - [24/Nov/2024 21:12:45] "GET /static/statistics/distribution_data.json HTTP/1.1" 200 -
+2024-11-24 21:12:45,716 INFO:127.0.0.1 - - [24/Nov/2024 21:12:45] "GET /static/statistics/http_archive_data.json HTTP/1.1" 200 -
+2024-11-24 21:12:45,802 INFO:127.0.0.1 - - [24/Nov/2024 21:12:45] "GET /static/statistics/top5_efficient_sites.json HTTP/1.1" 200 -
+2024-11-24 21:12:45,819 INFO:127.0.0.1 - - [24/Nov/2024 21:12:45] "GET /static/statistics/category_total_co2.json HTTP/1.1" 200 -
+2024-11-24 21:12:45,838 INFO:127.0.0.1 - - [24/Nov/2024 21:12:45] "GET /static/statistics/top5_bad_sites.json HTTP/1.1" 200 -
+2024-11-24 21:12:45,882 INFO:127.0.0.1 - - [24/Nov/2024 21:12:45] "GET /static/js/institution_data.json HTTP/1.1" 200 -
+2024-11-24 21:12:47,973 INFO:127.0.0.1 - - [24/Nov/2024 21:12:47] "[35m[1mGET /code_optimization HTTP/1.1[0m" 500 -
+2024-11-24 21:12:48,289 INFO:127.0.0.1 - - [24/Nov/2024 21:12:48] "GET /code_optimization?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2024-11-24 21:12:48,608 INFO:127.0.0.1 - - [24/Nov/2024 21:12:48] "GET /code_optimization?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2024-11-24 21:12:49,267 INFO:127.0.0.1 - - [24/Nov/2024 21:12:49] "GET /code_optimization?__debugger__=yes&cmd=resource&f=console.png&s=FRiRwBx7L6lDPBzbHzcd HTTP/1.1" 200 -
+2024-11-24 21:14:04,118 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-24 21:14:04,458 INFO: * Restarting with stat
+2024-11-24 21:14:18,695 WARNING: * Debugger is active!
+2024-11-24 21:14:18,706 INFO: * Debugger PIN: 103-966-611
+2024-11-24 21:15:10,033 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-24 21:15:10,464 INFO: * Restarting with stat
+2024-11-24 21:15:24,261 WARNING: * Debugger is active!
+2024-11-24 21:15:24,272 INFO: * Debugger PIN: 103-966-611
+2024-11-24 21:15:33,692 INFO:127.0.0.1 - - [24/Nov/2024 21:15:33] "GET / HTTP/1.1" 200 -
+2024-11-24 21:15:34,555 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-24 21:15:35,114 INFO: * Restarting with stat
+2024-11-24 21:15:48,848 WARNING: * Debugger is active!
+2024-11-24 21:15:48,858 INFO: * Debugger PIN: 103-966-611
+2024-11-24 21:16:14,556 INFO:127.0.0.1 - - [24/Nov/2024 21:16:14] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-11-24 21:16:14,614 INFO:127.0.0.1 - - [24/Nov/2024 21:16:14] "GET /carbon_calculate_emission HTTP/1.1" 200 -
+2024-11-24 21:16:20,707 INFO:127.0.0.1 - - [24/Nov/2024 21:16:20] "GET /code_optimization HTTP/1.1" 200 -
+2024-11-24 21:16:21,563 INFO:127.0.0.1 - - [24/Nov/2024 21:16:21] "[33mGET /static/download.png HTTP/1.1[0m" 404 -
+2024-11-24 21:16:22,808 INFO:127.0.0.1 - - [24/Nov/2024 21:16:22] "GET /static/js/guideline.js HTTP/1.1" 200 -
+2024-11-24 21:16:22,907 INFO:127.0.0.1 - - [24/Nov/2024 21:16:22] "GET /static/js/directory_structure.js HTTP/1.1" 200 -
+2024-11-24 21:16:45,911 INFO:127.0.0.1 - - [24/Nov/2024 21:16:45] "GET /code_optimization HTTP/1.1" 200 -
+2024-11-24 21:16:46,350 INFO:127.0.0.1 - - [24/Nov/2024 21:16:46] "[33mGET /static/download.png HTTP/1.1[0m" 404 -
+2024-11-24 21:16:47,131 INFO:127.0.0.1 - - [24/Nov/2024 21:16:47] "GET /static/js/guideline.js HTTP/1.1" 200 -
+2024-11-24 21:16:47,223 INFO:127.0.0.1 - - [24/Nov/2024 21:16:47] "GET /static/js/directory_structure.js HTTP/1.1" 200 -
+2024-11-24 21:20:16,931 INFO:127.0.0.1 - - [24/Nov/2024 21:20:16] "GET /code_optimization HTTP/1.1" 200 -
+2024-11-24 21:20:18,078 INFO:127.0.0.1 - - [24/Nov/2024 21:20:18] "[33mGET /static/download.png HTTP/1.1[0m" 404 -
+2024-11-24 21:20:18,255 INFO:127.0.0.1 - - [24/Nov/2024 21:20:18] "GET /static/js/guideline.js HTTP/1.1" 200 -
+2024-11-24 21:20:18,643 INFO:127.0.0.1 - - [24/Nov/2024 21:20:18] "GET /static/js/directory_structure.js HTTP/1.1" 200 -
+2024-11-24 21:20:25,820 INFO:127.0.0.1 - - [24/Nov/2024 21:20:25] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:20:31,133 INFO:127.0.0.1 - - [24/Nov/2024 21:20:31] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:20:36,694 INFO:127.0.0.1 - - [24/Nov/2024 21:20:36] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:20:41,141 INFO:127.0.0.1 - - [24/Nov/2024 21:20:41] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:20:46,701 INFO:127.0.0.1 - - [24/Nov/2024 21:20:46] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:20:51,994 INFO:127.0.0.1 - - [24/Nov/2024 21:20:51] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:20:56,698 INFO:127.0.0.1 - - [24/Nov/2024 21:20:56] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:21:02,013 INFO:127.0.0.1 - - [24/Nov/2024 21:21:02] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:21:06,691 INFO:127.0.0.1 - - [24/Nov/2024 21:21:06] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:21:11,124 INFO:127.0.0.1 - - [24/Nov/2024 21:21:11] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:21:16,689 INFO:127.0.0.1 - - [24/Nov/2024 21:21:16] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:21:22,004 INFO:127.0.0.1 - - [24/Nov/2024 21:21:22] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:21:26,688 INFO:127.0.0.1 - - [24/Nov/2024 21:21:26] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:21:32,009 INFO:127.0.0.1 - - [24/Nov/2024 21:21:32] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:21:36,696 INFO:127.0.0.1 - - [24/Nov/2024 21:21:36] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:21:42,007 INFO:127.0.0.1 - - [24/Nov/2024 21:21:42] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:21:46,685 INFO:127.0.0.1 - - [24/Nov/2024 21:21:46] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:21:52,000 INFO:127.0.0.1 - - [24/Nov/2024 21:21:52] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:21:56,701 INFO:127.0.0.1 - - [24/Nov/2024 21:21:56] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:22:01,995 INFO:127.0.0.1 - - [24/Nov/2024 21:22:01] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:22:06,691 INFO:127.0.0.1 - - [24/Nov/2024 21:22:06] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:22:12,004 INFO:127.0.0.1 - - [24/Nov/2024 21:22:12] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:22:44,465 INFO:127.0.0.1 - - [24/Nov/2024 21:22:44] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:22:46,132 INFO:127.0.0.1 - - [24/Nov/2024 21:22:46] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:22:50,825 INFO:127.0.0.1 - - [24/Nov/2024 21:22:50] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:22:56,148 INFO:127.0.0.1 - - [24/Nov/2024 21:22:56] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:23:00,832 INFO:127.0.0.1 - - [24/Nov/2024 21:23:00] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:23:06,138 INFO:127.0.0.1 - - [24/Nov/2024 21:23:06] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:23:10,825 INFO:127.0.0.1 - - [24/Nov/2024 21:23:10] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:23:16,138 INFO:127.0.0.1 - - [24/Nov/2024 21:23:16] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:23:20,829 INFO:127.0.0.1 - - [24/Nov/2024 21:23:20] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:23:26,137 INFO:127.0.0.1 - - [24/Nov/2024 21:23:26] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:23:30,841 INFO:127.0.0.1 - - [24/Nov/2024 21:23:30] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:23:36,151 INFO:127.0.0.1 - - [24/Nov/2024 21:23:36] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:23:40,836 INFO:127.0.0.1 - - [24/Nov/2024 21:23:40] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:23:46,261 INFO:127.0.0.1 - - [24/Nov/2024 21:23:46] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:23:46,568 INFO:127.0.0.1 - - [24/Nov/2024 21:23:46] "GET /code_optimization HTTP/1.1" 200 -
+2024-11-24 21:23:47,493 INFO:127.0.0.1 - - [24/Nov/2024 21:23:47] "[33mGET /static/download.png HTTP/1.1[0m" 404 -
+2024-11-24 21:23:48,147 INFO:127.0.0.1 - - [24/Nov/2024 21:23:48] "GET /static/js/guideline.js HTTP/1.1" 200 -
+2024-11-24 21:23:48,316 INFO:127.0.0.1 - - [24/Nov/2024 21:23:48] "GET /static/js/directory_structure.js HTTP/1.1" 200 -
+2024-11-24 21:23:54,997 INFO:127.0.0.1 - - [24/Nov/2024 21:23:54] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:24:00,302 INFO:127.0.0.1 - - [24/Nov/2024 21:24:00] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:24:04,990 INFO:127.0.0.1 - - [24/Nov/2024 21:24:04] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:24:10,302 INFO:127.0.0.1 - - [24/Nov/2024 21:24:10] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:24:14,995 INFO:127.0.0.1 - - [24/Nov/2024 21:24:14] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:24:20,298 INFO:127.0.0.1 - - [24/Nov/2024 21:24:20] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:24:25,044 INFO:127.0.0.1 - - [24/Nov/2024 21:24:25] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:24:30,303 INFO:127.0.0.1 - - [24/Nov/2024 21:24:30] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:24:35,691 INFO:127.0.0.1 - - [24/Nov/2024 21:24:35] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:24:41,003 INFO:127.0.0.1 - - [24/Nov/2024 21:24:41] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:24:45,689 INFO:127.0.0.1 - - [24/Nov/2024 21:24:45] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:24:51,001 INFO:127.0.0.1 - - [24/Nov/2024 21:24:51] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:24:54,987 INFO:127.0.0.1 - - [24/Nov/2024 21:24:54] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:25:01,010 INFO:127.0.0.1 - - [24/Nov/2024 21:25:01] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:25:05,695 INFO:127.0.0.1 - - [24/Nov/2024 21:25:05] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:25:11,011 INFO:127.0.0.1 - - [24/Nov/2024 21:25:11] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:25:15,697 INFO:127.0.0.1 - - [24/Nov/2024 21:25:15] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:25:21,012 INFO:127.0.0.1 - - [24/Nov/2024 21:25:21] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:25:24,999 INFO:127.0.0.1 - - [24/Nov/2024 21:25:24] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:25:30,306 INFO:127.0.0.1 - - [24/Nov/2024 21:25:30] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:25:34,992 INFO:127.0.0.1 - - [24/Nov/2024 21:25:34] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:25:41,001 INFO:127.0.0.1 - - [24/Nov/2024 21:25:41] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:25:45,689 INFO:127.0.0.1 - - [24/Nov/2024 21:25:45] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:25:50,999 INFO:127.0.0.1 - - [24/Nov/2024 21:25:50] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:25:55,697 INFO:127.0.0.1 - - [24/Nov/2024 21:25:55] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:26:00,999 INFO:127.0.0.1 - - [24/Nov/2024 21:26:00] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:26:05,691 INFO:127.0.0.1 - - [24/Nov/2024 21:26:05] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:26:11,006 INFO:127.0.0.1 - - [24/Nov/2024 21:26:11] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:26:15,722 INFO:127.0.0.1 - - [24/Nov/2024 21:26:15] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:26:20,993 INFO:127.0.0.1 - - [24/Nov/2024 21:26:20] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:26:25,702 INFO:127.0.0.1 - - [24/Nov/2024 21:26:25] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:26:31,007 INFO:127.0.0.1 - - [24/Nov/2024 21:26:31] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:26:35,687 INFO:127.0.0.1 - - [24/Nov/2024 21:26:35] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:27:11,003 INFO:127.0.0.1 - - [24/Nov/2024 21:27:11] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:28:10,709 INFO:127.0.0.1 - - [24/Nov/2024 21:28:10] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:29:10,996 INFO:127.0.0.1 - - [24/Nov/2024 21:29:10] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:30:10,710 INFO:127.0.0.1 - - [24/Nov/2024 21:30:10] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:30:24,942 INFO:127.0.0.1 - - [24/Nov/2024 21:30:24] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:30:25,201 INFO:127.0.0.1 - - [24/Nov/2024 21:30:25] "[35m[1mGET /check_async/{{%20task_id%20}} HTTP/1.1[0m" 202 -
+2024-11-24 21:30:26,001 INFO:127.0.0.1 - - [24/Nov/2024 21:30:26] "[35m[1mGET /code_optimization HTTP/1.1[0m" 500 -
+2024-11-24 21:30:27,002 INFO:127.0.0.1 - - [24/Nov/2024 21:30:27] "GET /code_optimization?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2024-11-24 21:30:27,351 INFO:127.0.0.1 - - [24/Nov/2024 21:30:27] "GET /code_optimization?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2024-11-24 21:30:28,115 INFO:127.0.0.1 - - [24/Nov/2024 21:30:28] "GET /code_optimization?__debugger__=yes&cmd=resource&f=console.png&s=Tn9N6grlpjC1r2fOoVjT HTTP/1.1" 200 -
+2024-11-24 21:30:29,203 INFO:127.0.0.1 - - [24/Nov/2024 21:30:29] "GET /code_optimization?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2024-11-24 21:37:39,692 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-24 21:37:40,648 INFO: * Restarting with stat
+2024-11-24 21:37:54,263 WARNING: * Debugger is active!
+2024-11-24 21:37:54,277 INFO: * Debugger PIN: 103-966-611
+2024-11-24 21:38:05,776 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-24 21:38:06,238 INFO: * Restarting with stat

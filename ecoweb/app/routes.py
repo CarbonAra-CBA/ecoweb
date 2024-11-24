@@ -15,8 +15,7 @@ from werkzeug.security import generate_password_hash, check_password_hash  # che
 from datetime import datetime
 from flask import jsonify
 from flask import g
-
-from app.ProjectMaker.DirectoryMaker import directory_maker
+from app.ProjectMaker.DirectoryMaker import directory_maker, directory_to_json
 from app.ProjectMaker.guideline_report import create_guideline_report, guideline_summarize
 from dotenv import load_dotenv
 # from flask_socketio import SocketIO
@@ -312,15 +311,46 @@ def init_routes(app):
     @app.route('/gov-analysis')
     def gov_analysis():
         return render_template('gov_analysis.html')
+        
+    @app.route('/code_optimization')
+    def code_optimization():
+        view_data = session.get('view_data')
+        url_s = session.get('url')
+
+        print("[view_data] : ", view_data)
+        # JSON 문자열을 딕셔너리로 변환
+        try:
+            view_data = json.loads(view_data) if view_data else {}
+        except:
+            view_data = {}
+
+        print("[view_data-after] : ", view_data)
+        collection_traffic = db.db.lighthouse_traffic
+        collection_resource = db.db.lighthouse_resource
+
+        # 비동기 작업(가이드라인 분석)
+        task_id = str(uuid.uuid4())
+        thread = Thread(target=perform_async_guideline_analize, args=(task_id, url_s, collection_traffic, collection_resource))
+        thread.start()
+
+        # 코드 최적화 결과 수집
+            # 파일 구조를 json으로 표현해서 전달
+        directory_structure = directory_to_json(root_path)
+        print("Directory Structure : ")
+        print(type(directory_structure))
+        print(directory_structure)
+        # 식별된 변수명과 대체 문자열, 절감 가능치를 json으로 표현해서 전달
+        # 각 코드 파일을 압축한 버전을 다운로드할 수 있게 제공하기
+
+        return render_template('code_optimization.html', 
+                               view_data=view_data,
+                               task_id = task_id)
     
     @app.route('/img_optimization')
     def img_optimization():
         return render_template('img_optimization.html')
-    
-    @app.route('/code_optimization')
-    def code_optimization():
-        return render_template('code_optimization.html')
-    
+
     @app.route('/world_analysis')
     def world_analysis():
         return render_template('world_analysis.html')
+
