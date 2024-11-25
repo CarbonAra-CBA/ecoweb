@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECO-WEB</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <style>
+        body {
+            font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            overflow-x: hidden;
+            background-color: #f3f4f6;
+        }
+
+        /* 헤더 스타일 */
+        .navbar {
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            background: white;
+        }
+
+        /* 로그인/사용자 정보 스타일 */
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-details {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .user-institution,
+        .user-department,
+        .user-name {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-right: 40px;
+        }
+
+        .auth-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: inherit;
+            font-size: 0.9rem;
+        }
+
+        /* 사이드바 스타일 */
+        .sidebar {
+            min-height: 100vh;
+            box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+        }
+
+        .sidebar .nav-link {
+            color: #333;
+            padding: 1rem;
+        }
+
+        .sidebar .nav-link:hover {
+            background-color: #e9ecef;
+        }
+
+        .sidebar .nav-link.active {
+            background-color: #198754;
+            color: white;
+        }
+
+        /* 로고 스타일 */
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #198754 !important;
+        }
+
+        .eco-icon {
+            color: #198754;
+            margin-right: 5px;
+        }
+
+        /* 메인 컨텐츠 영역 */
+        .main-content {
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .user-info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .user-details {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    </style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('home') }}">
+                <i class="fas fa-leaf eco-icon"></i>
+                ECO-WEB
+            </a>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <div class="auth-buttons">
+                    {% if session.get('username') %}
+                    <div class="user-info">
+                        <div class="user-details">
+                            <span class="user-institution">{{ session.get('institution_type') }}</span>
+                            <span class="user-department">{{ session.get('department') }} 부서</span>
+                            <span class="user-name">{{ session.get('username') }} 님</span>
+                        </div>
+                        <a href="{{ url_for('logout') }}" class="auth-btn logout-btn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            로그아웃
+                        </a>
+                    </div>
+                    {% else %}
+                    <a href="{{ url_for('login') }}" class="auth-btn login-btn">
+                        <i class="fas fa-sign-in-alt"></i>
+                        로그인
+                    </a>
+                    <a href="{{ url_for('signup') }}" class="auth-btn signup-btn">
+                        <i class="fas fa-user-plus"></i>
+                        회원가입
+                    </a>
+                    {% endif %}
+                </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- 사이드바 -->
+            <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.endpoint == 'carbon_calculate_emission' %}active{% endif %}" 
+                               href="{{ url_for('carbon_calculate_emission') }}">
+                                <i class="fas fa-chart-line me-2"></i>
+                                탄소배출량
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.endpoint == 'gov_analysis' %}active{% endif %}"
+                               href="{{ url_for('gov_analysis') }}">
+                                <i class="fas fa-university me-2"></i>
+                                정부/공기관 분석
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.endpoint == 'code_optimization' %}active{% endif %}"
+                               href="{{ url_for('code_optimization') }}">
+                                <i class="fas fa-code me-2"></i>
+                                코드최적화
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.endpoint == 'img_optimization' %}active{% endif %}"
+                               href="{{ url_for('img_optimization') }}">
+                                <i class="fas fa-image me-2"></i>
+                                이미지 최적화
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.endpoint == 'world_analysis' %}active{% endif %}"
+                               href="{{ url_for('world_analysis') }}">
+                                <i class="fas fa-globe me-2"></i>
+                                국가별 통계
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- 메인 컨텐츠 영역 -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
+                {% block content %}
+                {% endblock %}
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

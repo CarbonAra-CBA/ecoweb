@@ -1,0 +1,416 @@
+{% extends "common.html" %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- 왼쪽 Dynamic File Structure (2행 높이) -->
+        <div class="col-md-3" style="height: calc(100vh - 100px);">
+            <div class="card h-100 shadow-sm">
+                <div class="card-header bg-light">
+                    <h4 class="mb-0">Dynamic File Structure</h4>
+                </div>
+                <div class="card-body overflow-auto">
+                    <div class="tree">
+                        <ul id="file-structure"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 오른쪽 섹션 -->
+        <div class="col-md-9">
+            <!-- 첫 번째 행 -->
+            <div class="row mb-4">
+                <!-- W3C 가이드라인 -->
+                <div class="col-md-6">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header bg-light">
+                            <h4 class="mb-0">W3C 지속가능한 웹개발 가이드라인 준수 현황</h4>
+                        </div>
+                        <div class="card-body">
+                            <!-- 로딩 스피너 추가 -->
+                            <div id="loading-spinner" class="text-center py-5">
+                                <div class="spinner-border text-success" role="status" style="width: 6rem; height: 6rem;">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                <p class="mt-2" id="loading-text" style="font-size: 1.2em;">분석 중입니다...</p>
+                            </div>
+                            <table class="table" id="guideline-table" style="display: none;">
+                                <thead>
+                                    <tr>
+                                        <th>번호</th>
+                                        <th>항목</th>
+                                        <th>준수여부</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="guideline-section"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 도넛 차트 -->
+                <div class="col-md-6">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header bg-light">
+                            <h4 class="mb-0">웹사이트 리소스 분석</h4>
+                        </div>
+                        <div class="card-body d-flex justify-content-center align-items-center">
+                            <div style="width: 100%; height: 300px;">
+                                <canvas id="resourceDonutChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 두 번째 행 -->
+            <div class="row mb-4">
+                <!-- Google Lighthouse 분석 결과 -->
+                <div class="col-md-7">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-light">
+                            <h4 class="mb-0">Google Lighthouse 상세 분석 결과</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead class="thead-light">
+                            <tr>
+                                <th>분석 항목</th>
+                                <th>용량</th>
+                                <th>상세 내용</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>총 리소스 용량</td>
+                                <td>{{ (view_data.total_byte_weight / 1024 / 1024)|round(2) }}MB</td>
+                                <td>전체 페이지 리소스 크기</td>
+                            </tr>
+                            <tr>
+                                <td>서드파티 스크립트 제거</td>
+                                <td>{{ (view_data.third_party_summary_wasted_bytes / 1024 / 1024)|round(2) }}MB</td>
+                                <td>외부 스크립트로 인한 낭비 용량</td>
+                            </tr>
+                            <tr>
+                                <td>JavaScript 분석</td>
+                                <td>
+                                    미사용: {{ (view_data.total_unused_bytes_script / 1024 / 1024)|round(2) }}MB<br>
+                                    전체: {{ (view_data.total_resource_bytes_script / 1024 / 1024)|round(2) }}MB
+                                </td>
+                                <td>전체 JavaScript 중 미사용 코드 비율:
+                                    {{ ((view_data.total_unused_bytes_script / view_data.total_resource_bytes_script) * 100)|round(1) }}%
+                                </td>
+                            </tr>
+                            {% if view_data.can_optimize_css_bytes > 0 %}
+                            <tr>
+                                <td>미사용 CSS</td>
+                                <td>{{ (view_data.can_optimize_css_bytes / 1024)|round(2) }}KB</td>
+                                <td>사용되지 않는 CSS 규칙 제거로 최적화 가능</td>
+                            </tr>
+                            {% endif %}
+                            {% if view_data.can_optimize_js_bytes > 0 %}
+                            <tr>
+                                <td>미사용 JavaScript</td>
+                                <td>{{ (view_data.can_optimize_js_bytes / 1024)|round(2) }}KB</td>
+                                <td>지연 로딩 및 미사용 코드 제거로 최적화 가능</td>
+                            </tr>
+                            {% endif %}
+                            {% if view_data.modern_image_formats_bytes > 0 %}
+                            <tr>
+                                <td>이미지 최적화 가능</td>
+                                <td>{{ (view_data.modern_image_formats_bytes / 1024)|round(2) }}KB</td>
+                                <td>WebP/AVIF 포맷 변환으로 절감 가능</td>
+                            </tr>
+                            {% endif %}
+                            {% if view_data.efficient_animated_content > 0 %}
+                            <tr>
+                                <td>애니메이션 최적화</td>
+                                <td>{{ (view_data.efficient_animated_content / 1024)|round(2) }}KB</td>
+                                <td>GIF를 MP4/WebM으로 변환하여 절감 가능</td>
+                            </tr>
+                            {% endif %}
+                            {% if view_data.duplicated_javascript > 0 %}
+                            <tr>
+                                <td>중복 JavaScript</td>
+                                <td>{{ (view_data.duplicated_javascript / 1024)|round(2) }}KB</td>
+                                <td>중복된 JavaScript 모듈 제거로 최적화 가능</td>
+                            </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 압축된 코드 리스트 -->
+                <div class="col-md-5">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                            <h4 class="mb-0">압축된 코드 리스트</h4>
+                            <button class="btn btn-outline-success btn-sm">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>파일명</th>
+                                            <th>종류</th>
+                                            <th>원본 크기</th>
+                                            <th>압축 후 크기</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tbody>
+                                            <tr>
+                                                <td>new.css</td>
+                                                <td>stylesheet</td>
+                                                <td>69KB</td>
+                                                <td>47KB</td>
+                                            </tr>
+                                            <tr>
+                                                <td>widget_style.css</td>
+                                                <td>stylesheet</td>
+                                                <td>38KB</td>
+                                                <td>31KB</td>
+                                            </tr>
+                                            <tr>
+                                                <td>index.html</td>
+                                                <td>Document</td>
+                                                <td>96KB</td>
+                                                <td>77KB</td>
+                                            </tr>
+                                            <tr>
+                                                <td>common.js</td>
+                                                <td>Script</td>
+                                                <td>74KB</td>
+                                                <td>55KB</td>
+                                            </tr>
+                                            <tr>
+                                                <td>search_home.js</td>
+                                                <td>Script</td>
+                                                <td>24KB</td>
+                                                <td>19KB</td>
+                                            </tr>
+                                        </tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% set total_optimization = view_data.can_optimize_css_bytes +
+                view_data.can_optimize_js_bytes +
+                view_data.modern_image_formats_bytes +
+                view_data.efficient_animated_content +
+                view_data.duplicated_javascript %}
+            <!-- 최하단 최적화 요약 -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card shadow-sm bg-light">
+                        <div class="card-body">
+                            <div class="row text-center">
+                                <div class="col-md-6">
+                                    <h4>전체 리소스 중&nbsp;&nbsp;<span class="text-success">{{ (total_optimization / 1024 / 1024)|round(2) }}MB </span>
+                                        &nbsp;&nbsp;<span class="text-success"> {{ ((total_optimization / view_data.total_byte_weight) * 100)|round(1) }}%</span>&nbsp;&nbsp;절감 가능</h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>탄소 배출량 <span class="text-success">{{ ((total_optimization / view_data.total_byte_weight) * 100)|round(1) }}%</span> 절감 가능</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 스타일 시트 -->
+<style>
+    
+/* 파일 구조 표현 */
+
+.tree ul.hidden {
+    display: none;
+}
+
+.tree li {
+    margin: 0;
+    padding: 10px 5px;
+    position: relative;
+}
+
+.folder {
+    background-color: #e0f7fa;
+    color: #00796b;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.file {
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.css-file {
+    background-color: #fff9c4;
+    color: #f57f17;
+}
+
+
+
+.toggle {
+    background-color: #ffffff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 20px;
+    vertical-align: middle;
+}
+
+.toggle:hover {
+    background-color: #0056b3;
+}
+        .toggle img {
+    width: 30px;
+    height: 30px;
+}
+.code-optimizer {
+        display: flex; /* Flexbox를 활성화 */
+    width: 100%;
+        }
+
+        .code-optimizer-item {
+            flex: 1;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .download {
+            width: 30px;
+            height: 30px;
+        }
+        .spinner {
+            width: 150px;
+            height: 150px;
+            border: 16px solid rgba(144, 238, 144, 0.3); /* 파스텔 초록색 투명한 테두리 */
+            border-top: 16px solid rgba(144, 238, 144, 1); /* 파스텔 초록색 불투명 테두리 */
+            border-radius: 50%;
+            animation: spin 2s linear infinite;
+        }
+
+</style>
+<script>
+    const directoryStructure = {{ directory_structure | tojson }};
+
+document.addEventListener('DOMContentLoaded', function() {
+    const loadingSpinner = document.getElementById('loading-spinner');
+    const guidelineTable = document.getElementById('guideline-table'); 
+    
+    // 도넛 차트 생성
+    const resourceData = [
+        { name: "폰트", value: {{view_data.font_total_bytes}} },
+        { name: "스크립트", value: {{view_data.script_total_bytes}} },
+        { name: "HTML", value: {{view_data.html_total_bytes}} },
+        { name: "CSS", value: {{view_data.css_total_bytes}} },
+        { name: "기타", value: {{view_data.other_total_bytes}} },
+        { name: "미디어", value: {{view_data.media_total_bytes}} },
+        { name: "서드파티", value: {{view_data.third_party_total_bytes}} }
+    ];
+
+    // 데이터 가공
+    const labels = resourceData.map(item => item.name);
+    const values = resourceData.map(item => item.value);
+    const total = values.reduce((acc, curr) => acc + curr, 0);
+    
+    // 백분율 계산 및 포맷팅
+    const percentages = values.map(value => ((value / total) * 100).toFixed(1));
+    const formattedLabels = labels.map((label, i) => `${label} (${percentages[i]}%)`);
+
+    // 차트 색상
+    const colors = [
+    '#A5D6A7', // 연한 그린
+    '#81C784', // 중간 그린
+    '#66BB6A', // 밝은 그린
+    '#4CAF50', // 기본 그린
+    '#43A047', // 다크 그린
+    '#388E3C', // 더 다크 그린
+    '#C8E6C9'  // 연한 그레이 그린
+];
+
+    // 도넛 차트 생성
+    const ctx = document.getElementById('resourceDonutChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: formattedLabels,
+            datasets: [{
+                data: values,
+                backgroundColor: colors,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'right',
+                    labels: {
+                        font: {
+                            size: 12
+                        },
+                        padding: 20
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const value = context.raw;
+                            const percentage = ((value / total) * 100).toFixed(1);
+                            const label = context.label.split(' (')[0];
+                            
+                            // 바이트를 적절한 단위로 변환
+                            let formattedValue;
+                            if (value >= 1024 * 1024) {
+                                formattedValue = (value / (1024 * 1024)).toFixed(2) + ' MB';
+                            } else if (value >= 1024) {
+                                formattedValue = (value / 1024).toFixed(2) + ' KB';
+                            } else {
+                                formattedValue = value + ' B';
+                            }
+                            
+                            return `${label}: ${formattedValue} (${percentage}%)`;
+                        }
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
+<!-- 스크립트 -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='js/guideline.js') }}"></script>
+<script src="{{ url_for('static', filename='js/directory_structure.js') }}"></script>
+
+<script>
+    const loadingSpinner = document.getElementById('loading-spinner');
+    const guidelineTable = document.getElementById('guideline-table');
+
+    
+</script>
+{% endblock %}

@@ -1,0 +1,118 @@
+{% extends "common.html" %}
+{% block content %}
+<h4>형식변환 권장 이미지 목록 <i class="fa-regular fa-folder"></i> <span class="file-size">(총 용량 {{ totalsize }} bytes, 총 {{ filecount }}개 파일)</span></h4>
+    <div class="parents">
+    <div>
+    <ul class="file-list">
+        {% for file in files[:8] %}
+        <li class="file-item">
+        <span class="file-name">{{ file.name }}</span>
+            <span class="file-size">({{ file.size }} bytes)</span>
+        </li>
+        {% endfor %}
+
+    <!-- 나머지 파일들은 숨겨둠 -->
+        {% for file in files[8:] %}
+        <li class="file-item hidden">
+        <span class="file-name">{{ file.name }}</span>
+            <span class="file-size">({{ file.size }} bytes)</span>
+        </li>
+        {% endfor %}
+    </ul>
+    </div>
+    <div class="chart-container" style="position:relative;top:20px">
+        <canvas id="fileChart"></canvas>
+    </div>
+
+    <div class="load-more" onclick="loadMore()">더보기</div>
+
+    <script>
+        // Flask에서 파일 데이터를 JavaScript 변수로 전달
+        const files = {{ category | tojson }};
+
+        // 범주별 파일 용량 데이터 구성
+        const iconsData = files.iconfile.map(file => file.size);
+        const logosData = files.logofile.map(file => file.size);
+        const othersData = files.others.map(file => file.size);
+
+        // 차트 생성
+        const ctx = document.getElementById('fileChart').getContext('2d');
+        const fileChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: Array.from({length: Math.max(iconsData.length, logosData.length, othersData.length)}, (_, i) => i + 1),
+                datasets: [
+                    {
+                        label: 'Icons',
+                        data: iconsData,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        fill: false,
+                    },
+                    {
+                        label: 'Logos',
+                        data: logosData,
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        fill: false,
+                    },
+                    {
+                        label: 'Others',
+                        data: othersData,
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        fill: false,
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'File Size (bytes)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: false,
+                            text: 'File Index'
+                        },
+                        ticks: {
+                            autoSkip: true,
+                            maxRotation: 0
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+    
+
+    <script>
+        let currentIndex = 8;  // 처음에 표시되는 파일 수
+        const increment = 8;    // 더보기 클릭 시 추가로 표시할 파일 수
+        const fileItems = document.querySelectorAll('.file-item');
+        const loadMoreButton = document.querySelector('.load-more');
+
+        function loadMore() {
+            // 추가로 표시할 파일들을 보여줌
+            for (let i = currentIndex; i < currentIndex + increment; i++) {
+                if (fileItems[i]) {
+                    fileItems[i].classList.remove('hidden');
+                }
+            }
+
+            // 현재 인덱스 업데이트
+            currentIndex += increment;
+
+            // 더 이상 표시할 파일이 없으면 "더보기" 버튼 숨기기
+            if (currentIndex >= fileItems.length) {
+                loadMoreButton.style.display = 'none';
+            }
+        }
+    </script>
+
+{% endblock %}

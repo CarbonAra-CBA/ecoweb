@@ -1,0 +1,414 @@
+<style>
+
+/* 파일 구조 표현 */
+
+.tree ul.hidden {
+    display: none;
+}
+
+.tree li {
+    margin: 0;
+    padding: 10px 5px;
+    position: relative;
+}
+
+.folder {
+    background-color: #e0f7fa;
+    color: #00796b;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.file {
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.css-file {
+    background-color: #fff9c4;
+    color: #f57f17;
+}
+
+
+
+.toggle {
+    background-color: #ffffff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 20px;
+    vertical-align: middle;
+}
+
+.toggle:hover {
+    background-color: #0056b3;
+}
+        .toggle img {
+    width: 30px;
+    height: 30px;
+}
+.code-optimizer {
+        display: flex; /* Flexbox를 활성화 */
+    width: 100%;
+        }
+
+        .code-optimizer-item {
+            flex: 1;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .download {
+            width: 30px;
+            height: 30px;
+        }
+
+</style>
+
+<!-- 프로젝트 내 코드 최적화 컨텐츠 카드 -->
+<h3>프로젝트 내 코드 최적화</h3>
+
+<div class="content-card my-5 row">
+    <section class="col-lg-4 mb-4 file-structure code-optimizer-item">
+        <div class="tree">
+            <h4>Dynamic File Structure</h4>
+            <ul id="file-structure"></ul>
+        </div>
+
+    </section>
+    <div class="col-lg-8">
+        <div class="row">
+            <div class="col-xl-6">
+                <!-- Id 이름 식별 -->
+                <section class="element-usage grid-container mb-4">
+
+                    <div class="table-responsive">
+                        <h4>Id 이름 식별</h4>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                    <tr>
+                        <th>요소 이름</th>
+                        <th>사용 횟수</th>
+                        <th>대체 문자열 크기 (byte)</th>
+                        <th>절감된 용량 (byte)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>visual_content</td>
+                        <td>7</td>
+                        <td>2byte</td>
+                        <td>77byte</td>
+                    </tr>
+                    <tr>
+                        <td>targetSiteId</td>
+                        <td>10</td>
+                        <td>1byte</td>
+                        <td>110byte</td>
+                    </tr>
+                    <tr>
+                        <td>totalSearchForm</td>
+                        <td>5</td>
+                        <td>2byte</td>
+                        <td>65byte</td>
+                    </tr>
+                    <tr>
+                        <td>visual_content</td>
+                        <td>7</td>
+                        <td>2byte</td>
+                        <td>77byte</td>
+                    </tr>
+                    <tr>
+                        <td>depth1_menu</td>
+                        <td>45</td>
+                        <td>1byte</td>
+                        <td>450byte</td>
+                    </tr>
+                </tbody>
+                        </table>
+                    </div>
+                </section>
+                <!-- Class 이름 식별 -->
+                <section class="element-usage grid-container mb-4">
+
+                    <div class="table-responsive">
+                        <h4>Class 이름 식별</h4>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                    <tr>
+                        <th>요소 이름</th>
+                        <th>사용 횟수</th>
+                        <th>대체 문자열 크기 (byte)</th>
+                        <th>절감된 용량 (byte)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>inp_c</td>
+                        <td>32</td>
+                        <td>1byte</td>
+                        <td>128byte</td>
+                    </tr>
+                    <tr>
+                        <td>btn_fav_save</td>
+                        <td>12</td>
+                        <td>2byte</td>
+                        <td>120byte</td>
+                    </tr>
+                    <tr>
+                        <td>totalSearchForm</td>
+                        <td>5</td>
+                        <td>2byte</td>
+                        <td>65byte</td>
+                    </tr>
+                    <tr>
+                        <td>visual_content</td>
+                        <td>7</td>
+                        <td>2byte</td>
+                        <td>77byte</td>
+                    </tr>
+                    <tr>
+                        <td>depth1_menu</td>
+                        <td>45</td>
+                        <td>1byte</td>
+                        <td>450byte</td>
+                    </tr>
+                </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+            <div class="col-xl-6">
+                <!-- JS 변수명 식별 -->
+                <section class="element-usage grid-container mb-4">
+
+                    <div class="table-responsive">
+                        <h4>JS 변수명 식별</h4>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                    <tr>
+                        <th>요소 이름</th>
+                        <th>사용 횟수</th>
+                        <th>대체 문자열 크기 (byte)</th>
+                        <th>절감된 용량 (byte)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>mainFootQuick</td>
+                        <td>4</td>
+                        <td>2byte</td>
+                        <td>44byte</td>
+                    </tr>
+                    <tr>
+                        <td>footSwp</td>
+                        <td>3</td>
+                        <td>2byte</td>
+                        <td>15byte</td>
+                    </tr>
+                    <tr>
+                        <td>eventSwiper</td>
+                        <td>2</td>
+                        <td>3byte</td>
+                        <td>16byte</td>
+                    </tr>
+                    <tr>
+                        <td>vstagSwiper</td>
+                        <td>3</td>
+                        <td>2byte</td>
+                        <td>27byte</td>
+                    </tr>
+                    <tr>
+                        <td>vsTagKey</td>
+                        <td>3</td>
+                        <td>2byte</td>
+                        <td>18byte</td>
+                    </tr>
+                </tbody>
+                        </table>
+                    </div>
+                </section>
+                <!-- JS 함수명 식별 -->
+                <section class="element-usage grid-container mb-4">
+
+                    <div class="table-responsive">
+                        <h4>JS 함수명 식별</h4>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                    <tr>
+                        <th>요소 이름</th>
+                        <th>사용 횟수</th>
+                        <th>대체 문자열 크기 (byte)</th>
+                        <th>절감된 용량 (byte)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>resetAllSwiper</td>
+                        <td>3</td>
+                        <td>3byte</td>
+                        <td>36byte</td>
+                    </tr>
+                    <tr>
+                        <td>toggleSearch</td>
+                        <td>2</td>
+                        <td>3byte</td>
+                        <td>18byte</td>
+                    </tr>
+                    <tr>
+                        <td>quickToggle</td>
+                        <td>3</td>
+                        <td>3byte</td>
+                        <td>24byte</td>
+                    </tr>
+                    <tr>
+                        <td>minisSL</td>
+                        <td>2</td>
+                        <td>3byte</td>
+                        <td>8byte</td>
+                    </tr>
+                    <tr>
+                        <td>lastestSL</td>
+                        <td>3</td>
+                        <td>3byte</td>
+                        <td>21byte</td>
+                    </tr>
+                </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <section class="element-usage">
+            <div style="display:flex; flex-direction:row; align-items: space-between;">
+                <p style="flex:1; font-size: 24px; font-weight:bold;">압축된 코드 리스트</p>
+                <div style="flex: 1; display: flex; justify-content: flex-end;">
+                    <img src="../static/download.png" style="width: 50px; height: 50px;" alt="Download Icon">
+                </div>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>파일명</th>
+                        <th>종류</th>
+                        <th>원본 크기</th>
+                        <th>압축 후 크기</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>new.css</td>
+                        <td>stylesheet</td>
+                        <td>69KB</td>
+                        <td>47KB</td>
+                    </tr>
+                    <tr>
+                        <td>widget_style.css</td>
+                        <td>stylesheet</td>
+                        <td>38KB</td>
+                        <td>31KB</td>
+                    </tr>
+                    <tr>
+                        <td>index.html</td>
+                        <td>Document</td>
+                        <td>96KB</td>
+                        <td>77KB</td>
+                    </tr>
+                    <tr>
+                        <td>common.js</td>
+                        <td>Script</td>
+                        <td>74KB</td>
+                        <td>55KB</td>
+                    </tr>
+                    <tr>
+                        <td>search_home.js</td>
+                        <td>Script</td>
+                        <td>24KB</td>
+                        <td>19KB</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>더 보기</p>
+        </section>
+    </div>
+
+</div>
+
+<script>
+    const directoryStructure = {{ directory_structure | tojson }};
+    console.log(directoryStructure);
+
+    function createFileStructure(parent, structure) {
+        for (const key in structure) {
+            if (key === "__files__") {
+                // Add files to the parent element
+                structure[key].forEach(file => {
+                    const fileElement = document.createElement("li");
+                    // Determine the icon based on the file extension
+                    let icon = "📄"; // Default icon
+                    if (file.endsWith(".css")) {
+                        icon = "🎨";
+                    } else if (file.endsWith(".do")) {
+                        icon = "📄";
+                    } else if (file.endsWith(".js")) {
+                        icon = "📜";
+                    } else if (file.endsWith(".html")) {
+                        icon = "🌐";
+                    }
+
+                    // Add the file with the appropriate icon
+                    fileElement.innerHTML = `<span class="file">${icon} ${file}</span>`;
+                    parent.appendChild(fileElement);
+
+                });
+            } else {
+                // Add folder to the parent element
+                const folderElement = document.createElement("li");
+                folderElement.innerHTML = `
+                    <span class="folder">📁 ${key}</span>
+                    <button class="toggle">
+                        <img src="/static/toggle_down.png" alt="Toggle">
+                    </button>
+                `;
+
+                const childList = document.createElement("ul");
+                childList.classList.add("hidden"); // Initially hide subfolders
+                folderElement.appendChild(childList);
+                parent.appendChild(folderElement);
+
+                // Add event listener to toggle visibility
+                const toggleButton = folderElement.querySelector(".toggle");
+                toggleButton.addEventListener("click", () => {
+                    childList.classList.toggle("hidden");
+                    const img = toggleButton.querySelector("img");
+                    img.src = childList.classList.contains("hidden")
+                        ? "/static/toggle_down.png"
+                        : "/static/toggle_up.png";
+                });
+
+                // Recursive call for child directories
+                createFileStructure(childList, structure[key]);
+            }
+        }
+    }
+
+    function initializeFileStructure() {
+        const rootElement = document.getElementById("file-structure");
+        try {
+            createFileStructure(rootElement, directoryStructure);
+        } catch (error) {
+            console.error("Error creating file structure:", error);
+        }
+    }
+
+    // Initialize the file structure
+    initializeFileStructure();
+    // Initialize the file structure when the DOM is loaded
+    // document.addEventListener('DOMContentLoaded', initializeFileStructure);
+</script>

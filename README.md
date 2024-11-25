@@ -183,3 +183,14 @@ $ python run.py
 ├───── virtualenv.md (virtual environment setting)
 ├───── __init__.py 
 ```
+
+```shell
+# .gitignore 
+venv/
+linux_venv/
+node_modules/
+ecoweb/app/Image_Classification/image_classifier_model_6.h5
+ecoweb/images/
+images/
+ecoweb_images/
+```

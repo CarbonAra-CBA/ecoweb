@@ -15,11 +15,9 @@ from werkzeug.security import generate_password_hash, check_password_hash  # che
 from datetime import datetime
 from flask import jsonify
 from flask import g
-
 from app.ProjectMaker.DirectoryMaker import directory_maker, directory_to_json
 from app.ProjectMaker.guideline_report import create_guideline_report, guideline_summarize
 from dotenv import load_dotenv
-
 import re
 from app.Image_Classification import model_test
 from app.lighthouse import process_urls as proc_url
@@ -40,191 +38,10 @@ def perform_async_guideline_analize(task_id, url_s, root_path):
     answer_list = create_guideline_report(project_root_path=root_path)
     guideline_list = guideline_summarize(answer_list=answer_list)
 
-
     # 결과를 async_results에 저장
     guideline_results[task_id] = guideline_list
 
 def init_routes(app):
-    @app.route('/', methods=['GET', 'POST'])
-    def home():
-        if request.method == 'POST':
-            url = request.form['wgd-cc-url']
-
-            # 1) Lighthouse 실행
-            run_lighthouse(url)
-            # MongoDB 컬렉션 가져오기
-            collection_traffic = db.db.lighthouse_traffic
-            collection_resource = db.db.lighthouse_resource
-            view_data = process_report(url, collection_resource,
-                                       collection_traffic)  # result 화면에서 사용할 웹사이트에 대한 트래픽 평가 결과
-
-            print("view_data first: ", view_data)
-            # 만약, viewdata의 total_byte_weight이 0이라면 예외처리 (error.html 페이지로 리다이렉트)
-            if view_data['total_byte_weight'] == 0:
-                return redirect(url_for('error'))
-            # 2) before(원본) 스크린샷
-            capture_screenshot(url, 'app/static/screenshots/before.png', is_file=False)
-
-            # 3) LLAMA로부터 최적화된 코드 받기 (예시)
-            try:
-                resource_doc = collection_resource.find_one({'url': url})
-                if not resource_doc:
-                    raise Exception("Resource document not found in database")
-
-                document_requests = [
-                    req for req in resource_doc['network_requests']
-                    if req['resourceType'] == 'Document'
-                ]
-
-                if not document_requests:
-                    raise Exception("HTML document not found in network requests")
-
-                # 가장 큰 크기의 HTML 문서 찾기
-                html_request = max(
-                    document_requests,
-                    key=lambda x: x.get('resourceSize', 0)
-                )
-                html_request_url = html_request['url']
-
-                css_files_link = [
-                    req for req in resource_doc['network_requests']
-                    if req['resourceType'] == 'Stylesheet'
-                ]
-
-                # JavaScript 파일들 찾기
-                js_files_link = [
-                    req for req in resource_doc['network_requests']
-                    if req['resourceType'] == 'Script'
-                ]
-                total_byte_weight = view_data['total_byte_weight'] / 1024  # OK.
-                print("total_byte_weight: ", total_byte_weight)
-
-                # session Data 저장
-                grade = grade_point(total_byte_weight)
-                session['url'] = url
-                session['view_data'] = json.dumps(view_data)
-                session['grade'] = grade
-                return redirect(url_for('result', url=url, grade=grade, view_data=json.dumps(view_data)))
-
-            except Exception as e:
-                print(f"Error processing optimized files: {str(e)}")
-                return "Error processing files", 500
-        if request.method == 'GET':
-            return render_template('main.html')
-
-
-    @app.route('/result')
-    def result():
-        url = request.args.get('url')
-        grade = request.args.get('grade')
-        view_data_str = request.args.get('view_data')
-        grade_s = session.get('grade')
-        url_s = session.get('url')
-
-        collection_traffic = db.db.lighthouse_traffic
-        collection_resource = db.db.lighthouse_resource
-
-        try:
-            # view_data 처리
-            if view_data_str:
-                view_data = json.loads(view_data_str)
-                print("view_data_on url:")
-            elif session.get('view_data'):
-                view_data = json.loads(session.get('view_data'))
-                print("view_data_on session:")
-            else:
-                return redirect(url_for('/'))
-
-            # 탄소 배출량 및 기타 정보 계산
-            kb_weight = view_data['total_byte_weight'] / 1024  # bytes to KB
-            carbon_emission = round((kb_weight * 0.04) / 272.51, 3)
-            mb_weight = kb_weight / 1024
-            global_avg_diff = round(mb_weight - 2.4, 2)
-            korea_avg_diff = round(mb_weight - 4.7, 2)
-
-            # 세션에 view_data 저장
-            session['view_data'] = json.dumps(view_data)
-
-            # institution_type 조회
-            traffic_doc = db.db.lighthouse_traffic.find_one({'url': url})
-            institution_type = traffic_doc.get('institution_type', '공공기관') if traffic_doc else '공공기관'
-            session['institution_type'] = institution_type
-
-            root_path = directory_maker(url=url_s, collection_traffic=collection_traffic,
-                                        collection_resource=collection_resource)
-            # 비동기 작업(가이드라인 분석)
-            task_id = str(uuid.uuid4())
-            thread = Thread(target=perform_async_guideline_analize, args=(task_id, url_s, root_path))
-            thread.start()
-
-            # 이미지 분류
-            Image_paths = proc_url.get_report_imagepath()
-
-            image_dir_path = 'C:/Users/windowadmin1.WIN-TAQQ3RO5V1L.000/Desktop/Github/ecoweb/ecoweb/app/images'
-            if not os.path.exists(image_dir_path):
-                os.mkdir(image_dir_path)
-
-            files = []
-            for imageurl in Image_paths:
-                try:
-                    spliturl = re.split(r':|\/|\.', imageurl)
-                    filename = spliturl[-2] + '.' + spliturl[-1]
-                    destination = os.path.join(image_dir_path, filename)
-                    urllib.request.urlretrieve(imageurl, destination)
-                    files.append(model_test.predict_image(destination, filename, 'C:/Users/windowadmin1.WIN-TAQQ3RO5V1L.000/Desktop/Github/ecoweb/ecoweb/app/images/results'))
-                except Exception as e:
-                    print(f"download error : {e}")
-
-            category = {
-                'iconfile': [],
-                'logofile': [],
-                'others': []
-            }
-            svgfiles = []
-            count = 0
-            totalsize = 0
-            for file in files:
-                if file['class_name'] == 'jpg_svg' or file['class_name'] == 'jpg_logo':
-                    svgfiles.append(file)
-                    count += 1
-                    totalsize += file['size']
-                    if "ico" in file['name']:
-                        category['iconfile'].append(file)
-                    elif "logo" in file['name']:
-                        category['logofile'].append(file)
-                    else:
-                        category['others'].append(file)
-
-            # 코드 최적화 결과 수집
-            # 파일 구조를 json으로 표현해서 전달
-            directory_structure = directory_to_json(root_path)
-            print("Directory Structure : ")
-            print(type(directory_structure))
-            print(directory_structure)
-            # 식별된 변수명과 대체 문자열, 절감 가능치를 json으로 표현해서 전달
-            # 각 코드 파일을 압축한 버전을 다운로드할 수 있게 제공하기
-
-            return render_template('result.html',
-                                   url=url_s,
-                                   grade=grade_s,
-                                   view_data=view_data,
-                                   kb_weight=kb_weight,
-                                   carbon_emission=carbon_emission,
-                                   global_avg_diff=global_avg_diff,
-                                   korea_avg_diff=korea_avg_diff,
-                                   institution_type=institution_type,
-                                   guideline_list=guideline_results,
-                                   task_id=task_id,
-                                   files=svgfiles,
-                                   category=category,
-                                   filecount=count,
-                                   totalsize=totalsize,
-                                   directory_structure=directory_structure
-                                   )
-
-        except Exception as e:
-            print(f"Error in result route: {str(e)}")
-            return redirect(url_for('/'))
 
     @app.route('/check_async/<task_id>', methods=['GET'])
     def check_async(task_id):
@@ -352,6 +169,178 @@ def init_routes(app):
     def error():
         return render_template('error.html')
 
-    # @app.route('/newresult')
-    # def newresult():
-    #     return render_template('newresult.html')
+
+
+
+###################여기서부터 리팩토링 진행중인 result 페이지 5가지 종류 ##########
+    @app.route('/', methods=['GET', 'POST'])
+    def home():
+        if request.method == 'POST':
+            url = request.form['wgd-cc-url']
+            # 1) Lighthouse 실행
+            run_lighthouse(url)
+            # MongoDB 컬렉션 가져오기
+            collection_traffic = db.db.lighthouse_traffic
+            collection_resource = db.db.lighthouse_resource
+            view_data = process_report(url, collection_resource,
+                                       collection_traffic)  # result 화면에서 사용할 웹사이트에 대한 트래픽 평가 결과
+            print("view_data first: ", view_data)
+            # 만약, viewdata의 total_byte_weight이 0이라면 예외처리 (error.html 페이지로 리다이렉트)
+            if view_data['total_byte_weight'] == 0:
+                return redirect(url_for('error'))
+            # 2) before(원본) 스크린샷
+            # capture_screenshot(url, 'app/static/screenshots/before.png', is_file=False)
+
+            try:
+                total_byte_weight = view_data['total_byte_weight'] / 1024  # OK.
+                print("total_byte_weight: ", total_byte_weight)
+
+                # session Data 저장
+                grade = grade_point(total_byte_weight)
+                session['url'] = url
+                session['view_data'] = json.dumps(view_data)
+                session['grade'] = grade
+                return redirect(url_for('carbon_calculate_emission'))
+
+            except Exception as e:
+                print(f"Error processing optimized files: {str(e)}")
+                return "Error processing files", 500
+        if request.method == 'GET':
+            return render_template('main.html')
+
+    @app.route('/carbon_calculate_emission')
+    def carbon_calculate_emission():
+        print("Entering carbon_calculate_emission route")  # 디버깅 로그
+        
+        if not session.get('url'):
+            flash('먼저 홈페이지에서 URL을 입력해주세요.', 'warning')
+            return redirect(url_for('home'))
+        
+        try:
+            url = session.get('url')
+
+            # 세션에서 데이터 가져오기
+            traffic_doc = db.db.lighthouse_traffic.find_one({'url': url})
+            institution_type = traffic_doc.get('institution_type', '공공기관') if traffic_doc else '공공기관'
+            session['institution_type'] = institution_type
+
+            view_data = json.loads(session.get('view_data'))
+            grade = session.get('grade')
+            kb_weight = view_data['total_byte_weight'] / 1024
+            session['kb_weight'] = kb_weight
+            # 탄소 배출량 계산 (0.04 kWh/GB * 442g CO2/kWh)
+            carbon_emission = round((kb_weight * 0.04) / 272.51, 3)
+            
+            # MB로 변환하여 평균과 비교
+            mb_weight = kb_weight / 1024
+            global_avg_diff = round(mb_weight - 2.4, 2)  # 세계 평균 2.4MB 기준
+            korea_avg_diff = round(mb_weight - 4.7, 2)   # 한국 평균 4.7MB 기준
+            
+            print(f"Rendering template with data: carbon_emission={carbon_emission}, grade={grade}")  # 디버깅 로그
+            
+            return render_template('carbon_calculate_emission.html',
+                                url=url,
+                                view_data=view_data,
+                                grade=grade,
+                                carbon_emission=carbon_emission,
+                                global_avg_diff=global_avg_diff,
+                                korea_avg_diff=korea_avg_diff,
+                                kb_weight=kb_weight,
+                                institution_type=institution_type)
+                                
+        except Exception as e:
+            print(f"Error in carbon_calculate_emission: {str(e)}")  # 디버깅 로그
+            flash('세션이 만료되었거나 오류가 발생했습니다.', 'error')
+            return redirect(url_for('home'))
+
+    @app.route('/gov-analysis')
+    def gov_analysis():
+        return render_template('gov_analysis.html')
+        
+    @app.route('/code_optimization')
+    def code_optimization():
+        view_data = session.get('view_data')
+        url_s = session.get('url')
+
+        print("[view_data] : ", view_data)
+        # JSON 문자열을 딕셔너리로 변환
+        try:
+            view_data = json.loads(view_data) if view_data else {}
+        except:
+            view_data = {}
+
+        print("[view_data-after] : ", view_data)
+        collection_traffic = db.db.lighthouse_traffic
+        collection_resource = db.db.lighthouse_resource
+
+
+        root_path = directory_maker(url=url_s, collection_traffic=collection_traffic,
+                                        collection_resource=collection_resource)
+        # 비동기 작업(가이드라인 분석)
+        task_id = str(uuid.uuid4())
+        thread = Thread(target=perform_async_guideline_analize, args=(task_id, url_s, root_path))
+        thread.start()
+        # 코드 최적화 결과 수집
+        # 파일 구조를 json으로 표현해서 전달
+        directory_structure = directory_to_json(root_path)
+        print("Directory Structure : ")
+        print(type(directory_structure))
+        print(directory_structure)
+        # 식별된 변수명과 대체 문자열, 절감 가능치를 json으로 표현해서 전달
+        # 각 코드 파일을 압축한 버전을 다운로드할 수 있게 제공하기
+
+        return render_template('code_optimization.html', 
+                               view_data=view_data,
+                               task_id = task_id,
+                               directory_structure = directory_structure)
+    
+    @app.route('/img_optimization')
+    def img_optimization():
+        # 이미지 분류
+        Image_paths = proc_url.get_report_imagepath()
+        # 이거 gitingnore 하세요. 
+        image_dir_path = '../images'
+        if not os.path.exists(image_dir_path):
+            os.mkdir(image_dir_path)
+
+        files = []
+        for imageurl in Image_paths:
+            try:
+                spliturl = re.split(r':|\/|\.', imageurl)
+                filename = spliturl[-2] + '.' + spliturl[-1]
+                destination = os.path.join(image_dir_path, filename)
+                urllib.request.urlretrieve(imageurl, destination)
+                files.append(model_test.predict_image(destination, filename, '../ecoweb_images/results'))
+            except Exception as e:
+                print(f"download error : {e}")
+
+        category = {
+            'iconfile': [],
+            'logofile': [],
+            'others': []
+        }
+        svgfiles = []
+        count = 0
+        totalsize = 0
+        for file in files:
+            if file['class_name'] == 'jpg_svg' or file['class_name'] == 'jpg_logo':
+                svgfiles.append(file)
+                count += 1
+                totalsize += file['size']
+                if "ico" in file['name']:
+                    category['iconfile'].append(file)
+                elif "logo" in file['name']:
+                    category['logofile'].append(file)
+            else:
+                category['others'].append(file)
+
+        return render_template('img_optimization.html',
+                               category=category,
+                               files=svgfiles, 
+                               filecount=count,
+                               totalsize=totalsize)
+
+    @app.route('/world_analysis')
+    def world_analysis():
+        return render_template('world_analysis.html')
+

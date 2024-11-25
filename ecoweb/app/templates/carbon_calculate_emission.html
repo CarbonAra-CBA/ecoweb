@@ -1,0 +1,146 @@
+{% extends "common.html" %}
+
+{% block content %}
+<style>
+    .metric-icon { 
+        font-size: 50px;
+    }
+
+</style>
+<div class="container-fluid py-4">
+    <h2 class="mb-4">탄소 배출량 분석</h2>
+    
+    <!-- 주요 지표 카드 섹션 -->
+    <div class="row g-4 mb-5">
+        <!-- 현재 탄소 배출량 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm rounded-4 border-0">
+                <div class="card-body text-center py-4">
+                    <h4 class="text-muted mb-3">탄소 배출량</h4> <!-- h5에서 h4로 변경 -->
+                    <h2 class="display-4 fw-bold text-success">{{carbon_emission}}g</h2>
+                    <p class="text-muted">CO₂/kWh</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 세계 평균 대비 -->
+<div class="col-md-4">
+    <div class="card shadow-sm rounded-4 border-0">
+        <div class="card-body p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="text-muted m-0">탄소배출등급</h4>
+                <div class="rounded-circle {% if grade == 'A' %}bg-primary{% elif grade == 'B' %}bg-success{% elif grade == 'C' %}bg-info{% elif grade == 'D' %}bg-warning{% elif grade == 'E' %}bg-danger{% else %}bg-dark{% endif %} text-white d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                    <span class="fw-bold">{{grade}}</span>
+                </div>
+            </div>
+            <div class="bg-light rounded-3 p-3">
+                <p class="m-0">세계평균 대비</p>
+                <h4 class="{% if global_avg_diff > 0 %}text-danger{% else %}text-success{% endif %} mb-0">
+                    {{global_avg_diff|abs}}MB {% if global_avg_diff > 0 %}더{% else %}덜{% endif %} 배출
+                </h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 대한민국 평균 대비 -->
+<div class="col-md-4">
+    <div class="card shadow-sm rounded-4 border-0">
+        <div class="card-body p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="text-muted m-0">대한민국 기준</h4>
+                <div class="rounded-circle {% if grade == 'A' %}bg-primary{% elif grade == 'B' %}bg-success{% elif grade == 'C' %}bg-info{% elif grade == 'D' %}bg-warning{% elif grade == 'E' %}bg-danger{% else %}bg-dark{% endif %} text-white d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                    <span class="fw-bold">{{grade}}</span>
+                </div>
+            </div>
+            <div class="bg-light rounded-3 p-3">
+                <p class="m-0">대한민국 평균 대비</p>
+                <h4 class="{% if korea_avg_diff > 0 %}text-danger{% else %}text-success{% endif %} mb-0">
+                    {{korea_avg_diff|abs}}MB {% if korea_avg_diff > 0 %}더{% else %}덜{% endif %} 배출
+                </h4>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- 배출 원인 분석 -->
+    <div class="row mb-1">
+        <div class="col-12">
+            <div class="card shadow-sm rounded-4 border-0 my-4">
+                <div class="card-body p-4">
+                    <h4 class="mb-4" >연간 탄소 배출량 환산(월 10,000명 방문기준)</h4>
+                    <p class="metrics-subtitle">{{((carbon_emission / 1000 * 10000 * 12)|round(2))}} CO₂/kg</p>
+                    <div class="row g-4">
+                        <div class="col-md-3">
+                            <div class="text-center">
+                                <!-- <i class="fas fa-coffee fa-2x mb-3 text-muted"></i> -->
+                                <div class="metric-icon">☕</div>
+                                <h6>커피 소비량</h6>
+                                <p class="mb-0" style="font-weight: bold;">{{(carbon_emission /1000 * 10000 * 12 / 0.01)|round}}잔</p>
+                                <p class="mb-0">1잔 = 0.01 CO₂</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="text-center">
+                                <div class="metric-icon">🚗</div>
+                                <h6>전기차 주행거리</h6>
+                                <p class="mb-0" style="font-weight: bold;">{{(carbon_emission/1000 * 10000 * 12 / 0.16 * 2)|round}}km</p>
+                                <p class="mb-0">2km = 0.16kg CO₂</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="text-center">
+                                <div class="metric-icon">📱</div>
+                                <h6>스마트폰 충전</h6>
+                                <p class="mb-0" style="font-weight: bold;">{{(carbon_emission/1000 * 10000 * 12 / 0.02 * 3)|round}}회</p>
+                                <p class="mb-0">3회 충전 = 0.02g CO₂</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="text-center">
+                                <div class="metric-icon">🌳</div>
+                                <h6>나무 흡수량</h6>
+                                <p class="mb-0" style="font-weight: bold;">{{(carbon_emission/1000 * 10000 * 12 / 0.02)|round}}그루</p>
+                                <p class="mb-0">1그루 = 0.02kg CO₂/년</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 설명 섹션 -->
+    <div class="card shadow-sm rounded-4 border-0">
+        <div class="card-body p-4">
+            <h5 class="mb-3">등급 평가 기준</h5>
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <h6 class="text-muted">세계 평균 기준</h6>
+                    <ul class="list-unstyled">
+                        <li><span class="badge bg-primary me-2">A</span> 매우 우수 (상위 5%)</li>
+                        <li><span class="badge bg-success me-2">B</span> 우수 (상위 10%)</li>
+                        <li><span class="badge bg-info me-2">C</span> 보통 (상위 20%)</li>
+                        <li><span class="badge bg-warning me-2">D</span> 미흡 (상위 30%)</li>
+                        <li><span class="badge bg-danger me-2">E</span> 매우 미흡 (상위 40%)</li>
+                        <li><span class="badge bg-dark me-2">F</span> 매우 미흡 (상위 50%)</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="text-muted" style="font-weight: bold;">대한민국 평균 기준</h6>
+                    <p>대한민국의 평균 탄소 배출량을 기준으로 한 상대적 평가입니다.</p>
+                    <div class="progress" style="height: 25px;">
+                        <div class="progress-bar bg-primary" style="width: 30%">A</div>
+                        <div class="progress-bar bg-success" style="width: 30%">B</div>
+                        <div class="progress-bar bg-info" style="width: 30%">C</div>
+                        <div class="progress-bar bg-warning" style="width: 30%">D</div>
+                        <div class="progress-bar bg-danger" style="width: 30%">E</div>
+                        <div class="progress-bar bg-dark" style="width: 30%">F</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

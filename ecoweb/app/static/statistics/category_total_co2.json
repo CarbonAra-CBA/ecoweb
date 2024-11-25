@@ -1,0 +1,18 @@
+[
+  {
+    "institutionType": "공공기관",
+    "totalMB": 22088.77
+  },
+  {
+    "institutionType": "중앙행정기관",
+    "totalMB": 13370.18
+  },
+  {
+    "institutionType": "지방자치단체",
+    "totalMB": 25164.37
+  },
+  {
+    "institutionType": "헌법기관",
+    "totalMB": 697.11
+  }
+]

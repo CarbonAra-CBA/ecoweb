@@ -173,6 +173,7 @@
         color: #666;
         font-size: 0.9rem;
     }
+    
         /* 사이드바 스타일 */
         .sidebar {
             position: fixed;
@@ -643,28 +644,9 @@
                             <div class="result-details">
                                 <p>전 세계 평균보다 {{global_avg_diff}}MB 더 배출</p>
                                 <p>대한민국 평균보다 {{korea_avg_diff|abs}}MB {% if korea_avg_diff > 0 %}더{% else %}덜{% endif %} 배출</p>
-                                <p>메인페이지 용량: {{kb_weight/1024|round(2)}}MB</p>
+                                <p>메인페이지 용량: {{(kb_weight/1024)|round(2)}}MB</p>
                                 <p>탄소 배출량: {{carbon_emission}}g</p>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- 오른쪽: 리소스 분석 -->
-                <div class="resource-analysis" style="flex: 1;">
-                    <h3 style="font-weight: bold;">리소스 분석</h3>
-                    <div class="resource-grid">
-                        <div class="resource-item">
-                            <h4>총 리소스 용량</h4>
-                            <p>{{ (view_data.total_byte_weight / 1024 / 1024)|round(2) }}MB</p>
-                        </div>
-                        <div class="resource-item">
-                            <h4>서드파티 스크립트</h4>
-                            <p>{{ (view_data.third_party_summary_wasted_bytes / 1024 / 1024)|round(2) }}MB</p>
-                        </div>
-                        <div class="resource-item">
-                            <h4>JavaScript 분석</h4>
-                            <p>미사용: {{ (view_data.total_unused_bytes_script / 1024 / 1024)|round(2) }}MB</p>
-                            <p>전체: {{ (view_data.total_resource_bytes_script / 1024 / 1024)|round(2) }}MB</p>
                         </div>
                     </div>
                 </div>
@@ -886,12 +868,11 @@
                 };
         </script>
 
-
         <!-- 최적화 제안 카드 -->
         <div class="content-card">
             <h3 style="margin-left: 11px;">최적화 가능 항목</h3>
 
-                       <!-- 이미지 분류 결과물 -->
+<!-- 이미지 분류 결과물 -->
 <div><h4>형식변환 권장 이미지 목록 <i class="fa-regular fa-folder"></i> <span class="file-size">(총 용량 {{ totalsize }} bytes, 총 {{ filecount }}개 파일)</span></h4>
     <div class="parents">
     <div>
@@ -1635,8 +1616,6 @@ multilineG.append("g")
             .attr("y", 5)
             .text(item.text);
     });
-
-
 
     // D3.js로 KDE 그래프 그리기
     async function drawKDEPlot(kb_weight) {

@@ -1,0 +1,61 @@
+[{
+  "percentile": "10",
+  "client": "desktop",
+  "requests": "38",
+  "mbytes": "0.75",
+  "co2grams": "0.4767776191077428"
+}, {
+  "percentile": "10",
+  "client": "mobile",
+  "requests": "36",
+  "mbytes": "0.69",
+  "co2grams": "0.43726905906689351"
+}, {
+  "percentile": "25",
+  "client": "desktop",
+  "requests": "56",
+  "mbytes": "1.32",
+  "co2grams": "0.83590913372579956"
+}, {
+  "percentile": "25",
+  "client": "mobile",
+  "requests": "54",
+  "mbytes": "1.26",
+  "co2grams": "0.79574043981381681"
+}, {
+  "percentile": "50",
+  "client": "desktop",
+  "requests": "85",
+  "mbytes": "2.41",
+  "co2grams": "1.5210575571103253"
+}, {
+  "percentile": "50",
+  "client": "mobile",
+  "requests": "83",
+  "mbytes": "2.33",
+  "co2grams": "1.4741500719549365"
+}, {
+  "percentile": "75",
+  "client": "desktop",
+  "requests": "127",
+  "mbytes": "4.36",
+  "co2grams": "2.7542804691329366"
+}, {
+  "percentile": "75",
+  "client": "mobile",
+  "requests": "127",
+  "mbytes": "4.25",
+  "co2grams": "2.6839264757436467"
+}, {
+  "percentile": "90",
+  "client": "desktop",
+  "requests": "181",
+  "mbytes": "7.7",
+  "co2grams": "4.8681713999301426"
+}, {
+  "percentile": "90",
+  "client": "mobile",
+  "requests": "183",
+  "mbytes": "7.4",
+  "co2grams": "4.6798445508565063"
+}]
