@@ -41,7 +41,7 @@ $ cd ecoweb
 #### ollama & llm
 install ollama -> https://ollama.com/
 ``` bash
-$ ollama pull ollama3.2:latest
+$ ollama pull llama3.2:latest
 ```
 #### Backend
 ```
