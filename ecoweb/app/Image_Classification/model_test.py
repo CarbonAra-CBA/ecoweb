@@ -34,7 +34,6 @@ def preprocess_image(img_path, target_size=(224, 224)):
 
 # 이미지 예측 함수
 def predict_image(img_path, filename, output_path):
-    output_path = 'images/results'
     if not os.path.exists(output_path):
         os.makedirs(output_path)
     # 클래스 이름 정의

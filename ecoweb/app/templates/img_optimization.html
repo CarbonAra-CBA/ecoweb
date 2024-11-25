@@ -1,118 +1,260 @@
 {% extends "common.html" %}
 {% block content %}
-<h4>형식변환 권장 이미지 목록 <i class="fa-regular fa-folder"></i> <span class="file-size">(총 용량 {{ totalsize }} bytes, 총 {{ filecount }}개 파일)</span></h4>
-    <div class="parents">
-    <div>
-    <ul class="file-list">
-        {% for file in files[:8] %}
-        <li class="file-item">
-        <span class="file-name">{{ file.name }}</span>
-            <span class="file-size">({{ file.size }} bytes)</span>
-        </li>
-        {% endfor %}
-
-    <!-- 나머지 파일들은 숨겨둠 -->
-        {% for file in files[8:] %}
-        <li class="file-item hidden">
-        <span class="file-name">{{ file.name }}</span>
-            <span class="file-size">({{ file.size }} bytes)</span>
-        </li>
-        {% endfor %}
-    </ul>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<div class="container-fluid">
+    <!-- 요소 개수 차트와 Lighthouse 분석 -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">이미지 유형별 분포</h5>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container" style="position:relative;">
+                        <canvas id="fileChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Google Lighthouse 분석</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead class="thead-light">
+                <tr>
+                    <th>분석 항목</th>
+                    <th>용량</th>
+                    <th>상세 내용</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>총 리소스 용량</td>
+                    <td>{{ (view_data.total_byte_weight / 1024 / 1024)|round(2) }}MB</td>
+                    <td>전체 페이지 리소스 크기</td>
+                </tr>
+                {% if view_data.modern_image_formats_bytes > 0 %}
+                <tr>
+                    <td>이미지 최적화 가능</td>
+                    <td>{{ (view_data.modern_image_formats_bytes / 1024)|round(2) }}KB</td>
+                    <td>WebP/AVIF 포맷 변환으로 절감 가능</td>
+                </tr>
+                {% endif %}
+                {% if view_data.efficient_animated_content > 0 %}
+                <tr>
+                    <td>애니메이션 최적화</td>
+                    <td>{{ (view_data.efficient_animated_content / 1024)|round(2) }}KB</td>
+                    <td>GIF를 MP4/WebM으로 변환하여 절감 가능</td>
+                </tr>
+                {% endif %}
+                </tbody>
+            </table>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="chart-container" style="position:relative;top:20px">
-        <canvas id="fileChart"></canvas>
+
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="card-title mb-0">
+                        형식변환 권장 이미지 목록 
+                        <i class="fa-regular fa-folder"></i>
+                        <span class="text-muted fs-6">(총 용량 {{ totalsize }} bytes, 총 {{ filecount }}개 파일)</span>
+                    </h5>
+                    <div>
+                        <button class="btn btn-success btn-sm">
+                            <i class="fas fa-download me-1"></i>텍스트 다운로드(.txt)
+                        </button>
+                        <button class="btn btn-primary btn-sm">
+                            <i class="fas fa-download me-1"></i>SVG 파일 다운로드(.zip)
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        {% for file in files[:8] %}
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <canvas class="img-preview mb-3" width="100" height="100" 
+                                            data-src="{{ url_for('static', filename='images/' + url_s + '/' + file.name) }}"></canvas>
+                                    <h6 class="card-title text-truncate">{{ file.name }}</h6>
+                                    <p class="card-text">
+                                        <small class="text-muted">크기: {{ file.size }} bytes</small><br>
+                                        {% if "ico" in file.name %}
+                                        <span class="badge bg-success">아이콘</span>
+                                        {% elif "logo" in file.name %}
+                                        <span class="badge bg-primary">로고</span>
+                                        {% else %}
+                                        <span class="badge bg-secondary">기타</span>
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% if files|length > 8 %}
+                    <div class="text-center mt-3">
+                        <button class="btn btn-outline-primary btn-sm" onclick="loadMore()">더보기</button>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="load-more" onclick="loadMore()">더보기</div>
-
-    <script>
-        // Flask에서 파일 데이터를 JavaScript 변수로 전달
-        const files = {{ category | tojson }};
-
-        // 범주별 파일 용량 데이터 구성
-        const iconsData = files.iconfile.map(file => file.size);
-        const logosData = files.logofile.map(file => file.size);
-        const othersData = files.others.map(file => file.size);
-
-        // 차트 생성
-        const ctx = document.getElementById('fileChart').getContext('2d');
-        const fileChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: Array.from({length: Math.max(iconsData.length, logosData.length, othersData.length)}, (_, i) => i + 1),
-                datasets: [
-                    {
-                        label: 'Icons',
-                        data: iconsData,
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        fill: false,
-                    },
-                    {
-                        label: 'Logos',
-                        data: logosData,
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                        fill: false,
-                    },
-                    {
-                        label: 'Others',
-                        data: othersData,
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                        fill: false,
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: 'File Size (bytes)'
-                        }
-                    },
-                    x: {
-                        title: {
-                            display: false,
-                            text: 'File Index'
-                        },
-                        ticks: {
-                            autoSkip: true,
-                            maxRotation: 0
-                        }
-                    }
-                }
-            }
-        });
-    </script>
     
+    <!-- 변환된 SVG 목록 -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">변환된 SVG 파일 목록</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {% for category_name, files in category.items() %}
+                    {% for file in files %}
+                    <div class="col-md-3 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <canvas class="img-preview mb-3" width="100" height="100" 
+                                        data-src="{{ url_for('static', filename='images/' + file.name) }}"></canvas>
+                                <h6 class="card-title text-truncate">{{ file.name }}</h6>
+                                <p class="card-text">
+                                    <small class="text-muted">크기: {{ file.size }} bytes</small>
+                                </p>
+                                <div class="d-flex justify-content-end">
+                                    <button class="btn btn-outline-success btn-sm">
+                                        <i class="fas fa-download me-1"></i>SVG 다운로드
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    // 기존 차트 스크립트 유지
+    const files = {{ category | tojson }};
+    const iconsData = files.iconfile.map(file => file.size);
+    const logosData = files.logofile.map(file => file.size);
+    const othersData = files.others.map(file => file.size);
 
-    <script>
-        let currentIndex = 8;  // 처음에 표시되는 파일 수
-        const increment = 8;    // 더보기 클릭 시 추가로 표시할 파일 수
-        const fileItems = document.querySelectorAll('.file-item');
-        const loadMoreButton = document.querySelector('.load-more');
-
-        function loadMore() {
-            // 추가로 표시할 파일들을 보여줌
-            for (let i = currentIndex; i < currentIndex + increment; i++) {
-                if (fileItems[i]) {
-                    fileItems[i].classList.remove('hidden');
+    const ctx = document.getElementById('fileChart').getContext('2d');
+    const fileChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: Array.from({length: Math.max(iconsData.length, logosData.length, othersData.length)}, (_, i) => i + 1),
+            datasets: [
+                {
+                    label: 'Icons',
+                    data: iconsData,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    fill: false,
+                },
+                {
+                    label: 'Logos',
+                    data: logosData,
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    fill: false,
+                },
+                {
+                    label: 'Others',
+                    data: othersData,
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    fill: false,
                 }
-            }
-
-            // 현재 인덱스 업데이트
-            currentIndex += increment;
-
-            // 더 이상 표시할 파일이 없으면 "더보기" 버튼 숨기기
-            if (currentIndex >= fileItems.length) {
-                loadMoreButton.style.display = 'none';
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'File Size (bytes)'
+                    }
+                }
             }
         }
-    </script>
+    });
+
+    // 더보기 기능 스크립트
+    let currentIndex = 8;
+    const increment = 8;
+    const fileItems = document.querySelectorAll('.file-item');
+
+    // 이미지 미리보기 로드 함수
+    function loadImagePreviews() {
+        const canvases = document.querySelectorAll('.img-preview');
+        canvases.forEach(canvas => {
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+            img.onload = function() {
+                // 이미지를 캔버스에 맞게 비율 유지하며 그리기
+                const scale = Math.min(canvas.width / img.width, canvas.height / img.height);
+                const x = (canvas.width - img.width * scale) / 2;
+                const y = (canvas.height - img.height * scale) / 2;
+                ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
+            };
+            img.src = canvas.dataset.src;
+        });
+    }
+
+    // 페이지 로드 시 이미지 미리보기 로드
+    document.addEventListener('DOMContentLoaded', loadImagePreviews);
+
+    // 더보기 기능에도 이미지 미리보기 로드 추가
+    function loadMore() {
+        const container = document.querySelector('.row');
+        const nextFiles = {{ files | tojson }}.slice(currentIndex, currentIndex + increment);
+        
+        nextFiles.forEach(file => {
+            const div = document.createElement('div');
+            div.className = 'col-md-3 mb-4';
+            div.innerHTML = `
+                <div class="card h-100">
+                    <div class="card-body">
+                        <canvas class="img-preview mb-3" width="100" height="100" 
+                                data-src="${file.image_url}"></canvas>
+                        <h6 class="card-title text-truncate">${file.name}</h6>
+                        <p class="card-text">
+                            <small class="text-muted">크기: ${file.size} bytes</small><br>
+                            <span class="badge bg-${file.name.includes('ico') ? 'success' : 
+                                file.name.includes('logo') ? 'primary' : 'secondary'}">
+                                ${file.name.includes('ico') ? '아이콘' : 
+                                file.name.includes('logo') ? '로고' : '기타'}
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            `;
+            container.appendChild(div);
+        });
+
+        currentIndex += increment;
+        if (currentIndex >= {{ files | length }}) {
+            document.querySelector('.btn-outline-primary').style.display = 'none';
+        }
+        
+        // 새로 추가된 이미지 미리보기 로드
+        loadImagePreviews();
+    }
+</script>
 
 {% endblock %}
