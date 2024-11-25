@@ -37,21 +37,6 @@ def process_report(url):
     collection_traffic.insert_one(traffic_data)
     collection_resource.insert_one(resource_data)
 
-    # # 뷰에 전달할 데이터 준비 (python flask 에서 view로 전달. .. )
-    # view_data = {
-    #     'third_party_summary': report['audits']['third-party-summary'],
-    #     'script_treemap_data': report['audits']['script-treemap-data'],
-    #     'total_byte_weight': report['audits']['total-byte-weight'],
-    #     'unused_css_rules': report['audits']['unused-css-rules'],
-    #     'unused_javascript': report['audits']['unused-javascript'],
-    #     'modern_image_formats': report['audits']['modern-image-formats'],
-    #     'efficient_animated_content': report['audits']['efficient-animated-content'],
-    #     'duplicated_javascript': report['audits']['duplicated-javascript'],
-    #     'js_libraries': report['audits']['js-libraries']
-    # }
-
-    # return view_data
-
 def get_report_imagepath():  # 라이트하우스가 이미 실행되어 report.json 이 존재한다고 했을때, 이미지 파일들의 path를 리턴
     json_file = open('report.json', 'r', encoding='utf-8')
     report = json.load(json_file)

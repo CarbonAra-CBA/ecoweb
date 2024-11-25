@@ -4,4 +4,5 @@ node_modules/
 ecoweb/app/Image_Classification/image_classifier_model_6.h5
 ecoweb/images/
 images/
-ecoweb_images/
+ecoweb/app/static/llama/
+ecoweb/app/static/images/

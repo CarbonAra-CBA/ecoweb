@@ -1,0 +1,261 @@
+2024-11-25 16:58:15,169 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-11-25 16:58:15,169 INFO:[33mPress CTRL+C to quit[0m
+2024-11-25 16:58:15,173 INFO: * Restarting with stat
+2024-11-25 16:58:32,289 WARNING: * Debugger is active!
+2024-11-25 16:58:32,317 INFO: * Debugger PIN: 109-248-517
+2024-11-25 16:58:34,327 INFO:127.0.0.1 - - [25/Nov/2024 16:58:34] "GET / HTTP/1.1" 200 -
+2024-11-25 16:58:59,225 INFO:127.0.0.1 - - [25/Nov/2024 16:58:59] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-11-25 16:58:59,268 INFO:127.0.0.1 - - [25/Nov/2024 16:58:59] "GET /carbon_calculate_emission HTTP/1.1" 200 -
+2024-11-25 17:17:41,300 INFO:127.0.0.1 - - [25/Nov/2024 17:17:41] "GET /img_optimization HTTP/1.1" 200 -
+2024-11-25 19:45:01,862 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-25 19:45:04,056 INFO: * Restarting with stat
+2024-11-25 19:45:22,678 WARNING: * Debugger is active!
+2024-11-25 19:45:22,698 INFO: * Debugger PIN: 109-248-517
+2024-11-25 19:58:27,175 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-25 19:58:28,386 INFO: * Restarting with stat
+2024-11-25 19:58:46,403 WARNING: * Debugger is active!
+2024-11-25 19:58:46,413 INFO: * Debugger PIN: 109-248-517
+2024-11-25 20:12:22,982 INFO:127.0.0.1 - - [25/Nov/2024 20:12:22] "GET / HTTP/1.1" 200 -
+2024-11-25 20:12:52,263 INFO:127.0.0.1 - - [25/Nov/2024 20:12:52] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-11-25 20:12:52,376 INFO:127.0.0.1 - - [25/Nov/2024 20:12:52] "GET /carbon_calculate_emission HTTP/1.1" 200 -
+2024-11-25 20:13:25,306 INFO:127.0.0.1 - - [25/Nov/2024 20:13:25] "[35m[1mGET /img_optimization HTTP/1.1[0m" 500 -
+2024-11-25 20:13:26,178 INFO:127.0.0.1 - - [25/Nov/2024 20:13:26] "[36mGET /img_optimization?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2024-11-25 20:13:26,204 INFO:127.0.0.1 - - [25/Nov/2024 20:13:26] "[36mGET /img_optimization?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2024-11-25 20:13:26,648 INFO:127.0.0.1 - - [25/Nov/2024 20:13:26] "GET /img_optimization?__debugger__=yes&cmd=resource&f=console.png&s=0dwLzaMsro4AOWcW5N5U HTTP/1.1" 200 -
+2024-11-25 20:13:27,192 INFO:127.0.0.1 - - [25/Nov/2024 20:13:27] "GET /img_optimization?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2024-11-25 20:15:17,639 INFO:127.0.0.1 - - [25/Nov/2024 20:15:17] "[35m[1mGET /img_optimization HTTP/1.1[0m" 500 -
+2024-11-25 20:15:18,049 INFO:127.0.0.1 - - [25/Nov/2024 20:15:18] "[36mGET /img_optimization?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2024-11-25 20:15:18,050 INFO:127.0.0.1 - - [25/Nov/2024 20:15:18] "[36mGET /img_optimization?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2024-11-25 20:15:18,658 INFO:127.0.0.1 - - [25/Nov/2024 20:15:18] "[36mGET /img_optimization?__debugger__=yes&cmd=resource&f=console.png&s=0dwLzaMsro4AOWcW5N5U HTTP/1.1[0m" 304 -
+2024-11-25 20:15:19,213 INFO:127.0.0.1 - - [25/Nov/2024 20:15:19] "[36mGET /img_optimization?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-11-25 20:18:43,425 INFO:127.0.0.1 - - [25/Nov/2024 20:18:43] "[35m[1mGET /img_optimization HTTP/1.1[0m" 500 -
+2024-11-25 20:18:43,920 INFO:127.0.0.1 - - [25/Nov/2024 20:18:43] "[36mGET /img_optimization?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2024-11-25 20:18:43,921 INFO:127.0.0.1 - - [25/Nov/2024 20:18:43] "[36mGET /img_optimization?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2024-11-25 20:18:45,058 INFO:127.0.0.1 - - [25/Nov/2024 20:18:45] "[36mGET /img_optimization?__debugger__=yes&cmd=resource&f=console.png&s=0dwLzaMsro4AOWcW5N5U HTTP/1.1[0m" 304 -
+2024-11-25 20:18:46,525 INFO:127.0.0.1 - - [25/Nov/2024 20:18:46] "[36mGET /img_optimization?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-11-25 20:20:25,535 INFO:127.0.0.1 - - [25/Nov/2024 20:20:25] "[35m[1mGET /img_optimization HTTP/1.1[0m" 500 -
+2024-11-25 20:20:25,934 INFO:127.0.0.1 - - [25/Nov/2024 20:20:25] "[36mGET /img_optimization?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2024-11-25 20:20:25,937 INFO:127.0.0.1 - - [25/Nov/2024 20:20:25] "[36mGET /img_optimization?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2024-11-25 20:20:26,586 INFO:127.0.0.1 - - [25/Nov/2024 20:20:26] "[36mGET /img_optimization?__debugger__=yes&cmd=resource&f=console.png&s=0dwLzaMsro4AOWcW5N5U HTTP/1.1[0m" 304 -
+2024-11-25 20:20:27,060 INFO:127.0.0.1 - - [25/Nov/2024 20:20:27] "[36mGET /img_optimization?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-11-25 20:20:42,849 INFO:127.0.0.1 - - [25/Nov/2024 20:20:42] "GET / HTTP/1.1" 200 -
+2024-11-25 20:21:17,048 INFO:127.0.0.1 - - [25/Nov/2024 20:21:17] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-11-25 20:21:17,070 INFO:127.0.0.1 - - [25/Nov/2024 20:21:17] "GET /carbon_calculate_emission HTTP/1.1" 200 -
+2024-11-25 20:21:51,620 INFO:127.0.0.1 - - [25/Nov/2024 20:21:51] "[35m[1mGET /img_optimization HTTP/1.1[0m" 500 -
+2024-11-25 20:21:52,147 INFO:127.0.0.1 - - [25/Nov/2024 20:21:52] "[36mGET /img_optimization?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2024-11-25 20:21:52,157 INFO:127.0.0.1 - - [25/Nov/2024 20:21:52] "[36mGET /img_optimization?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2024-11-25 20:21:53,135 INFO:127.0.0.1 - - [25/Nov/2024 20:21:53] "[36mGET /img_optimization?__debugger__=yes&cmd=resource&f=console.png&s=0dwLzaMsro4AOWcW5N5U HTTP/1.1[0m" 304 -
+2024-11-25 20:23:45,803 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-25 20:23:46,692 INFO: * Restarting with stat
+2024-11-25 20:24:03,711 WARNING: * Debugger is active!
+2024-11-25 20:24:03,720 INFO: * Debugger PIN: 109-248-517
+2024-11-25 20:24:20,109 INFO:127.0.0.1 - - [25/Nov/2024 20:24:20] "[35m[1mGET /img_optimization HTTP/1.1[0m" 500 -
+2024-11-25 20:24:20,898 INFO:127.0.0.1 - - [25/Nov/2024 20:24:20] "[36mGET /img_optimization?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2024-11-25 20:24:20,902 INFO:127.0.0.1 - - [25/Nov/2024 20:24:20] "[36mGET /img_optimization?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2024-11-25 20:24:22,091 INFO:127.0.0.1 - - [25/Nov/2024 20:24:22] "GET /img_optimization?__debugger__=yes&cmd=resource&f=console.png&s=YSIsB4XrGACvLD987fZI HTTP/1.1" 200 -
+2024-11-25 20:24:23,295 INFO:127.0.0.1 - - [25/Nov/2024 20:24:23] "[36mGET /img_optimization?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-11-25 20:24:30,192 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-25 20:24:31,365 INFO: * Restarting with stat
+2024-11-25 20:24:48,188 WARNING: * Debugger is active!
+2024-11-25 20:24:48,198 INFO: * Debugger PIN: 109-248-517
+2024-11-25 20:24:48,775 INFO:127.0.0.1 - - [25/Nov/2024 20:24:48] "GET / HTTP/1.1" 200 -
+2024-11-25 20:25:15,180 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-25 20:25:15,951 INFO: * Restarting with stat
+2024-11-25 20:25:33,917 WARNING: * Debugger is active!
+2024-11-25 20:25:33,929 INFO: * Debugger PIN: 109-248-517
+2024-11-25 20:25:54,806 INFO:127.0.0.1 - - [25/Nov/2024 20:25:54] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-11-25 20:25:54,856 INFO:127.0.0.1 - - [25/Nov/2024 20:25:54] "GET /carbon_calculate_emission HTTP/1.1" 200 -
+2024-11-25 20:26:20,538 INFO:127.0.0.1 - - [25/Nov/2024 20:26:20] "GET /img_optimization HTTP/1.1" 200 -
+2024-11-25 20:28:02,598 INFO:127.0.0.1 - - [25/Nov/2024 20:28:02] "GET /img_optimization HTTP/1.1" 200 -
+2024-11-25 20:28:06,020 INFO:127.0.0.1 - - [25/Nov/2024 20:28:06] "[33mGET /static/images/logo.png HTTP/1.1[0m" 404 -
+2024-11-25 20:28:06,030 INFO:127.0.0.1 - - [25/Nov/2024 20:28:06] "[33mGET /static/images/arrow_auto_main.png HTTP/1.1[0m" 404 -
+2024-11-25 20:28:06,416 INFO:127.0.0.1 - - [25/Nov/2024 20:28:06] "[33mGET /static/images/arrow_auto_main_up.png HTTP/1.1[0m" 404 -
+2024-11-25 20:28:07,972 INFO:127.0.0.1 - - [25/Nov/2024 20:28:07] "[33mGET /static/images/img_head_link02.jpg HTTP/1.1[0m" 404 -
+2024-11-25 20:28:08,579 INFO:127.0.0.1 - - [25/Nov/2024 20:28:08] "[33mGET /static/images/gov_slogan.png HTTP/1.1[0m" 404 -
+2024-11-25 20:28:08,768 INFO:127.0.0.1 - - [25/Nov/2024 20:28:08] "[33mGET /static/images/ico_sns_youtube.png HTTP/1.1[0m" 404 -
+2024-11-25 20:28:08,860 INFO:127.0.0.1 - - [25/Nov/2024 20:28:08] "[33mGET /static/images/ico_sns_instagram.png HTTP/1.1[0m" 404 -
+2024-11-25 20:28:08,897 INFO:127.0.0.1 - - [25/Nov/2024 20:28:08] "[33mGET /static/images/ico_sns_twitterx.png HTTP/1.1[0m" 404 -
+2024-11-25 20:28:08,899 INFO:127.0.0.1 - - [25/Nov/2024 20:28:08] "[33mGET /static/images/ico_sns_facebook.png HTTP/1.1[0m" 404 -
+2024-11-25 20:28:08,901 INFO:127.0.0.1 - - [25/Nov/2024 20:28:08] "[33mGET /static/images/ico_sns_blog.png HTTP/1.1[0m" 404 -
+2024-11-25 20:28:08,938 INFO:127.0.0.1 - - [25/Nov/2024 20:28:08] "[33mGET /static/images/ico_gnb_search.png HTTP/1.1[0m" 404 -
+2024-11-25 20:28:09,117 INFO:127.0.0.1 - - [25/Nov/2024 20:28:09] "[33mGET /static/images/ico_menu.png HTTP/1.1[0m" 404 -
+2024-11-25 20:28:09,194 INFO:127.0.0.1 - - [25/Nov/2024 20:28:09] "[33mGET /static/images/ico_more.png HTTP/1.1[0m" 404 -
+2024-11-25 20:28:09,255 INFO:127.0.0.1 - - [25/Nov/2024 20:28:09] "[33mGET /static/images/ico_more_gray.png HTTP/1.1[0m" 404 -
+2024-11-25 20:28:09,273 INFO:127.0.0.1 - - [25/Nov/2024 20:28:09] "[33mGET /static/images/ico_policy2.png HTTP/1.1[0m" 404 -
+2024-11-25 20:28:09,279 INFO:127.0.0.1 - - [25/Nov/2024 20:28:09] "[33mGET /static/images/icon_etc11.png HTTP/1.1[0m" 404 -
+2024-11-25 20:28:09,318 INFO:127.0.0.1 - - [25/Nov/2024 20:28:09] "[33mGET /static/images/ico_etc21.png HTTP/1.1[0m" 404 -
+2024-11-25 20:28:09,453 INFO:127.0.0.1 - - [25/Nov/2024 20:28:09] "[33mGET /static/images/ico_etc22.png HTTP/1.1[0m" 404 -
+2024-11-25 20:28:09,530 INFO:127.0.0.1 - - [25/Nov/2024 20:28:09] "[33mGET /static/images/ico_etc23.png HTTP/1.1[0m" 404 -
+2024-11-25 20:28:09,593 INFO:127.0.0.1 - - [25/Nov/2024 20:28:09] "[33mGET /static/images/ico_etc24.png HTTP/1.1[0m" 404 -
+2024-11-25 20:28:09,647 INFO:127.0.0.1 - - [25/Nov/2024 20:28:09] "[33mGET /static/images/foot_logo.png HTTP/1.1[0m" 404 -
+2024-11-25 20:28:09,647 INFO:127.0.0.1 - - [25/Nov/2024 20:28:09] "[33mGET /static/images/filename HTTP/1.1[0m" 404 -
+2024-11-25 20:28:09,697 INFO:127.0.0.1 - - [25/Nov/2024 20:28:09] "[33mGET /static/images/20241118131757.jpg HTTP/1.1[0m" 404 -
+2024-11-25 20:28:09,791 INFO:127.0.0.1 - - [25/Nov/2024 20:28:09] "[33mGET /static/images/20241118131843.png HTTP/1.1[0m" 404 -
+2024-11-25 20:28:09,895 INFO:127.0.0.1 - - [25/Nov/2024 20:28:09] "[33mGET /static/images/20241118161726.png HTTP/1.1[0m" 404 -
+2024-11-25 20:28:09,987 INFO:127.0.0.1 - - [25/Nov/2024 20:28:09] "[33mGET /static/images/20241112132630.png HTTP/1.1[0m" 404 -
+2024-11-25 20:28:10,016 INFO:127.0.0.1 - - [25/Nov/2024 20:28:10] "[33mGET /static/images/20241105144641.png HTTP/1.1[0m" 404 -
+2024-11-25 20:28:10,016 INFO:127.0.0.1 - - [25/Nov/2024 20:28:10] "[33mGET /static/images/20241119151434.jpg HTTP/1.1[0m" 404 -
+2024-11-25 20:28:10,065 INFO:127.0.0.1 - - [25/Nov/2024 20:28:10] "[33mGET /static/images/20241119151120.png HTTP/1.1[0m" 404 -
+2024-11-25 20:28:10,175 INFO:127.0.0.1 - - [25/Nov/2024 20:28:10] "[33mGET /static/images/202411061505365362.jpg HTTP/1.1[0m" 404 -
+2024-11-25 20:28:10,217 INFO:127.0.0.1 - - [25/Nov/2024 20:28:10] "[33mGET /static/images/b2d9e54c040decb42ae84c4cebe8d63b.jpg HTTP/1.1[0m" 404 -
+2024-11-25 20:28:10,370 INFO:127.0.0.1 - - [25/Nov/2024 20:28:10] "[33mGET /static/images/88edcbb5a3a53eb9f6123f58e99ba607.jpg HTTP/1.1[0m" 404 -
+2024-11-25 20:28:10,449 INFO:127.0.0.1 - - [25/Nov/2024 20:28:10] "[33mGET /static/images/4a5623c2ad8acdf6f1d74c15ea1f47df.jpg HTTP/1.1[0m" 404 -
+2024-11-25 20:28:10,450 INFO:127.0.0.1 - - [25/Nov/2024 20:28:10] "[33mGET /static/images/62b3f0bb33bc884c61aee8814dd97f64.jpg HTTP/1.1[0m" 404 -
+2024-11-25 20:30:12,977 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\lighthouse\\process_urls.py', reloading
+2024-11-25 20:30:14,197 INFO: * Restarting with stat
+2024-11-25 20:30:32,477 WARNING: * Debugger is active!
+2024-11-25 20:30:32,488 INFO: * Debugger PIN: 109-248-517
+2024-11-25 20:33:50,445 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-25 20:33:51,555 INFO: * Restarting with stat
+2024-11-25 20:34:08,878 WARNING: * Debugger is active!
+2024-11-25 20:34:08,904 INFO: * Debugger PIN: 109-248-517
+2024-11-25 20:34:13,094 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-25 20:34:14,150 INFO: * Restarting with stat
+2024-11-25 20:34:30,551 WARNING: * Debugger is active!
+2024-11-25 20:34:30,561 INFO: * Debugger PIN: 109-248-517
+2024-11-25 20:34:40,367 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-25 20:34:41,187 INFO: * Restarting with stat
+2024-11-25 20:34:59,091 WARNING: * Debugger is active!
+2024-11-25 20:34:59,103 INFO: * Debugger PIN: 109-248-517
+2024-11-25 20:35:33,197 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-25 20:35:34,465 INFO: * Restarting with stat
+2024-11-25 20:35:51,544 WARNING: * Debugger is active!
+2024-11-25 20:35:51,558 INFO: * Debugger PIN: 109-248-517
+2024-11-25 20:36:22,831 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-25 20:36:23,883 INFO: * Restarting with stat
+2024-11-25 20:36:41,611 WARNING: * Debugger is active!
+2024-11-25 20:36:41,621 INFO: * Debugger PIN: 109-248-517
+2024-11-25 20:36:48,255 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-25 20:36:49,591 INFO: * Restarting with stat
+2024-11-25 20:37:07,022 WARNING: * Debugger is active!
+2024-11-25 20:37:07,035 INFO: * Debugger PIN: 109-248-517
+2024-11-25 20:37:35,350 INFO:127.0.0.1 - - [25/Nov/2024 20:37:35] "GET / HTTP/1.1" 200 -
+2024-11-25 20:38:13,855 INFO:127.0.0.1 - - [25/Nov/2024 20:38:13] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-11-25 20:38:13,899 INFO:127.0.0.1 - - [25/Nov/2024 20:38:13] "GET /carbon_calculate_emission HTTP/1.1" 200 -
+2024-11-25 20:38:25,367 INFO:127.0.0.1 - - [25/Nov/2024 20:38:25] "[35m[1mGET /img_optimization HTTP/1.1[0m" 500 -
+2024-11-25 20:38:26,753 INFO:127.0.0.1 - - [25/Nov/2024 20:38:26] "GET /img_optimization?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2024-11-25 20:38:26,765 INFO:127.0.0.1 - - [25/Nov/2024 20:38:26] "GET /img_optimization?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2024-11-25 20:38:27,350 INFO:127.0.0.1 - - [25/Nov/2024 20:38:27] "GET /img_optimization?__debugger__=yes&cmd=resource&f=console.png&s=CDA18kUfTwhIC3gIQTXw HTTP/1.1" 200 -
+2024-11-25 20:38:28,177 INFO:127.0.0.1 - - [25/Nov/2024 20:38:28] "GET /img_optimization?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2024-11-25 20:39:51,479 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-25 20:39:52,361 INFO: * Restarting with stat
+2024-11-25 20:40:43,289 INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-11-25 20:40:43,289 INFO:[33mPress CTRL+C to quit[0m
+2024-11-25 20:40:43,291 INFO: * Restarting with stat
+2024-11-25 20:41:00,297 WARNING: * Debugger is active!
+2024-11-25 20:41:00,316 INFO: * Debugger PIN: 109-248-517
+2024-11-25 20:41:01,368 INFO:127.0.0.1 - - [25/Nov/2024 20:41:01] "GET / HTTP/1.1" 200 -
+2024-11-25 20:41:32,536 INFO:127.0.0.1 - - [25/Nov/2024 20:41:32] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-11-25 20:41:32,612 INFO:127.0.0.1 - - [25/Nov/2024 20:41:32] "GET /carbon_calculate_emission HTTP/1.1" 200 -
+2024-11-25 20:41:52,336 INFO:127.0.0.1 - - [25/Nov/2024 20:41:52] "GET /img_optimization HTTP/1.1" 200 -
+2024-11-25 20:41:54,611 INFO:127.0.0.1 - - [25/Nov/2024 20:41:54] "[33mGET /static/images/https://me.go.kr/logo.png HTTP/1.1[0m" 404 -
+2024-11-25 20:41:54,637 INFO:127.0.0.1 - - [25/Nov/2024 20:41:54] "[33mGET /static/images/https://me.go.kr/arrow_auto_main.png HTTP/1.1[0m" 404 -
+2024-11-25 20:41:55,529 INFO:127.0.0.1 - - [25/Nov/2024 20:41:55] "[33mGET /static/images/https://me.go.kr/arrow_auto_main_up.png HTTP/1.1[0m" 404 -
+2024-11-25 20:41:55,530 INFO:127.0.0.1 - - [25/Nov/2024 20:41:55] "[33mGET /static/images/https://me.go.kr/img_head_link02.jpg HTTP/1.1[0m" 404 -
+2024-11-25 20:41:57,221 INFO:127.0.0.1 - - [25/Nov/2024 20:41:57] "[33mGET /static/images/https://me.go.kr/gov_slogan.png HTTP/1.1[0m" 404 -
+2024-11-25 20:41:57,692 INFO:127.0.0.1 - - [25/Nov/2024 20:41:57] "[33mGET /static/images/https://me.go.kr/ico_sns_youtube.png HTTP/1.1[0m" 404 -
+2024-11-25 20:41:57,694 INFO:127.0.0.1 - - [25/Nov/2024 20:41:57] "[33mGET /static/images/https://me.go.kr/ico_sns_instagram.png HTTP/1.1[0m" 404 -
+2024-11-25 20:41:57,828 INFO:127.0.0.1 - - [25/Nov/2024 20:41:57] "[33mGET /static/images/https://me.go.kr/ico_sns_facebook.png HTTP/1.1[0m" 404 -
+2024-11-25 20:41:57,952 INFO:127.0.0.1 - - [25/Nov/2024 20:41:57] "[33mGET /static/images/ico_sns_youtube.png HTTP/1.1[0m" 404 -
+2024-11-25 20:41:58,028 INFO:127.0.0.1 - - [25/Nov/2024 20:41:58] "[33mGET /static/images/ico_sns_instagram.png HTTP/1.1[0m" 404 -
+2024-11-25 20:41:58,029 INFO:127.0.0.1 - - [25/Nov/2024 20:41:58] "[33mGET /static/images/ico_sns_facebook.png HTTP/1.1[0m" 404 -
+2024-11-25 20:41:58,151 INFO:127.0.0.1 - - [25/Nov/2024 20:41:58] "[33mGET /static/images/ico_sns_twitterx.png HTTP/1.1[0m" 404 -
+2024-11-25 20:41:58,274 INFO:127.0.0.1 - - [25/Nov/2024 20:41:58] "[33mGET /static/images/ico_sns_blog.png HTTP/1.1[0m" 404 -
+2024-11-25 20:41:58,382 INFO:127.0.0.1 - - [25/Nov/2024 20:41:58] "[33mGET /static/images/ico_gnb_search.png HTTP/1.1[0m" 404 -
+2024-11-25 20:41:58,382 INFO:127.0.0.1 - - [25/Nov/2024 20:41:58] "[33mGET /static/images/ico_menu.png HTTP/1.1[0m" 404 -
+2024-11-25 20:41:58,488 INFO:127.0.0.1 - - [25/Nov/2024 20:41:58] "[33mGET /static/images/ico_more.png HTTP/1.1[0m" 404 -
+2024-11-25 20:41:58,596 INFO:127.0.0.1 - - [25/Nov/2024 20:41:58] "[33mGET /static/images/ico_more_gray.png HTTP/1.1[0m" 404 -
+2024-11-25 20:41:58,827 INFO:127.0.0.1 - - [25/Nov/2024 20:41:58] "[33mGET /static/images/icon_etc11.png HTTP/1.1[0m" 404 -
+2024-11-25 20:41:58,828 INFO:127.0.0.1 - - [25/Nov/2024 20:41:58] "[33mGET /static/images/ico_policy2.png HTTP/1.1[0m" 404 -
+2024-11-25 20:41:58,832 INFO:127.0.0.1 - - [25/Nov/2024 20:41:58] "[33mGET /static/images/ico_etc21.png HTTP/1.1[0m" 404 -
+2024-11-25 20:41:58,919 INFO:127.0.0.1 - - [25/Nov/2024 20:41:58] "[33mGET /static/images/ico_etc22.png HTTP/1.1[0m" 404 -
+2024-11-25 20:41:59,181 INFO:127.0.0.1 - - [25/Nov/2024 20:41:59] "[33mGET /static/images/ico_etc24.png HTTP/1.1[0m" 404 -
+2024-11-25 20:41:59,182 INFO:127.0.0.1 - - [25/Nov/2024 20:41:59] "[33mGET /static/images/ico_etc23.png HTTP/1.1[0m" 404 -
+2024-11-25 20:41:59,182 INFO:127.0.0.1 - - [25/Nov/2024 20:41:59] "[33mGET /static/images/logo.png HTTP/1.1[0m" 404 -
+2024-11-25 20:41:59,255 INFO:127.0.0.1 - - [25/Nov/2024 20:41:59] "[33mGET /static/images/foot_logo.png HTTP/1.1[0m" 404 -
+2024-11-25 20:41:59,513 INFO:127.0.0.1 - - [25/Nov/2024 20:41:59] "[33mGET /static/images/filename HTTP/1.1[0m" 404 -
+2024-11-25 20:41:59,517 INFO:127.0.0.1 - - [25/Nov/2024 20:41:59] "[33mGET /static/images/20241118131757.jpg HTTP/1.1[0m" 404 -
+2024-11-25 20:41:59,518 INFO:127.0.0.1 - - [25/Nov/2024 20:41:59] "[33mGET /static/images/20241118131843.png HTTP/1.1[0m" 404 -
+2024-11-25 20:41:59,588 INFO:127.0.0.1 - - [25/Nov/2024 20:41:59] "[33mGET /static/images/20241118161726.png HTTP/1.1[0m" 404 -
+2024-11-25 20:41:59,864 INFO:127.0.0.1 - - [25/Nov/2024 20:41:59] "[33mGET /static/images/20241112132630.png HTTP/1.1[0m" 404 -
+2024-11-25 20:41:59,865 INFO:127.0.0.1 - - [25/Nov/2024 20:41:59] "[33mGET /static/images/20241105144641.png HTTP/1.1[0m" 404 -
+2024-11-25 20:41:59,866 INFO:127.0.0.1 - - [25/Nov/2024 20:41:59] "[33mGET /static/images/20241119151434.jpg HTTP/1.1[0m" 404 -
+2024-11-25 20:41:59,939 INFO:127.0.0.1 - - [25/Nov/2024 20:41:59] "[33mGET /static/images/20241119151120.png HTTP/1.1[0m" 404 -
+2024-11-25 20:42:00,189 INFO:127.0.0.1 - - [25/Nov/2024 20:42:00] "[33mGET /static/images/202411061505365362.jpg HTTP/1.1[0m" 404 -
+2024-11-25 20:42:00,189 INFO:127.0.0.1 - - [25/Nov/2024 20:42:00] "[33mGET /static/images/88edcbb5a3a53eb9f6123f58e99ba607.jpg HTTP/1.1[0m" 404 -
+2024-11-25 20:42:00,190 INFO:127.0.0.1 - - [25/Nov/2024 20:42:00] "[33mGET /static/images/b2d9e54c040decb42ae84c4cebe8d63b.jpg HTTP/1.1[0m" 404 -
+2024-11-25 20:42:00,262 INFO:127.0.0.1 - - [25/Nov/2024 20:42:00] "[33mGET /static/images/4a5623c2ad8acdf6f1d74c15ea1f47df.jpg HTTP/1.1[0m" 404 -
+2024-11-25 20:42:00,537 INFO:127.0.0.1 - - [25/Nov/2024 20:42:00] "[33mGET /static/images/62b3f0bb33bc884c61aee8814dd97f64.jpg HTTP/1.1[0m" 404 -
+2024-11-25 20:45:05,057 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\Image_Classification\\model_test.py', reloading
+2024-11-25 20:45:05,802 INFO: * Restarting with stat
+2024-11-25 20:45:24,047 WARNING: * Debugger is active!
+2024-11-25 20:45:24,057 INFO: * Debugger PIN: 109-248-517
+2024-11-25 20:46:13,539 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-25 20:46:14,364 INFO: * Restarting with stat
+2024-11-25 20:46:30,962 WARNING: * Debugger is active!
+2024-11-25 20:46:30,974 INFO: * Debugger PIN: 109-248-517
+2024-11-25 20:46:48,758 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\routes.py', reloading
+2024-11-25 20:46:49,747 INFO: * Restarting with stat
+2024-11-25 20:47:06,715 WARNING: * Debugger is active!
+2024-11-25 20:47:06,727 INFO: * Debugger PIN: 109-248-517
+2024-11-25 20:47:39,372 INFO:127.0.0.1 - - [25/Nov/2024 20:47:39] "GET / HTTP/1.1" 200 -
+2024-11-25 20:48:10,010 INFO:127.0.0.1 - - [25/Nov/2024 20:48:10] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-11-25 20:48:10,067 INFO:127.0.0.1 - - [25/Nov/2024 20:48:10] "GET /carbon_calculate_emission HTTP/1.1" 200 -
+2024-11-25 20:48:15,974 INFO:127.0.0.1 - - [25/Nov/2024 20:48:15] "[35m[1mGET /img_optimization HTTP/1.1[0m" 500 -
+2024-11-25 20:48:17,365 INFO:127.0.0.1 - - [25/Nov/2024 20:48:17] "GET /img_optimization?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2024-11-25 20:48:17,387 INFO:127.0.0.1 - - [25/Nov/2024 20:48:17] "GET /img_optimization?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2024-11-25 20:48:18,659 INFO:127.0.0.1 - - [25/Nov/2024 20:48:18] "GET /img_optimization?__debugger__=yes&cmd=resource&f=console.png&s=dLqEKnWse0MZ019Qpfzs HTTP/1.1" 200 -
+2024-11-25 20:48:50,486 INFO:127.0.0.1 - - [25/Nov/2024 20:48:50] "GET /img_optimization HTTP/1.1" 200 -
+2024-11-25 20:48:52,489 INFO:127.0.0.1 - - [25/Nov/2024 20:48:52] "[33mGET /static/images/https://me.go.kr/logo.png HTTP/1.1[0m" 404 -
+2024-11-25 20:48:52,825 INFO:127.0.0.1 - - [25/Nov/2024 20:48:52] "[33mGET /static/images/https://me.go.kr/arrow_auto_main.png HTTP/1.1[0m" 404 -
+2024-11-25 20:48:52,834 INFO:127.0.0.1 - - [25/Nov/2024 20:48:52] "[33mGET /static/images/https://me.go.kr/img_head_link02.jpg HTTP/1.1[0m" 404 -
+2024-11-25 20:48:52,837 INFO:127.0.0.1 - - [25/Nov/2024 20:48:52] "[33mGET /static/images/https://me.go.kr/arrow_auto_main_up.png HTTP/1.1[0m" 404 -
+2024-11-25 20:48:52,839 INFO:127.0.0.1 - - [25/Nov/2024 20:48:52] "[33mGET /static/images/https://me.go.kr/gov_slogan.png HTTP/1.1[0m" 404 -
+2024-11-25 20:48:52,842 INFO:127.0.0.1 - - [25/Nov/2024 20:48:52] "[33mGET /static/images/https://me.go.kr/ico_sns_youtube.png HTTP/1.1[0m" 404 -
+2024-11-25 20:48:52,877 INFO:127.0.0.1 - - [25/Nov/2024 20:48:52] "[33mGET /static/images/https://me.go.kr/ico_sns_instagram.png HTTP/1.1[0m" 404 -
+2024-11-25 20:48:53,766 INFO:127.0.0.1 - - [25/Nov/2024 20:48:53] "[33mGET /static/images/https://me.go.kr/ico_sns_facebook.png HTTP/1.1[0m" 404 -
+2024-11-25 20:48:53,769 INFO:127.0.0.1 - - [25/Nov/2024 20:48:53] "[33mGET /static/images/ico_sns_youtube.png HTTP/1.1[0m" 404 -
+2024-11-25 20:48:53,771 INFO:127.0.0.1 - - [25/Nov/2024 20:48:53] "[33mGET /static/images/ico_sns_instagram.png HTTP/1.1[0m" 404 -
+2024-11-25 20:48:53,777 INFO:127.0.0.1 - - [25/Nov/2024 20:48:53] "[33mGET /static/images/ico_sns_facebook.png HTTP/1.1[0m" 404 -
+2024-11-25 20:48:53,782 INFO:127.0.0.1 - - [25/Nov/2024 20:48:53] "[33mGET /static/images/ico_sns_twitterx.png HTTP/1.1[0m" 404 -
+2024-11-25 20:48:53,787 INFO:127.0.0.1 - - [25/Nov/2024 20:48:53] "[33mGET /static/images/ico_sns_blog.png HTTP/1.1[0m" 404 -
+2024-11-25 20:48:54,253 INFO:127.0.0.1 - - [25/Nov/2024 20:48:54] "[33mGET /static/images/ico_gnb_search.png HTTP/1.1[0m" 404 -
+2024-11-25 20:48:54,256 INFO:127.0.0.1 - - [25/Nov/2024 20:48:54] "[33mGET /static/images/ico_menu.png HTTP/1.1[0m" 404 -
+2024-11-25 20:48:54,261 INFO:127.0.0.1 - - [25/Nov/2024 20:48:54] "[33mGET /static/images/ico_more.png HTTP/1.1[0m" 404 -
+2024-11-25 20:48:54,266 INFO:127.0.0.1 - - [25/Nov/2024 20:48:54] "[33mGET /static/images/ico_more_gray.png HTTP/1.1[0m" 404 -
+2024-11-25 20:48:54,270 INFO:127.0.0.1 - - [25/Nov/2024 20:48:54] "[33mGET /static/images/ico_policy2.png HTTP/1.1[0m" 404 -
+2024-11-25 20:48:54,275 INFO:127.0.0.1 - - [25/Nov/2024 20:48:54] "[33mGET /static/images/icon_etc11.png HTTP/1.1[0m" 404 -
+2024-11-25 20:48:54,572 INFO:127.0.0.1 - - [25/Nov/2024 20:48:54] "[33mGET /static/images/ico_etc21.png HTTP/1.1[0m" 404 -
+2024-11-25 20:48:54,576 INFO:127.0.0.1 - - [25/Nov/2024 20:48:54] "[33mGET /static/images/ico_etc22.png HTTP/1.1[0m" 404 -
+2024-11-25 20:48:54,583 INFO:127.0.0.1 - - [25/Nov/2024 20:48:54] "[33mGET /static/images/ico_etc23.png HTTP/1.1[0m" 404 -
+2024-11-25 20:48:54,586 INFO:127.0.0.1 - - [25/Nov/2024 20:48:54] "[33mGET /static/images/ico_etc24.png HTTP/1.1[0m" 404 -
+2024-11-25 20:48:54,599 INFO:127.0.0.1 - - [25/Nov/2024 20:48:54] "[33mGET /static/images/logo.png HTTP/1.1[0m" 404 -
+2024-11-25 20:48:54,601 INFO:127.0.0.1 - - [25/Nov/2024 20:48:54] "[33mGET /static/images/foot_logo.png HTTP/1.1[0m" 404 -
+2024-11-25 20:48:54,908 INFO:127.0.0.1 - - [25/Nov/2024 20:48:54] "[33mGET /static/images/filename HTTP/1.1[0m" 404 -
+2024-11-25 20:48:54,940 INFO:127.0.0.1 - - [25/Nov/2024 20:48:54] "[33mGET /static/images/20241118131757.jpg HTTP/1.1[0m" 404 -
+2024-11-25 20:48:54,943 INFO:127.0.0.1 - - [25/Nov/2024 20:48:54] "[33mGET /static/images/20241118131843.png HTTP/1.1[0m" 404 -
+2024-11-25 20:48:54,947 INFO:127.0.0.1 - - [25/Nov/2024 20:48:54] "[33mGET /static/images/20241118161726.png HTTP/1.1[0m" 404 -
+2024-11-25 20:48:54,955 INFO:127.0.0.1 - - [25/Nov/2024 20:48:54] "[33mGET /static/images/20241112132630.png HTTP/1.1[0m" 404 -
+2024-11-25 20:48:54,958 INFO:127.0.0.1 - - [25/Nov/2024 20:48:54] "[33mGET /static/images/20241105144641.png HTTP/1.1[0m" 404 -
+2024-11-25 20:48:55,229 INFO:127.0.0.1 - - [25/Nov/2024 20:48:55] "[33mGET /static/images/20241119151434.jpg HTTP/1.1[0m" 404 -
+2024-11-25 20:48:55,294 INFO:127.0.0.1 - - [25/Nov/2024 20:48:55] "[33mGET /static/images/20241119151120.png HTTP/1.1[0m" 404 -
+2024-11-25 20:48:55,295 INFO:127.0.0.1 - - [25/Nov/2024 20:48:55] "[33mGET /static/images/202411061505365362.jpg HTTP/1.1[0m" 404 -
+2024-11-25 20:48:55,297 INFO:127.0.0.1 - - [25/Nov/2024 20:48:55] "[33mGET /static/images/b2d9e54c040decb42ae84c4cebe8d63b.jpg HTTP/1.1[0m" 404 -
+2024-11-25 20:48:55,323 INFO:127.0.0.1 - - [25/Nov/2024 20:48:55] "[33mGET /static/images/88edcbb5a3a53eb9f6123f58e99ba607.jpg HTTP/1.1[0m" 404 -
+2024-11-25 20:48:55,325 INFO:127.0.0.1 - - [25/Nov/2024 20:48:55] "[33mGET /static/images/4a5623c2ad8acdf6f1d74c15ea1f47df.jpg HTTP/1.1[0m" 404 -
+2024-11-25 20:48:55,554 INFO:127.0.0.1 - - [25/Nov/2024 20:48:55] "[33mGET /static/images/62b3f0bb33bc884c61aee8814dd97f64.jpg HTTP/1.1[0m" 404 -
+2024-11-25 20:50:48,258 INFO:127.0.0.1 - - [25/Nov/2024 20:50:48] "[35m[1mGET /img_optimization HTTP/1.1[0m" 500 -
+2024-11-25 20:50:49,110 INFO:127.0.0.1 - - [25/Nov/2024 20:50:49] "GET /img_optimization?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2024-11-25 20:50:49,163 INFO:127.0.0.1 - - [25/Nov/2024 20:50:49] "GET /img_optimization?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2024-11-25 20:50:50,501 INFO:127.0.0.1 - - [25/Nov/2024 20:50:50] "GET /img_optimization?__debugger__=yes&cmd=resource&f=console.png&s=dLqEKnWse0MZ019Qpfzs HTTP/1.1" 200 -
+2024-11-25 20:50:52,780 INFO:127.0.0.1 - - [25/Nov/2024 20:50:52] "GET /img_optimization?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2024-11-25 21:14:50,115 INFO:127.0.0.1 - - [25/Nov/2024 21:14:50] "GET / HTTP/1.1" 200 -
+2024-11-25 21:15:26,227 INFO:127.0.0.1 - - [25/Nov/2024 21:15:26] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-11-25 21:15:26,257 INFO:127.0.0.1 - - [25/Nov/2024 21:15:26] "GET /carbon_calculate_emission HTTP/1.1" 200 -
+2024-11-25 21:15:54,398 INFO:127.0.0.1 - - [25/Nov/2024 21:15:54] "GET /code_optimization HTTP/1.1" 200 -
+2024-11-25 21:15:54,823 INFO:127.0.0.1 - - [25/Nov/2024 21:15:54] "GET /static/js/guideline.js HTTP/1.1" 200 -
+2024-11-25 21:15:55,199 INFO:127.0.0.1 - - [25/Nov/2024 21:15:55] "GET /static/js/directory_structure.js HTTP/1.1" 200 -
+2024-11-25 21:15:56,432 INFO:127.0.0.1 - - [25/Nov/2024 21:15:56] "GET /static/toggle_down.png HTTP/1.1" 200 -
+2024-11-25 21:17:00,395 INFO: * Detected change in 'C:\\ecoweb\\ecoweb\\app\\ProjectMaker\\DirectoryMaker.py', reloading

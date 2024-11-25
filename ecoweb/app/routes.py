@@ -169,9 +169,6 @@ def init_routes(app):
     def error():
         return render_template('error.html')
 
-
-
-
 ###################여기서부터 리팩토링 진행중인 result 페이지 5가지 종류 ##########
     @app.route('/', methods=['GET', 'POST'])
     def home():
@@ -269,7 +266,7 @@ def init_routes(app):
         except:
             view_data = {}
 
-        print("[view_data-after] : ", view_data)
+        # print("[view_data-after] : ", view_data)
         collection_traffic = db.db.lighthouse_traffic
         collection_resource = db.db.lighthouse_resource
 
@@ -296,10 +293,14 @@ def init_routes(app):
     
     @app.route('/img_optimization')
     def img_optimization():
+        url_s = session.get('url')
+        if "https://" in url_s:
+            url_s = url_s.replace("https://", "")
+        print("url_s : ", url_s)
         # 이미지 분류
         Image_paths = proc_url.get_report_imagepath()
         # 이거 gitingnore 하세요. 
-        image_dir_path = '../images'
+        image_dir_path = f'app/static/images/{url_s}'
         if not os.path.exists(image_dir_path):
             os.mkdir(image_dir_path)
 
@@ -310,7 +311,7 @@ def init_routes(app):
                 filename = spliturl[-2] + '.' + spliturl[-1]
                 destination = os.path.join(image_dir_path, filename)
                 urllib.request.urlretrieve(imageurl, destination)
-                files.append(model_test.predict_image(destination, filename, '../ecoweb_images/results'))
+                files.append(model_test.predict_image(destination, filename, f'app/static/images/{url_s}/results')) # url별로 경로 생성
             except Exception as e:
                 print(f"download error : {e}")
 
@@ -319,6 +320,7 @@ def init_routes(app):
             'logofile': [],
             'others': []
         }
+
         svgfiles = []
         count = 0
         totalsize = 0
@@ -334,11 +336,22 @@ def init_routes(app):
             else:
                 category['others'].append(file)
 
+        # viewdata
+
+        view_data = session.get('view_data')
+        url_s = session.get('url')
+        # JSON 문자열을 딕셔너리로 변환
+        try:
+            view_data = json.loads(view_data) if view_data else {}
+        except:
+            view_data = {}
         return render_template('img_optimization.html',
-                               category=category,
+                               category=category,   
                                files=svgfiles, 
                                filecount=count,
-                               totalsize=totalsize)
+                               totalsize=totalsize,
+                               view_data=view_data,
+                               url_s=url_s)
 
     @app.route('/world_analysis')
     def world_analysis():
