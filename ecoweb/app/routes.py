@@ -42,118 +42,6 @@ def perform_async_guideline_analize(task_id, url_s, root_path):
     guideline_results[task_id] = guideline_list
 
 def init_routes(app):
-    @app.route('/result')
-    def result():
-        url = request.args.get('url')
-        grade = request.args.get('grade')
-        view_data_str = request.args.get('view_data')
-        grade_s = session.get('grade')
-        url_s = session.get('url')
-
-        collection_traffic = db.db.lighthouse_traffic
-        collection_resource = db.db.lighthouse_resource
-
-        try:
-            # view_data 처리
-            if view_data_str:
-                view_data = json.loads(view_data_str)
-                print("view_data_on url:")
-            elif session.get('view_data'):
-                view_data = json.loads(session.get('view_data'))
-                print("view_data_on session:")
-            else:
-                return redirect(url_for('/'))
-
-            # 탄소 배출량 및 기타 정보 계산
-            kb_weight = view_data['total_byte_weight'] / 1024  # bytes to KB
-            carbon_emission = round((kb_weight * 0.04) / 272.51, 3)
-            mb_weight = kb_weight / 1024
-            global_avg_diff = round(mb_weight - 2.4, 2)
-            korea_avg_diff = round(mb_weight - 4.7, 2)
-
-            # 세션에 view_data 저장
-            session['view_data'] = json.dumps(view_data)
-
-            # institution_type 조회
-            traffic_doc = db.db.lighthouse_traffic.find_one({'url': url})
-            institution_type = traffic_doc.get('institution_type', '공공기관') if traffic_doc else '공공기관'
-            session['institution_type'] = institution_type
-
-            root_path = directory_maker(url=url_s, collection_traffic=collection_traffic,
-                                        collection_resource=collection_resource)
-            # 비동기 작업(가이드라인 분석)
-            task_id = str(uuid.uuid4())
-            thread = Thread(target=perform_async_guideline_analize, args=(task_id, url_s, root_path))
-            thread.start()
-
-            # 이미지 분류
-            Image_paths = proc_url.get_report_imagepath()
-
-            image_dir_path = 'C:/Users/windowadmin1.WIN-TAQQ3RO5V1L.000/Desktop/Github/ecoweb/ecoweb/app/images'
-            if not os.path.exists(image_dir_path):
-                os.mkdir(image_dir_path)
-
-            files = []
-            for imageurl in Image_paths:
-                try:
-                    spliturl = re.split(r':|\/|\.', imageurl)
-                    filename = spliturl[-2] + '.' + spliturl[-1]
-                    destination = os.path.join(image_dir_path, filename)
-                    urllib.request.urlretrieve(imageurl, destination)
-                    files.append(model_test.predict_image(destination, filename, 'C:/Users/windowadmin1.WIN-TAQQ3RO5V1L.000/Desktop/Github/ecoweb/ecoweb/app/images/results'))
-                except Exception as e:
-                    print(f"download error : {e}")
-
-            category = {
-                'iconfile': [],
-                'logofile': [],
-                'others': []
-            }
-            svgfiles = []
-            count = 0
-            totalsize = 0
-            for file in files:
-                if file['class_name'] == 'jpg_svg' or file['class_name'] == 'jpg_logo':
-                    svgfiles.append(file)
-                    count += 1
-                    totalsize += file['size']
-                    if "ico" in file['name']:
-                        category['iconfile'].append(file)
-                    elif "logo" in file['name']:
-                        category['logofile'].append(file)
-                    else:
-                        category['others'].append(file)
-
-            # 코드 최적화 결과 수집
-            # 파일 구조를 json으로 표현해서 전달
-            directory_structure = directory_to_json(root_path)
-            print("Directory Structure : ")
-            print(type(directory_structure))
-            print(directory_structure)
-            # 식별된 변수명과 대체 문자열, 절감 가능치를 json으로 표현해서 전달
-            # 각 코드 파일을 압축한 버전을 다운로드할 수 있게 제공하기
-
-            return render_template('result.html',
-                                   url=url_s,
-                                   grade=grade_s,
-                                   view_data=view_data,
-                                   kb_weight=kb_weight,
-                                   carbon_emission=carbon_emission,
-                                   global_avg_diff=global_avg_diff,
-                                   korea_avg_diff=korea_avg_diff,
-                                   institution_type=institution_type,
-                                   guideline_list=guideline_results,
-                                   task_id=task_id,
-                                   files=svgfiles,
-                                   category=category,
-                                   filecount=count,
-                                   totalsize=totalsize,
-                                   directory_structure=directory_structure
-                                   )
-
-        except Exception as e:
-            print(f"Error in result route: {str(e)}")
-            return redirect(url_for('/'))
 
     @app.route('/check_async/<task_id>', methods=['GET'])
     def check_async(task_id):
@@ -385,13 +273,15 @@ def init_routes(app):
         collection_traffic = db.db.lighthouse_traffic
         collection_resource = db.db.lighthouse_resource
 
+
+        root_path = directory_maker(url=url_s, collection_traffic=collection_traffic,
+                                        collection_resource=collection_resource)
         # 비동기 작업(가이드라인 분석)
         task_id = str(uuid.uuid4())
-        thread = Thread(target=perform_async_guideline_analize, args=(task_id, url_s, collection_traffic, collection_resource))
+        thread = Thread(target=perform_async_guideline_analize, args=(task_id, url_s, root_path))
         thread.start()
-
         # 코드 최적화 결과 수집
-            # 파일 구조를 json으로 표현해서 전달
+        # 파일 구조를 json으로 표현해서 전달
         directory_structure = directory_to_json(root_path)
         print("Directory Structure : ")
         print(type(directory_structure))
@@ -401,11 +291,54 @@ def init_routes(app):
 
         return render_template('code_optimization.html', 
                                view_data=view_data,
-                               task_id = task_id)
+                               task_id = task_id,
+                               directory_structure = directory_structure)
     
     @app.route('/img_optimization')
     def img_optimization():
-        return render_template('img_optimization.html')
+        # 이미지 분류
+        Image_paths = proc_url.get_report_imagepath()
+        # 이거 gitingnore 하세요. 
+        image_dir_path = '../images'
+        if not os.path.exists(image_dir_path):
+            os.mkdir(image_dir_path)
+
+        files = []
+        for imageurl in Image_paths:
+            try:
+                spliturl = re.split(r':|\/|\.', imageurl)
+                filename = spliturl[-2] + '.' + spliturl[-1]
+                destination = os.path.join(image_dir_path, filename)
+                urllib.request.urlretrieve(imageurl, destination)
+                files.append(model_test.predict_image(destination, filename, '../ecoweb_images/results'))
+            except Exception as e:
+                print(f"download error : {e}")
+
+        category = {
+            'iconfile': [],
+            'logofile': [],
+            'others': []
+        }
+        svgfiles = []
+        count = 0
+        totalsize = 0
+        for file in files:
+            if file['class_name'] == 'jpg_svg' or file['class_name'] == 'jpg_logo':
+                svgfiles.append(file)
+                count += 1
+                totalsize += file['size']
+                if "ico" in file['name']:
+                    category['iconfile'].append(file)
+                elif "logo" in file['name']:
+                    category['logofile'].append(file)
+            else:
+                category['others'].append(file)
+
+        return render_template('img_optimization.html',
+                               category=category,
+                               files=svgfiles, 
+                               filecount=count,
+                               totalsize=totalsize)
 
     @app.route('/world_analysis')
     def world_analysis():

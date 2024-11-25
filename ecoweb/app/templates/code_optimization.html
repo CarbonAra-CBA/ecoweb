@@ -2,159 +2,160 @@
 
 {% block content %}
 <div class="container-fluid">
-    <!-- 첫 번째 행: 도넛 차트와 W3C 가이드라인 -->
-    <div class="row mb-4">
-        <!-- 도넛 차트 -->
-        <div class="col-lg-6">
-            <div class="content-card h-100">
-                <h4>웹사이트 리소스 분석</h4>
-                <canvas id="resourceDonutChart"></canvas>
-            </div>
-        </div>
-        <!-- W3C 가이드라인 -->
-        <div class="col-lg-6">
-            <div class="content-card h-100">
-                <h4>W3C 지속가능한 웹개발 가이드라인 준수 현황</h4>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">번호</th>
-                            <th scope="col">항목</th>
-                            <th scope="col">준수여부</th>
-                        </tr>
-                    </thead>
-                    <tbody id="guideline-section">
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <div id="progress-overlay"></div>
-    <div id="progress-bar" class="progress-container">
-        <div class="spinner"></div>
-    </div>
-    <!-- 두 번째 행: Google Lighthouse 분석 결과 -->
-    <div class="row mb-4">
-        <div class="col-12">
-            <div class="content-card">
-                <h4>Google Lighthouse 상세 분석 결과</h4>
-                <div class="table-responsive">
-                    <table class="table table-bordered"></table>
-                        <thead class="thead-light">
-                <tr>
-                    <th>분석 항목</th>
-                    <th>용량</th>
-                    <th>상세 내용</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>총 리소스 용량</td>
-                    <td>{{ (view_data.total_byte_weight / 1024 / 1024)|round(2) }}MB</td>
-                    <td>전체 페이지 리소스 크기</td>
-                </tr>
-                <tr>
-                    <td>서드파티 스크립트 제거</td>
-                    <td>{{ (view_data.third_party_summary_wasted_bytes / 1024 / 1024)|round(2) }}MB</td>
-                    <td>외부 스크립트로 인한 낭비 용량</td>
-                </tr>
-                <tr>
-                    <td>JavaScript 분석</td>
-                    <td>
-                        미사용: {{ (view_data.total_unused_bytes_script / 1024 / 1024)|round(2) }}MB<br>
-                        전체: {{ (view_data.total_resource_bytes_script / 1024 / 1024)|round(2) }}MB
-                    </td>
-                    <td>전체 JavaScript 중 미사용 코드 비율:
-                        {{ ((view_data.total_unused_bytes_script / view_data.total_resource_bytes_script) * 100)|round(1) }}%
-                    </td>
-                </tr>
-                {% if view_data.can_optimize_css_bytes > 0 %}
-                <tr>
-                    <td>미사용 CSS</td>
-                    <td>{{ (view_data.can_optimize_css_bytes / 1024)|round(2) }}KB</td>
-                    <td>사용되지 않는 CSS 규칙 제거로 최적화 가능</td>
-                </tr>
-                {% endif %}
-                {% if view_data.can_optimize_js_bytes > 0 %}
-                <tr>
-                    <td>미사용 JavaScript</td>
-                    <td>{{ (view_data.can_optimize_js_bytes / 1024)|round(2) }}KB</td>
-                    <td>지연 로딩 및 미사용 코드 제거로 최적화 가능</td>
-                </tr>
-                {% endif %}
-                {% if view_data.modern_image_formats_bytes > 0 %}
-                <tr>
-                    <td>이미지 최적화 가능</td>
-                    <td>{{ (view_data.modern_image_formats_bytes / 1024)|round(2) }}KB</td>
-                    <td>WebP/AVIF 포맷 변환으로 절감 가능</td>
-                </tr>
-                {% endif %}
-                {% if view_data.efficient_animated_content > 0 %}
-                <tr>
-                    <td>애니메이션 최적화</td>
-                    <td>{{ (view_data.efficient_animated_content / 1024)|round(2) }}KB</td>
-                    <td>GIF를 MP4/WebM으로 변환하여 절감 가능</td>
-                </tr>
-                {% endif %}
-                {% if view_data.duplicated_javascript > 0 %}
-                <tr>
-                    <td>중복 JavaScript</td>
-                    <td>{{ (view_data.duplicated_javascript / 1024)|round(2) }}KB</td>
-                    <td>중복된 JavaScript 모듈 제거로 최적화 가능</td>
-                </tr>
-                {% endif %}
-            </tbody>
-        </table>
+    <div class="row">
+        <!-- 왼쪽 Dynamic File Structure (2행 높이) -->
+        <div class="col-md-3" style="height: calc(100vh - 100px);">
+            <div class="card h-100 shadow-sm">
+                <div class="card-header bg-light">
+                    <h4 class="mb-0">Dynamic File Structure</h4>
+                </div>
+                <div class="card-body overflow-auto">
+                    <div class="tree">
+                        <ul id="file-structure"></ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- 세 번째 행: 코드 최적화 섹션 -->
-    <div class="row">
-        <div class="col-12">
-            <div class="content-card">
-                <h3>프로젝트 내 코드 최적화</h3>
-                <div class="row">
-                    <!-- 파일 구조 트리 -->
-                    <section class="col-lg-4 mb-4 file-structure code-optimizer-item">
-                        <div class="tree">
-                            <h4>Dynamic File Structure</h4>
-                            <ul id="file-structure"></ul>
+        <!-- 오른쪽 섹션 -->
+        <div class="col-md-9">
+            <!-- 첫 번째 행 -->
+            <div class="row mb-4">
+                <!-- W3C 가이드라인 -->
+                <div class="col-md-6">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header bg-light">
+                            <h4 class="mb-0">W3C 지속가능한 웹개발 가이드라인 준수 현황</h4>
                         </div>
-                
-                    </section>
-
-                    <!-- 코드 분석 테이블들 -->
-                    <div class="col-lg-8">
-                        <div class="row">
-                            <!-- ID/Class 분석 -->
-                            <div class="col-xl-6">
-                                <!-- ID 이름 식별 테이블 -->
-                                {{ id_table_content | safe }}
-                                <!-- Class 이름 식별 테이블 -->
-                                {{ class_table_content | safe }}
-                            </div>
-                            <!-- JS 분석 -->
-                            <div class="col-xl-6">
-                                <!-- JS 변수명 식별 테이블 -->
-                                {{ js_var_table_content | safe }}
-                                <!-- JS 함수명 식별 테이블 -->
-                                {{ js_func_table_content | safe }}
-                            </div>
-                        </div>
-
-                        <!-- 압축된 코드 리스트 -->
-                        <div class="compressed-code-list mt-4">
-                            <!-- {{ compressed_code_list | safe }} -->
-                            <section class="element-usage">
-                                <div style="display:flex; flex-direction:row; align-items: space-between;">
-                                    <p style="flex:1; font-size: 24px; font-weight:bold;">압축된 코드 리스트</p>
-                                    <div style="flex: 1; display: flex; justify-content: flex-end;">
-                                        <img src="../static/download.png" style="width: 50px; height: 50px;" alt="Download Icon">
-                                    </div>
+                        <div class="card-body">
+                            <!-- 로딩 스피너 추가 -->
+                            <div id="loading-spinner" class="text-center py-5">
+                                <div class="spinner-border text-success" role="status" style="width: 6rem; height: 6rem;">
+                                    <span class="visually-hidden">Loading...</span>
                                 </div>
+                                <p class="mt-2" id="loading-text" style="font-size: 1.2em;">분석 중입니다...</p>
+                            </div>
+                            <table class="table" id="guideline-table" style="display: none;">
+                                <thead>
+                                    <tr>
+                                        <th>번호</th>
+                                        <th>항목</th>
+                                        <th>준수여부</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="guideline-section"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 도넛 차트 -->
+                <div class="col-md-6">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header bg-light">
+                            <h4 class="mb-0">웹사이트 리소스 분석</h4>
+                        </div>
+                        <div class="card-body d-flex justify-content-center align-items-center">
+                            <div style="width: 100%; height: 300px;">
+                                <canvas id="resourceDonutChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 두 번째 행 -->
+            <div class="row mb-4">
+                <!-- Google Lighthouse 분석 결과 -->
+                <div class="col-md-7">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-light">
+                            <h4 class="mb-0">Google Lighthouse 상세 분석 결과</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead class="thead-light">
+                            <tr>
+                                <th>분석 항목</th>
+                                <th>용량</th>
+                                <th>상세 내용</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>총 리소스 용량</td>
+                                <td>{{ (view_data.total_byte_weight / 1024 / 1024)|round(2) }}MB</td>
+                                <td>전체 페이지 리소스 크기</td>
+                            </tr>
+                            <tr>
+                                <td>서드파티 스크립트 제거</td>
+                                <td>{{ (view_data.third_party_summary_wasted_bytes / 1024 / 1024)|round(2) }}MB</td>
+                                <td>외부 스크립트로 인한 낭비 용량</td>
+                            </tr>
+                            <tr>
+                                <td>JavaScript 분석</td>
+                                <td>
+                                    미사용: {{ (view_data.total_unused_bytes_script / 1024 / 1024)|round(2) }}MB<br>
+                                    전체: {{ (view_data.total_resource_bytes_script / 1024 / 1024)|round(2) }}MB
+                                </td>
+                                <td>전체 JavaScript 중 미사용 코드 비율:
+                                    {{ ((view_data.total_unused_bytes_script / view_data.total_resource_bytes_script) * 100)|round(1) }}%
+                                </td>
+                            </tr>
+                            {% if view_data.can_optimize_css_bytes > 0 %}
+                            <tr>
+                                <td>미사용 CSS</td>
+                                <td>{{ (view_data.can_optimize_css_bytes / 1024)|round(2) }}KB</td>
+                                <td>사용되지 않는 CSS 규칙 제거로 최적화 가능</td>
+                            </tr>
+                            {% endif %}
+                            {% if view_data.can_optimize_js_bytes > 0 %}
+                            <tr>
+                                <td>미사용 JavaScript</td>
+                                <td>{{ (view_data.can_optimize_js_bytes / 1024)|round(2) }}KB</td>
+                                <td>지연 로딩 및 미사용 코드 제거로 최적화 가능</td>
+                            </tr>
+                            {% endif %}
+                            {% if view_data.modern_image_formats_bytes > 0 %}
+                            <tr>
+                                <td>이미지 최적화 가능</td>
+                                <td>{{ (view_data.modern_image_formats_bytes / 1024)|round(2) }}KB</td>
+                                <td>WebP/AVIF 포맷 변환으로 절감 가능</td>
+                            </tr>
+                            {% endif %}
+                            {% if view_data.efficient_animated_content > 0 %}
+                            <tr>
+                                <td>애니메이션 최적화</td>
+                                <td>{{ (view_data.efficient_animated_content / 1024)|round(2) }}KB</td>
+                                <td>GIF를 MP4/WebM으로 변환하여 절감 가능</td>
+                            </tr>
+                            {% endif %}
+                            {% if view_data.duplicated_javascript > 0 %}
+                            <tr>
+                                <td>중복 JavaScript</td>
+                                <td>{{ (view_data.duplicated_javascript / 1024)|round(2) }}KB</td>
+                                <td>중복된 JavaScript 모듈 제거로 최적화 가능</td>
+                            </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 압축된 코드 리스트 -->
+                <div class="col-md-5">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                            <h4 class="mb-0">압축된 코드 리스트</h4>
+                            <button class="btn btn-outline-success btn-sm">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
@@ -165,40 +166,64 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>new.css</td>
-                                            <td>stylesheet</td>
-                                            <td>69KB</td>
-                                            <td>47KB</td>
-                                        </tr>
-                                        <tr>
-                                            <td>widget_style.css</td>
-                                            <td>stylesheet</td>
-                                            <td>38KB</td>
-                                            <td>31KB</td>
-                                        </tr>
-                                        <tr>
-                                            <td>index.html</td>
-                                            <td>Document</td>
-                                            <td>96KB</td>
-                                            <td>77KB</td>
-                                        </tr>
-                                        <tr>
-                                            <td>common.js</td>
-                                            <td>Script</td>
-                                            <td>74KB</td>
-                                            <td>55KB</td>
-                                        </tr>
-                                        <tr>
-                                            <td>search_home.js</td>
-                                            <td>Script</td>
-                                            <td>24KB</td>
-                                            <td>19KB</td>
-                                        </tr>
+                                        <tbody>
+                                            <tr>
+                                                <td>new.css</td>
+                                                <td>stylesheet</td>
+                                                <td>69KB</td>
+                                                <td>47KB</td>
+                                            </tr>
+                                            <tr>
+                                                <td>widget_style.css</td>
+                                                <td>stylesheet</td>
+                                                <td>38KB</td>
+                                                <td>31KB</td>
+                                            </tr>
+                                            <tr>
+                                                <td>index.html</td>
+                                                <td>Document</td>
+                                                <td>96KB</td>
+                                                <td>77KB</td>
+                                            </tr>
+                                            <tr>
+                                                <td>common.js</td>
+                                                <td>Script</td>
+                                                <td>74KB</td>
+                                                <td>55KB</td>
+                                            </tr>
+                                            <tr>
+                                                <td>search_home.js</td>
+                                                <td>Script</td>
+                                                <td>24KB</td>
+                                                <td>19KB</td>
+                                            </tr>
+                                        </tbody>
                                     </tbody>
                                 </table>
-                                <p>더 보기</p>
-                            </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% set total_optimization = view_data.can_optimize_css_bytes +
+                view_data.can_optimize_js_bytes +
+                view_data.modern_image_formats_bytes +
+                view_data.efficient_animated_content +
+                view_data.duplicated_javascript %}
+            <!-- 최하단 최적화 요약 -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card shadow-sm bg-light">
+                        <div class="card-body">
+                            <div class="row text-center">
+                                <div class="col-md-6">
+                                    <h4>전체 리소스 중&nbsp;&nbsp;<span class="text-success">{{ (total_optimization / 1024 / 1024)|round(2) }}MB </span>
+                                        &nbsp;&nbsp;<span class="text-success"> {{ ((total_optimization / view_data.total_byte_weight) * 100)|round(1) }}%</span>&nbsp;&nbsp;절감 가능</h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>탄소 배출량 <span class="text-success">{{ ((total_optimization / view_data.total_byte_weight) * 100)|round(1) }}%</span> 절감 가능</h4>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -286,20 +311,15 @@
             border-radius: 50%;
             animation: spin 2s linear infinite;
         }
+
 </style>
 <script>
-    // 디렉토리 구조 데이터를 전역 변수로 선언
-    const directoryStructure = {{ directory_structure | tojson | safe }};
+    const directoryStructure = {{ directory_structure | tojson }};
 
-</script>
-<!-- 스크립트 -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="{{ url_for('static', filename='js/guideline.js') }}"></script>
-<script src="{{ url_for('static', filename='js/directory_structure.js') }}"></script>
-
-<!-- 기존 스크립트 섹션 내에 추가 -->
-<script>
-
+document.addEventListener('DOMContentLoaded', function() {
+    const loadingSpinner = document.getElementById('loading-spinner');
+    const guidelineTable = document.getElementById('guideline-table'); 
+    
     // 도넛 차트 생성
     const resourceData = [
         { name: "폰트", value: {{view_data.font_total_bytes}} },
@@ -322,14 +342,14 @@
 
     // 차트 색상
     const colors = [
-        '#FF6384', // 폰트
-        '#36A2EB', // 스크립트
-        '#FFCE56', // HTML
-        '#4BC0C0', // CSS
-        '#9966FF', // 기타
-        '#FF9F40', // 미디어
-        '#C9CBCF'  // 서드파티
-    ];
+    '#A5D6A7', // 연한 그린
+    '#81C784', // 중간 그린
+    '#66BB6A', // 밝은 그린
+    '#4CAF50', // 기본 그린
+    '#43A047', // 다크 그린
+    '#388E3C', // 더 다크 그린
+    '#C8E6C9'  // 연한 그레이 그린
+];
 
     // 도넛 차트 생성
     const ctx = document.getElementById('resourceDonutChart').getContext('2d');
@@ -345,6 +365,7 @@
         },
         options: {
             responsive: true,
+            maintainAspectRatio: false,
             plugins: {
                 legend: {
                     position: 'right',
@@ -379,5 +400,17 @@
             }
         }
     });
+});
+</script>
+<!-- 스크립트 -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='js/guideline.js') }}"></script>
+<script src="{{ url_for('static', filename='js/directory_structure.js') }}"></script>
+
+<script>
+    const loadingSpinner = document.getElementById('loading-spinner');
+    const guidelineTable = document.getElementById('guideline-table');
+
+    
 </script>
 {% endblock %}
