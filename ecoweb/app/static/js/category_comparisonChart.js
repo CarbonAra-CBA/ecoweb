@@ -3,13 +3,15 @@ async function drawCompanyComparisonChart(institutionType = "공공기관") {
         // 데이터 가져오기
         const response = await fetch('/static/js/institution_data.json');
         const data = await response.json();
+        console.log("institution_data: ", data);
         
         // 현재 기관 타입의 데이터 찾기
         const institutionData = data.institutions.find(inst => inst.type === institutionType);
         if (!institutionData) {
-            console.error('Institution type not found:', institutionType);
-            return;
+            // 없으면 공공기관 데이터 사용하세요
+            institutionData = data.institutions.find(inst => inst.type === "공공기관");
         }
+        // 
 
         // 데이터 정렬 (오름차순)
         const sortedSizes = institutionData.data
@@ -108,6 +110,6 @@ function calculatePercentile(sortedArray, value) {
 // 페이지 로드 시 차트 생성
 document.addEventListener('DOMContentLoaded', () => {
     // 세션에서 institution_type 가져오기
-    const institutionType = "{{ session.get('institution_type', '공공기관') }}";
+    const institutionType = "{{ session.get('institution_type', '공공기관')}}";  // Ensure it's properly formatted
     drawCompanyComparisonChart(institutionType);
 });

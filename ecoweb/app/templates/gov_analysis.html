@@ -16,7 +16,7 @@
         <div class="col-md-6">
             <div class="card h-100">
                 <div class="card-body">
-                    <h5 class="card-title">웹사이트 트래픽 분포 분석</h5>
+                    <h5 class="card-title">탄소 배출량 분포 분석</h5>
                     <canvas id="kdeChart"></canvas>
                 </div>
             </div>
@@ -37,32 +37,40 @@
         <div class="col-md-3">
             <div class="card bg-light h-100">
                 <div class="card-body">
-                    <h6 class="text-muted">총 배출량</h6>
-                    <p class="h3 mb-0" id="totalEmission">-</p>
+                    <h6 class="text-muted">총 탄소 배출량</h6>
+                    <p class="h3 mb-0">{{ carbon_emission }}</p>
                 </div>
             </div>
         </div>
         <div class="col-md-3">
             <div class="card bg-light h-100">
                 <div class="card-body">
-                    <h6 class="text-muted">가장 많은 배출량</h6>
-                    <p class="h5 mb-0" id="maxEmissionInst">-</p>
+                    <h6 class="text-muted">세계 평균 기준 탄소 배출량</h6>
+                    {% if global_diff_abs > 0 %}
+                        <p class="h5 mb-0" id="global_diff">{{ global_diff_abs }}% 높음</p>
+                    {% else %}
+                        <p class="h5 mb-0" id="global_diff">{{ global_diff_abs }}% 낮음</p>
+                    {% endif %}
                 </div>
             </div>
         </div>
         <div class="col-md-3">
             <div class="card bg-light h-100">
                 <div class="card-body">
-                    <h6 class="text-muted">가장 적은 배출량</h6>
-                    <p class="h5 mb-0" id="minEmissionInst">-</p>
+                    <h6 class="text-muted">한국 평균 기준 탄소 배출량</h6>
+                    {% if korea_diff_abs > 0 %}
+                        <p class="h5 mb-0" id="korea_diff">{{ korea_diff_abs }}% 높음</p>
+                    {% else %}
+                        <p class="h5 mb-0" id="korea_diff">{{ korea_diff_abs }}% 낮음</p>
+                    {% endif %}
                 </div>
             </div>
         </div>
         <div class="col-md-3">
             <div class="card bg-light h-100">
                 <div class="card-body">
-                    <h6 class="text-muted">평균 배출량</h6>
-                    <p class="h5 mb-0" id="avgEmission">-</p>
+                    <h6 class="text-muted">12개월 평균 배출량</h6>
+                    <p class="h5 mb-0" id="avgEmission">{{carbon_emission}}</p>
                 </div>
             </div>
         </div>
@@ -88,6 +96,8 @@
                 <div class="card-body">
                     <h5 class="card-title">공공기관 타입별 배출량</h5>
                     <canvas id="categoryDonutChart"></canvas>
+                    <!-- 통계 정보를 표시할 요소들 추가 -->
+                    
                 </div>
             </div>
         </div>
