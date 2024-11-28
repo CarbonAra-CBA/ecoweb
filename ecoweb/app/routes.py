@@ -19,11 +19,15 @@ from app.ProjectMaker.DirectoryMaker import directory_maker, directory_to_json
 from app.ProjectMaker.guideline_report import create_guideline_report, guideline_summarize
 from dotenv import load_dotenv
 import re
-from app.Image_Classification import model_test
+from app.Image_Classification import model_test, png2webp
 from app.lighthouse import process_urls as proc_url
 import urllib.request
 import os
-
+import requests
+import zipfile
+from io import BytesIO, StringIO
+from flask import send_file
+import shutil
 
 load_dotenv()
 # 가이드라인 분석 결과를 임시 저장할 딕셔너리
@@ -301,8 +305,10 @@ def init_routes(app):
         Image_paths = proc_url.get_report_imagepath()
         # 이거 gitingnore 하세요. 
         image_dir_path = f'app/static/images/{url_s}'
-        if not os.path.exists(image_dir_path):
-            os.mkdir(image_dir_path)
+        if os.path.exists(image_dir_path):
+            shutil.rmtree(image_dir_path)
+
+        os.makedirs(image_dir_path)
 
         files = []
         for imageurl in Image_paths:
@@ -310,8 +316,16 @@ def init_routes(app):
                 spliturl = re.split(r':|\/|\.', imageurl)
                 filename = spliturl[-2] + '.' + spliturl[-1]
                 destination = os.path.join(image_dir_path, filename)
-                urllib.request.urlretrieve(imageurl, destination)
-                files.append(model_test.predict_image(destination, filename, f'app/static/images/{url_s}/results')) # url별로 경로 생성
+                response = requests.get(imageurl, verify=False)
+    
+                # 성공적으로 다운로드된 경우에만 파일 저장
+                if response.status_code == 200:
+                    with open(destination, 'wb') as f:
+                        f.write(response.content)
+                    print(f"다운로드 성공: {filename}")
+                    files.append(model_test.predict_image(destination, filename, f'app/static/images/{url_s}/results')) # url별로 경로 생성
+                else:
+                    print(f"다운로드 실패: {filename}(상태코드 : {response.status_code})")
             except Exception as e:
                 print(f"download error : {e}")
 
@@ -333,9 +347,11 @@ def init_routes(app):
                     category['iconfile'].append(file)
                 elif "logo" in file['name']:
                     category['logofile'].append(file)
-            else:
-                category['others'].append(file)
+                else:
+                    category['others'].append(file)
 
+        # webp 변환
+        png2webp.main()
         # viewdata
 
         view_data = session.get('view_data')
@@ -346,14 +362,41 @@ def init_routes(app):
         except:
             view_data = {}
         return render_template('img_optimization.html',
-                               category=category,   
-                               files=svgfiles, 
-                               filecount=count,
-                               totalsize=totalsize,
-                               view_data=view_data,
-                               url_s=url_s)
+                            category=category,   
+                            files=svgfiles, 
+                            filecount=count,
+                            totalsize=totalsize,
+                            view_data=view_data,
+                            url_s=url_s)
 
     @app.route('/world_analysis')
     def world_analysis():
         return render_template('world_analysis.html')
+    
 
+    # 다운로드 zip파일
+    @app.route('/download-webp')
+    def download_webp():
+        url_s = session.get('url')
+        if "https://" in url_s:
+            url_s = url_s.replace("https://", "")
+        memory_file = BytesIO()
+        with zipfile.ZipFile(memory_file, 'w', zipfile.ZIP_DEFLATED) as zf:
+            webp_dir = os.path.join('app/static/images', url_s, 'img_to_webp')
+            # webp 파일들을 찾아서 ZIP 파일에 추가
+            for root, dirs, files in os.walk(webp_dir):
+                for file in files:
+                    if file.endswith('.webp'):
+                        file_path = os.path.join(root, file)
+                        arcname = os.path.relpath(file_path, webp_dir)
+                        zf.write(file_path, arcname)
+    
+        # 파일 포인터를 처음으로 되돌림
+        memory_file.seek(0)
+
+        return send_file(
+            memory_file,
+            mimetype='application/zip',
+            as_attachment=True,
+            download_name='converted_webp_files.zip'
+        )
