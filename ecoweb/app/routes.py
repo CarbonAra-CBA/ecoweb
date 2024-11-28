@@ -123,7 +123,7 @@ def init_routes(app):
                 flash('회원가입이 완료되었습니다!', 'success')
                 return redirect(url_for('login'))
             except Exception as e:
-                print(f"Error creating user: {str(e)}")
+                print("Error creating user: {}".format(str(e)))
                 flash('회원가입 중 오류가 발생했습니다.', 'error')
                 return redirect(url_for('signup'))
 
@@ -173,7 +173,6 @@ def init_routes(app):
     def error():
         return render_template('error.html')
 
-###################여기서부터 리팩토링 진행중인 result 페이지 5가지 종류 ##########
     @app.route('/', methods=['GET', 'POST'])
     def home():
         if request.method == 'POST':
@@ -204,7 +203,7 @@ def init_routes(app):
                 return redirect(url_for('carbon_calculate_emission'))
 
             except Exception as e:
-                print(f"Error processing optimized files: {str(e)}")
+                print("Error processing optimized files: {}".format(str(e)))
                 return "Error processing files", 500
         if request.method == 'GET':
             return render_template('main.html')
@@ -231,13 +230,22 @@ def init_routes(app):
             session['kb_weight'] = kb_weight
             # 탄소 배출량 계산 (0.04 kWh/GB * 442g CO2/kWh)
             carbon_emission = round((kb_weight * 0.04) / 272.51, 3)
-            
             # MB로 변환하여 평균과 비교
             mb_weight = kb_weight / 1024
             global_avg_diff = round(mb_weight - 2.4, 2)  # 세계 평균 2.4MB 기준
+            session['global_avg_carbon'] = 0.36
             korea_avg_diff = round(mb_weight - 4.7, 2)   # 한국 평균 4.7MB 기준
-            
-            print(f"Rendering template with data: carbon_emission={carbon_emission}, grade={grade}")  # 디버깅 로그
+            session['korea_avg_carbon'] = 0.70
+            session['carbon_emission'] = carbon_emission
+            korea_diff = session['korea_avg_carbon'] - carbon_emission
+            korea_diff_abs = abs(round(korea_diff, 2))
+            global_diff = session['global_avg_carbon'] - carbon_emission
+            global_diff_abs = abs(round(global_diff, 2))
+            session['global_diff'] = global_diff
+            session['korea_diff'] = korea_diff
+            session['global_diff_abs'] = global_diff_abs
+            session['korea_diff_abs'] = korea_diff_abs
+            print("Rendering template with data - carbon_emission: {}, grade: {}".format(carbon_emission, grade))
             
             return render_template('carbon_calculate_emission.html',
                                 url=url,
@@ -246,17 +254,40 @@ def init_routes(app):
                                 carbon_emission=carbon_emission,
                                 global_avg_diff=global_avg_diff,
                                 korea_avg_diff=korea_avg_diff,
+                                global_avg_carbon=session['global_avg_carbon'],
+                                korea_avg_carbon=session['korea_avg_carbon'],
                                 kb_weight=kb_weight,
-                                institution_type=institution_type)
+                                korea_diff=korea_diff,
+                                global_diff=global_diff,
+                                korea_diff_abs=korea_diff_abs,
+                                global_diff_abs=global_diff_abs,
+                                institution_type=institution_type,
+                                analysis_date=datetime.now())
                                 
         except Exception as e:
-            print(f"Error in carbon_calculate_emission: {str(e)}")  # 디버깅 로그
+            print("Error in carbon_calculate_emission: {}".format(str(e)))  # 디버깅 로그
             flash('세션이 만료되었거나 오류가 발생했습니다.', 'error')
             return redirect(url_for('home'))
 
     @app.route('/gov-analysis')
     def gov_analysis():
-        return render_template('gov_analysis.html')
+        global_avg_carbon = session.get('global_avg_carbon')    
+        korea_avg_carbon = session.get('korea_avg_carbon')
+
+        carbon_emission = session.get('carbon_emission')
+        # 현재 탄소배출량은 글로벌 평균에 비해 n% 높다.
+        global_diff = session.get('global_diff')
+        korea_diff = session.get('korea_diff')
+        global_diff_abs = session.get('global_diff_abs')
+        korea_diff_abs = session.get('korea_diff_abs')
+        return render_template('gov_analysis.html', 
+                               global_avg_carbon=global_avg_carbon,
+                               korea_avg_carbon=korea_avg_carbon,
+                               carbon_emission=carbon_emission,
+                               global_diff=global_diff,
+                               korea_diff=korea_diff,
+                               global_diff_abs=global_diff_abs,
+                               korea_diff_abs=korea_diff_abs)
         
     @app.route('/code_optimization')
     def code_optimization():
@@ -327,7 +358,7 @@ def init_routes(app):
                 else:
                     print(f"다운로드 실패: {filename}(상태코드 : {response.status_code})")
             except Exception as e:
-                print(f"download error : {e}")
+                print("download error : {}".format(e))
 
         category = {
             'iconfile': [],
@@ -355,7 +386,6 @@ def init_routes(app):
         # viewdata
 
         view_data = session.get('view_data')
-        url_s = session.get('url')
         # JSON 문자열을 딕셔너리로 변환
         try:
             view_data = json.loads(view_data) if view_data else {}

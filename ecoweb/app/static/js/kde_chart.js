@@ -54,8 +54,8 @@ async function createKDEChart(currentMB) {
                     {
                         label: '세계 평균 분포',
                         data: worldDensity.map(d => ({x: d[0], y: d[1]})),
-                        borderColor: 'rgba(25, 135, 84, 0.6)',
-                        backgroundColor: 'rgba(25, 135, 84, 0.1)',
+                        borderColor: 'rgba(90, 100, 95, 0.6)',
+                        backgroundColor: 'rgba(90, 100, 95, 0.1)',
                         fill: true,
                         tension: 0.4
                     },
@@ -67,6 +67,14 @@ async function createKDEChart(currentMB) {
                         })),
                         borderColor: 'rgba(25, 135, 84, 0.9)',
                         backgroundColor: 'rgba(25, 135, 84, 0.15)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: '현재 웹사이트',
+                        data: currentMB,
+                        borderColor: 'rgba(255, 99, 132, 0.9)',
+                        backgroundColor: 'rgba(255, 99, 132, 0.15)',
                         fill: true,
                         tension: 0.4
                     }
@@ -91,7 +99,6 @@ async function createKDEChart(currentMB) {
                                         size: 9
                                     },
                                     display: true,
-                                    content: `현재 웹사이트 (${currentMB.toFixed(2)}MB)`,
                                     position: 'top'
                                 }
                             }
@@ -106,7 +113,7 @@ async function createKDEChart(currentMB) {
                         type: 'linear',  // 선형 스케일 사용
                         title: {
                             display: true,
-                            text: '웹사이트 트래픽 (MB)'
+                            text: '탄소배출량 (g CO₂)'
                         },
                         min: 0,
                         max: 15  // 최대 범위 조정

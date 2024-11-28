@@ -13,14 +13,7 @@ async function createCategoryDonutChart() {
         const min = Math.min(...values);
         const avg = total / values.length;
         
-        // 통계 정보 표시
-        document.getElementById('totalEmission').textContent = `${total.toFixed(2)} MB`;
-        document.getElementById('maxEmissionInst').textContent = 
-            `${labels[values.indexOf(max)]}: ${max.toFixed(2)} MB`;
-        document.getElementById('minEmissionInst').textContent = 
-            `${labels[values.indexOf(min)]}: ${min.toFixed(2)} MB`;
-        document.getElementById('avgEmission').textContent = `${avg.toFixed(2)} MB`;
-        
+       
         // 도넛 차트 생성
         const ctx = document.getElementById('categoryDonutChart').getContext('2d');
         new Chart(ctx, {
