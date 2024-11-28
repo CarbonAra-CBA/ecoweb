@@ -1,233 +1,95 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ECO-WEB Badge</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-            margin: 0;
-            background-color: #f3f4f6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+{% extends "common.html" %}
 
-        header {
-            background: white;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            padding: 1rem;
-        }
+{% block content %}
+<style>
+    .code-block {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px; 
+        margin: 20px 0;
+    }
 
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 1rem;
-        }
+    .badge-demo {
+        margin: 30px 0;
+        padding: 20px;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        text-align: center;
+    }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #00824c;
-        }
+    .copy-btn {
+        background: #00ffbb;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
 
-        main {
-            flex-grow: 1;
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
+    .copy-btn:hover {
+        background: #00e6a8;
+    }
+</style>
 
-        .code-block {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h1 class="card-title text-center mb-4">ECO-WEB 배지</h1>
 
-        .badge-demo {
-            margin: 30px 0;
-            padding: 20px;
-            border: 1px solid #dee2e6;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .copy-btn {
-            background: #00ffbb;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .copy-btn:hover {
-            background: #00e6a8;
-        }
-
-        footer {
-            background: #1f2937;
-            color: white;
-            padding: 2rem;
-            text-align: center;
-            margin-top: auto;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-text {
-            margin: 0.5rem 0;
-        }
-
-        .auth-buttons {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .auth-btn {
-            padding: 0.5rem 1rem;
-            border: 1px solid #d1d5db;
-            border-radius: 4px;
-            background: white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-decoration: none;
-            color: inherit;
-            font-size: 0.9rem;
-        }
-
-        .signup-btn {
-            background-color: #00824c;
-            color: white;
-            border: none;
-        }
-
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .user-name {
-            font-weight: 500;
-            color: #00824c;
-        }
-
-        .logout-btn {
-            color: #dc2626;
-            border-color: #dc2626;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="header-content">
-            <div class="logo-container">
-                <a href="/" class="logo" style="text-decoration: none;">ECO-WEB</a>
-            </div>
-            <div class="auth-buttons">
-                {% if session.get('username') %}
-                <div class="user-info">
-                    <div class="user-details">
-                        <span class="user-institution">{{ session.get('institution') }}</span>
-                        <span class="user-department">{{ session.get('department') }} 부서</span>
-                        <span class="user-name">{{ session.get('username') }} 님</span>
+                    <div class="my-4">
+                        <p class="card-text">
+                            배지를 웹 사이트의 바닥글에 추가하여 각 페이지의 탄소 배출량을 자동으로 계산하고 표시할 수 있습니다. 
+                            이 배지가 모든 웹사이트에서 탄소 배출량 계산을 표시할 수 있도록 하여 웹 탄소 배출량에 대한 
+                            인식을 더욱 높일 수 있기를 바랍니다.
+                        </p>
+                        
+                        <p class="card-text">
+                            저희는 배지 자체가 탄소 배출량에 영향을 미친다는 것을 알고 있으므로 가능한 한 가볍게 디자인했습니다. 
+                            API의 코드와 결과는 모두 고도로 최적화되고 7일 동안 캐시됩니다.
+                        </p>
+                        
+                        <div class="alert alert-info">
+                            <strong>참고:</strong> 배지의 캐시 타이밍은 이 웹사이트의 캐시와 다르므로 배지와 웹사이트는 
+                            해당 테스트가 수행된 시간에 따라 다른 결과를 표시할 수 있습니다.
+                        </div>
                     </div>
-                    <a href="{{ url_for('logout') }}" class="auth-btn logout-btn">
-                        <i class="fas fa-sign-out-alt"></i>
-                        로그아웃
-                    </a>
-                </div>
-                {% else %}
-                    <a href="{{ url_for('login') }}" class="auth-btn login-btn">
-                        <i class="fas fa-sign-in-alt"></i>
-                        로그인
-                    </a>
-                    <a href="{{ url_for('signup') }}" class="auth-btn signup-btn">
-                        <i class="fas fa-user-plus"></i>
-                        회원가입
-                    </a>
-                {% endif %}
-            </div>
-        </div>
-    </header>
 
-    <main>
-        <h1>ECO-WEB 배지</h1>
-        
-        <div class="my-4">
-            <p>
-                배지를 웹 사이트의 바닥글에 추가하여 각 페이지의 탄소 배출량을 자동으로 계산하고 표시할 수 있습니다. 
-                이 배지가 모든 웹사이트에서 탄소 배출량 계산을 표시할 수 있도록 하여 웹 탄소 배출량에 대한 
-                인식을 더욱 높일 수 있기를 바랍니다.
-            </p>
-            
-            <p>
-                저희는 배지 자체가 탄소 배출량에 영향을 미친다는 것을 알고 있으므로 가능한 한 가볍게 디자인했습니다. 
-                API의 코드와 결과는 모두 고도로 최적화되고 7일 동안 캐시됩니다.
-            </p>
-            
-            <div class="alert alert-info">
-                <strong>참고:</strong> 배지의 캐시 타이밍은 이 웹사이트의 캐시와 다르므로 배지와 웹사이트는 
-                해당 테스트가 수행된 시간에 따라 다른 결과를 표시할 수 있습니다.
-            </div>
-        </div>
+                    <h2 class="card-title">설치 방법</h2>
+                    <p class="card-text">사이트에 설치하는 것은 매우 간단합니다. 배지를 표시하려는 위치에 다음 코드를 추가하세요:</p>
 
-        <h2>설치 방법</h2>
-        <p>사이트에 설치하는 것은 정말 간단합니다. 배지를 표시하려는 위치에 다음 코드를 추가하세요:</p>
-        
-        <div class="code-block">
-            <pre><code>&lt;div id="eco-badge"&gt;&lt;/div&gt;
+                    <div class="code-block">
+                        <pre><code>&lt;div id="eco-badge"&gt;&lt;/div&gt;
 &lt;script src="https://cdn.jsdelivr.net/gh/eclipse1228/eco-web-badge@main/eco-badge.min.js" defer&gt;&lt;/script&gt;</code></pre>
-            <button class="copy-btn mt-3" onclick="copyCode()">코드 복사</button>
+                        <button class="copy-btn mt-3" onclick="copyCode()">코드 복사</button>
+                    </div>
+
+                    <div class="badge-demo">
+                        <h4>미리보기</h4>
+                        <div id="eco-badge"></div>
+                        <script src="https://cdn.jsdelivr.net/gh/eclipse1228/eco-web-badge@main/eco-badge.min.js" defer></script>
+                    </div>
+
+                    <h2 class="card-title">기술 정보</h2>
+                    <p class="card-text">
+                        데이터 전송 및 서버 부하를 줄이기 위해 배지는 사용자의 기기에 결과를 캐시하고 
+                        배지가 삽입된 각 페이지에 대해 하루에 최대 한 번만 API를 호출합니다. 
+                        즉, 사이트를 점진적으로 개선하는 경우 결과가 변경될 때까지 기다려야 합니다.
+                    </p>
+                </div>
+            </div>
         </div>
+    </div>
+</div>
+{% endblock %}
 
-        <div class="badge-demo">
-            <h4>미리보기</h4>
-            <div id="eco-badge"></div>
-            <script src="https://cdn.jsdelivr.net/gh/eclipse1228/eco-web-badge@main/eco-badge.min.js" defer></script>
-        </div>
-
-        <h2>기술 정보</h2>
-        <p>
-            데이터 전송 및 서버 부하를 줄이기 위해 배지는 사용자의 기기에 결과를 캐시하고 
-            배지가 삽입된 각 페이지에 대해 하루에 최대 한 번만 API를 호출합니다. 
-            즉, 사이트를 점진적으로 개선하는 경우 결과가 변경될 때까지 기다려야 합니다.
-        </p>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <p class="footer-text">ECO-WEB, DONGA-UNIVERSITY</p>
-            <p class="footer-text">Address: 37, Nakdong-daero 550beon-gil, Saha-gu, Busan, Republic of Korea.</p>
-            <p class="footer-text">Tel: 010-8477-6339</p>
-            <p class="footer-text">E-mail: qudtnrh@gmail.com</p>
-        </div>
-    </footer>
-
-    <script>
-        function copyCode() {
-            const code = `<div id="eco-badge"></div>
+{% block scripts %}
+<script>
+    function copyCode() {
+        const code = `<div id="eco-badge"></div>
 <script src="https://cdn.jsdelivr.net/gh/eclipse1228/eco-web-badge@main/eco-badge.min.js" defer><\/script>`;
-            navigator.clipboard.writeText(code);
-            alert('코드가 클립보드에 복사되었습니다!');
-        }
-    </script>
-</body>
-</html>
+        navigator.clipboard.writeText(code);
+        alert('코드가 클립보드에 복사되었습니다!');
+    }
+</script>
+{% endblock %}

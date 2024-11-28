@@ -168,7 +168,7 @@
                             <a class="nav-link {% if request.endpoint == 'gov_analysis' %}active{% endif %}"
                                href="{{ url_for('gov_analysis') }}">
                                 <i class="fas fa-university me-2"></i>
-                                정부/공기관 분석
+                                정밀 분석(정부/공공기관)
                             </a>
                         </li>
                         <li class="nav-item">
@@ -186,10 +186,10 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {% if request.endpoint == 'world_analysis' %}active{% endif %}"
-                               href="{{ url_for('world_analysis') }}">
-                                <i class="fas fa-globe me-2"></i>
-                                국가별 통계
+                            <a class="nav-link {% if request.endpoint == 'badge' %}active{% endif %}"
+                               href="{{ url_for('badge') }}">
+                                <i class="fas fa-certificate me-2"></i>
+                                인증 배지 생성
                             </a>
                         </li>
                     </ul>

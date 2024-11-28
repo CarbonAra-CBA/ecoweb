@@ -17,71 +17,85 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="card">
+            <div class="card mb-4">
                 <div class="card-header">
-                    <h5 class="card-title mb-0">Google Lighthouse 분석</h5>
+                    <h5 class="card-title mb-0">이미지 최적화 분석</h5>
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered">
                         <thead class="thead-light">
-                <tr>
-                    <th>분석 항목</th>
-                    <th>용량</th>
-                    <th>상세 내용</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>총 리소스 용량</td>
-                    <td>{{ (view_data.total_byte_weight / 1024 / 1024)|round(2) }}MB</td>
-                    <td>전체 페이지 리소스 크기</td>
-                </tr>
-                {% if view_data.modern_image_formats_bytes > 0 %}
-                <tr>
-                    <td>이미지 최적화 가능</td>
-                    <td>{{ (view_data.modern_image_formats_bytes / 1024)|round(2) }}KB</td>
-                    <td>WebP/AVIF 포맷 변환으로 절감 가능</td>
-                </tr>
-                {% endif %}
-                {% if view_data.efficient_animated_content > 0 %}
-                <tr>
-                    <td>애니메이션 최적화</td>
-                    <td>{{ (view_data.efficient_animated_content / 1024)|round(2) }}KB</td>
-                    <td>GIF를 MP4/WebM으로 변환하여 절감 가능</td>
-                </tr>
-                {% endif %}
-                </tbody>
-            </table>
+                            <tr>
+                                <th>분석 항목</th>
+                                <th>용량</th>
+                                <th>상세 내용</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>총 리소스 용량</td>
+                                <td>{{ (view_data.total_byte_weight / 1024 / 1024)|round(2) }}MB</td>
+                                <td>전체 페이지 리소스 크기</td>
+                            </tr>
+                            {% if view_data.modern_image_formats_bytes > 0 %}
+                            <tr>
+                                <td>이미지 최적화 가능</td>
+                                <td>{{ (view_data.modern_image_formats_bytes / 1024)|round(2) }}KB</td>
+                                <td>WebP/AVIF 포맷 변환으로 절감 가능</td>
+                            </tr>
+                            {% endif %}
+                            {% if view_data.efficient_animated_content > 0 %}
+                            <tr>
+                                <td>애니메이션 최적화</td>
+                                <td>{{ (view_data.efficient_animated_content / 1024)|round(2) }}KB</td>
+                                <td>GIF를 MP4/WebM으로 변환하여 절감 가능</td>
+                            </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- 개선 제안사항을 Lighthouse 분석 아래에 배치 -->
+            <div class="card shadow-sm rounded-4 border-0">
+                <div class="card-body p-4">
+                    <h4 class="text-muted mb-3">개선 제안사항</h4>
+                    <div class="improvement-items">
+                        <div class="improvement-item d-flex align-items-center p-3 bg-light rounded-3 mb-3">
+                            <div class="improvement-icon me-3">💡</div>
+                            <div>
+                                <h6 class="mb-1">이미지 최적화</h6>
+                                <p class="mb-0 text-muted small">현재 이미지 크기: 2.3MB → 최적화 후: 0.5MB</p>
+                                <p class="text-success mb-0 small">예상 감소량: 0.05g CO₂/방문</p>
+                            </div>
+                        </div>
+                        <!-- 추가 제안사항 템플릿 -->
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- 이미지 비교 섹션 -->
     <div class="row mb-4">
-        <div class="col-12">
-            <div class="card">
+        <!-- 형식변환 권장 이미지 목록 -->
+        <div class="col-md-6">
+            <div class="card h-100">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="card-title mb-0">
                         형식변환 권장 이미지 목록 
                         <i class="fa-regular fa-folder"></i>
-                        <span class="text-muted fs-6">(총 용량 {{ totalsize }} bytes, 총 {{ filecount }}개 파일)</span>
+                        <span class="text-muted fs-6">(총 {{ totalsize }} bytes, {{ filecount }}개)</span>
                     </h5>
-                    <div>
-                        <button class="btn btn-success btn-sm">
-                            <i class="fas fa-download me-1"></i>텍스트 다운로드(.txt)
-                        </button>
-                        <button class="btn btn-primary btn-sm">
-                            <i class="fas fa-download me-1"></i>SVG 파일 다운로드(.zip)
-                        </button>
-                    </div>
+                    <button class="btn btn-success btn-sm">
+                        <i class="fas fa-download me-1"></i>텍스트(.txt)
+                    </button>
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        {% for file in files[:8] %}
-                        <div class="col-md-3 mb-4">
+                        {% for file in files[:6] %}
+                        <div class="col-md-6 mb-4">
                             <div class="card h-100">
                                 <div class="card-body">
-                                    <canvas class="img-preview mb-3" width="100" height="100" 
+                                    <canvas class="img-preview mb-3" width="200" height="200" 
                                             data-src="{{ url_for('static', filename='images/' + url_s + '/' + file.name) }}"></canvas>
                                     <h6 class="card-title text-truncate">{{ file.name }}</h6>
                                     <p class="card-text">
@@ -99,46 +113,62 @@
                         </div>
                         {% endfor %}
                     </div>
-                    {% if files|length > 8 %}
+                    {% if files|length > 6 %}
                     <div class="text-center mt-3">
-                        <button class="btn btn-outline-primary btn-sm" onclick="loadMore()">더보기</button>
+                        <button class="btn btn-outline-primary btn-sm" onclick="loadMore('original')">더보기</button>
                     </div>
                     {% endif %}
                 </div>
             </div>
         </div>
-    </div>
-    
-    <!-- 변환된 SVG 목록 -->
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-title mb-0">변환된 SVG 파일 목록</h5>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    {% for category_name, files in category.items() %}
-                    {% for file in files %}
-                    <div class="col-md-3 mb-4">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <canvas class="img-preview mb-3" width="100" height="100" 
-                                        data-src="{{ url_for('static', filename='images/' + file.name) }}"></canvas>
-                                <h6 class="card-title text-truncate">{{ file.name }}</h6>
-                                <p class="card-text">
-                                    <small class="text-muted">크기: {{ file.size }} bytes</small>
-                                </p>
-                                <div class="d-flex justify-content-end">
-                                    <button class="btn btn-outline-success btn-sm">
-                                        <i class="fas fa-download me-1"></i>SVG 다운로드
-                                    </button>
+
+        <!-- 변환된 SVG 파일 목록 -->
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="card-title mb-0">
+                        변환된 SVG 파일 목록
+                        <span class="text-muted fs-6">(최적화 후)</span>
+                    </h5>
+                    <button class="btn btn-primary btn-sm">
+                        <i class="fas fa-download me-1"></i>SVG(.zip)
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        {% for category_name, files in category.items() %}
+                        {% for file in files[:6] %}
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <canvas class="img-preview mb-3" width="100" height="100" 
+                                            data-src="{{ url_for('static', filename='images/' + file.name) }}"></canvas>
+                                    <h6 class="card-title text-truncate">{{ file.name }}</h6>
+                                    <p class="card-text">
+                                        <small class="text-muted">크기: {{ file.size }} bytes</small>
+                                        <br>
+                                        {% if file.size and file.get('original_size', 0) > 0 %}
+                                        <small class="text-success">
+                                            절감: {{ ((file.get('original_size', 0) - file.size) / file.get('original_size', 1) * 100)|round(1) }}%
+                                        </small>
+                                        {% endif %}
+                                    </p>
+                                    <div class="text-end">
+                                        <button class="btn btn-outline-success btn-sm">
+                                            <i class="fas fa-download me-1"></i>SVG
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        {% endfor %}
+                        {% endfor %}
                     </div>
-                    {% endfor %}
-                    {% endfor %}
+                    {% if category|length > 6 %}
+                    <div class="text-center mt-3">
+                        <button class="btn btn-outline-primary btn-sm" onclick="loadMore('svg')">더보기</button>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -153,7 +183,7 @@
 
     const ctx = document.getElementById('fileChart').getContext('2d');
     const fileChart = new Chart(ctx, {
-        type: 'line',
+        type: 'bar',
         data: {
             labels: Array.from({length: Math.max(iconsData.length, logosData.length, othersData.length)}, (_, i) => i + 1),
             datasets: [
@@ -161,14 +191,14 @@
                     label: 'Icons',
                     data: iconsData,
                     borderColor: 'rgba(75, 192, 192, 1)',
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
                     fill: false,
                 },
                 {
                     label: 'Logos',
                     data: logosData,
                     borderColor: 'rgba(54, 162, 235, 1)',
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
                     fill: false,
                 },
                 {

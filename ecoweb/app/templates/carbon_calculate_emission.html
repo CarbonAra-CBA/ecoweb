@@ -4,21 +4,76 @@
 <style>
     .metric-icon { 
         font-size: 50px;
+        margin-bottom: 15px;
     }
-
+    .card {
+        transition: transform 0.2s ease-in-out;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    }
+    .progress {
+        border-radius: 15px;
+        overflow: hidden;
+    }
+    .metric-value {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 10px 0;
+    }
+    .metric-label {
+        color: #6c757d;
+        font-size: 0.9rem;
+    }
+    .emission-trend {
+        height: 100px;
+        margin: 20px 0;
+    }
+    .info-tooltip {
+        cursor: pointer;
+        color: #6c757d;
+        margin-left: 5px;
+    }
 </style>
+
 <div class="container-fluid py-4">
-    <h2 class="mb-4">탄소 배출량 분석</h2>
-    
+    <!-- 상단 요약 섹션 -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>탄소 배출량 분석</h2>
+        <div class="text-muted">
+            분석 일시: {{ analysis_date }}
+        </div>
+    </div>
+
+    <!-- URL 정보 카드 -->
+    <div class="card shadow-sm rounded-4 border-0 mb-4">
+        <div class="card-body">
+            <div class="d-flex align-items-center">
+                <div>
+                    <h5 class="mb-1">측정 URL:  {{ url }}
+                        <span class="badge bg-light text-dark" style="font-size: 15px;">분석 완료</span>
+                    </h5>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- 주요 지표 카드 섹션 -->
     <div class="row g-4 mb-5">
         <!-- 현재 탄소 배출량 -->
         <div class="col-md-4">
             <div class="card shadow-sm rounded-4 border-0">
                 <div class="card-body text-center py-4">
-                    <h4 class="text-muted mb-3">탄소 배출량</h4> <!-- h5에서 h4로 변경 -->
+                    <h4 class="text-muted mb-3">
+                        현재 탄소 배출량
+                        <i class="fas fa-info-circle info-tooltip" data-bs-toggle="tooltip" title="웹사이트 방문당 발생하는 CO₂ 배출량"></i>
+                    </h4>
                     <h2 class="display-4 fw-bold text-success">{{carbon_emission}}g</h2>
                     <p class="text-muted">CO₂/kWh</p>
+
                 </div>
             </div>
         </div>
@@ -28,16 +83,19 @@
     <div class="card shadow-sm rounded-4 border-0">
         <div class="card-body p-4">
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <h4 class="text-muted m-0">탄소배출등급</h4>
+                <h4 class="text-muted m-0">세계기준 탄소배출등급
+                    <i class="fas fa-info-circle info-tooltip" data-bs-toggle="tooltip" title="A: 매우 우수 (상위 5%)<br>B: 우수 (상위 10%)<br>C: 보통 (상위 20%)<br>D: 미흡 (상위 30%)<br>E: 매우 미흡 (상위 40%)<br>F: 매우 미흡 (상위 50%)"></i>
+                </h4>
                 <div class="rounded-circle {% if grade == 'A' %}bg-primary{% elif grade == 'B' %}bg-success{% elif grade == 'C' %}bg-info{% elif grade == 'D' %}bg-warning{% elif grade == 'E' %}bg-danger{% else %}bg-dark{% endif %} text-white d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
                     <span class="fw-bold">{{grade}}</span>
                 </div>
             </div>
             <div class="bg-light rounded-3 p-3">
                 <p class="m-0">세계평균 대비</p>
-                <h4 class="{% if global_avg_diff > 0 %}text-danger{% else %}text-success{% endif %} mb-0">
-                    {{global_avg_diff|abs}}MB {% if global_avg_diff > 0 %}더{% else %}덜{% endif %} 배출
-                </h4>
+                <p class="m-0">탄소 배출량 비교</p>
+                <h3 class="{% if global_diff > 0 %}text-success{% else %}text-danger{% endif %} mb-0">
+                    {{ global_diff_abs }}g {% if global_diff > 0 %}덜{% else %}더{% endif %} 배출
+                </h3>
             </div>
         </div>
     </div>
@@ -48,19 +106,22 @@
     <div class="card shadow-sm rounded-4 border-0">
         <div class="card-body p-4">
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <h4 class="text-muted m-0">대한민국 기준</h4>
+                <h4 class="text-muted m-0">대한민국 기준 탄소배출등급
+                    <i class="fas fa-info-circle info-tooltip" data-bs-toggle="tooltip" title="A: 매우 우수 (상위 5%)<br>B: 우수 (상위 10%)<br>C: 보통 (상위 20%)<br>D: 미흡 (상위 30%)<br>E: 매우 미흡 (상위 40%)<br>F: 매우 미흡 (상위 50%)"></i>
+                </h4>
                 <div class="rounded-circle {% if grade == 'A' %}bg-primary{% elif grade == 'B' %}bg-success{% elif grade == 'C' %}bg-info{% elif grade == 'D' %}bg-warning{% elif grade == 'E' %}bg-danger{% else %}bg-dark{% endif %} text-white d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
                     <span class="fw-bold">{{grade}}</span>
                 </div>
             </div>
             <div class="bg-light rounded-3 p-3">
                 <p class="m-0">대한민국 평균 대비</p>
-                <h4 class="{% if korea_avg_diff > 0 %}text-danger{% else %}text-success{% endif %} mb-0">
-                    {{korea_avg_diff|abs}}MB {% if korea_avg_diff > 0 %}더{% else %}덜{% endif %} 배출
-                </h4>
+                <p class="m-0">탄소 배출량 비교</p>
+                <h3 class="{% if korea_diff > 0 %}text-success{% else %}text-danger{% endif %} mb-0">
+                    {{ korea_diff_abs }}g {% if korea_diff > 0 %}덜{% else %}더{% endif %} 배출
+                </h3>
             </div>
         </div>
-        </div>
+    </div>
     </div>
 
     <!-- 배출 원인 분석 -->
@@ -110,32 +171,69 @@
         </div>
     </div>
 
-    <!-- 설명 섹션 -->
-    <div class="card shadow-sm rounded-4 border-0">
-        <div class="card-body p-4">
-            <h5 class="mb-3">등급 평가 기준</h5>
-            <div class="row mb-4">
-                <div class="col-md-6">
-                    <h6 class="text-muted">세계 평균 기준</h6>
-                    <ul class="list-unstyled">
-                        <li><span class="badge bg-primary me-2">A</span> 매우 우수 (상위 5%)</li>
-                        <li><span class="badge bg-success me-2">B</span> 우수 (상위 10%)</li>
-                        <li><span class="badge bg-info me-2">C</span> 보통 (상위 20%)</li>
-                        <li><span class="badge bg-warning me-2">D</span> 미흡 (상위 30%)</li>
-                        <li><span class="badge bg-danger me-2">E</span> 매우 미흡 (상위 40%)</li>
-                        <li><span class="badge bg-dark me-2">F</span> 매우 미흡 (상위 50%)</li>
-                    </ul>
+    <div class="row mb-8">
+        <div class="col-12">
+            <div class="card shadow-sm rounded-4 border-0">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-muted m-0">탄소 배출량 추이</h4>
+                        <select class="form-select" id="timeRange" style="width: auto;">
+                            <option value="week">최근 1주일</option>
+                            <option value="month">최근 1개월</option>
+                            <option value="year">최근 1년</option>
+                        </select>
+                    </div>
+                    <canvas id="emissionTrendChart" style="height: 300px; width: 100%;"></canvas>
                 </div>
-                <div class="col-md-6">
-                    <h6 class="text-muted" style="font-weight: bold;">대한민국 평균 기준</h6>
-                    <p>대한민국의 평균 탄소 배출량을 기준으로 한 상대적 평가입니다.</p>
-                    <div class="progress" style="height: 25px;">
-                        <div class="progress-bar bg-primary" style="width: 30%">A</div>
-                        <div class="progress-bar bg-success" style="width: 30%">B</div>
-                        <div class="progress-bar bg-info" style="width: 30%">C</div>
-                        <div class="progress-bar bg-warning" style="width: 30%">D</div>
-                        <div class="progress-bar bg-danger" style="width: 30%">E</div>
-                        <div class="progress-bar bg-dark" style="width: 30%">F</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 최적화 시뮬레이터 및 리포트 -->
+    <div class="row g-4 mb-4">
+        <div class="col-md-7">
+            <div class="card shadow-sm rounded-4 border-0">
+                <div class="card-body p-4">
+                    <h4 class="text-muted mb-3">최적화 시뮬레이터</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="imageOptimization">
+                                <label class="form-check-label" for="imageOptimization">
+                                    코드 최적화 적용
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="cacheOptimization">
+                                <label class="form-check-label" for="cacheOptimization">
+                                    이미지 최적화 적용
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="bg-light rounded-3 p-3">
+                                <h3 class="mb-2">예상 감소량</h3>
+                                <p class="display-6 text-success mb-0">0.25g CO₂/방문</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="card shadow-sm rounded-4 border-0">
+                <div class="card-body p-4">
+                    <h4 class="text-muted mb-3">분석 리포트</h4>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-file-pdf me-2"></i>PDF 다운로드
+                        </button>
+                        <button class="btn btn-success">
+                            <i class="fas fa-envelope me-2"></i>이메일로 받기
+                        </button>
+                        <button class="btn btn-info text-white">
+                            <i class="fas fa-clock me-2"></i>정기 리포트 설정
+                        </button>
                     </div>
                 </div>
             </div>
@@ -143,4 +241,67 @@
     </div>
 </div>
 
+<!-- JavaScript 추가 -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    // 툴팁 초기화
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+
+    // 임의의 데이터 생성
+    const carbonEmission = {{ carbon_emission }}; // 현재 탄소 배출량
+    const labels = Array.from({ length: 7 }, (_, i) => `Day ${i + 1}`); // 최근 1주일
+    const data = labels.map(() => (carbonEmission + (Math.random() * 0.1 - 0.05)).toFixed(3)); // ±0.05g 변동
+
+    // 차트 초기화
+    const emissionTrendChart = new Chart(document.getElementById('emissionTrendChart'), {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: '탄소 배출량 (g CO₂/kWh)',
+                data: data,
+                borderColor: '#198754',
+                backgroundColor: 'rgba(25, 135, 84, 0.2)',
+                tension: 0.4,
+                fill: true,
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true,
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return `${tooltipItem.dataset.label}: ${tooltipItem.raw} g CO₂/kWh`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: '배출량 (g CO₂/kWh)'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: '일'
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
 {% endblock %}
