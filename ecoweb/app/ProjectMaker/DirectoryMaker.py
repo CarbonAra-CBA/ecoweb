@@ -3,18 +3,26 @@ import requests
 from urllib.parse import urlparse
 from datetime import datetime
 import logging
-from app.ProjectMaker.ThirdPartyDetect import ThirdPartyIgnore
 import json
 
-# 로깅 설정
 logging.basicConfig(filename='download_errors.log', level=logging.ERROR,
                     format='%(asctime)s %(levelname)s:%(message)s')
 
+def is_node_module(url):
+    """URL이 node_modules 관련인지 확인"""
+    node_patterns = [
+        'node_modules',
+        'npm',
+        'unpkg.com',
+        'cdnjs',
+        'jsdelivr',
+        'webpack',
+    ]
+    return any(pattern in url.lower() for pattern in node_patterns)
 
 def sanitize_folder_name(name):
     """디렉토리 이름에서 허용되지 않는 문자를 제거합니다."""
     return "".join(c for c in name if c.isalnum() or c in " ._-").rstrip()
-
 
 def create_project_root(base_path, site_name):
     sanitized_site_name = sanitize_folder_name(site_name)
@@ -22,9 +30,12 @@ def create_project_root(base_path, site_name):
     os.makedirs(project_root, exist_ok=True)
     return project_root
 
-
 def download_resource(url, save_dir):
-    """주어진 URL에서 리소스를 다운로드하여 지정된 디렉토리에 저장합니다."""
+    """node_modules 관련 리소스는 제외하고 다운로드"""
+    if is_node_module(url):
+        print(f"[{datetime.now()}] Node module 리소스 스킵: {url}")
+        return False
+        
     try:
         response = requests.get(url, timeout=15)
         response.raise_for_status()
@@ -54,16 +65,22 @@ def download_resource(url, save_dir):
         return False
 
 def get_network_requests(collection_resource, url):
-    """lighthouse_resource 컬렉션에서 주어진 URL과 일치하는 문서의 network_requests를 반환합니다."""
+    """node_modules 관련 요청 제외"""
     normalized_url = url.replace('http://', 'https://')
     document = collection_resource.find_one({"url": normalized_url}, {"network_requests": 1, "_id": 0})
-
-    return document.get('network_requests', []) if document else []
-
+    
+    if document and 'network_requests' in document:
+        # node_modules 관련 요청 필터링
+        filtered_requests = [
+            req for req in document['network_requests']
+            if not is_node_module(req.get('url', ''))
+        ]
+        return filtered_requests
+    return []
 
 def download_documents(documents, root_path, base_url):
-    """지정된 조건에 맞는 URL을 순회하며 파일을 다운로드하고 저장합니다."""
-    urls = [doc["url"] for doc in documents if doc["resourceType"] in {"Document", "Stylesheet", "Script"}]
+    """필터링된 URL만 다운로드"""
+    urls = [doc["url"] for doc in documents if not is_node_module(doc["url"])]
 
     for url in urls:
         parsed_url = urlparse(url)
@@ -93,15 +110,15 @@ def directory_maker(url, collection_traffic, collection_resource):
     site_name = parsed_url.netloc
 
     # 프로젝트 루트 경로 생성
-    root_path = create_project_root('../static/llama', site_name)
-
-    # 네트워크 요청과 감지 문서 가져오기
+    root_path = create_project_root('./ecoweb/app/static/webprojects', site_name)
+    
+    # node_modules 관련 요청이 제외된 문서 가져오기
     documents = get_network_requests(collection_resource=collection_resource, url=url)
-    detectedDocs = ThirdPartyIgnore(url_list=documents)
-
-    print(detectedDocs)
-    print("root_path : ", root_path)
-    download_documents(detectedDocs, root_path, url)
+    
+    print("Filtered documents count:", len(documents))
+    print("root_path:", root_path)
+    
+    download_documents(documents, root_path, parsed_url)
     return root_path
 
 def get_directory_structure(root_dir):
@@ -143,7 +160,12 @@ if __name__ == "__main__":
     url = "https://me.go.kr/"
     # client, db, collection_traffic, collection_resource = db_connect()
     # directory_maker(url, collection_traffic, collection_resource)
-    root_path = "C:/Users/windowadmin1.WIN-TAQQ3RO5V1L.000/Desktop/Github/ecoweb/ecoweb/llama/me.go.kr"
+    # root_path = "./ecoweb/ecoweb/app/static/webprojects/me.go.kr/"
+    root_path = "./ecoweb/app/static/webprojects/me.go.kr"
     json_data = directory_to_json(root_path)
-    print(type(json_data))
-    print(json_data)
+    # JSON 파일로 저장
+    output_path = os.path.join(os.path.dirname(root_path), 'directory_structure.json')
+    with open(output_path, 'w', encoding='utf-8') as f:
+        json.dump(json_data, f, ensure_ascii=False, indent=2)
+    
+    print(f"Directory structure has been saved to: {output_path}")

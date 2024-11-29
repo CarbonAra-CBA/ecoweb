@@ -150,60 +150,90 @@
                     <div class="card shadow-sm">
                         <div class="card-header bg-light d-flex justify-content-between align-items-center">
                             <h4 class="mb-0">압축된 코드 리스트</h4>
-                            <button class="btn btn-outline-success btn-sm">
-                                <i class="fas fa-download"></i>
-                            </button>
+                            <a href="/download_code">
+                                <button class="btn btn-outline-success btn-sm">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered">
+                                <table class="table table-bordered" style="table-layout: fixed;">
                                     <thead>
                                         <tr>
-                                            <th>파일명</th>
+                                            <th style="width: 80px; word-wrap: break-word;">파일명</th>
                                             <th>종류</th>
                                             <th>원본 크기</th>
                                             <th>압축 후 크기</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tbody>
-                                            <tr>
-                                                <td>new.css</td>
-                                                <td>stylesheet</td>
-                                                <td>69KB</td>
-                                                <td>47KB</td>
-                                            </tr>
-                                            <tr>
-                                                <td>widget_style.css</td>
-                                                <td>stylesheet</td>
-                                                <td>38KB</td>
-                                                <td>31KB</td>
-                                            </tr>
-                                            <tr>
-                                                <td>index.html</td>
-                                                <td>Document</td>
-                                                <td>96KB</td>
-                                                <td>77KB</td>
-                                            </tr>
-                                            <tr>
-                                                <td>common.js</td>
-                                                <td>Script</td>
-                                                <td>74KB</td>
-                                                <td>55KB</td>
-                                            </tr>
-                                            <tr>
-                                                <td>search_home.js</td>
-                                                <td>Script</td>
-                                                <td>24KB</td>
-                                                <td>19KB</td>
-                                            </tr>
-                                        </tbody>
+                                    <tbody id="code-list">
+                                        <!-- 데이터는 JavaScript로 동적으로 추가됩니다 -->
                                     </tbody>
                                 </table>
                             </div>
+                            <button id="show-more" class="btn btn-primary btn-block">더보기</button>
                         </div>
                     </div>
                 </div>
+                <script>
+                    // 서버에서 전달된 resource_size JSON 객체를 JavaScript 변수로 할당
+                    var resource_size = {{ resource_size | tojson }};
+                
+                    var fileList = Object.keys(resource_size);
+                    var index = 0;
+                    var itemsPerPage = 5;
+                
+                    function getFileType(fileName) {
+                        var extension = fileName.split('.').pop().toLowerCase();
+                        if (extension === 'css') {
+                            return 'Stylesheet';
+                        } else if (extension === 'js') {
+                            return 'Script';
+                        } else if (extension === 'html' || extension === 'do') {
+                            return 'Document';
+                        } else {
+                            return 'Unknown';
+                        }
+                    }
+                
+                    function formatSize(size) {
+                        return size.toFixed(1) + 'KB';
+                    }
+                
+                    function getFileNameFromPath(filePath) {
+                        // 경로에서 마지막 파일명만 추출
+                        return filePath.split('\\').pop();
+                    }
+                
+                    function loadMoreItems() {
+                        var tableBody = document.getElementById('code-list');
+                        for (var i = 0; i < itemsPerPage && index < fileList.length; i++, index++) {
+                            var filePath = fileList[index];
+                            var fileData = resource_size[filePath];
+                            var fileName = getFileNameFromPath(filePath); // 파일명만 추출
+                            var fileType = getFileType(fileName);
+                            var beforeSize = formatSize(fileData.beforeSize);
+                            var afterSize = formatSize(fileData.afterSize);
+                
+                            var row = document.createElement('tr');
+                            row.innerHTML = '<td>' + fileName + '</td>' +
+                                            '<td>' + fileType + '</td>' +
+                                            '<td>' + beforeSize + '</td>' +
+                                            '<td>' + afterSize + '</td>';
+                            tableBody.appendChild(row);
+                        }
+                        if (index >= fileList.length) {
+                            document.getElementById('show-more').style.display = 'none';
+                        }
+                    }
+                
+                    document.getElementById('show-more').addEventListener('click', loadMoreItems);
+                
+                    // 페이지 로드 시 초기 5개 항목 로드
+                    loadMoreItems();
+                </script>
+                
             </div>
             {% set total_optimization = view_data.can_optimize_css_bytes +
                 view_data.can_optimize_js_bytes +
