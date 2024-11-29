@@ -28,6 +28,9 @@ import zipfile
 from io import BytesIO, StringIO
 from flask import send_file
 import shutil
+from app.ProjectMaker.code_optimizer import code_optimizer, getCodeSize_before, getCodeSize_after
+
+ZIP_FILE_PATH = "/"
 
 load_dotenv()
 # 가이드라인 분석 결과를 임시 저장할 딕셔너리
@@ -305,9 +308,9 @@ def init_routes(app):
         collection_traffic = db.db.lighthouse_traffic
         collection_resource = db.db.lighthouse_resource
 
-
         root_path = directory_maker(url=url_s, collection_traffic=collection_traffic,
                                         collection_resource=collection_resource)
+        
         # 비동기 작업(가이드라인 분석)
         task_id = str(uuid.uuid4())
         thread = Thread(target=perform_async_guideline_analize, args=(task_id, url_s, root_path))
@@ -318,13 +321,19 @@ def init_routes(app):
         print("Directory Structure : ")
         print(type(directory_structure))
         print(directory_structure)
-        # 식별된 변수명과 대체 문자열, 절감 가능치를 json으로 표현해서 전달
-        # 각 코드 파일을 압축한 버전을 다운로드할 수 있게 제공하기
-
+        # 각 리소스 원본 크기와 줄어든 크기를 전달
+        result = getCodeSize_before(root_path)
+        print('before', result)
+        # 웹 프로젝트 압축 버전을 다운로드할 수 있게 제공하기
+        ZIP_FILE_PATH = code_optimizer(root_path)
+        result = getCodeSize_after(root_path, result)
+        print('after', result)
+        
         return render_template('code_optimization.html', 
                                view_data=view_data,
                                task_id = task_id,
-                               directory_structure = directory_structure)
+                               directory_structure=directory_structure,
+                               resource_size=result)
     
     @app.route('/img_optimization')
     def img_optimization():
@@ -430,3 +439,13 @@ def init_routes(app):
             as_attachment=True,
             download_name='converted_webp_files.zip'
         )
+    @app.route('/download_code')
+    def download_zip():
+        try:
+            # ZIP 파일을 전송
+            return send_file(ZIP_FILE_PATH, as_attachment=True)
+        except Exception as e:
+            return str(e)
+
+    if __name__ == '__main__':
+        app.run(debug=True)
