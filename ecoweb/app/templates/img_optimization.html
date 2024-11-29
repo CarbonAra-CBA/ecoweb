@@ -90,9 +90,6 @@
                         <button class="btn btn-success btn-sm" onclick="downloadImageList()">
                             <i class="fas fa-download me-1"></i>텍스트 다운로드(.txt)
                         </button>
-                        <button class="btn btn-primary btn-sm" onclick="downloadWebpFiles()">
-                            <i class="fas fa-download me-1"></i>Webp 파일 다운로드(.zip)
-                        </button>
                     </div>
 
 
@@ -130,27 +127,30 @@
             </div>
         </div>
 
-        <!-- 변환된 SVG 파일 목록 -->
+        <!-- 변환된 Webp 파일 목록 -->
         <div class="col-md-6">
             <div class="card h-100">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="card-title mb-0">
-                        변환된 SVG 파일 목록
+                        변환된 Webp 파일 목록
                         <span class="text-muted fs-6">(최적화 후)</span>
                     </h5>
-                    <button class="btn btn-primary btn-sm">
-                        <i class="fas fa-download me-1"></i>SVG(.zip)
+                    <button class="btn btn-primary btn-sm" onclick="downloadWebpFiles()">
+                        <i class="fas fa-download me-1"></i>Webp 파일 다운로드(.zip)
                     </button>
                 </div>
                 <div class="card-body">
                     <div class="row">
+                        {% set displayed_count = namespace(value=0) %}
                         {% for category_name, files in category.items() %}
-                        {% for file in files[:6] %}
+                        {% for file in convertedfiles[:6] %}
+                        {% if displayed_count.value < 6 %}
+
                         <div class="col-md-6 mb-4">
                             <div class="card h-100">
                                 <div class="card-body">
                                     <canvas class="img-preview mb-3" width="100" height="100" 
-                                            data-src="{{ url_for('static', filename='images/' + file.name) }}"></canvas>
+                                            data-src="{{ url_for('static', filename='images/' + url_s + '/img_to_webp/' + file.name) }}"></canvas>
                                     <h6 class="card-title text-truncate">{{ file.name }}</h6>
                                     <p class="card-text">
                                         <small class="text-muted">크기: {{ file.size }} bytes</small>
@@ -162,19 +162,21 @@
                                         {% endif %}
                                     </p>
                                     <div class="text-end">
-                                        <button class="btn btn-outline-success btn-sm">
-                                            <i class="fas fa-download me-1"></i>SVG
+                                        <button class="btn btn-outline-success btn-sm" onclick="downloadSingleWebp('{{ url_s }}', '{{ file.name }}')">
+                                            <i class="fas fa-download me-1"></i>Webp
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        {% set displayed_count.value = displayed_count.value + 1 %}
+                        {% endif %}
                         {% endfor %}
                         {% endfor %}
                     </div>
-                    {% if category|length > 6 %}
+                    {% if convertedfiles|length > 6 %}
                     <div class="text-center mt-3">
-                        <button class="btn btn-outline-primary btn-sm" onclick="loadMore('svg')">더보기</button>
+                        <button class="btn btn-outline-primary btn-sm" onclick="loadMore('webp')">더보기</button>
                     </div>
                     {% endif %}
                 </div>
@@ -233,80 +235,149 @@
     });
 
     // 더보기 기능 스크립트
-    let currentIndex = 8;
+    const url_s = "{{ url_s }}";
+    const totalsize = "{{ totalsize }}";
+    const fileList = {{ files | tojson | safe }};
+    const categoryFiles = {{ category | tojson | safe }};
+    let currentOriginalIndex = 6;  // 초기 표시되는 개수
+    let currentWebpIndex = 6;
     const increment = 8;
-    const fileItems = document.querySelectorAll('.card-body');
 
-    // 이미지 미리보기 로드 함수
-    function loadImagePreviews() {
+     // 이미지 미리보기 로드 함수
+     function loadImagePreviews() {
         const canvases = document.querySelectorAll('.img-preview');
         canvases.forEach(canvas => {
             const ctx = canvas.getContext('2d');
             const img = new Image();
+            img.crossOrigin = "anonymous";
+            
             img.onload = function() {
-                // 이미지를 캔버스에 맞게 비율 유지하며 그리기
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
                 const scale = Math.min(canvas.width / img.width, canvas.height / img.height);
                 const x = (canvas.width - img.width * scale) / 2;
                 const y = (canvas.height - img.height * scale) / 2;
                 ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
             };
+            
+            img.onerror = function() {
+                ctx.fillStyle = '#f0f0f0';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#666';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('이미지 없음', canvas.width/2, canvas.height/2);
+            };
+            
             img.src = canvas.dataset.src;
         });
     }
 
-    // 페이지 로드 시 이미지 미리보기 로드
-    document.addEventListener('DOMContentLoaded', loadImagePreviews);
-
-    // 더보기 기능에도 이미지 미리보기 로드 추가
-    function loadMore() {
-        const container = document.querySelector('.row');
-        const nextFiles = {{ files | tojson }}.slice(currentIndex, currentIndex + increment);
+    // 더보기 기능
+    function loadMore(type) {
+        console.log('loadMore called with type:', type); // 디버깅용
+        console.log('Current indices - Original:', currentOriginalIndex, 'Webp:', currentWebpIndex); // 디버깅용
         
-        nextFiles.forEach(file => {
-            const div = document.createElement('div');
-            div.className = 'col-md-3 mb-4';
-            div.innerHTML = `
-                <div class="card h-100">
-                    <div class="card-body">
-                        <canvas class="img-preview mb-3" width="100" height="100" 
-                                data-src="${file.image_url}"></canvas>
-                        <h6 class="card-title text-truncate">${file.name}</h6>
-                        <p class="card-text">
-                            <small class="text-muted">크기: ${file.size} bytes</small><br>
-                            <span class="badge bg-${file.name.includes('ico') ? 'success' : 
-                                file.name.includes('logo') ? 'primary' : 'secondary'}">
-                                ${file.name.includes('ico') ? '아이콘' : 
-                                file.name.includes('logo') ? '로고' : '기타'}
-                            </span>
-                        </p>
-                    </div>
-                </div>
-            `;
-            container.appendChild(div);
-        });
+        const container = type === 'original' ? 
+            document.querySelector('.col-md-6:first-child .row') :
+            document.querySelector('.col-md-6:last-child .row');
+        
+        if (!container) {
+            console.error('Container not found'); // 디버깅용
+            return;
+        }
 
-        currentIndex += increment;
-        if (currentIndex >= {{ files | length }}) {
-            document.querySelector('.btn-outline-primary').style.display = 'none';
+        if (type === 'original') {
+            const nextFiles = fileList.slice(currentOriginalIndex, currentOriginalIndex + increment);
+            console.log('Next original files:', nextFiles); // 디버깅용
+            
+            nextFiles.forEach(file => {
+                const div = document.createElement('div');
+                div.className = 'col-md-6 mb-4';
+                div.innerHTML = `
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <canvas class="img-preview mb-3" width="200" height="200" 
+                                    data-src="/static/images/${url_s}/${file.name}"></canvas>
+                            <h6 class="card-title text-truncate">${file.name}</h6>
+                            <p class="card-text">
+                                <small class="text-muted">크기: ${file.size} bytes</small><br>
+                                <span class="badge bg-${file.name.includes('ico') ? 'success' : 
+                                    file.name.includes('logo') ? 'primary' : 'secondary'}">
+                                    ${file.name.includes('ico') ? '아이콘' : 
+                                    file.name.includes('logo') ? '로고' : '기타'}
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+            
+            currentOriginalIndex += increment;
+            
+            if (currentOriginalIndex >= fileList.length) {
+                const button = document.querySelector('.col-md-6:first-child .btn-outline-primary');
+                if (button) button.style.display = 'none';
+            }
+        } else {
+            const allWebpFiles = {{ convertedfiles | tojson | safe }};
+            
+            const filesToShow = allWebpFiles.slice(currentWebpIndex, currentWebpIndex + increment);
+            console.log('Files to show:', filesToShow); // 디버깅용
+            
+            filesToShow.forEach(convertedfile => {
+                const div = document.createElement('div');
+                div.className = 'col-md-6 mb-4';
+                div.innerHTML = `
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <canvas class="img-preview mb-3" width="100" height="100" 
+                                    data-src="/static/images/${url_s}/img_to_webp/${convertedfile.name}"></canvas>
+                            <h6 class="card-title text-truncate">${convertedfile.name}</h6>
+                            <p class="card-text">
+                                <small class="text-muted">크기: ${convertedfile.size} bytes</small>
+                                <br>
+                                ${convertedfile.original_size ? `
+                                <small class="text-success">
+                                    절감: ${((convertedfile.original_size - convertedfile.size) / convertedfile.original_size * 100).toFixed(1)}%
+                                </small>` : ''}
+                            </p>
+                            <div class="text-end">
+                                <button class="btn btn-outline-success btn-sm" onclick="downloadSingleWebp('${url_s}', '${convertedfile.name}')">
+                                    <i class="fas fa-download me-1"></i>Webp
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+            
+            currentWebpIndex += increment;
+            
+            if (currentWebpIndex >= allWebpFiles.length) {
+                const button = document.querySelector('.col-md-6:last-child .btn-outline-primary');
+                if (button) button.style.display = 'none';
+            }
         }
         
         // 새로 추가된 이미지 미리보기 로드
-        loadImagePreviews();
+        setTimeout(loadImagePreviews, 100);
     }
-    const totalsize = "{{ totalsize }}";
-    const fileList = {{ files | tojson | safe }};
 
+    // 페이지 로드 시 이미지 미리보기 초기화
+    document.addEventListener('DOMContentLoaded', () => {
+        loadImagePreviews();
+        console.log('Initial load complete'); // 디버깅용
+    });
+
+    // 다운로드 함수들은 그대로 유지
     function downloadImageList() {
-        // 이미지 파일 목록을 텍스트로 변환
         let content = '이미지 파일 목록\n\n';
         content += `총 용량: ${totalsize}\n\n`;
-        
-        // JavaScript로 파일 목록 생성
         fileList.forEach(file => {
             content += `${file.name} ${file.size} bytes\n`;
         });
-
-        // Blob 생성 및 다운로드
         const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
@@ -317,8 +388,43 @@
         window.URL.revokeObjectURL(url);
         document.body.removeChild(a);
     }
+
     function downloadWebpFiles() {
         window.location.href = '/download-webp';
+    }
+    function downloadSingleWebp(url_s, filename) {
+    try {
+        // URL에서 http:// 또는 https:// 제거
+        const cleanUrl = url_s.replace(/^https?:\/\//, '');
+        const downloadUrl = `/download-single-webp/${cleanUrl}/${filename}`;
+        
+        console.log('Download URL:', downloadUrl);  // 디버깅용
+        
+        fetch(downloadUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.blob();
+            })
+            .then(blob => {
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = filename.endsWith('.webp') ? filename : `${filename}.webp`;
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+            })
+            .catch(error => {
+                console.error('Download error:', error);
+                alert('파일 다운로드 중 오류가 발생했습니다.');
+            });
+    } catch (error) {
+            console.error('Function error:', error);
+            alert('파일 다운로드 중 오류가 발생했습니다.');
+        }
     }
 </script>
 

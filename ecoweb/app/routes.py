@@ -28,9 +28,13 @@ import zipfile
 from io import BytesIO, StringIO
 from flask import send_file
 import shutil
+<<<<<<< HEAD
+from flask import send_from_directory, current_app
+=======
 from app.ProjectMaker.code_optimizer import code_optimizer, getCodeSize_before, getCodeSize_after
 
 ZIP_FILE_PATH = "/"
+>>>>>>> upstream/main
 
 load_dotenv()
 # 가이드라인 분석 결과를 임시 저장할 딕셔너리
@@ -375,12 +379,12 @@ def init_routes(app):
             'others': []
         }
 
-        svgfiles = []
+        webpfiles = []
         count = 0
         totalsize = 0
         for file in files:
             if file['class_name'] == 'jpg_svg' or file['class_name'] == 'jpg_logo':
-                svgfiles.append(file)
+                webpfiles.append(file)
                 count += 1
                 totalsize += file['size']
                 if "ico" in file['name']:
@@ -391,7 +395,11 @@ def init_routes(app):
                     category['others'].append(file)
 
         # webp 변환
-        png2webp.main()
+        convertedfiles = []
+        convertedfiles = png2webp.main()
+        convertedfiles.sort(key=lambda x: x['name'], reverse=True)
+        webpfiles.sort(key=lambda x: x['name'], reverse=True)
+
         # viewdata
 
         view_data = session.get('view_data')
@@ -402,7 +410,8 @@ def init_routes(app):
             view_data = {}
         return render_template('img_optimization.html',
                             category=category,   
-                            files=svgfiles, 
+                            files=webpfiles, 
+                            convertedfiles=convertedfiles,
                             filecount=count,
                             totalsize=totalsize,
                             view_data=view_data,
@@ -439,6 +448,38 @@ def init_routes(app):
             as_attachment=True,
             download_name='converted_webp_files.zip'
         )
+    
+    @app.route('/download-single-webp/<path:url_s>/<filename>')
+    def download_single_webp(url_s, filename):
+        try:
+            # url_s에서 http:// 또는 https:// 제거
+            url_s = url_s.replace('http://', '').replace('https://', '')
+            
+            # 파일 경로 설정
+            webp_folder = os.path.join(current_app.static_folder, 'images', url_s, 'img_to_webp')
+            webp_file = os.path.join(webp_folder, filename)
+            
+            print(f"Attempting to download file: {webp_file}")  # 디버깅용
+            
+            if not os.path.exists(webp_file):
+                print(f"File not found: {webp_file}")  # 디버깅용
+                return jsonify({'error': '파일을 찾을 수 없습니다.'}), 404
+                
+            # 파일 이름에서 확장자가 없는 경우 .webp 추가
+            if not filename.lower().endswith('.webp'):
+                filename = f"{filename}.webp"
+                
+            return send_from_directory(
+                webp_folder,
+                filename,
+                as_attachment=True,
+                mimetype='image/webp'
+            )
+            
+        except Exception as e:
+            print(f"Error downloading file: {str(e)}")  # 디버깅용
+            return jsonify({'error': '파일 다운로드 중 오류가 발생했습니다.'}), 500
+
     @app.route('/download_code')
     def download_zip():
         try:
