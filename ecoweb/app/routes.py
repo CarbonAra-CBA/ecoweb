@@ -28,13 +28,10 @@ import zipfile
 from io import BytesIO, StringIO
 from flask import send_file
 import shutil
-<<<<<<< HEAD
 from flask import send_from_directory, current_app
-=======
 from app.ProjectMaker.code_optimizer import code_optimizer, getCodeSize_before, getCodeSize_after
 
 ZIP_FILE_PATH = "/"
->>>>>>> upstream/main
 
 load_dotenv()
 # 가이드라인 분석 결과를 임시 저장할 딕셔너리
