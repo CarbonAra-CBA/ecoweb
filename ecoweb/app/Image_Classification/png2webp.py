@@ -3,7 +3,7 @@ from PIL import Image
 from pathlib import Path
 from flask import session
 
-def convert_to_webp(input_dir, output_dir, quality=100):
+def convert_to_webp(input_dir, output_dir, quality=80):
     """
         quality (int): WebP 변환 품질 (0-100)
     """
@@ -80,7 +80,7 @@ def main():
     print("url_s : ", url_s)
     if not os.path.exists(f'app/static/images/{url_s}'):
         os.mkdir(f'app/static/images/{url_s}')
-    result = convert_to_webp(f'app/static/images/{url_s}', f'app/static/images/{url_s}/img_to_webp', 100)
+    result = convert_to_webp(f'app/static/images/{url_s}', f'app/static/images/{url_s}/img_to_webp', 80)
     return result
 
 if __name__ == "__main__":
