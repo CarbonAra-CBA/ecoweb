@@ -92,22 +92,16 @@ $ python run.py
 
 ## 화면 구성
 | 메인 페이지  |
-| :-------------------------------------------: |
 |  ![ecoweb 메인페이지](https://github.com/user-attachments/assets/f77298d8-4eef-4c82-a066-ea17d105e364) |
 | 탄소배출량 페이지  |
-| :-------------------------------------------: |
 |  ![ecoweb-탄소배출량](https://github.com/user-attachments/assets/b6b6f054-943c-4619-9e78-b810fadad443) |
 | 정밀분석 페이지  |
-| :-------------------------------------------: |
-|  ![ecoweb-정밀분석](https://github.com/user-attachments/assets/909e438c-952f-4b2a-a27d-f5d6fa8d89e3) |
+|  ![ecoweb-정밀분석](https://github.com/user-attachments/assets/91d7a01f-9583-4c71-a22c-a7995771e31a) |
 | 코드 최적화 페이지  |
-| :-------------------------------------------: |
-|  ![ecoweb-코드 최적화](https://github.com/user-attachments/assets/fb79d72a-f307-4740-896d-d2118cb4f6df) |
+|  ![ecoweb-코드 최적화](https://github.com/user-attachments/assets/5123cc99-ac83-4dde-9548-107467a5db7d) |
 | 이미지 최적화 페이지  |
-| :-------------------------------------------: |
-|  ![ecoweb-이미지 최적화](https://github.com/user-attachments/assets/c1280af4-63f6-4e5f-b9d8-c07573e693c6) |
+|  ![ecoweb-이미지 최적화](https://github.com/user-attachments/assets/f402f8c0-fd84-4c4e-b453-8662b8e6b26d) |
 | 인증마크 생성 페이지  |
-| :-------------------------------------------: |
 |  ![ecoweb-인증마크생성](https://github.com/user-attachments/assets/aac70e38-7422-4368-a74f-0af29aae63f2) |
 ---
 
@@ -150,19 +144,34 @@ $ python run.py
 6. **친환경 웹 디자인(지속가능한 웹 디자인) 원칙 준수**  
    - 사이트의 전반적인 디자인과 구조는 친환경 웹 디자인 원칙에 맞추어 최소한의 에너지를 소비하도록 최적화되어 있습니다.
 
-- 동작방식(로직 순서)/데이터 흐름
-![소프트웨어 설계도](https://github.com/user-attachments/assets/f4bedd2d-8417-4042-b074-f607b3b6d2a6)
-<br>
+| 동작방식(로직 순서)/데이터 흐름 |
+| ![소프트웨어 설계도](https://github.com/user-attachments/assets/65d5ac8b-a9d8-48b8-856c-ea85edd07a12) |
+| 1) User가 분석하고 싶은 URL을 사용자 요청 서버에게 전달 |
+| 2-1) 전달받은 URL을 Google Lighthouse로 분석 |
+| 2-2) Google Lighthouse 분석 결과를 사용자 요청 서버와 MongoDB에 전달 |
+| 3) 사용자 요청 서버에서 최적화 서버에 URL을 전달 |
+| 4-1) 최적화 서버에서 URL을 토대로 가져온 웹페이지 코드를 Llama3에게 전달 |
+| 4-2) 웹페이지 코드를 Llama3가 읽고 W3C 지속가능한 웹개발 가이드라인 준수 여부를 보고서로 작성하고 최적화 서버에 전달 |
+| 5-1) 최적화 서버에서 웹페이지 파일 구조와 코드를 구문 분석 도구에 입력으로 전달 |
+| 5-2) 구문 분석 도구는 입력 코드를 AST 형식으로 만든 다음 최적화를 진행, 그 결과를 최적화 서버에 전달 |
+| 6-1) 최적화 서버에서 URL을 토대로 가져온 이미지들을 이미지 최적화 모델에게 전달 |
+| 6-2) 이미지들을 분류하고 최적화한 이미지 파일들과 절감 수치를 최적화 서버에게 전달 |
+| 7) 최적화 서버에서 사용자 요청 서버에게 가이드라인 보고서, 최적화된 코드 파일, 최적화된 이미지 파일을 전달 |
+| 8) 사용자 요청 서버는 탄소배출량 계산값, W3C 지속가능한 웹개발 가이드라인 보고서, 압축된 코드, 최적화된 이미지 파일을 User에게 전달 |
 
 
 
-- 프로젝트 목표
+
+## 프로젝트 목표
 ![프로젝트 목표](https://github.com/user-attachments/assets/c7aa2cfb-493d-45e0-a29d-fd7356ed0747)
+저희의 목표는 공공부문의 디지털 탄소량을 50% 저감을 목표입니다. 이 목표를 달성하게 된다면 **7,342대의 자동차가 한 달간 배출하는 탄소배출량을 절감할 수 있습니다!**
 
 
-- 사용자 뱃지 시스템 동작방식
-![인증 배지 동작 방식](https://github.com/user-attachments/assets/189d6690-df96-4320-9aa0-def72f6b8c03)
-
+## 사용자 뱃지 시스템 동작방식
+![인증배지 동작 방식](https://github.com/user-attachments/assets/8d553202-9dec-442c-b12b-fef910c9202d)
+### 주의할 점 : 
+- 데이터 전송 및 서버 부하를 줄이기 위해 배지는 사용자의 기기에 결과를 캐시하고 배지가 삽입된 각 페이지에 대해 하루에 최대 한 번만 API를 호출합니다. 즉, 사이트를 점진적으로 개선하는 경우 결과가 변경될 때까지 기다려야 합니다.
+- 배지의 캐시 타이밍은 이 웹사이트의 캐시와 다르므로 배지와 웹사이트는 해당 테스트가 수행된 시간에 따라 다른 결과를 표시할 수 있습니다.
 
 
 
