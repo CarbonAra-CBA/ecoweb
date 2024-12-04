@@ -172,7 +172,7 @@ $ python run.py
 ## 프로젝트 목표
 <span style="font-size: 16px"> 저희의 목표는 공공부문의 디지털 탄소량을 50% 저감을 목표입니다. 이 목표를 달성하게 된다면 **7,342대의 자동차가 한 달간 배출하는 탄소배출량을 절감할 수 있습니다!**</span><br>
 ![프로젝트 목표](https://github.com/user-attachments/assets/c7aa2cfb-493d-45e0-a29d-fd7356ed0747)
-
+--- 
 
 ## 사용자 뱃지 시스템 동작방식
 ![인증배지 동작 방식](https://github.com/user-attachments/assets/8d553202-9dec-442c-b12b-fef910c9202d)
