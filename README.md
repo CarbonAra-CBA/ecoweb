@@ -91,9 +91,9 @@ $ python run.py
 
 
 ## 화면 구성
-| 메인 페이지  |  결과페이지   |
-| :-------------------------------------------: | :------------: |
-|  <img width="329" src="https://raw.githubusercontent.com/eclipse1228/Githun-User-Content/main/main_ecoweb.png"/> |  <img width="329" src="https://raw.githubusercontent.com/eclipse1228/Githun-User-Content/main/result_ecoweb.png"/>|  
+| 메인 페이지  |
+| :-------------------------------------------: |
+|  ![ecoweb 메인페이지](https://github.com/user-attachments/assets/f77298d8-4eef-4c82-a066-ea17d105e364) |
 | 배지 제공 페이지   |  강의 영상 페이지   |  
 | <img width="329" src="https://raw.githubusercontent.com/eclipse1228/Githun-User-Content/main/badge_pages.png"/>   
 
