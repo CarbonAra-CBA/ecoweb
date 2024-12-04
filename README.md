@@ -91,18 +91,18 @@ $ python run.py
 
 
 ## 화면 구성
-| 메인 페이지  |
+| # 메인 페이지  |
 | :------------------------------------------------------------------------------: |
 |  ![ecoweb 메인페이지](https://github.com/user-attachments/assets/f77298d8-4eef-4c82-a066-ea17d105e364) |
-| 탄소배출량 페이지  |
+| # 탄소배출량 페이지  |
 |  ![ecoweb-탄소배출량](https://github.com/user-attachments/assets/1789d089-2940-4fe8-8bea-cb0a02503e52) |
-| 정밀분석 페이지  |
+| # 정밀분석 페이지  |
 |  ![ecoweb-정밀분석](https://github.com/user-attachments/assets/91d7a01f-9583-4c71-a22c-a7995771e31a) |
-| 코드 최적화 페이지  |
+| # 코드 최적화 페이지  |
 |  ![ecoweb-코드 최적화](https://github.com/user-attachments/assets/5123cc99-ac83-4dde-9548-107467a5db7d) |
-| 이미지 최적화 페이지  |
+| # 이미지 최적화 페이지  |
 |  ![ecoweb-이미지 최적화](https://github.com/user-attachments/assets/f402f8c0-fd84-4c4e-b453-8662b8e6b26d) |
-| 인증마크 생성 페이지  |
+| # 인증마크 생성 페이지  |
 |  ![ecoweb-인증마크생성](https://github.com/user-attachments/assets/aac70e38-7422-4368-a74f-0af29aae63f2) |
 ---
 
