@@ -94,9 +94,21 @@ $ python run.py
 | 메인 페이지  |
 | :-------------------------------------------: |
 |  ![ecoweb 메인페이지](https://github.com/user-attachments/assets/f77298d8-4eef-4c82-a066-ea17d105e364) |
-| 배지 제공 페이지   |  강의 영상 페이지   |  
-| <img width="329" src="https://raw.githubusercontent.com/eclipse1228/Githun-User-Content/main/badge_pages.png"/>   
-
+| 탄소배출량 페이지  |
+| :-------------------------------------------: |
+|  ![ecoweb-탄소배출량](https://github.com/user-attachments/assets/b6b6f054-943c-4619-9e78-b810fadad443) |
+| 정밀분석 페이지  |
+| :-------------------------------------------: |
+|  ![ecoweb-정밀분석](https://github.com/user-attachments/assets/909e438c-952f-4b2a-a27d-f5d6fa8d89e3) |
+| 코드 최적화 페이지  |
+| :-------------------------------------------: |
+|  ![ecoweb-코드 최적화](https://github.com/user-attachments/assets/fb79d72a-f307-4740-896d-d2118cb4f6df) |
+| 이미지 최적화 페이지  |
+| :-------------------------------------------: |
+|  ![ecoweb-이미지 최적화](https://github.com/user-attachments/assets/c1280af4-63f6-4e5f-b9d8-c07573e693c6) |
+| 인증마크 생성 페이지  |
+| :-------------------------------------------: |
+|  ![ecoweb-인증마크생성](https://github.com/user-attachments/assets/aac70e38-7422-4368-a74f-0af29aae63f2) |
 ---
 
 
@@ -139,17 +151,17 @@ $ python run.py
    - 사이트의 전반적인 디자인과 구조는 친환경 웹 디자인 원칙에 맞추어 최소한의 에너지를 소비하도록 최적화되어 있습니다.
 
 - 동작방식(로직 순서)/데이터 흐름
-<img width="800" src="https://github.com/magatia3113/edit-eco/blob/main/%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98%20%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%9D%B4%EB%AF%B8%EC%A7%80/%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90%EC%9D%B4%EB%AF%B8%EC%A7%80-%EA%B3%A0%EB%B3%91%EC%88%98.png?raw=true"/>
+![소프트웨어 설계도](https://github.com/user-attachments/assets/f4bedd2d-8417-4042-b074-f607b3b6d2a6)
 <br>
 
 
 
 - 프로젝트 목표
-<img width="600" src="https://github.com/magatia3113/edit-eco/blob/main/%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98%20%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%9D%B4%EB%AF%B8%EC%A7%80/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%AA%A9%ED%91%9C%20-%20%EC%9D%B4%ED%9D%AC%EC%88%98.png?raw=true"/>
+![프로젝트 목표](https://github.com/user-attachments/assets/c7aa2cfb-493d-45e0-a29d-fd7356ed0747)
 
 
 - 사용자 뱃지 시스템 동작방식
-<img width="1000" src="https://github.com/magatia3113/edit-eco/blob/main/%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98%20%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%9D%B4%EB%AF%B8%EC%A7%80/%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20-%EB%B1%83%EC%A7%80%20.png?raw=true"/> 
+![인증 배지 동작 방식](https://github.com/user-attachments/assets/189d6690-df96-4320-9aa0-def72f6b8c03)
 
 
 
